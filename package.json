@@ -1,0 +1,34 @@
+{
+  "name": "economyofindia",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "meta": "bunx check-site-meta",
+    "bundlestats": "ANALYZE=true bun run build"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.2.6",
+    "@chakra-ui/react": "^2.10.6",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "babel-plugin-react-compiler": "^19.0.0-beta-aeaed83-20250323",
+    "critters": "^0.0.25",
+    "framer-motion": "^12.6.0",
+    "lucide-react": "^0.484.0",
+    "next": "15.2.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "^2.15.1"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@next/bundle-analyzer": "^15.2.4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19"
+  }
+}
