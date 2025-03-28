@@ -18,20 +18,21 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import Head from "next/head";
-import data from "../new.json";
-import { chartDataFormat, CRORE, titleCase } from "@/utils/stringUtils";
+import { dataset } from "@/dataset/afs-2025-2026";
+import {
+  chartDataFormat,
+  CRORE,
+  SimpleDataset,
+  titleCase,
+} from "@/utils/stringUtils";
 import { useRef, useState } from "react";
 import ChartCard from "@/components/ChartCard";
 import StatCard from "@/components/StatCard";
 import { PanelLeftOpen } from "lucide-react";
 
-type SectionsKey = keyof typeof data;
-
 export default function Home() {
   const [isUsd, setUsd] = useState(false);
-  const [section, setSections] = useState<SectionsKey>(
-    Object.keys(data)[3] as SectionsKey,
-  );
+  const [section, setSections] = useState<string>(Object.keys(dataset)[3]);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef(null);
@@ -93,15 +94,13 @@ export default function Home() {
               defaultValue={3}
               onChange={(e) => {
                 setSections(
-                  Object.keys(data)[
-                    e.currentTarget.selectedIndex
-                  ] as SectionsKey,
+                  Object.keys(dataset)[e.currentTarget.selectedIndex],
                 );
               }}
               w="200px"
               size="sm"
             >
-              {Object.keys(data).map((k, ind) => {
+              {Object.keys(dataset).map((k, ind) => {
                 return (
                   <option value={ind} key={ind} defaultChecked={ind == 3}>
                     {k}
@@ -124,7 +123,7 @@ export default function Home() {
         </Flex>
         <Flex w="100%" h="100%" flexDir="column" mt="60px">
           <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={2} px="8px">
-            {Object.entries(data[section]).map(
+            {Object.entries(dataset[section]).map(
               ([level2Key, level2Val], level2Ind) => {
                 if (
                   typeof level2Val == "object" &&
@@ -132,15 +131,15 @@ export default function Home() {
                 ) {
                   return Object.entries(level2Val).map(
                     ([level3Key, level3Val], level3Ind) => {
-                      // console.log(level3Key, level3Val);
                       if (
+                        level3Val != null &&
                         typeof level3Val == "object" &&
                         (typeof Object.values(level3Val)[0] != "object" ||
                           Object.values(level3Val)[0] == null)
                       ) {
                         return (
                           <ChartCard
-                            data={chartDataFormat(level3Val)}
+                            data={chartDataFormat(level3Val as SimpleDataset)}
                             title={level3Key}
                             key={level3Key}
                             route={`${titleCase(section)} > ${titleCase(level2Key)}`}
@@ -148,6 +147,7 @@ export default function Home() {
                           />
                         );
                       } else if (
+                        level3Val != null &&
                         typeof level3Val == "object" &&
                         typeof Object.values(level3Val)[0] == "object" &&
                         Object.values(level3Val)[0] != null

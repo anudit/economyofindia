@@ -50,9 +50,12 @@ export const numFormat = (
   }
 };
 
-export const chartDataFormat = (data: {
-  [key: string]: number | null;
-}): Array<Array<string | number>> => {
+export type DataItemValue = number | null;
+export type SimpleDataset = { [key: string]: DataItemValue };
+
+export const chartDataFormat = (
+  data: SimpleDataset,
+): Array<Array<string | number>> => {
   return Object.entries(data)
     .map(([k, v], ind) => {
       if (v != null && v != 0) {
