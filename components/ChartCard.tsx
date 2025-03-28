@@ -1,12 +1,4 @@
-import {
-  Flex,
-  GridItem,
-  Heading,
-  SimpleGrid,
-  Stack,
-  Switch,
-  Text,
-} from "@chakra-ui/react";
+import { Flex, GridItem, Heading, useBreakpointValue } from "@chakra-ui/react";
 import CustomChart from "@/components/charts";
 import { ChartPie } from "lucide-react";
 
@@ -16,14 +8,19 @@ export default function ChartCard({
   route,
   isUsd = false,
 }: {
-  data: Array<{ name: string; value: number; fill?: string }>;
+  data: Array<Array<string | number>>;
   title: string;
   route: string;
   isUsd: boolean;
 }) {
+  const respWidth = useBreakpointValue({
+    base: "100vw",
+    md: "100%",
+    lg: "100%",
+  });
   return (
     <GridItem
-      w="100%"
+      w={respWidth}
       h="440px"
       flexDir="column"
       justifyContent="space-between"
@@ -32,7 +29,7 @@ export default function ChartCard({
       borderColor="whiteAlpha.400"
       borderRadius="12"
       borderWidth="1px"
-      colSpan={data.length > 5 ? 2 : 1}
+      // colSpan={data.length > 5 ? 2 : 1}
     >
       <Flex
         w="100%"

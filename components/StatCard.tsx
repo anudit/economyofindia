@@ -1,6 +1,7 @@
 import { numFormat } from "@/utils/stringUtils";
 import { Flex, GridItem, Heading } from "@chakra-ui/react";
 import { ChartPie } from "lucide-react";
+import { useBreakpointValue } from "@chakra-ui/react";
 
 export default function StatCard({
   stat,
@@ -13,9 +14,15 @@ export default function StatCard({
   route: string;
   isUsd: boolean;
 }) {
+  const respWidth = useBreakpointValue({
+    base: "100vw",
+    md: "100%",
+    lg: "100%",
+  });
+
   return (
     <GridItem
-      w="100%"
+      w={respWidth}
       h="440px"
       flexDir="column"
       justifyContent="space-between"
@@ -53,7 +60,13 @@ export default function StatCard({
           {route}
         </Heading>
       </Flex>
-      <Flex direction="column" alignItems="center" h="395px" p="10px">
+      <Flex
+        direction="column"
+        alignItems="center"
+        h="200px"
+        p="10px"
+        justifyContent="space-around"
+      >
         <Heading
           as="h3"
           fontSize="md"
@@ -65,7 +78,7 @@ export default function StatCard({
         </Heading>
         <Heading
           as="p"
-          fontSize="xl"
+          fontSize="xxx-large"
           w="100%"
           color="#ffffffc9"
           textAlign="center"

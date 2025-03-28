@@ -52,19 +52,11 @@ export const numFormat = (
 
 export const chartDataFormat = (data: {
   [key: string]: number | null;
-}): {
-  name: string;
-  value: number;
-  fill: string;
-}[] => {
+}): Array<Array<string | number>> => {
   return Object.entries(data)
     .map(([k, v], ind) => {
       if (v != null && v != 0) {
-        return {
-          name: k,
-          value: v * CRORE,
-          fill: COLORS[ind % COLORS.length],
-        };
+        return [k, v * CRORE];
       } else {
         return null;
       }
