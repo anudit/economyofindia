@@ -1,8 +1,8 @@
-import { PieChart, Pie, Tooltip, Legend } from "recharts";
+import { PieChart, Pie, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { useBreakpointValue, Heading } from "@chakra-ui/react";
+
 import { useMounted } from "@/components/useMounted";
 import { CurrencyType, numFormat } from "@/utils/stringUtils";
-import { Heading } from "@chakra-ui/react";
-import React from "react";
 
 export default function CustomChart({
   data,
@@ -12,6 +12,12 @@ export default function CustomChart({
   cur: CurrencyType;
 }) {
   const mounted = useMounted();
+
+  const chartWidth = useBreakpointValue({
+    base: 500,
+    md: 480,
+    lg: 480,
+  });
 
   if (!mounted) {
     return null;
@@ -37,41 +43,44 @@ export default function CustomChart({
           cur,
         )}
       </Heading>
-      <PieChart width={500} height={350}>
-        <Tooltip />
-        <Pie
-          isAnimationActive={false}
-          data={data}
-          dataKey="value"
-          nameKey="name"
-          cx="50%"
-          cy="50%"
-          strokeWidth={0}
-          label={({ payload, ...props }) => {
-            return (
-              <text
-                cx={props.cx}
-                cy={props.cy}
-                x={props.x}
-                y={props.y}
-                textAnchor={props.textAnchor}
-                dominantBaseline={props.dominantBaseline}
-                fill="white"
-              >
-                {numFormat(payload.value, true, cur)}
-              </text>
-            );
-          }}
-          labelLine={false}
-          outerRadius={100}
-        />
-        <Legend
-          layout="horizontal"
-          align="center"
-          verticalAlign="bottom"
-          style={{ fontSize: "14px" }}
-        />
-      </PieChart>
+      <ResponsiveContainer maxHeight={350}>
+        <PieChart width={chartWidth} height={350}>
+          <Tooltip />
+          <Pie
+            allowReorder="yes"
+            isAnimationActive={false}
+            data={data}
+            dataKey="value"
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            strokeWidth={0}
+            label={({ payload, ...props }) => {
+              return (
+                <text
+                  cx={props.cx}
+                  cy={props.cy}
+                  x={props.x}
+                  y={props.y}
+                  textAnchor={props.textAnchor}
+                  dominantBaseline={props.dominantBaseline}
+                  fill="white"
+                >
+                  {numFormat(payload.value, true, cur)}
+                </text>
+              );
+            }}
+            labelLine={true}
+            outerRadius={100}
+          />
+          <Legend
+            layout={data.length > 5 ? "vertical" : "horizontal"}
+            align={data.length > 5 ? "right" : "center"}
+            verticalAlign={data.length > 5 ? "middle" : "bottom"}
+            wrapperStyle={{ fontSize: data.length > 5 ? "10px" : "14px" }}
+          />
+        </PieChart>
+      </ResponsiveContainer>
     </>
   );
 }

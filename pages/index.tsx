@@ -1,9 +1,10 @@
 import { Flex, SimpleGrid, Stack, Switch, Text } from "@chakra-ui/react";
 import Head from "next/head";
 import data from "../new.json";
-import { chartDataFormat } from "@/utils/stringUtils";
+import { chartDataFormat, titleCase } from "@/utils/stringUtils";
 import { useState } from "react";
 import ChartCard from "@/components/ChartCard";
+import StatCard from "@/components/StatCard";
 
 export default function Home() {
   const [isUsd, setUsd] = useState(false);
@@ -17,7 +18,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Flex w="100%" h="100vh" flexDir="column">
-        <Flex w="100%" h="50px" flexDir="row">
+        <Flex
+          w="100%"
+          h="60px"
+          flexDir="row-reverse"
+          background="blackAlpha.500"
+          position="fixed"
+          alignItems="center"
+          paddingX="20px"
+          backdropFilter="blur(6px)"
+          zIndex={10000}
+        >
           <Stack direction="row">
             <Text>INR</Text>
             <Switch
@@ -29,13 +40,17 @@ export default function Home() {
             <Text>USD</Text>
           </Stack>
         </Flex>
-        <Flex w="100%" h="100%" flexDir="column">
-          <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={10}>
+        <Flex w="100%" h="100%" flexDir="column" mt="60px">
+          <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={4}>
             {Object.entries(data["Budget Estimates 2025-2026"]).map(
               ([level2Key, level2Val], level2Ind) => {
-                if (typeof level2Val == "object") {
+                if (
+                  typeof level2Val == "object" &&
+                  typeof Object.values(level2Val)[0] == "object"
+                ) {
                   return Object.entries(level2Val).map(
                     ([level3Key, level3Val], level3Ind) => {
+                      console.log(level3Key, level3Val);
                       if (
                         typeof level3Val == "object" &&
                         (typeof Object.values(level3Val)[0] != "object" ||
@@ -46,7 +61,7 @@ export default function Home() {
                             data={chartDataFormat(level3Val)}
                             title={level3Key}
                             key={level3Key}
-                            route={`${level2Key} > ${level3Key}`}
+                            route={`${titleCase(level2Key)}`}
                             isUsd={isUsd}
                           />
                         );
@@ -70,7 +85,7 @@ export default function Home() {
                                   )}
                                   title={level4Key}
                                   key={level4Key}
-                                  route={`${level2Key} > ${level3Key} > ${level4Key}`}
+                                  route={`${titleCase(level2Key)} > ${titleCase(level3Key)}`}
                                   isUsd={isUsd}
                                 />
                               );
@@ -78,6 +93,16 @@ export default function Home() {
                               return null;
                             }
                           },
+                        );
+                      } else if (typeof level3Val == "number") {
+                        return (
+                          <StatCard
+                            stat={level3Val}
+                            title={level3Key}
+                            key={level3Key}
+                            route={`${titleCase(level2Key)} > ${titleCase(level3Key)}`}
+                            isUsd={isUsd}
+                          />
                         );
                       } else {
                         return null;

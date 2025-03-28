@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "meta": "bunx check-site-meta",
-    "bundlestats": "ANALYZE=true bun run build"
+    "bundlestats": "ANALYZE=true bun run build",
+    "outdated": "bunx npm-check-updates --interactive"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.2.6",
@@ -17,17 +18,17 @@
     "@emotion/styled": "^11.14.0",
     "babel-plugin-react-compiler": "^19.0.0-beta-aeaed83-20250323",
     "critters": "^0.0.25",
-    "framer-motion": "^12.6.0",
+    "framer-motion": "^12.6.2",
     "lucide-react": "^0.484.0",
     "next": "15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-google-charts": "^5.2.1",
     "recharts": "^2.15.1"
   },
   "devDependencies": {
     "typescript": "^5",
     "@next/bundle-analyzer": "^15.2.4",
-    "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19"
   }

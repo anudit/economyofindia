@@ -1,22 +1,14 @@
-import {
-  Flex,
-  GridItem,
-  Heading,
-  SimpleGrid,
-  Stack,
-  Switch,
-  Text,
-} from "@chakra-ui/react";
-import CustomChart from "@/components/charts";
+import { numFormat } from "@/utils/stringUtils";
+import { Flex, GridItem, Heading } from "@chakra-ui/react";
 import { ChartPie } from "lucide-react";
 
-export default function ChartCard({
-  data,
+export default function StatCard({
+  stat,
   title,
   route,
   isUsd = false,
 }: {
-  data: Array<{ name: string; value: number; fill?: string }>;
+  stat: number;
   title: string;
   route: string;
   isUsd: boolean;
@@ -32,7 +24,6 @@ export default function ChartCard({
       borderColor="whiteAlpha.400"
       borderRadius="12"
       borderWidth="1px"
-      colSpan={data.length > 5 ? 2 : 1}
     >
       <Flex
         w="100%"
@@ -72,7 +63,15 @@ export default function ChartCard({
         >
           {title}
         </Heading>
-        <CustomChart data={data} cur={isUsd ? "usd" : "inr"} />
+        <Heading
+          as="p"
+          fontSize="xl"
+          w="100%"
+          color="#ffffffc9"
+          textAlign="center"
+        >
+          {numFormat(stat, true, isUsd ? "usd" : "inr")}
+        </Heading>
       </Flex>
     </GridItem>
   );
