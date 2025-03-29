@@ -15,12 +15,6 @@ export default function CustomChart({
 }) {
   const mounted = useMounted();
 
-  const chartWidth = useBreakpointValue({
-    base: 500,
-    md: 480,
-    lg: 480,
-  });
-
   if (!mounted) {
     return null;
   }
@@ -74,7 +68,7 @@ export default function CustomChart({
           pieSliceBorderColor: "transparent",
         }}
         width={"100%"}
-        height={"350px"}
+        height={"300px"}
         legendToggle
         formatters={formatters}
       />

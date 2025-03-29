@@ -19,10 +19,10 @@
     "babel-plugin-react-compiler": "^19.0.0-beta-aeaed83-20250323",
     "critters": "^0.0.25",
     "framer-motion": "^12.6.2",
-    "lucide-react": "^0.484.0",
+    "lucide-react": "^0.485.0",
     "next": "15.2.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "react-google-charts": "^5.2.1"
   },
   "devDependencies": {

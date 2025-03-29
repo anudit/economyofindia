@@ -52,6 +52,11 @@ export const numFormat = (
 
 export type DataItemValue = number | null;
 export type SimpleDataset = { [key: string]: DataItemValue };
+export type DatasetMetadata = {
+  title: string;
+  titleShort: string;
+  sourceFile: string;
+};
 
 export const chartDataFormat = (
   data: SimpleDataset,

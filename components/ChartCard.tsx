@@ -59,7 +59,13 @@ export default function ChartCard({
           {route}
         </Heading>
       </Flex>
-      <Flex direction="column" alignItems="center" h="395px" p="10px">
+      <Flex
+        direction="column"
+        alignItems="center"
+        h="395px"
+        p="10px"
+        justifyContent="center"
+      >
         <Heading
           as="h3"
           fontSize="md"

@@ -1,4 +1,4 @@
-import { DataItemValue } from "@/utils/stringUtils";
+import { DataItemValue, DatasetMetadata } from "@/utils/stringUtils";
 
 export type Dataset4 = {
   [key: string]: {
@@ -13,6 +13,12 @@ export type Dataset4 = {
         | DataItemValue;
     };
   };
+};
+
+export const metadata: DatasetMetadata = {
+  title: "ANNUAL FINANCIAL STATEMENT OF THE CENTRAL GOVERNMENT FOR 2025-2026",
+  titleShort: "AFS CG 25-26",
+  sourceFile: "https://www.indiabudget.gov.in/doc/AFS/allafs.pdf",
 };
 
 export const dataset: Dataset4 = {

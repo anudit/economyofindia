@@ -60,32 +60,38 @@ export default function StatCard({
           {route}
         </Heading>
       </Flex>
-      <Flex
+      <Heading
+        as="h3"
+        fontSize="md"
+        w="100%"
+        color="#ffffffc9"
+        textAlign="center"
+        p="10px"
+        mt="10px"
+      >
+        {title}
+      </Heading>
+      <Heading
+        as="p"
+        fontSize="xxx-large"
+        w="100%"
+        h="310px"
+        display="flex"
+        color="#ffffffc9"
+        justifyContent="center"
+        alignItems="center"
+        p="10px"
+      >
+        {numFormat(stat, true, isUsd ? "usd" : "inr")}
+      </Heading>
+      {/* <Flex
         direction="column"
         alignItems="center"
-        h="200px"
+        h="100%"
         p="10px"
         justifyContent="space-around"
       >
-        <Heading
-          as="h3"
-          fontSize="md"
-          w="100%"
-          color="#ffffffc9"
-          textAlign="center"
-        >
-          {title}
-        </Heading>
-        <Heading
-          as="p"
-          fontSize="xxx-large"
-          w="100%"
-          color="#ffffffc9"
-          textAlign="center"
-        >
-          {numFormat(stat, true, isUsd ? "usd" : "inr")}
-        </Heading>
-      </Flex>
+      </Flex> */}
     </GridItem>
   );
 }
