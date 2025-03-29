@@ -197,8 +197,8 @@ export default function Home() {
                 ) {
                   return Object.entries(level3Val).map(
                     ([level4Key, level4Val]) => {
-                      // console.log(level4Key, typeof level4Val, level4Val);
-                      if (typeof level4Val == "object" && level4Val != null) {
+                      console.log(level4Key, typeof level4Val, level4Val);
+                      if (level4Val != null && typeof level4Val == "object") {
                         return (
                           <ChartCard
                             data={chartDataFormat(
@@ -209,6 +209,16 @@ export default function Home() {
                             title={level4Key}
                             key={level4Key}
                             route={`${titleCase(section)} > ${titleCase(level2Key)} > ${titleCase(level3Key)}`}
+                            isUsd={isUsd}
+                          />
+                        );
+                      } else if (typeof level4Val == "number") {
+                        return (
+                          <StatCard
+                            stat={level4Val * CRORE}
+                            title={level4Key}
+                            key={level4Key}
+                            route={`${titleCase(section)} > ${titleCase(level2Key)} > ${titleCase(level3Key)} > ${titleCase(level4Key)}`}
                             isUsd={isUsd}
                           />
                         );
