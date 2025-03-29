@@ -197,7 +197,7 @@ export default function Home() {
                 ) {
                   return Object.entries(level3Val).map(
                     ([level4Key, level4Val]) => {
-                      console.log(level4Key, typeof level4Val, level4Val);
+                      // console.log(level4Key, typeof level4Val, level4Val);
                       if (typeof level4Val == "object" && level4Val != null) {
                         return (
                           <ChartCard

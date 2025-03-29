@@ -29,4 +29,4 @@ const withPwaConfig = withPWA({
 });
 
 // Combine bundle-analyzer and next-pwa
-export default withBundleAnalyzer(withPwaConfig(nextConfig));
+export default withPwaConfig(withBundleAnalyzer(nextConfig));
