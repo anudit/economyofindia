@@ -102,7 +102,7 @@ export default function Home() {
             onChange={(e) => {
               setSections(Object.keys(dataset)[e.currentTarget.selectedIndex]);
             }}
-            w="250px"
+            w={{ base: "50px", md: "250px" }}
             size="sm"
           >
             {Object.keys(dataset).map((k, ind) => (
@@ -158,6 +158,19 @@ export default function Home() {
           {Object.entries(dataset[section]).map(([level2Key, level2Val]) => {
             if (
               typeof level2Val == "object" &&
+              typeof Object.values(level2Val)[0] == "number"
+            ) {
+              return (
+                <ChartCard
+                  data={chartDataFormat(level2Val as SimpleDataset)}
+                  title={level2Key}
+                  key={level2Key}
+                  route={`${titleCase(section)} > ${titleCase(level2Key)}`}
+                  isUsd={isUsd}
+                />
+              );
+            } else if (
+              typeof level2Val == "object" &&
               typeof Object.values(level2Val)[0] == "object"
             ) {
               return Object.entries(level2Val).map(([level3Key, level3Val]) => {
@@ -184,6 +197,7 @@ export default function Home() {
                 ) {
                   return Object.entries(level3Val).map(
                     ([level4Key, level4Val]) => {
+                      console.log(level4Key, typeof level4Val, level4Val);
                       if (typeof level4Val == "object" && level4Val != null) {
                         return (
                           <ChartCard
