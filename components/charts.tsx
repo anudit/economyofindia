@@ -19,18 +19,6 @@ export default function CustomChart({
     return null;
   }
 
-  const formatters = [
-    {
-      type: "NumberFormat" as const,
-      column: 1,
-      options: {
-        prefix: "$",
-        negativeColor: "red",
-        negativeParens: true,
-      },
-    },
-  ];
-
   return (
     <>
       <Heading
@@ -51,6 +39,7 @@ export default function CustomChart({
             .reduce((partialSum, a) => partialSum + a, 0),
           true,
           cur,
+          true,
         )}
       </Heading>
       <Chart
@@ -70,7 +59,17 @@ export default function CustomChart({
         width={"100%"}
         height={"300px"}
         legendToggle
-        formatters={formatters}
+        formatters={[
+          {
+            type: "NumberFormat" as const,
+            column: 1,
+            options: {
+              prefix: cur == "usd" ? "$" : "₹",
+              negativeColor: "red",
+              negativeParens: true,
+            },
+          },
+        ]}
       />
     </>
   );

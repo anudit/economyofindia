@@ -1,4 +1,4 @@
-export const USDINR = 85.81;
+export const USDINR = 85.56;
 export const CRORE = 10000000;
 
 export type CurrencyType = "inr" | "usd";
@@ -19,6 +19,7 @@ export const numFormat = (
   num: number,
   short: boolean = false,
   cur: CurrencyType = "inr",
+  disableConvert: boolean = false,
 ): string | null => {
   if (cur === "inr") {
     if (short) {
@@ -33,7 +34,7 @@ export const numFormat = (
       return `₹ ${new Intl.NumberFormat("en-IN", { maximumSignificantDigits: 3 }).format(num)}`;
     }
   } else if (cur === "usd") {
-    const usdValue = num / USDINR;
+    const usdValue = disableConvert ? num : num / USDINR;
     if (short) {
       if (usdValue >= 1e9) {
         return `$${new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(usdValue / 1e9)}Bn`;

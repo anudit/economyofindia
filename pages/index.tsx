@@ -26,6 +26,7 @@ import {
   CRORE,
   SimpleDataset,
   titleCase,
+  USDINR,
 } from "@/utils/stringUtils";
 import { useRef, useState } from "react";
 import ChartCard from "@/components/ChartCard";
@@ -149,7 +150,7 @@ export default function Home() {
               setUsd(e.currentTarget.checked);
             }}
           />
-          <Text fontSize="sm">USD</Text>
+          <Text fontSize="sm">USD ({USDINR})</Text>
         </Stack>
       </Flex>
 
@@ -197,7 +198,6 @@ export default function Home() {
                 ) {
                   return Object.entries(level3Val).map(
                     ([level4Key, level4Val]) => {
-                      console.log(level4Key, typeof level4Val, level4Val);
                       if (level4Val != null && typeof level4Val == "object") {
                         return (
                           <ChartCard
