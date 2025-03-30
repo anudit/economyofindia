@@ -100,6 +100,7 @@ export default function Home() {
           />
           <Select
             defaultValue={3}
+            borderRadius="md"
             onChange={(e) => {
               setSections(Object.keys(dataset)[e.currentTarget.selectedIndex]);
             }}

@@ -29,7 +29,7 @@ export default function StatCard({
       alignItems="center"
       borderStyle="solid"
       borderColor="whiteAlpha.400"
-      borderRadius="12"
+      borderRadius="md"
       borderWidth="1px"
     >
       <Flex

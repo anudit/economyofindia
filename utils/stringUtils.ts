@@ -24,11 +24,11 @@ export const numFormat = (
   if (cur === "inr") {
     if (short) {
       if (num >= CRORE) {
-        return `₹${new Intl.NumberFormat("en-IN", { maximumFractionDigits: 0 }).format(num / CRORE)}Cr`;
+        return `₹${new Intl.NumberFormat("en-IN", { maximumFractionDigits: 2 }).format(num / CRORE)}Cr`;
       } else if (num >= 100000) {
-        return `₹${new Intl.NumberFormat("en-IN", { maximumFractionDigits: 0 }).format(num / 100000)}L`;
+        return `₹${new Intl.NumberFormat("en-IN", { maximumFractionDigits: 2 }).format(num / 100000)}L`;
       } else {
-        return `₹${new Intl.NumberFormat("en-IN", { maximumFractionDigits: 0 }).format(num)}`;
+        return `₹${new Intl.NumberFormat("en-IN", { maximumFractionDigits: 2 }).format(num)}`;
       }
     } else {
       return `₹ ${new Intl.NumberFormat("en-IN", { maximumSignificantDigits: 3 }).format(num)}`;
@@ -37,11 +37,11 @@ export const numFormat = (
     const usdValue = disableConvert ? num : num / USDINR;
     if (short) {
       if (usdValue >= 1e9) {
-        return `$${new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(usdValue / 1e9)}Bn`;
+        return `$${new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(usdValue / 1e9)}Bn`;
       } else if (usdValue >= 1e6) {
-        return `$${new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(usdValue / 1e6)}M`;
+        return `$${new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(usdValue / 1e6)}M`;
       } else {
-        return `$${new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(usdValue)}`;
+        return `$${new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(usdValue)}`;
       }
     } else {
       return `${new Intl.NumberFormat("en-US", { maximumSignificantDigits: 3 }).format(usdValue)} USD`;

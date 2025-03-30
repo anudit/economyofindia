@@ -28,7 +28,7 @@ export default function ChartCard({
       alignItems="center"
       borderStyle="solid"
       borderColor="whiteAlpha.400"
-      borderRadius="12"
+      borderRadius="md"
       borderWidth="1px"
       // colSpan={data.length > 5 ? 2 : 1}
     >
