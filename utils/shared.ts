@@ -15,6 +15,19 @@ export const COLORS = [
   "#88d4ab",
 ];
 
+export const RED_COLORS = [
+  "#fde0e0",
+  "#f4c1c1",
+  "#fdaaaa",
+  "#f97c7c",
+  "#ee6969",
+];
+
+export type CurrecyResp = {
+  date: string;
+  usd: { inr: number };
+};
+
 export const numFormat = (
   num: number,
   short: boolean = false,
@@ -57,6 +70,9 @@ export type DatasetMetadata = {
   title: string;
   titleShort: string;
   sourceFile: string;
+  ipfsHash: string;
+  sha256: string;
+  md5: string;
 };
 
 export const chartDataFormat = (

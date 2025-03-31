@@ -1,4 +1,4 @@
-import { numFormat } from "@/utils/stringUtils";
+import { numFormat } from "@/utils/shared";
 import { Flex, GridItem, Heading } from "@chakra-ui/react";
 import { ChartPie } from "lucide-react";
 import { useBreakpointValue } from "@chakra-ui/react";

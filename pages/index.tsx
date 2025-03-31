@@ -20,19 +20,20 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import Head from "next/head";
-import { dataset, metadata } from "@/dataset/afs-2025-2026";
+import { dataset, dataset2, metadata } from "@/dataset/afs-2025-2026";
 import {
   chartDataFormat,
   CRORE,
   SimpleDataset,
   titleCase,
   USDINR,
-} from "@/utils/stringUtils";
+} from "@/utils/shared";
 import { useRef, useState } from "react";
 import ChartCard from "@/components/ChartCard";
 import StatCard from "@/components/StatCard";
 import { ExternalLink, PanelLeftOpen } from "lucide-react";
 import Link from "next/link";
+import ChartGrid from "@/components/ChartGrid";
 
 export default function Home() {
   const [isUsd, setUsd] = useState(false);
@@ -157,93 +158,18 @@ export default function Home() {
 
       <Flex w="100%" h="100%" flexDir="column" mt="60px">
         <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={2} px="8px">
-          {Object.entries(dataset[section]).map(([level2Key, level2Val]) => {
-            if (
-              typeof level2Val == "object" &&
-              typeof Object.values(level2Val)[0] == "number"
-            ) {
-              return (
-                <ChartCard
-                  data={chartDataFormat(level2Val as SimpleDataset)}
-                  title={level2Key}
-                  key={level2Key}
-                  route={`${titleCase(section)} > ${titleCase(level2Key)}`}
-                  isUsd={isUsd}
-                />
-              );
-            } else if (
-              typeof level2Val == "object" &&
-              typeof Object.values(level2Val)[0] == "object"
-            ) {
-              return Object.entries(level2Val).map(([level3Key, level3Val]) => {
-                if (
-                  level3Val != null &&
-                  typeof level3Val == "object" &&
-                  (typeof Object.values(level3Val)[0] != "object" ||
-                    Object.values(level3Val)[0] == null)
-                ) {
-                  return (
-                    <ChartCard
-                      data={chartDataFormat(level3Val as SimpleDataset)}
-                      title={level3Key}
-                      key={level3Key}
-                      route={`${titleCase(section)} > ${titleCase(level2Key)}`}
-                      isUsd={isUsd}
-                    />
-                  );
-                } else if (
-                  level3Val != null &&
-                  typeof level3Val == "object" &&
-                  typeof Object.values(level3Val)[0] == "object" &&
-                  Object.values(level3Val)[0] != null
-                ) {
-                  return Object.entries(level3Val).map(
-                    ([level4Key, level4Val]) => {
-                      if (level4Val != null && typeof level4Val == "object") {
-                        return (
-                          <ChartCard
-                            data={chartDataFormat(
-                              level4Val as {
-                                [key: string]: number | null;
-                              },
-                            )}
-                            title={level4Key}
-                            key={level4Key}
-                            route={`${titleCase(section)} > ${titleCase(level2Key)} > ${titleCase(level3Key)}`}
-                            isUsd={isUsd}
-                          />
-                        );
-                      } else if (typeof level4Val == "number") {
-                        return (
-                          <StatCard
-                            stat={level4Val * CRORE}
-                            title={level4Key}
-                            key={level4Key}
-                            route={`${titleCase(section)} > ${titleCase(level2Key)} > ${titleCase(level3Key)} > ${titleCase(level4Key)}`}
-                            isUsd={isUsd}
-                          />
-                        );
-                      } else {
-                        return null;
-                      }
-                    },
-                  );
-                } else if (typeof level3Val == "number") {
-                  return (
-                    <StatCard
-                      stat={level3Val * CRORE}
-                      title={level3Key}
-                      key={level3Key}
-                      route={`${titleCase(section)} > ${titleCase(level2Key)} > ${titleCase(level3Key)}`}
-                      isUsd={isUsd}
-                    />
-                  );
-                } else {
-                  return null;
-                }
-              });
-            }
-          })}
+          <ChartGrid
+            dataset={dataset}
+            isUsd={isUsd}
+            section={section}
+            palette="green"
+          />
+          <ChartGrid
+            dataset={dataset2}
+            isUsd={isUsd}
+            section={section}
+            palette="red"
+          />
         </SimpleGrid>
       </Flex>
     </>

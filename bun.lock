@@ -8,7 +8,7 @@
         "@chakra-ui/react": "^2.10.6",
         "@emotion/react": "^11.14.0",
         "@emotion/styled": "^11.14.0",
-        "babel-plugin-react-compiler": "^19.0.0-beta-aeaed83-20250323",
+        "babel-plugin-react-compiler": "^19.0.0-beta-e993439-20250328",
         "critters": "^0.0.25",
         "framer-motion": "^12.6.2",
         "lucide-react": "^0.485.0",
@@ -464,7 +464,7 @@
 
     "babel-plugin-polyfill-regenerator": ["babel-plugin-polyfill-regenerator@0.6.4", "", { "dependencies": { "@babel/helper-define-polyfill-provider": "^0.6.4" }, "peerDependencies": { "@babel/core": "^7.4.0 || ^8.0.0-0 <8.0.0" } }, "sha512-7gD3pRadPrbjhjLyxebmx/WrFYcuSjZ0XbdUujQMZ/fcE9oeewk2U/7PCvez84UeuK3oSjmPZ0Ch0dlupQvGzw=="],
 
-    "babel-plugin-react-compiler": ["babel-plugin-react-compiler@19.0.0-beta-aeaed83-20250323", "", { "dependencies": { "@babel/types": "^7.26.0" } }, "sha512-7WKelqaC8mz3SIy9YRAySkY9veHKE80HruUmXUOhk0ZcBvDBgAlltv06lMIiGyHB7TDzAHS1fANzOXCPcfSErQ=="],
+    "babel-plugin-react-compiler": ["babel-plugin-react-compiler@19.0.0-beta-e993439-20250328", "", { "dependencies": { "@babel/types": "^7.26.0" } }, "sha512-eq0lxXDicCNfhtIhm2L2nW2FyDcPMfuJTQG641ZWMWxEVqwmtUlAkWXC4o5C3vykhWMTsXmiJe7/hxXVUbV8ZA=="],
 
     "balanced-match": ["balanced-match@1.0.2", "", {}, "sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw=="],
 

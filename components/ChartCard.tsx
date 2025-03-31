@@ -1,18 +1,20 @@
 import { Flex, GridItem, Heading, useBreakpointValue } from "@chakra-ui/react";
 import CustomChart from "@/components/charts";
 import { ChartPie } from "lucide-react";
-import { USDINR } from "@/utils/stringUtils";
+import { USDINR } from "@/utils/shared";
 
 export default function ChartCard({
   data,
   title,
   route,
   isUsd = false,
+  palette = "green",
 }: {
   data: Array<Array<string | number>>;
   title: string;
   route: string;
   isUsd: boolean;
+  palette?: "green" | "red";
 }) {
   const respWidth = useBreakpointValue({
     base: "100vw",
@@ -81,6 +83,7 @@ export default function ChartCard({
           //@ts-ignore
           data={data.map(([k, v]) => [k, isUsd ? parseFloat(v) / USDINR : v])}
           cur={isUsd ? "usd" : "inr"}
+          palette={palette}
         />
       </Flex>
     </GridItem>

@@ -2,16 +2,18 @@ import { Chart } from "react-google-charts";
 import { useBreakpointValue, Heading } from "@chakra-ui/react";
 
 import { useMounted } from "@/components/useMounted";
-import { COLORS, CurrencyType, numFormat } from "@/utils/stringUtils";
+import { COLORS, CurrencyType, numFormat, RED_COLORS } from "@/utils/shared";
 
 const header: Array<Array<string | number>> = [["Pizza", "Popularity"]];
 
 export default function CustomChart({
   data,
   cur = "inr",
+  palette = "green",
 }: {
   data: Array<Array<string | number>>;
   cur: CurrencyType;
+  palette?: "green" | "red";
 }) {
   const mounted = useMounted();
 
@@ -52,7 +54,7 @@ export default function CustomChart({
             alignment: "center",
             textStyle: { color: "#fff" },
           },
-          colors: COLORS,
+          colors: palette == "green" ? COLORS : RED_COLORS,
           sliceVisibilityThreshold: 0.001,
           pieSliceBorderColor: "transparent",
         }}
