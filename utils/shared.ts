@@ -69,7 +69,9 @@ export type SimpleDataset = { [key: string]: DataItemValue };
 export type DatasetMetadata = {
   title: string;
   titleShort: string;
+  fileName: string;
   sourceFile: string;
+  localLink: `/${string}`;
   ipfsHash: string;
   sha256: string;
   md5: string;

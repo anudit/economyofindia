@@ -29,11 +29,6 @@ export default function Home() {
     xl: metadata.title,
   });
 
-  const initialIsCollapsed = useBreakpointValue({ base: true, md: false });
-  const [isCollapsed, setIsCollapsed] = useState(initialIsCollapsed);
-
-  const toggleSidebar = () => setIsCollapsed(!isCollapsed);
-
   return (
     <>
       <Head>
@@ -43,7 +38,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Flex direction="row" w="100vw" minH="100vh">
-        <Sidebar isCollapsed={isCollapsed as boolean} />
+        <Sidebar />
         <Flex direction="column" w="100%" minH="100vh">
           <Flex
             w="100%"
@@ -59,19 +54,6 @@ export default function Home() {
             zIndex={100}
           >
             <Stack direction="row">
-              <IconButton
-                icon={
-                  isCollapsed ? (
-                    <PanelLeftOpen strokeWidth={2} size={22} />
-                  ) : (
-                    <PanelLeftClose strokeWidth={2} size={22} />
-                  )
-                }
-                onClick={toggleSidebar}
-                aria-label="Open Sidebar"
-                variant="ghost"
-                size="sm"
-              />
               <Select
                 defaultValue={3}
                 borderRadius="md"
@@ -137,7 +119,7 @@ export default function Home() {
             h="100%"
             flexDir="column"
             backgroundColor={useColorModeValue("black", "#2E2E31")}
-            p="10px"
+            p="20px"
             borderRadius="10px"
           >
             <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={2}>

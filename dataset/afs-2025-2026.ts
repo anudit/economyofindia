@@ -18,6 +18,8 @@ export type Dataset4 = {
 export const metadata: DatasetMetadata = {
   title: "ANNUAL FINANCIAL STATEMENT OF THE CENTRAL GOVERNMENT FOR 2025-2026",
   titleShort: "AFS CG 25-26",
+  fileName: "afs_2025_26.pdf",
+  localLink: "/",
   sourceFile: "https://www.indiabudget.gov.in/doc/AFS/allafs.pdf",
   ipfsHash: "bafybeibngqfz5n7cxeze2klrw6bblxqwd3ptoqa5y5zl54lcxwiplgd5em",
   md5: "8b7ca6d0db4fa1ff49c0dc63d9ee6e07",

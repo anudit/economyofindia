@@ -8,63 +8,71 @@ import {
   useBreakpointValue,
   Tooltip,
   Icon,
-  Divider,
-  Heading,
+  InputGroup,
+  InputLeftElement,
+  Input,
 } from "@chakra-ui/react";
-import {
-  ChevronsLeft,
-  ChevronsRight,
-  FileText as FileTextIcon, // Alias to avoid conflict with Text component
-} from "lucide-react";
+import { PanelLeftClose, PanelLeftOpen, SearchIcon } from "lucide-react";
+import Link from "next/link";
+import { completeMetadata } from "@/dataset";
+import { PdfIcon } from "./Icons";
+import { useRouter } from "next/router";
 
-// Example list of filenames
-const fileNames = [
-  "document_report.pdf",
-  "project_proposal.docx",
-  "data_analysis.xlsx",
-  "presentation_slides.pptx",
-  "meeting_notes.txt",
-  "image_asset.png",
-];
+const fileNames: Array<{ fileName: string; link: string }> =
+  completeMetadata.map((e) => {
+    return {
+      fileName: e.fileName,
+      link: e.localLink,
+    };
+  });
 
-// Helper component for Sidebar items
 const SidebarItem = ({
   fileName,
+  link,
   isCollapsed,
 }: {
   fileName: string;
+  link: string;
   isCollapsed: boolean;
 }) => {
+  let router = useRouter();
   return (
     <Tooltip label={fileName} placement="right" isDisabled={!isCollapsed}>
-      <Flex
-        align="center"
-        p={2}
-        mx={2}
-        borderRadius="lg"
-        role="group"
-        cursor="pointer"
-        _hover={{
-          bg: "cyan.400",
-          color: "white",
-        }}
-        width="full" // Ensure Flex takes full width for background hover
-        overflow="hidden" // Hide text when collapsed
-        whiteSpace="nowrap" // Prevent text wrapping
-      >
-        <Icon as={FileTextIcon} mr={isCollapsed ? 0 : 4} boxSize={5} />
-        {!isCollapsed && (
-          <Text fontSize="sm" isTruncated>
-            {fileName}
-          </Text>
-        )}
-      </Flex>
+      <Link href={link} prefetch={true}>
+        <Flex
+          align="center"
+          p={2}
+          borderRadius="lg"
+          role="group"
+          cursor="pointer"
+          _hover={{
+            bg: "#2E2E31",
+            color: "white",
+          }}
+          background={router.pathname == link ? "#2E2E31" : "transparent"}
+          width="-webkit-fill-available"
+          overflow="hidden"
+          justifyContent={isCollapsed ? "center" : "flex-start"}
+          // whiteSpace="nowrap" // Prevent text wrapping
+        >
+          <Icon as={PdfIcon} mr={isCollapsed ? 0 : 4} boxSize={5} />
+          {!isCollapsed && (
+            <Text fontSize="sm" isTruncated>
+              {fileName}
+            </Text>
+          )}
+        </Flex>
+      </Link>
     </Tooltip>
   );
 };
 
-export const Sidebar = ({ isCollapsed }: { isCollapsed: boolean }) => {
-  // Adjust sidebar width based on collapsed state
+export const Sidebar = () => {
+  const initialIsCollapsed = useBreakpointValue({ base: true, md: false });
+  const [isCollapsed, setIsCollapsed] = useState(initialIsCollapsed);
+
+  const toggleSidebar = () => setIsCollapsed(!isCollapsed);
+
   const sidebarWidth = isCollapsed ? "50px" : "250px";
 
   return (
@@ -72,36 +80,53 @@ export const Sidebar = ({ isCollapsed }: { isCollapsed: boolean }) => {
       as="nav"
       background="#23222570"
       w={sidebarWidth}
-      h="100vh" // Full viewport height
-      position="sticky" // Or 'sticky' if preferred within a layout
+      h="100vh"
+      position="sticky"
       top={0}
       left={0}
       zIndex={1}
-      overflowX="hidden" // Hide horizontal overflow
-      transition="width 0.3s ease" // Smooth transition for width change
-      pt={4} // Add some padding at the top
+      overflowX="hidden"
+      transition="width 0.2s ease"
+      px={isCollapsed ? 1 : 3}
+      pt={4}
       display="flex"
       flexDirection="column"
     >
-      {/* Toggle Button */}
-      <Flex
-        justify={"center"} // Center icon when collapsed
-        align="center"
-      >
-        <Heading
-          as="h1"
-          fontSize="lg"
-          h="45px"
-          display="flex"
-          alignItems="center"
-        >
-          {isCollapsed ? "$" : "EconomyOfIndia.com"}
-        </Heading>
+      <Flex justify={"start"} align="center" ml={2}>
+        <IconButton
+          icon={
+            isCollapsed ? (
+              <PanelLeftOpen strokeWidth={2} size={22} />
+            ) : (
+              <PanelLeftClose strokeWidth={2} size={22} />
+            )
+          }
+          onClick={toggleSidebar}
+          aria-label="Open Sidebar"
+          variant="ghost"
+          size="sm"
+        />
       </Flex>
 
-      <VStack align="stretch" spacing={1} flexGrow={1}>
-        {fileNames.map((name) => (
-          <SidebarItem key={name} fileName={name} isCollapsed={isCollapsed} />
+      <InputGroup
+        onClick={() => {
+          isCollapsed ? toggleSidebar() : null;
+        }}
+      >
+        <InputLeftElement pointerEvents="none">
+          <SearchIcon color="white" size={12} />
+        </InputLeftElement>
+        <Input type="text" placeholder="Search" variant="unstyled" />
+      </InputGroup>
+
+      <VStack align="stretch" spacing={1} flexGrow={1} mt={8}>
+        {fileNames.map(({ fileName, link }, i) => (
+          <SidebarItem
+            key={i}
+            fileName={fileName}
+            link={link}
+            isCollapsed={isCollapsed as boolean}
+          />
         ))}
       </VStack>
     </Box>
