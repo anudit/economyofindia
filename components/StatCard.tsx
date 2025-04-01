@@ -72,7 +72,6 @@ export default function StatCard({
         {title}
       </Heading>
       <Heading
-        as="p"
         fontSize="xxx-large"
         w="100%"
         h="310px"

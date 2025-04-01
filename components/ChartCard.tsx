@@ -17,7 +17,7 @@ export default function ChartCard({
   palette?: "green" | "red";
 }) {
   const respWidth = useBreakpointValue({
-    base: "100vw",
+    base: "96vw",
     md: "100%",
     lg: "100%",
   });
@@ -55,7 +55,7 @@ export default function ChartCard({
           as="h4"
           fontSize="sm"
           w="100%"
-          color="whiteAlpha.600"
+          color="whiteAlpha.700"
           fontWeight={400}
           isTruncated
         >

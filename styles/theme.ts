@@ -7,8 +7,8 @@ interface ColorMode {
 const theme = extendTheme({
   styles: {
     global: ({ colorMode }: ColorMode) => ({
-      "html, body, p": {
-        background: colorMode === "dark" ? "#000000" : "#E4DCCF",
+      "html, body": {
+        background: colorMode === "dark" ? "#181C1B" : "#E4DCCF",
         color: colorMode === "dark" ? "white" : "#6e5f4e",
       },
       // path: {
