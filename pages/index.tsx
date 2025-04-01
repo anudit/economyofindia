@@ -49,7 +49,8 @@ export default function Home() {
             top="0"
             alignItems="center"
             justifyContent="space-between"
-            paddingX="20px"
+            pl="10px"
+            pr="20px"
             backdropFilter="blur(6px)"
             zIndex={100}
           >
@@ -120,6 +121,7 @@ export default function Home() {
             flexDir="column"
             backgroundColor={useColorModeValue("black", "#2E2E31")}
             p="20px"
+            m="5px"
             borderRadius="10px"
           >
             <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={2}>
