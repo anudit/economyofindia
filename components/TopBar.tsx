@@ -2,29 +2,23 @@ import {
   Flex,
   Select,
   Stack,
-  Switch,
-  Text,
   IconButton,
   Heading,
   useBreakpointValue,
   Tooltip,
 } from "@chakra-ui/react";
 import { ExternalLink } from "lucide-react";
-import { Dispatch, SetStateAction, useState } from "react";
 import Link from "next/link";
 
-import { Dataset4 } from "@/dataset/afs-2025-2026";
 import { DatasetMetadata, supportedCurrencies } from "@/utils/shared";
 import { useSharedContext } from "./SharedContext";
 
 export default function TopBar({
-  dataset,
   metadata,
-  setSection,
+  children,
 }: {
-  dataset: Dataset4;
   metadata: DatasetMetadata;
-  setSection: Dispatch<SetStateAction<string>>;
+  children: React.ReactNode;
 }) {
   const { usdInrRate, setActiveCurrency } = useSharedContext();
 
@@ -49,21 +43,7 @@ export default function TopBar({
       zIndex={100}
     >
       <Stack direction="row">
-        <Select
-          defaultValue={3}
-          borderRadius="md"
-          onChange={(e) => {
-            setSection(Object.keys(dataset)[e.currentTarget.selectedIndex]);
-          }}
-          w={{ base: "50px", md: "250px" }}
-          size="sm"
-        >
-          {Object.keys(dataset).map((k, ind) => (
-            <option value={ind} key={ind} defaultChecked={ind === 3}>
-              {k}
-            </option>
-          ))}
-        </Select>
+        {children}
         <Link href={metadata.sourceFile} target="_blank">
           <Tooltip label="Open Source File">
             <IconButton
@@ -100,26 +80,20 @@ export default function TopBar({
         defaultValue={0}
         borderRadius="md"
         onChange={(e) => {
-          console.log(
-            "setActiveCurrency",
-            e.currentTarget.selectedIndex,
-            Array.from(supportedCurrencies.keys())[
-              e.currentTarget.selectedIndex
-            ],
-          );
           setActiveCurrency(
             Array.from(supportedCurrencies.keys())[
               e.currentTarget.selectedIndex
             ],
           );
         }}
-        w="100px"
+        w="95px"
         size="sm"
       >
         {Array.from(supportedCurrencies.keys()).map((k, ind) => (
           <option value={k} key={ind} defaultChecked={ind === 0}>
             {supportedCurrencies.get(k)?.flag}{" "}
-            {supportedCurrencies.get(k)?.currency}
+            {supportedCurrencies.get(k)?.currency}{" "}
+            {ind == 1 ? `(₹${usdInrRate || "..."})` : ""}
           </option>
         ))}
       </Select>

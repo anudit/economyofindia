@@ -1,4 +1,4 @@
-import { Dataset4 } from "@/dataset/afs-2025-2026";
+import { Dataset3 } from "@/utils/shared";
 import {
   chartDataFormat,
   CRORE,
@@ -9,17 +9,17 @@ import ChartCard from "@/components/ChartCard";
 import StatCard from "@/components/StatCard";
 
 export default function ChartGrid({
-  section,
   dataset,
   palette = "green",
+  section,
 }: {
-  section: string;
-  dataset: Dataset4;
+  dataset: Dataset3;
   palette?: "green" | "red";
+  section?: string;
 }) {
   return (
     <>
-      {Object.entries(dataset[section]).map(([level2Key, level2Val]) => {
+      {Object.entries(dataset).map(([level2Key, level2Val]) => {
         if (
           typeof level2Val == "object" &&
           typeof Object.values(level2Val)[0] == "number"
@@ -30,7 +30,7 @@ export default function ChartGrid({
               data={chartDataFormat(level2Val as SimpleDataset)}
               title={level2Key}
               key={level2Key}
-              route={`${titleCase(section)} > ${titleCase(level2Key)}`}
+              route={`${section != undefined ? titleCase(section) + " > " : ""}${titleCase(level2Key)}`}
             />
           );
         } else if (
@@ -50,7 +50,7 @@ export default function ChartGrid({
                   data={chartDataFormat(level3Val as SimpleDataset)}
                   title={level3Key}
                   key={level3Key}
-                  route={`${titleCase(section)} > ${titleCase(level2Key)}`}
+                  route={`${section != undefined ? titleCase(section) + " > " : ""}${titleCase(level2Key)}`}
                 />
               );
             } else if (
@@ -71,7 +71,7 @@ export default function ChartGrid({
                       )}
                       title={level4Key}
                       key={level4Key}
-                      route={`${titleCase(section)} > ${titleCase(level2Key)} > ${titleCase(level3Key)}`}
+                      route={`${section != undefined ? titleCase(section) + " > " : ""}${titleCase(level2Key)} > ${titleCase(level3Key)}`}
                     />
                   );
                 } else if (typeof level4Val == "number") {
@@ -80,7 +80,7 @@ export default function ChartGrid({
                       stat={level4Val * CRORE}
                       title={level4Key}
                       key={level4Key}
-                      route={`${titleCase(section)} > ${titleCase(level2Key)} > ${titleCase(level3Key)} > ${titleCase(level4Key)}`}
+                      route={`${section != undefined ? titleCase(section) + " > " : ""}${titleCase(level2Key)} > ${titleCase(level3Key)} > ${titleCase(level4Key)}`}
                     />
                   );
                 } else {
@@ -93,7 +93,7 @@ export default function ChartGrid({
                   stat={level3Val * CRORE}
                   title={level3Key}
                   key={level3Key}
-                  route={`${titleCase(section)} > ${titleCase(level2Key)} > ${titleCase(level3Key)}`}
+                  route={`${section != undefined ? titleCase(section) + " > " : ""}${titleCase(level2Key)} > ${titleCase(level3Key)}`}
                 />
               );
             } else {

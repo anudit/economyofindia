@@ -1,19 +1,4 @@
-import { DataItemValue, DatasetMetadata } from "@/utils/shared";
-
-export type Dataset4 = {
-  [key: string]: {
-    // section
-    [key: string]: {
-      // l1
-      [key: string]: // l2
-      | {
-            [key: string]: //l3
-            { [key: string]: DataItemValue } | DataItemValue; // l4
-          }
-        | DataItemValue;
-    };
-  };
-};
+import { Dataset4, DatasetMetadata } from "@/utils/shared";
 
 export const metadata: DatasetMetadata = {
   title: "ANNUAL FINANCIAL STATEMENT OF THE CENTRAL GOVERNMENT FOR 2025-2026",
