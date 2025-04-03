@@ -9,7 +9,6 @@ import { DatasetMetadata } from "@/utils/shared";
 
 export default function PageShell({
   setSection,
-  setUsd,
   metadata,
   dataset,
   children,
@@ -18,7 +17,6 @@ export default function PageShell({
   metadata: DatasetMetadata;
   dataset: Dataset4;
   setSection: Dispatch<SetStateAction<string>>;
-  setUsd: Dispatch<SetStateAction<boolean>>;
 }) {
   return (
     <>
@@ -34,7 +32,6 @@ export default function PageShell({
           <TopBar
             dataset={dataset}
             metadata={metadata}
-            setUsd={setUsd}
             setSection={setSection}
           />
           <Flex

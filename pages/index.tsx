@@ -6,16 +6,10 @@ import ChartGrid from "@/components/ChartGrid";
 import PageShell from "@/components/PageShell";
 
 export default function Home() {
-  const [isUsd, setUsd] = useState(false);
   const [section, setSection] = useState<string>(Object.keys(dataset)[3]);
 
   return (
-    <PageShell
-      setUsd={setUsd}
-      setSection={setSection}
-      dataset={dataset}
-      metadata={metadata}
-    >
+    <PageShell setSection={setSection} dataset={dataset} metadata={metadata}>
       <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={2}>
         <ChartGrid dataset={dataset} section={section} palette="green" />
         <ChartGrid dataset={dataset2} section={section} palette="red" />
