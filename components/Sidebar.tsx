@@ -136,7 +136,11 @@ export const Sidebar = () => {
       display="flex"
       flexDirection="column"
     >
-      <Flex justify={"start"} align="center" ml={2}>
+      <Flex
+        justify={isCollapsed ? "center" : "flex-start"}
+        align="center"
+        // ml={2}
+      >
         <IconButton
           icon={
             isCollapsed ? (

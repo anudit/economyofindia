@@ -1,7 +1,20 @@
-export const USDINR = 85.56;
+import { useSharedContext } from "@/components/SharedContext";
+
 export const CRORE = 10000000;
 
-export type CurrencyType = "inr" | "usd";
+export enum SupportedCurrencies {
+  "INR",
+  "USD",
+}
+
+export const supportedCurrencies = new Map<
+  SupportedCurrencies,
+  { flag: string; currency: string }
+>([
+  [SupportedCurrencies.INR, { flag: "🇮🇳", currency: "INR" }],
+  [SupportedCurrencies.USD, { flag: "🇺🇸", currency: "USD" }],
+]);
+
 export const COLORS = [
   "#56ab91",
   "#78c6a3",
@@ -31,10 +44,10 @@ export type CurrecyResp = {
 export const numFormat = (
   num: number,
   short: boolean = false,
-  cur: CurrencyType = "inr",
   disableConvert: boolean = false,
 ): string | null => {
-  if (cur === "inr") {
+  const { usdInrRate, activeCurrency } = useSharedContext();
+  if (activeCurrency === SupportedCurrencies.INR) {
     if (short) {
       if (num >= CRORE) {
         return `₹${new Intl.NumberFormat("en-IN", { maximumFractionDigits: 2 }).format(num / CRORE)}Cr`;
@@ -46,8 +59,8 @@ export const numFormat = (
     } else {
       return `₹ ${new Intl.NumberFormat("en-IN", { maximumSignificantDigits: 3 }).format(num)}`;
     }
-  } else if (cur === "usd") {
-    const usdValue = disableConvert ? num : num / USDINR;
+  } else if (activeCurrency === SupportedCurrencies.USD) {
+    const usdValue = disableConvert ? num : num / (usdInrRate || 1);
     if (short) {
       if (usdValue >= 1e9) {
         return `$${new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(usdValue / 1e9)}Bn`;
@@ -60,7 +73,7 @@ export const numFormat = (
       return `${new Intl.NumberFormat("en-US", { maximumSignificantDigits: 3 }).format(usdValue)} USD`;
     }
   } else {
-    throw Error(`Invalid Currency ${cur}`);
+    throw Error(`Invalid Currency ${activeCurrency}`);
   }
 };
 

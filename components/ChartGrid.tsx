@@ -9,12 +9,10 @@ import ChartCard from "@/components/ChartCard";
 import StatCard from "@/components/StatCard";
 
 export default function ChartGrid({
-  isUsd,
   section,
   dataset,
   palette = "green",
 }: {
-  isUsd: boolean;
   section: string;
   dataset: Dataset4;
   palette?: "green" | "red";
@@ -33,7 +31,6 @@ export default function ChartGrid({
               title={level2Key}
               key={level2Key}
               route={`${titleCase(section)} > ${titleCase(level2Key)}`}
-              isUsd={isUsd}
             />
           );
         } else if (
@@ -54,7 +51,6 @@ export default function ChartGrid({
                   title={level3Key}
                   key={level3Key}
                   route={`${titleCase(section)} > ${titleCase(level2Key)}`}
-                  isUsd={isUsd}
                 />
               );
             } else if (
@@ -76,7 +72,6 @@ export default function ChartGrid({
                       title={level4Key}
                       key={level4Key}
                       route={`${titleCase(section)} > ${titleCase(level2Key)} > ${titleCase(level3Key)}`}
-                      isUsd={isUsd}
                     />
                   );
                 } else if (typeof level4Val == "number") {
@@ -86,7 +81,6 @@ export default function ChartGrid({
                       title={level4Key}
                       key={level4Key}
                       route={`${titleCase(section)} > ${titleCase(level2Key)} > ${titleCase(level3Key)} > ${titleCase(level4Key)}`}
-                      isUsd={isUsd}
                     />
                   );
                 } else {
@@ -100,7 +94,6 @@ export default function ChartGrid({
                   title={level3Key}
                   key={level3Key}
                   route={`${titleCase(section)} > ${titleCase(level2Key)} > ${titleCase(level3Key)}`}
-                  isUsd={isUsd}
                 />
               );
             } else {

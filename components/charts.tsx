@@ -1,21 +1,26 @@
 import { Chart } from "react-google-charts";
-import { useBreakpointValue, Heading } from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
 
 import { useMounted } from "@/components/useMounted";
-import { COLORS, CurrencyType, numFormat, RED_COLORS } from "@/utils/shared";
+import {
+  COLORS,
+  numFormat,
+  RED_COLORS,
+  SupportedCurrencies,
+} from "@/utils/shared";
+import { useSharedContext } from "./SharedContext";
 
 const header: Array<Array<string | number>> = [["Pizza", "Popularity"]];
 
 export default function CustomChart({
   data,
-  cur = "inr",
   palette = "green",
 }: {
   data: Array<Array<string | number>>;
-  cur: CurrencyType;
   palette?: "green" | "red";
 }) {
   const mounted = useMounted();
+  const { activeCurrency } = useSharedContext();
 
   if (!mounted) {
     return null;
@@ -40,7 +45,6 @@ export default function CustomChart({
             .map((e) => e[1] as number)
             .reduce((partialSum, a) => partialSum + a, 0),
           true,
-          cur,
           true,
         )}
       </Heading>
@@ -66,7 +70,7 @@ export default function CustomChart({
             type: "NumberFormat" as const,
             column: 1,
             options: {
-              prefix: cur == "usd" ? "$" : "₹",
+              prefix: activeCurrency == SupportedCurrencies.USD ? "$" : "₹",
               negativeColor: "red",
               negativeParens: true,
             },

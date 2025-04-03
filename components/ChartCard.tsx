@@ -1,26 +1,27 @@
 import { Flex, GridItem, Heading, useBreakpointValue } from "@chakra-ui/react";
 import CustomChart from "@/components/charts";
 import { ChartPie } from "lucide-react";
-import { USDINR } from "@/utils/shared";
+import { useSharedContext } from "./SharedContext";
+import { SupportedCurrencies } from "@/utils/shared";
 
 export default function ChartCard({
   data,
   title,
   route,
-  isUsd = false,
   palette = "green",
 }: {
   data: Array<Array<string | number>>;
   title: string;
   route: string;
-  isUsd: boolean;
   palette?: "green" | "red";
 }) {
+  const { usdInrRate, activeCurrency } = useSharedContext();
   const respWidth = useBreakpointValue({
     base: "96vw",
     md: "100%",
     lg: "100%",
   });
+
   return (
     <GridItem
       w={respWidth}
@@ -80,9 +81,13 @@ export default function ChartCard({
         </Heading>
 
         <CustomChart
-          //@ts-ignore
-          data={data.map(([k, v]) => [k, isUsd ? parseFloat(v) / USDINR : v])}
-          cur={isUsd ? "usd" : "inr"}
+          data={data.map(([k, v]) => [
+            k,
+            //@ts-ignore
+            activeCurrency == SupportedCurrencies.USD
+              ? parseFloat(v) / (usdInrRate | 1)
+              : v,
+          ])}
           palette={palette}
         />
       </Flex>

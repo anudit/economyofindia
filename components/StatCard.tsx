@@ -7,12 +7,10 @@ export default function StatCard({
   stat,
   title,
   route,
-  isUsd = false,
 }: {
   stat: number;
   title: string;
   route: string;
-  isUsd: boolean;
 }) {
   const respWidth = useBreakpointValue({
     base: "100vw",
@@ -81,7 +79,7 @@ export default function StatCard({
         alignItems="center"
         p="10px"
       >
-        {numFormat(stat, true, isUsd ? "usd" : "inr")}
+        {numFormat(stat, true)}
       </Heading>
       {/* <Flex
         direction="column"
