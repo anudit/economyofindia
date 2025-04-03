@@ -100,6 +100,13 @@ export default function TopBar({
         defaultValue={0}
         borderRadius="md"
         onChange={(e) => {
+          console.log(
+            "setActiveCurrency",
+            e.currentTarget.selectedIndex,
+            Array.from(supportedCurrencies.keys())[
+              e.currentTarget.selectedIndex
+            ],
+          );
           setActiveCurrency(
             Array.from(supportedCurrencies.keys())[
               e.currentTarget.selectedIndex

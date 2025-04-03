@@ -6,6 +6,7 @@ import {
   COLORS,
   numFormat,
   RED_COLORS,
+  supportedCurrencies,
   SupportedCurrencies,
 } from "@/utils/shared";
 import { useSharedContext } from "./SharedContext";
@@ -44,6 +45,7 @@ export default function CustomChart({
           data
             .map((e) => e[1] as number)
             .reduce((partialSum, a) => partialSum + a, 0),
+          activeCurrency,
           true,
           true,
         )}
@@ -70,7 +72,7 @@ export default function CustomChart({
             type: "NumberFormat" as const,
             column: 1,
             options: {
-              prefix: activeCurrency == SupportedCurrencies.USD ? "$" : "₹",
+              prefix: supportedCurrencies.get(activeCurrency)?.symbol,
               negativeColor: "red",
               negativeParens: true,
             },

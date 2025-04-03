@@ -9,10 +9,10 @@ export enum SupportedCurrencies {
 
 export const supportedCurrencies = new Map<
   SupportedCurrencies,
-  { flag: string; currency: string }
+  { flag: string; currency: string; symbol: string }
 >([
-  [SupportedCurrencies.INR, { flag: "🇮🇳", currency: "INR" }],
-  [SupportedCurrencies.USD, { flag: "🇺🇸", currency: "USD" }],
+  [SupportedCurrencies.INR, { flag: "🇮🇳", currency: "INR", symbol: "₹" }],
+  [SupportedCurrencies.USD, { flag: "🇺🇸", currency: "USD", symbol: "$" }],
 ]);
 
 export const COLORS = [
@@ -43,10 +43,10 @@ export type CurrecyResp = {
 
 export const numFormat = (
   num: number,
+  activeCurrency: SupportedCurrencies,
   short: boolean = false,
   disableConvert: boolean = false,
 ): string | null => {
-  const { usdInrRate, activeCurrency } = useSharedContext();
   if (activeCurrency === SupportedCurrencies.INR) {
     if (short) {
       if (num >= CRORE) {
@@ -60,6 +60,7 @@ export const numFormat = (
       return `₹ ${new Intl.NumberFormat("en-IN", { maximumSignificantDigits: 3 }).format(num)}`;
     }
   } else if (activeCurrency === SupportedCurrencies.USD) {
+    const { usdInrRate } = useSharedContext();
     const usdValue = disableConvert ? num : num / (usdInrRate || 1);
     if (short) {
       if (usdValue >= 1e9) {

@@ -2,6 +2,8 @@ import { numFormat } from "@/utils/shared";
 import { Flex, GridItem, Heading } from "@chakra-ui/react";
 import { ChartPie } from "lucide-react";
 import { useBreakpointValue } from "@chakra-ui/react";
+import { useSharedContext } from "./SharedContext";
+import { useEffect } from "react";
 
 export default function StatCard({
   stat,
@@ -12,6 +14,11 @@ export default function StatCard({
   title: string;
   route: string;
 }) {
+  const { activeCurrency } = useSharedContext();
+
+  useEffect(() => {
+    console.log("stat cur", activeCurrency);
+  }, [activeCurrency]);
   const respWidth = useBreakpointValue({
     base: "100vw",
     md: "100%",
@@ -79,16 +86,8 @@ export default function StatCard({
         alignItems="center"
         p="10px"
       >
-        {numFormat(stat, true)}
+        {numFormat(stat, activeCurrency, true, false)}
       </Heading>
-      {/* <Flex
-        direction="column"
-        alignItems="center"
-        h="100%"
-        p="10px"
-        justifyContent="space-around"
-      >
-      </Flex> */}
     </GridItem>
   );
 }
