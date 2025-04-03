@@ -83,9 +83,9 @@ export default function ChartCard({
         <CustomChart
           data={data.map(([k, v]) => [
             k,
-            //@ts-ignore
             activeCurrency == SupportedCurrencies.USD
-              ? parseFloat(v) / (usdInrRate | 1)
+              ? //@ts-ignore
+                parseFloat(v) / (usdInrRate | 1)
               : v,
           ])}
           palette={palette}
