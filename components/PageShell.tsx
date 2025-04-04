@@ -78,6 +78,10 @@ export default function PageShell({
             href: "/favicon.svg",
           },
           {
+            rel: "manifest",
+            href: "/manifest.json",
+          },
+          {
             rel: "apple-touch-icon",
             href: "/apple-touch-icon.png",
             sizes: "180x180",

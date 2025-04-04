@@ -97,7 +97,9 @@ export default function TopBar({
           <option value={k} key={ind} defaultChecked={ind === 0}>
             {supportedCurrencies.get(k)?.flag}{" "}
             {supportedCurrencies.get(k)?.currency}{" "}
-            {ind == 1 ? `(₹${usdInrRate || "..."})` : ""}
+            {ind == 1 && usdInrRate
+              ? `(₹${usdInrRate.toFixed(2) || "..."})`
+              : ""}
           </option>
         ))}
       </Select>
