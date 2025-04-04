@@ -3,10 +3,8 @@ import React, { useState, useEffect, useMemo, useCallback } from "react";
 import {
   Table,
   Thead,
-  Tbody,
   Tr,
   Th,
-  Td,
   TableContainer,
   Input,
   Button,
@@ -15,6 +13,7 @@ import {
   Text,
   Flex,
   Select,
+  Box,
 } from "@chakra-ui/react";
 import {
   ArrowDownIcon,
@@ -24,9 +23,8 @@ import {
   ChevronsLeftIcon,
   ChevronsRightIcon,
 } from "lucide-react";
-import { FixedSizeList as List } from "react-window";
+import { FixedSizeList, ListChildComponentProps } from "react-window";
 import debounce from "lodash.debounce";
-import { ListChildComponentProps } from "react-window";
 
 interface DataTableProps {
   data: DatasetTable;
@@ -48,6 +46,11 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
   const [sortConfig, setSortConfig] = useState<SortConfig | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchInput, setSearchInput] = useState("");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const debouncedSetSearchTerm = useMemo(
     () => debounce(setSearchTerm, 150),
@@ -122,31 +125,62 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
     (key: string) =>
       !sortConfig ||
       sortConfig.key !== key ? undefined : sortConfig.direction === "asc" ? (
-        <ArrowUpIcon />
+        <ArrowUpIcon size={14} />
       ) : (
-        <ArrowDownIcon />
+        <ArrowDownIcon size={14} />
       ),
     [sortConfig],
   );
 
-  const Row = useCallback(
-    ({ index, style }: ListChildComponentProps) => {
-      const row = paginatedData[index];
-      if (!row) return null;
+  const Row = ({ index, style }: ListChildComponentProps) => {
+    const row = paginatedData[index];
+    const bg = index % 2 === 0 ? "gray.800" : "gray.700";
 
-      return (
-        <Tr style={style}>
-          {columns.map((col) => (
-            <Td key={`${index}-${col}`}>{String(row[col])}</Td>
-          ))}
-        </Tr>
-      );
-    },
-    [paginatedData, columns],
-  );
+    return (
+      <Flex
+        role="row"
+        key={index}
+        style={style}
+        px={4}
+        py={2}
+        width="100%"
+        align="center"
+        borderBottom="1px solid"
+        borderColor="gray.600"
+        bg={bg}
+        _hover={{ bg: "gray.600" }}
+        fontSize="sm"
+      >
+        {columns.map((col, colIdx) => {
+          const cellContent = String(row[col]);
+          return (
+            <Box
+              role="cell"
+              flex="1"
+              pr={2}
+              whiteSpace="nowrap"
+              overflow="hidden"
+              textOverflow="ellipsis"
+              fontWeight={colIdx === 0 ? "medium" : "normal"}
+              color="gray.100"
+            >
+              {cellContent}
+            </Box>
+          );
+        })}
+      </Flex>
+    );
+  };
 
   return (
-    <TableContainer>
+    <TableContainer
+      bg="gray.900"
+      p={4}
+      borderRadius="md"
+      boxShadow="md"
+      border="1px solid"
+      borderColor="gray.700"
+    >
       <Input
         placeholder="Search..."
         value={searchInput}
@@ -155,17 +189,31 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
           debouncedSetSearchTerm(e.target.value);
         }}
         mb={4}
+        bg="gray.800"
+        color="gray.100"
+        _placeholder={{ color: "gray.500" }}
       />
 
       <Table variant="simple" size="sm">
-        <Thead>
+        <Thead position="sticky" top={0} zIndex={1} bg="gray.700">
           <Tr>
             {columns.map((col) => (
-              <Th key={col}>
+              <Th
+                key={col}
+                textTransform="capitalize"
+                fontWeight="bold"
+                fontSize="sm"
+                color="gray.300"
+              >
                 <Button
                   variant="ghost"
                   onClick={() => handleSort(col)}
                   rightIcon={getSortIcon(col)}
+                  fontWeight="bold"
+                  size="sm"
+                  color="gray.100"
+                  _hover={{ bg: "gray.600" }}
+                  _active={{ bg: "gray.500" }}
                 >
                   {col}
                 </Button>
@@ -173,67 +221,87 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
             ))}
           </Tr>
         </Thead>
-        <Tbody>
-          {paginatedData.length > 0 ? (
-            <List
-              key={paginatedData.length} // Force remount on data length change (important)
-              height={Math.min(pageSize, paginatedData.length) * ROW_HEIGHT}
-              itemCount={paginatedData.length}
-              itemSize={ROW_HEIGHT}
-              width="100%"
-            >
-              {Row}
-            </List>
-          ) : (
-            <Tr>
-              <Td colSpan={columns.length} textAlign="center">
-                No records found.
-              </Td>
-            </Tr>
-          )}
-        </Tbody>
       </Table>
 
-      <Flex justify="space-between" align="center" mt={4}>
+      {paginatedData.length > 0 && mounted ? (
+        <Box
+          role="table"
+          height={Math.min(pageSize, paginatedData.length) * ROW_HEIGHT}
+          overflowY="auto"
+          width="100%"
+          border="1px solid"
+          borderColor="gray.700"
+          borderRadius="md"
+        >
+          <FixedSizeList
+            height={Math.min(pageSize, paginatedData.length) * ROW_HEIGHT}
+            itemCount={paginatedData.length}
+            itemSize={ROW_HEIGHT}
+            width="100%"
+          >
+            {Row}
+          </FixedSizeList>
+        </Box>
+      ) : (
+        <Flex
+          role="row"
+          height="40px"
+          align="center"
+          justify="center"
+          border="1px solid"
+          borderColor="gray.100"
+        >
+          <Text role="cell">No records found.</Text>
+        </Flex>
+      )}
+
+      <Flex justify="space-between" align="center" mt={4} wrap="wrap" gap={2}>
         <ButtonGroup spacing={2}>
           <IconButton
-            icon={<ChevronsLeftIcon />}
+            icon={<ChevronsLeftIcon size={16} />}
             onClick={() => setCurrentPage(0)}
             isDisabled={currentPage === 0}
             aria-label="First page"
+            size="sm"
           />
           <IconButton
-            icon={<ChevronLeftIcon />}
+            icon={<ChevronLeftIcon size={16} />}
             onClick={() => setCurrentPage((p) => Math.max(0, p - 1))}
             isDisabled={currentPage === 0}
             aria-label="Previous page"
+            size="sm"
           />
           <IconButton
-            icon={<ChevronRightIcon />}
+            icon={<ChevronRightIcon size={16} />}
             onClick={() =>
               setCurrentPage((p) => Math.min(pageCount - 1, p + 1))
             }
             isDisabled={currentPage >= pageCount - 1}
             aria-label="Next page"
+            size="sm"
           />
           <IconButton
-            icon={<ChevronsRightIcon />}
+            icon={<ChevronsRightIcon size={16} />}
             onClick={() => setCurrentPage(pageCount - 1)}
             isDisabled={currentPage >= pageCount - 1}
             aria-label="Last page"
+            size="sm"
           />
         </ButtonGroup>
 
-        <Text>
+        <Text color="gray.300">
           Page {currentPage + 1} of {Math.max(1, pageCount)}
         </Text>
 
         <Flex align="center" gap={2}>
-          <Text>Rows per page:</Text>
+          <Text color="gray.300">Rows per page:</Text>
           <Select
             value={pageSize}
             onChange={(e) => setPageSize(Number(e.target.value))}
             w="80px"
+            size="sm"
+            bg="gray.800"
+            color="gray.100"
           >
             {[5, 10, 20, 30, 40, 50].map((size) => (
               <option key={size} value={size}>
@@ -244,11 +312,9 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
         </Flex>
       </Flex>
 
-      <Text mt={2}>
+      <Text mt={2} color="gray.400" fontSize="sm">
         Showing {paginatedData.length} of {filteredData.length} rows
       </Text>
     </TableContainer>
   );
 };
-
-export default DataTable;
