@@ -87,7 +87,7 @@ export default function PageShell({
       />
       <Flex direction="row" w="100vw" minH="100vh">
         <Sidebar />
-        <Flex direction="column" w="100%" minH="100vh">
+        <Flex direction="column" w={{ base: "94vw", md: "96vw" }} minH="100vh">
           <TopBar metadata={metadata}>{topBarChildren}</TopBar>
           <Flex
             w="100%"

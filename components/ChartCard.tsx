@@ -17,7 +17,7 @@ export default function ChartCard({
 }) {
   const { usdInrRate, activeCurrency } = useSharedContext();
   const respWidth = useBreakpointValue({
-    base: "96vw",
+    base: "90vw",
     md: "100%",
     lg: "100%",
   });

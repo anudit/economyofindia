@@ -42,7 +42,7 @@ const ROW_HEIGHT = 40;
 export const DataTable: React.FC<DataTableProps> = ({ data }) => {
   const [tableData, setTableData] = useState<DatasetTableRow[]>(data || []);
   const [currentPage, setCurrentPage] = useState(0);
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize, setPageSize] = useState(20);
   const [sortConfig, setSortConfig] = useState<SortConfig | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchInput, setSearchInput] = useState("");
@@ -289,8 +289,9 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
           />
         </ButtonGroup>
 
-        <Text color="gray.300">
-          Page {currentPage + 1} of {Math.max(1, pageCount)}
+        <Text color="gray.300" fontSize="sm">
+          Page {currentPage + 1} of {Math.max(1, pageCount)} (
+          {paginatedData.length} of {filteredData.length} rows)
         </Text>
 
         <Flex align="center" gap={2}>
@@ -303,7 +304,7 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
             bg="gray.800"
             color="gray.100"
           >
-            {[5, 10, 20, 30, 40, 50].map((size) => (
+            {[10, 20, 50, 100].map((size) => (
               <option key={size} value={size}>
                 {size}
               </option>
@@ -311,10 +312,6 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
           </Select>
         </Flex>
       </Flex>
-
-      <Text mt={2} color="gray.400" fontSize="sm">
-        Showing {paginatedData.length} of {filteredData.length} rows
-      </Text>
     </TableContainer>
   );
 };

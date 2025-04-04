@@ -24,14 +24,11 @@ type SidebarDisplayItem = {
   fileName: string;
   link: `/${string}`;
 };
-
-// Map the full metadata to the display format just once
 const allDisplayFiles: SidebarDisplayItem[] = completeMetadata.map((e) => ({
   fileName: e.fileName,
   link: e.localLink,
 }));
 
-// SidebarItem remains mostly the same, just ensure link type matches
 const SidebarItem = ({
   fileName,
   link,
