@@ -26,11 +26,11 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 
   const fetchRate = async () => {
     let req = await fetch(
-      "https://api.frankfurter.dev/v1/latest?symbols=INR&base=USD",
+      "https://api.frankfurter.dev/v1/latest?symbols=USD,EUR&base=INR",
     );
-    let resp = (await req.json()) as { rates: { INR: number } };
+    let resp = (await req.json()) as { rates: { EUR: number; USD: number } };
     if (Object.keys(resp).includes("rates")) {
-      setUsdInrRate(resp["rates"]["INR"]);
+      setUsdInrRate(1 / resp["rates"]["USD"]);
     } else {
       console.log("Unable to fetch live USDINR rate.");
       setUsdInrRate(85.56);

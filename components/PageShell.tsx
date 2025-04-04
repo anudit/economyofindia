@@ -3,7 +3,7 @@ import Head from "next/head";
 import { NextSeo } from "next-seo";
 import { Sidebar } from "@/components/Sidebar";
 import TopBar from "@/components/TopBar";
-import { DatasetMetadata } from "@/utils/shared";
+import { DatasetMetadata, titleCase } from "@/utils/shared";
 
 export default function PageShell({
   children,
@@ -23,8 +23,8 @@ export default function PageShell({
         <link rel="icon" href="/rupee.svg" />
       </Head>
       <NextSeo
-        title={metadata.title}
-        description={metadata.title}
+        title={titleCase(metadata.title) + " - EconomyOfIndia.com"}
+        description={titleCase(metadata.title) + " - EconomyOfIndia.com"}
         canonical={`https://economyofindia.com${metadata.localLink}`}
         openGraph={{
           url: `https://economyofindia.com${metadata.localLink}`,

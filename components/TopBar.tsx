@@ -10,7 +10,11 @@ import {
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 
-import { DatasetMetadata, supportedCurrencies } from "@/utils/shared";
+import {
+  DatasetMetadata,
+  supportedCurrencies,
+  titleCase,
+} from "@/utils/shared";
 import { useSharedContext } from "./SharedContext";
 
 export default function TopBar({
@@ -72,7 +76,7 @@ export default function TopBar({
         transform="translateX(-50%)"
         whiteSpace="nowrap"
       >
-        {title}
+        {titleCase(title as string)}
       </Heading>
 
       <Select

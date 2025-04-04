@@ -166,7 +166,7 @@ export const Sidebar = () => {
         mt={4}
       >
         <InputLeftElement pointerEvents="none">
-          <SearchIcon color="white" size={12} />
+          <SearchIcon color="white" size={14} />
         </InputLeftElement>
         <Input
           type="text"
