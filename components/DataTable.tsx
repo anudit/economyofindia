@@ -1,5 +1,5 @@
 import { DatasetTable, DatasetTableRow } from "@/utils/shared";
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import {
   Table,
   Thead,
@@ -15,7 +15,6 @@ import {
   Text,
   Flex,
   Select,
-  Box,
 } from "@chakra-ui/react";
 import {
   ArrowDownIcon,
@@ -25,6 +24,9 @@ import {
   ChevronsLeftIcon,
   ChevronsRightIcon,
 } from "lucide-react";
+import { FixedSizeList as List } from "react-window";
+import debounce from "lodash.debounce";
+import { ListChildComponentProps } from "react-window";
 
 interface DataTableProps {
   data: DatasetTable;
@@ -37,123 +39,135 @@ interface SortConfig {
   direction: SortDirection;
 }
 
+const ROW_HEIGHT = 40;
+
 export const DataTable: React.FC<DataTableProps> = ({ data }) => {
-  // State
   const [tableData, setTableData] = useState<DatasetTableRow[]>(data || []);
-  const [filteredData, setFilteredData] = useState<DatasetTableRow[]>(
-    data || [],
-  );
   const [currentPage, setCurrentPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   const [sortConfig, setSortConfig] = useState<SortConfig | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchInput, setSearchInput] = useState("");
 
-  // Get column headers
+  const debouncedSetSearchTerm = useMemo(
+    () => debounce(setSearchTerm, 150),
+    [],
+  );
+
+  useEffect(() => {
+    setTableData(data || []);
+  }, [data]);
+
   const columns = useMemo(() => {
     if (!tableData.length) return [];
     return Object.keys(tableData[0]);
   }, [tableData]);
 
-  // Handle sorting
-  const handleSort = (key: string) => {
-    let direction: SortDirection = "asc";
-
-    if (sortConfig && sortConfig.key === key) {
-      if (sortConfig.direction === "asc") {
-        direction = "desc";
-      } else if (sortConfig.direction === "desc") {
-        direction = null;
-      }
-    }
-
-    setSortConfig(direction ? { key, direction } : null);
-  };
-
-  // Get sort icon
-  const getSortIcon = (key: string) => {
-    if (!sortConfig || sortConfig.key !== key) return undefined;
-    return sortConfig.direction === "asc" ? <ArrowUpIcon /> : <ArrowDownIcon />;
-  };
-
-  // Sort and filter data
-  useEffect(() => {
+  const filteredData = useMemo(() => {
     let result = [...tableData];
 
-    // Apply search filter
     if (searchTerm) {
-      result = result.filter((row) => {
-        return Object.values(row).some((value) =>
-          String(value).toLowerCase().includes(searchTerm.toLowerCase()),
-        );
-      });
+      const lowerSearch = searchTerm.toLowerCase();
+      result = result.filter((row) =>
+        Object.values(row).some((val) =>
+          String(val).toLowerCase().includes(lowerSearch),
+        ),
+      );
     }
 
-    // Apply sorting
-    if (sortConfig && sortConfig.direction) {
+    if (sortConfig?.direction) {
       result.sort((a, b) => {
-        const aValue = a[sortConfig.key];
-        const bValue = b[sortConfig.key];
-
-        if (aValue < bValue) {
-          return sortConfig.direction === "asc" ? -1 : 1;
-        }
-        if (aValue > bValue) {
-          return sortConfig.direction === "asc" ? 1 : -1;
-        }
-        return 0;
+        const aVal = a[sortConfig.key];
+        const bVal = b[sortConfig.key];
+        return sortConfig.direction === "asc"
+          ? aVal > bVal
+            ? 1
+            : aVal < bVal
+              ? -1
+              : 0
+          : aVal < bVal
+            ? 1
+            : aVal > bVal
+              ? -1
+              : 0;
       });
     }
 
-    setFilteredData(result);
-    // Reset to first page when filter/sort changes
-    setCurrentPage(0);
+    return result;
   }, [tableData, sortConfig, searchTerm]);
 
-  // Handle data update
-  useEffect(() => {
-    setTableData(data || []);
-  }, [data]);
-
-  // Pagination
   const pageCount = Math.ceil(filteredData.length / pageSize);
+
   const paginatedData = useMemo(() => {
     const start = currentPage * pageSize;
-    const end = start + pageSize;
-    return filteredData.slice(start, end);
+    return filteredData.slice(start, start + pageSize);
   }, [filteredData, currentPage, pageSize]);
 
-  // Pagination controls
-  const goToFirstPage = () => setCurrentPage(0);
-  const goToPreviousPage = () =>
-    setCurrentPage((prev) => Math.max(0, prev - 1));
-  const goToNextPage = () =>
-    setCurrentPage((prev) => Math.min(pageCount - 1, prev + 1));
-  const goToLastPage = () => setCurrentPage(Math.max(0, pageCount - 1));
-  const goToPage = (page: number) =>
-    setCurrentPage(Math.min(Math.max(0, page), pageCount - 1));
-  const canGoPrevious = currentPage > 0;
-  const canGoNext = currentPage < pageCount - 1;
+  const handleSort = useCallback((key: string) => {
+    setSortConfig((current) => {
+      let direction: SortDirection = "asc";
+      if (current?.key === key) {
+        direction =
+          current.direction === "asc"
+            ? "desc"
+            : current.direction === "desc"
+              ? null
+              : "asc";
+      }
+      return direction ? { key, direction } : null;
+    });
+  }, []);
+
+  const getSortIcon = useCallback(
+    (key: string) =>
+      !sortConfig ||
+      sortConfig.key !== key ? undefined : sortConfig.direction === "asc" ? (
+        <ArrowUpIcon />
+      ) : (
+        <ArrowDownIcon />
+      ),
+    [sortConfig],
+  );
+
+  const Row = useCallback(
+    ({ index, style }: ListChildComponentProps) => {
+      const row = paginatedData[index];
+      if (!row) return null;
+
+      return (
+        <Tr style={style}>
+          {columns.map((col) => (
+            <Td key={`${index}-${col}`}>{String(row[col])}</Td>
+          ))}
+        </Tr>
+      );
+    },
+    [paginatedData, columns],
+  );
 
   return (
     <TableContainer>
       <Input
         placeholder="Search..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        value={searchInput}
+        onChange={(e) => {
+          setSearchInput(e.target.value);
+          debouncedSetSearchTerm(e.target.value);
+        }}
         mb={4}
       />
 
       <Table variant="simple" size="sm">
         <Thead>
           <Tr>
-            {columns.map((column) => (
-              <Th key={column}>
+            {columns.map((col) => (
+              <Th key={col}>
                 <Button
                   variant="ghost"
-                  onClick={() => handleSort(column)}
-                  rightIcon={getSortIcon(column)}
+                  onClick={() => handleSort(col)}
+                  rightIcon={getSortIcon(col)}
                 >
-                  {column}
+                  {col}
                 </Button>
               </Th>
             ))}
@@ -161,13 +175,15 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
         </Thead>
         <Tbody>
           {paginatedData.length > 0 ? (
-            paginatedData.map((row, rowIndex) => (
-              <Tr key={rowIndex}>
-                {columns.map((column) => (
-                  <Td key={`${rowIndex}-${column}`}>{String(row[column])}</Td>
-                ))}
-              </Tr>
-            ))
+            <List
+              key={paginatedData.length} // Force remount on data length change (important)
+              height={Math.min(pageSize, paginatedData.length) * ROW_HEIGHT}
+              itemCount={paginatedData.length}
+              itemSize={ROW_HEIGHT}
+              width="100%"
+            >
+              {Row}
+            </List>
           ) : (
             <Tr>
               <Td colSpan={columns.length} textAlign="center">
@@ -178,70 +194,46 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
         </Tbody>
       </Table>
 
-      <Flex
-        justifyContent="space-between"
-        mt={4}
-        alignItems="center"
-        flexDirection={{ base: "column", md: "row" }}
-      >
-        <Flex gap={2} alignItems="center">
-          <ButtonGroup spacing={2}>
-            <IconButton
-              aria-label="First Page"
-              icon={<ChevronsLeftIcon />}
-              onClick={goToFirstPage}
-              isDisabled={!canGoPrevious}
-              size={{ base: "sm", md: "md" }}
-            />
-            <IconButton
-              aria-label="Previous Page"
-              icon={<ChevronLeftIcon />}
-              onClick={goToPreviousPage}
-              isDisabled={!canGoPrevious}
-              size={{ base: "sm", md: "md" }}
-            />
-            <IconButton
-              aria-label="Next Page"
-              icon={<ChevronRightIcon />}
-              onClick={goToNextPage}
-              isDisabled={!canGoNext}
-              size={{ base: "sm", md: "md" }}
-            />
-            <IconButton
-              aria-label="Last Page"
-              icon={<ChevronsRightIcon />}
-              onClick={goToLastPage}
-              isDisabled={!canGoNext}
-              size={{ base: "sm", md: "md" }}
-            />
-          </ButtonGroup>
-
-          <Text ml={2}>
-            Page {currentPage + 1} of {Math.max(1, pageCount)}
-          </Text>
-        </Flex>
-
-        <Flex gap={2} alignItems="center">
-          <Text>Go to page:</Text>
-          <Input
-            type="number"
-            defaultValue={currentPage + 1}
-            onChange={(e) => {
-              const page = e.target.value ? Number(e.target.value) - 1 : 0;
-              goToPage(page);
-            }}
-            w="60px"
-            size={{ base: "sm", md: "md" }}
+      <Flex justify="space-between" align="center" mt={4}>
+        <ButtonGroup spacing={2}>
+          <IconButton
+            icon={<ChevronsLeftIcon />}
+            onClick={() => setCurrentPage(0)}
+            isDisabled={currentPage === 0}
+            aria-label="First page"
           />
-        </Flex>
+          <IconButton
+            icon={<ChevronLeftIcon />}
+            onClick={() => setCurrentPage((p) => Math.max(0, p - 1))}
+            isDisabled={currentPage === 0}
+            aria-label="Previous page"
+          />
+          <IconButton
+            icon={<ChevronRightIcon />}
+            onClick={() =>
+              setCurrentPage((p) => Math.min(pageCount - 1, p + 1))
+            }
+            isDisabled={currentPage >= pageCount - 1}
+            aria-label="Next page"
+          />
+          <IconButton
+            icon={<ChevronsRightIcon />}
+            onClick={() => setCurrentPage(pageCount - 1)}
+            isDisabled={currentPage >= pageCount - 1}
+            aria-label="Last page"
+          />
+        </ButtonGroup>
 
-        <Flex gap={2} alignItems="center">
+        <Text>
+          Page {currentPage + 1} of {Math.max(1, pageCount)}
+        </Text>
+
+        <Flex align="center" gap={2}>
           <Text>Rows per page:</Text>
           <Select
             value={pageSize}
             onChange={(e) => setPageSize(Number(e.target.value))}
             w="80px"
-            size={{ base: "sm", md: "md" }}
           >
             {[5, 10, 20, 30, 40, 50].map((size) => (
               <option key={size} value={size}>
