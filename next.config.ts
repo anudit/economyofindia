@@ -13,7 +13,6 @@ const nextConfig: NextConfig = {
     turbo: {},
     optimizeCss: true,
     reactCompiler: true,
-    // mdxRs: true,
   },
   images: {
     unoptimized: true,

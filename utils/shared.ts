@@ -36,6 +36,8 @@ export const RED_COLORS = [
   "#ee6969",
 ];
 
+export type DatasetTable = Array<{ [key: string]: string | number }>;
+
 export type Dataset3 = {
   [key: string]: {
     // l1
