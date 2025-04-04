@@ -1,214 +1,262 @@
 import { DatasetTable, DatasetTableRow } from "@/utils/shared";
-
+import React, { useState, useEffect, useMemo } from "react";
 import {
-  Box,
-  Button,
-  Flex,
   Table,
-  Tbody,
-  Td,
-  Text,
-  Th,
   Thead,
+  Tbody,
   Tr,
-  useColorModeValue,
-  chakra, // Import chakra factory function
+  Th,
+  Td,
+  TableContainer,
+  Input,
+  Button,
+  ButtonGroup,
+  IconButton,
+  Text,
+  Flex,
+  Select,
+  Box,
 } from "@chakra-ui/react";
-import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons"; // Import icons
 import {
-  createColumnHelper,
-  flexRender,
-  getCoreRowModel,
-  getSortedRowModel, // Correctly import
-  SortingState,
-  useReactTable,
-} from "@tanstack/react-table";
-import { useEffect, useState } from "react";
+  ArrowDownIcon,
+  ArrowUpIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ChevronsLeftIcon,
+  ChevronsRightIcon,
+} from "lucide-react";
 
-const columnHelper = createColumnHelper<DatasetTableRow>();
+interface DataTableProps {
+  data: DatasetTable;
+}
 
-export const DataTable = ({ tableData }: { tableData: DatasetTable }) => {
-  const [sorting, setSorting] = useState<SortingState>([]); // State for sorting
-  const textColor = useColorModeValue("secondaryGray.900", "white");
-  const textColorSecondary = useColorModeValue("secondaryGray.600", "white");
-  const borderColor = useColorModeValue("gray.200", "whiteAlpha.100");
-  let defaultData = tableData; // Using the prop directly
+type SortDirection = "asc" | "desc" | null;
 
-  // Define columns using the column helper
-  const columns = [
-    columnHelper.accessor("id", {
-      id: "id",
-      header: () => (
-        <Text
-          justifyContent="space-between"
-          align="center"
-          fontSize={{ sm: "10px", lg: "12px" }}
-          color="gray.400"
-        >
-          ID
-        </Text>
-      ),
-      cell: (
-        info: any, // Consider using info: CellContext<DatasetTableRow, number> for better typing
-      ) => (
-        <Flex align="center">
-          <Text color={textColor} fontSize="sm" fontWeight="600">
-            {info.getValue()}
-          </Text>
-        </Flex>
-      ),
-      // enableSorting: true, // Explicitly enable sorting (optional, default is true)
-    }),
-    columnHelper.accessor("name", {
-      id: "name",
-      header: () => (
-        <Text
-          justifyContent="space-between"
-          align="center"
-          fontSize={{ sm: "10px", lg: "12px" }}
-          color="gray.400"
-        >
-          NAME
-        </Text>
-      ),
-      cell: (info) => (
-        <Text color={textColorSecondary} fontSize="sm" fontWeight="500">
-          {info.getValue()}
-        </Text>
-      ),
-      enableSorting: true,
-    }),
-  ];
+interface SortConfig {
+  key: string;
+  direction: SortDirection;
+}
 
-  // Use data from props, no need for separate state unless you modify it locally
-  const data = defaultData; // Or use useState if you need local modifications like adding/removing rows
+export const DataTable: React.FC<DataTableProps> = ({ data }) => {
+  // State
+  const [tableData, setTableData] = useState<DatasetTableRow[]>(data || []);
+  const [filteredData, setFilteredData] = useState<DatasetTableRow[]>(
+    data || [],
+  );
+  const [currentPage, setCurrentPage] = useState(0);
+  const [pageSize, setPageSize] = useState(10);
+  const [sortConfig, setSortConfig] = useState<SortConfig | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  // Create the table instance
-  const table = useReactTable({
-    data,
-    columns,
-    state: {
-      sorting, // Pass the sorting state
-    },
-    onSortingChange: setSorting, // Function to update the sorting state
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(), // *** CORRECTLY ENABLE SORTING ***
-    debugTable: true, // Optional: for debugging
-  });
+  // Get column headers
+  const columns = useMemo(() => {
+    if (!tableData.length) return [];
+    return Object.keys(tableData[0]);
+  }, [tableData]);
 
+  // Handle sorting
+  const handleSort = (key: string) => {
+    let direction: SortDirection = "asc";
+
+    if (sortConfig && sortConfig.key === key) {
+      if (sortConfig.direction === "asc") {
+        direction = "desc";
+      } else if (sortConfig.direction === "desc") {
+        direction = null;
+      }
+    }
+
+    setSortConfig(direction ? { key, direction } : null);
+  };
+
+  // Get sort icon
+  const getSortIcon = (key: string) => {
+    if (!sortConfig || sortConfig.key !== key) return undefined;
+    return sortConfig.direction === "asc" ? <ArrowUpIcon /> : <ArrowDownIcon />;
+  };
+
+  // Sort and filter data
   useEffect(() => {
-    console.log("Sorting state changed:", sorting);
-  }, [sorting]);
+    let result = [...tableData];
+
+    // Apply search filter
+    if (searchTerm) {
+      result = result.filter((row) => {
+        return Object.values(row).some((value) =>
+          String(value).toLowerCase().includes(searchTerm.toLowerCase()),
+        );
+      });
+    }
+
+    // Apply sorting
+    if (sortConfig && sortConfig.direction) {
+      result.sort((a, b) => {
+        const aValue = a[sortConfig.key];
+        const bValue = b[sortConfig.key];
+
+        if (aValue < bValue) {
+          return sortConfig.direction === "asc" ? -1 : 1;
+        }
+        if (aValue > bValue) {
+          return sortConfig.direction === "asc" ? 1 : -1;
+        }
+        return 0;
+      });
+    }
+
+    setFilteredData(result);
+    // Reset to first page when filter/sort changes
+    setCurrentPage(0);
+  }, [tableData, sortConfig, searchTerm]);
+
+  // Handle data update
+  useEffect(() => {
+    setTableData(data || []);
+  }, [data]);
+
+  // Pagination
+  const pageCount = Math.ceil(filteredData.length / pageSize);
+  const paginatedData = useMemo(() => {
+    const start = currentPage * pageSize;
+    const end = start + pageSize;
+    return filteredData.slice(start, end);
+  }, [filteredData, currentPage, pageSize]);
+
+  // Pagination controls
+  const goToFirstPage = () => setCurrentPage(0);
+  const goToPreviousPage = () =>
+    setCurrentPage((prev) => Math.max(0, prev - 1));
+  const goToNextPage = () =>
+    setCurrentPage((prev) => Math.min(pageCount - 1, prev + 1));
+  const goToLastPage = () => setCurrentPage(Math.max(0, pageCount - 1));
+  const goToPage = (page: number) =>
+    setCurrentPage(Math.min(Math.max(0, page), pageCount - 1));
+  const canGoPrevious = currentPage > 0;
+  const canGoNext = currentPage < pageCount - 1;
 
   return (
-    <Flex
-      direction="column"
-      w="100%"
-      overflowX={{ base: "scroll", sm: "hidden", md: "hidden" }} // Consider 'auto' or 'scroll' for all sizes if needed
-    >
-      {/* Optional Header Section */}
+    <TableContainer>
+      <Input
+        placeholder="Search..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        mb={4}
+      />
+
+      <Table variant="simple" size="sm">
+        <Thead>
+          <Tr>
+            {columns.map((column) => (
+              <Th key={column}>
+                <Button
+                  variant="ghost"
+                  onClick={() => handleSort(column)}
+                  rightIcon={getSortIcon(column)}
+                >
+                  {column}
+                </Button>
+              </Th>
+            ))}
+          </Tr>
+        </Thead>
+        <Tbody>
+          {paginatedData.length > 0 ? (
+            paginatedData.map((row, rowIndex) => (
+              <Tr key={rowIndex}>
+                {columns.map((column) => (
+                  <Td key={`${rowIndex}-${column}`}>{String(row[column])}</Td>
+                ))}
+              </Tr>
+            ))
+          ) : (
+            <Tr>
+              <Td colSpan={columns.length} textAlign="center">
+                No records found.
+              </Td>
+            </Tr>
+          )}
+        </Tbody>
+      </Table>
+
       <Flex
-        align={{ sm: "flex-start", lg: "center" }}
-        justify="space-between"
-        w="100%"
-        px="22px"
-        pb="20px"
-        mb="10px"
-        // boxShadow="0px 40px 58px -20px rgba(112, 144, 176, 0.26)" // Optional styling
+        justifyContent="space-between"
+        mt={4}
+        alignItems="center"
+        flexDirection={{ base: "column", md: "row" }}
       >
-        <Text color={textColor} fontSize="xl" fontWeight="600">
-          Top Creators {/* Or a more generic title */}
-        </Text>
-        {/* <Button variant="action">See all</Button> */}
+        <Flex gap={2} alignItems="center">
+          <ButtonGroup spacing={2}>
+            <IconButton
+              aria-label="First Page"
+              icon={<ChevronsLeftIcon />}
+              onClick={goToFirstPage}
+              isDisabled={!canGoPrevious}
+              size={{ base: "sm", md: "md" }}
+            />
+            <IconButton
+              aria-label="Previous Page"
+              icon={<ChevronLeftIcon />}
+              onClick={goToPreviousPage}
+              isDisabled={!canGoPrevious}
+              size={{ base: "sm", md: "md" }}
+            />
+            <IconButton
+              aria-label="Next Page"
+              icon={<ChevronRightIcon />}
+              onClick={goToNextPage}
+              isDisabled={!canGoNext}
+              size={{ base: "sm", md: "md" }}
+            />
+            <IconButton
+              aria-label="Last Page"
+              icon={<ChevronsRightIcon />}
+              onClick={goToLastPage}
+              isDisabled={!canGoNext}
+              size={{ base: "sm", md: "md" }}
+            />
+          </ButtonGroup>
+
+          <Text ml={2}>
+            Page {currentPage + 1} of {Math.max(1, pageCount)}
+          </Text>
+        </Flex>
+
+        <Flex gap={2} alignItems="center">
+          <Text>Go to page:</Text>
+          <Input
+            type="number"
+            defaultValue={currentPage + 1}
+            onChange={(e) => {
+              const page = e.target.value ? Number(e.target.value) - 1 : 0;
+              goToPage(page);
+            }}
+            w="60px"
+            size={{ base: "sm", md: "md" }}
+          />
+        </Flex>
+
+        <Flex gap={2} alignItems="center">
+          <Text>Rows per page:</Text>
+          <Select
+            value={pageSize}
+            onChange={(e) => setPageSize(Number(e.target.value))}
+            w="80px"
+            size={{ base: "sm", md: "md" }}
+          >
+            {[5, 10, 20, 30, 40, 50].map((size) => (
+              <option key={size} value={size}>
+                {size}
+              </option>
+            ))}
+          </Select>
+        </Flex>
       </Flex>
 
-      {/* Table Section */}
-      <Box overflowX="auto">
-        {" "}
-        {/* Added overflowX here for responsiveness */}
-        <Table variant="simple" color="gray.500" mt="12px">
-          <Thead>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <Tr key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  // Access sorting props for the column
-                  const canSort = header.column.getCanSort();
-                  const isSorted = header.column.getIsSorted(); // Returns 'asc', 'desc', or false
-
-                  return (
-                    <Th
-                      key={header.id}
-                      colSpan={header.colSpan}
-                      pe="10px"
-                      borderColor={borderColor}
-                      cursor={canSort ? "pointer" : "default"} // Set cursor only if sortable
-                      onClick={header.column.getToggleSortingHandler()} // Attach sorting handler
-                      userSelect="none" // Prevent text selection on click
-                    >
-                      <Flex
-                        justifyContent="space-between"
-                        align="center"
-                        fontSize={{ sm: "10px", lg: "12px" }}
-                        color="gray.400"
-                      >
-                        {/* Render the header content */}
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext(),
-                        )}
-                        {/* *** ADD SORTING INDICATOR *** */}
-                        {canSort && ( // Show indicator only if sortable
-                          <chakra.span pl="4">
-                            {" "}
-                            {/* Use chakra factory for styling */}
-                            {
-                              isSorted === "asc" ? (
-                                <TriangleUpIcon aria-label="sorted ascending" />
-                              ) : isSorted === "desc" ? (
-                                <TriangleDownIcon aria-label="sorted descending" />
-                              ) : null // No icon if not sorted
-                            }
-                            {/* Optional: Add a placeholder icon for sortable but unsorted columns
-                             { !isSorted && <SomeSortIcon color="gray.300" /> }
-                            */}
-                          </chakra.span>
-                        )}
-                      </Flex>
-                    </Th>
-                  );
-                })}
-              </Tr>
-            ))}
-          </Thead>
-          <Tbody>
-            {table
-              .getRowModel()
-              .rows // .slice(0, 11) // Removed slice unless you specifically need pagination/limiting here
-              .map((row) => {
-                return (
-                  <Tr key={row.id}>
-                    {row.getVisibleCells().map((cell) => {
-                      return (
-                        <Td
-                          key={cell.id}
-                          fontSize={{ sm: "14px" }}
-                          minW={{ sm: "150px", md: "200px", lg: "auto" }}
-                          borderColor="transparent" // Or use borderColor for lines
-                          py="8px" // Adjust padding as needed
-                        >
-                          {flexRender(
-                            cell.column.columnDef.cell,
-                            cell.getContext(),
-                          )}
-                        </Td>
-                      );
-                    })}
-                  </Tr>
-                );
-              })}
-          </Tbody>
-        </Table>
-      </Box>
-    </Flex>
+      <Text mt={2}>
+        Showing {paginatedData.length} of {filteredData.length} rows
+      </Text>
+    </TableContainer>
   );
 };
+
+export default DataTable;

@@ -5,7 +5,7 @@ import { DataTable } from "@/components/DataTable";
 export default function Home() {
   return (
     <PageShell metadata={metadata}>
-      <DataTable tableData={dataset} />
+      <DataTable data={dataset} />
     </PageShell>
   );
 }
