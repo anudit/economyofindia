@@ -9,16 +9,24 @@
       "type": "image/png"
     },
     {
-      "purpose": "square",
-      "sizes": "512x512",
-      "src": "icon512_maskable.png",
-      "type": "image/png"
-    },
-    {
       "purpose": "any",
       "sizes": "512x512",
       "src": "icon512_rounded.png",
       "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshot1.jpg",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide"
+    },
+    {
+      "src": "screenshot2.jpg",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "any"
     }
   ],
   "orientation": "any",
@@ -28,5 +36,6 @@
   "name": "Economy of India",
   "short_name": "EOI",
   "start_url": "https://economyofindia.com/",
-  "scope": "https://economyofindia.com/"
+  "scope": "https://economyofindia.com/",
+  "description": "View the Economy of India at a glance using a powerful dashboard."
 }
