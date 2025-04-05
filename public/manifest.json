@@ -19,13 +19,13 @@
     {
       "src": "screenshot1.jpg",
       "sizes": "1280x720",
-      "type": "image/png",
+      "type": "image/jpg",
       "platform": "wide"
     },
     {
       "src": "screenshot2.jpg",
       "sizes": "1280x720",
-      "type": "image/png",
+      "type": "image/jpg",
       "platform": "any"
     }
   ],
