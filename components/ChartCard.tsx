@@ -24,7 +24,7 @@ export default function ChartCard({
 
   return (
     <GridItem
-      w={respWidth}
+      // w={respWidth}
       h="440px"
       flexDir="column"
       justifyContent="space-between"
@@ -32,7 +32,11 @@ export default function ChartCard({
       borderStyle="solid"
       borderColor="whiteAlpha.400"
       borderRadius="md"
-      borderWidth="1px"
+      borderWidth="0.5px"
+      _hover={{
+        borderColor: "whiteAlpha.500",
+      }}
+      transition="all 0.2s ease"
       // colSpan={data.length > 5 ? 2 : 1}
     >
       <Flex
@@ -54,11 +58,12 @@ export default function ChartCard({
         />
         <Heading
           as="h4"
-          fontSize="sm"
+          fontSize="xs"
           w="100%"
           color="whiteAlpha.700"
           fontWeight={400}
           isTruncated
+          title={route}
         >
           {route}
         </Heading>

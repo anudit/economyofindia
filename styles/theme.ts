@@ -1,8 +1,8 @@
 import { extendTheme } from "@chakra-ui/react";
-import { Nunito_Sans } from "next/font/google";
+import { Geist } from "next/font/google";
 
-export const notoComponent = Nunito_Sans({ subsets: ["latin"] });
-export const noto = notoComponent.style.fontFamily;
+export const mainFont = Geist({ subsets: ["latin"] });
+export const mainFontFamily = mainFont.style.fontFamily;
 
 interface ColorMode {
   colorMode: "light" | "dark";
@@ -14,14 +14,14 @@ const theme = extendTheme({
       "html, body": {
         background: colorMode === "dark" ? "#181C1B" : "#E4DCCF",
         color: colorMode === "dark" ? "white" : "#6e5f4e",
-        heading: `${noto},-apple-system,BlinkMacSystemFont,Arial`,
-        body: `${noto},-apple-system,BlinkMacSystemFont,Arial`,
+        heading: `${mainFontFamily},-apple-system,BlinkMacSystemFont,Arial`,
+        body: `${mainFontFamily},-apple-system,BlinkMacSystemFont,Arial`,
       },
     }),
   },
   fonts: {
-    heading: noto,
-    body: noto,
+    heading: mainFontFamily,
+    body: mainFontFamily,
   },
   fontWeights: {
     normal: 200,

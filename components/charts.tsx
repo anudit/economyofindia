@@ -10,7 +10,7 @@ import {
   SupportedCurrencies,
 } from "@/utils/shared";
 import { useSharedContext } from "./SharedContext";
-import { noto } from "@/styles/theme";
+import { mainFontFamily } from "@/styles/theme";
 
 const header: Array<Array<string | number>> = [["Pizza", "Popularity"]];
 
@@ -60,6 +60,7 @@ export default function CustomChart({
             position: data.length > 5 ? "right" : "bottom",
             alignment: "center",
             textStyle: { color: "#fff" },
+            maxLines: 4,
           },
           tooltip: {
             showColorCode: true,
@@ -68,7 +69,7 @@ export default function CustomChart({
           colors: palette == "green" ? COLORS : RED_COLORS,
           sliceVisibilityThreshold: 0.001,
           pieSliceBorderColor: "transparent",
-          fontName: noto,
+          fontName: mainFontFamily,
         }}
         width={"100%"}
         height={"300px"}

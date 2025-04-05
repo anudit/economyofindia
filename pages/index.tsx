@@ -1,4 +1,4 @@
-import { Heading, Select, SimpleGrid } from "@chakra-ui/react";
+import { Divider, Heading, Select, SimpleGrid } from "@chakra-ui/react";
 import { useState } from "react";
 
 import {
@@ -24,7 +24,7 @@ export default function Home() {
           onChange={(e) => {
             setSection(Object.keys(dataset)[e.currentTarget.selectedIndex]);
           }}
-          w={{ base: "50px", md: "250px" }}
+          w={{ base: "70px", sm: "120px", md: "250px" }}
           size="sm"
         >
           {Object.keys(dataset).map((k, ind) => (
@@ -35,7 +35,7 @@ export default function Home() {
         </Select>
       }
     >
-      <Heading as="h3" size={{ base: "sm", md: "md" }} mb={4}>
+      <Heading as="h3" size="sm" mb={4}>
         STATEMENT I - CONSOLIDATED FUND OF INDIA - REVENUE ACCOUNT - RECEIPTS
       </Heading>
       <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={2}>
@@ -45,7 +45,7 @@ export default function Home() {
           palette="green"
         />
       </SimpleGrid>
-      <Heading as="h3" size={{ base: "sm", md: "md" }} my={8}>
+      <Heading as="h3" size="sm" my={8}>
         STATEMENT I - CONSOLIDATED FUND OF INDIA - REVENUE ACCOUNT -
         DISBURSEMENTS
       </Heading>
@@ -56,7 +56,7 @@ export default function Home() {
           palette="red"
         />
       </SimpleGrid>
-      <Heading as="h3" size={{ base: "sm", md: "md" }} my={8}>
+      <Heading as="h3" size="sm" my={8}>
         STATEMENT I - CONSOLIDATED FUND OF INDIA - CAPITAL ACCOUNT - RECEIPTS
       </Heading>
       <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={2}>
@@ -66,7 +66,7 @@ export default function Home() {
           palette="green"
         />
       </SimpleGrid>
-      <Heading as="h3" size={{ base: "sm", md: "md" }} my={8}>
+      <Heading as="h3" size="sm" my={8}>
         STATEMENT I - CONSOLIDATED FUND OF INDIA - CAPITAL ACCOUNT -
         DISBURSEMENTS
       </Heading>
@@ -74,9 +74,27 @@ export default function Home() {
         <ChartGrid
           dataset={dataset4[section]}
           section={section}
-          palette="green"
+          palette="red"
         />
       </SimpleGrid>
+      <Heading as="h3" size="sm" my={8}>
+        STATEMENT IA - DISBURSEMENTS 'CHARGED' ON THE CONSOLIDATED FUND OF INDIA
+      </Heading>
+      <Heading as="h3" size="sm" my={8}>
+        STATEMENT II - CONTINGENCY FUND OF INDIA - NET
+      </Heading>
+      <Heading as="h3" size="sm" my={8}>
+        STATEMENT III - PUBLIC ACCOUNT OF INDIA - RECEIPTS
+      </Heading>
+      <Heading as="h3" size="sm" my={8}>
+        STATEMENT III - PUBLIC ACCOUNT OF INDIA - DISBURSEMENTS
+      </Heading>
+      <Heading as="h3" size="sm" my={8}>
+        RECEIPTS AND EXPENDITURE OF UNION TERRITORIES WITHOUT LEGISTATURE
+      </Heading>
+      <Heading as="h3" size="sm" my={8}>
+        RECEIPTS AND EXPENDITURE OF UNION TERRITORIES WITHOUT LEGISTATURE
+      </Heading>
     </PageShell>
   );
 }

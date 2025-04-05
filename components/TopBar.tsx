@@ -6,9 +6,22 @@ import {
   Heading,
   useBreakpointValue,
   Tooltip,
+  ButtonGroup,
+  useDisclosure,
+  Button,
 } from "@chakra-ui/react";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, InfoIcon } from "lucide-react";
 import Link from "next/link";
+import {
+  chakra,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from "@chakra-ui/react";
 
 import {
   DatasetMetadata,
@@ -25,7 +38,7 @@ export default function TopBar({
   children: React.ReactNode;
 }) {
   const { usdInrRate, setActiveCurrency } = useSharedContext();
-
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const title = useBreakpointValue({
     base: metadata.titleShort,
     xl: metadata.title,
@@ -46,6 +59,26 @@ export default function TopBar({
       backdropFilter="blur(6px)"
       zIndex={100}
     >
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader fontSize="sm">Dataset Details</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <pre
+              style={{
+                textWrap: "auto",
+                wordBreak: "break-all",
+                fontSize: "12px",
+              }}
+            >
+              {JSON.stringify(metadata, null, 4)}
+            </pre>
+            <br />
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+
       <Stack direction="row">
         {children}
         <Link href={metadata.sourceFile} target="_blank">
@@ -58,14 +91,6 @@ export default function TopBar({
               display={{ base: "none", lg: "none", xl: "flex" }}
             />
           </Tooltip>
-
-          <IconButton
-            icon={<ExternalLink height="12px" width="12px" />}
-            size="sm"
-            variant="outline"
-            aria-label="View Source File"
-            display={{ base: "flex", lg: "flex", xl: "none" }}
-          />
         </Link>
       </Stack>
 
@@ -79,30 +104,47 @@ export default function TopBar({
         {titleCase(title as string)}
       </Heading>
 
-      <Select
-        disabled={usdInrRate == null}
-        defaultValue={0}
-        borderRadius="md"
-        onChange={(e) => {
-          setActiveCurrency(
-            Array.from(supportedCurrencies.keys())[
-              e.currentTarget.selectedIndex
-            ],
-          );
-        }}
-        w="95px"
-        size="sm"
-      >
-        {Array.from(supportedCurrencies.keys()).map((k, ind) => (
-          <option value={k} key={ind} defaultChecked={ind === 0}>
-            {supportedCurrencies.get(k)?.flag}{" "}
-            {supportedCurrencies.get(k)?.currency}{" "}
-            {ind == 1 && usdInrRate
-              ? `(₹${usdInrRate.toFixed(2) || "..."})`
-              : ""}
-          </option>
-        ))}
-      </Select>
+      <Stack direction="row">
+        <Select
+          disabled={usdInrRate == null}
+          defaultValue={0}
+          borderRadius="md"
+          onChange={(e) => {
+            setActiveCurrency(
+              Array.from(supportedCurrencies.keys())[
+                e.currentTarget.selectedIndex
+              ],
+            );
+          }}
+          w="95px"
+          size="sm"
+        >
+          {Array.from(supportedCurrencies.keys()).map((k, ind) => (
+            <option value={k} key={ind} defaultChecked={ind === 0}>
+              {supportedCurrencies.get(k)?.flag}{" "}
+              {supportedCurrencies.get(k)?.currency}{" "}
+              {ind == 1 && usdInrRate
+                ? `(₹${usdInrRate.toFixed(2) || "..."})`
+                : ""}
+            </option>
+          ))}
+        </Select>
+        <ButtonGroup isAttached size="sm">
+          <IconButton
+            icon={<ExternalLink height="12px" width="12px" />}
+            variant="outline"
+            aria-label="View Source File"
+            display={{ base: "flex", lg: "flex", xl: "none" }}
+          />
+          <IconButton
+            icon={<InfoIcon height="16px" width="16px" />}
+            onClick={onOpen}
+            variant="outline"
+            aria-label="View Source File"
+            display={{ base: "flex", lg: "flex", xl: "none" }}
+          />
+        </ButtonGroup>
+      </Stack>
     </Flex>
   );
 }
