@@ -67,7 +67,7 @@ export default function TopBar({
           <ModalBody>
             <pre
               style={{
-                textWrap: "auto",
+                textWrap: "balance",
                 wordBreak: "break-all",
                 fontSize: "12px",
               }}
