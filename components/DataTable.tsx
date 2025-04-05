@@ -1,4 +1,4 @@
-import { DatasetTable, DatasetTableRow } from "@/utils/shared";
+import { DatasetTable, DatasetTableRow, titleCase } from "@/utils/shared";
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import {
   Table,
@@ -71,6 +71,7 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
 
     if (searchTerm) {
       const lowerSearch = searchTerm.toLowerCase();
+      setCurrentPage(0);
       result = result.filter((row) =>
         Object.values(row).some((val) =>
           String(val).toLowerCase().includes(lowerSearch),
@@ -215,7 +216,7 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
                   _hover={{ bg: "gray.600" }}
                   _active={{ bg: "gray.500" }}
                 >
-                  {col}
+                  {titleCase(col)}
                 </Button>
               </Th>
             ))}

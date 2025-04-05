@@ -40,15 +40,17 @@ export type DatasetTableRow = { [key: string]: string | number };
 export type DatasetTable = Array<DatasetTableRow>;
 
 export type Dataset3 = {
-  [key: string]: {
-    // l1
-    [key: string]: // l2
+  [key: string]:
     | {
-          [key: string]: //l3
-          { [key: string]: DataItemValue } | DataItemValue; // l4
-        }
-      | DataItemValue;
-  };
+        // l1
+        [key: string]: // l2
+        | {
+              [key: string]: //l3
+              { [key: string]: DataItemValue } | DataItemValue; // l4
+            }
+          | DataItemValue;
+      }
+    | DataItemValue;
 };
 
 export type Dataset4 = {

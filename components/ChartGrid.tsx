@@ -21,6 +21,7 @@ export default function ChartGrid({
     <>
       {Object.entries(dataset).map(([level2Key, level2Val]) => {
         if (
+          level2Val != null &&
           typeof level2Val == "object" &&
           typeof Object.values(level2Val)[0] == "number"
         ) {
@@ -34,6 +35,7 @@ export default function ChartGrid({
             />
           );
         } else if (
+          level2Val != null &&
           typeof level2Val == "object" &&
           typeof Object.values(level2Val)[0] == "object"
         ) {
@@ -100,6 +102,15 @@ export default function ChartGrid({
               return null;
             }
           });
+        } else if (level2Val != null && typeof level2Val == "number") {
+          return (
+            <StatCard
+              stat={level2Val * CRORE}
+              title={level2Key}
+              key={level2Key}
+              route={`${section != undefined ? titleCase(section) + " > " : ""}${titleCase(level2Key)}}`}
+            />
+          );
         }
       })}
     </>
