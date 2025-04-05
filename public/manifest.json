@@ -23,6 +23,12 @@
       "platform": "wide"
     },
     {
+      "src": "screenshot3.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpg",
+      "platform": "wide"
+    },
+    {
       "src": "screenshot2.jpg",
       "sizes": "1280x720",
       "type": "image/jpg",
