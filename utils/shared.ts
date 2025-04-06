@@ -29,11 +29,14 @@ export const COLORS = [
 ];
 
 export const RED_COLORS = [
-  "#fde0e0",
-  "#f4c1c1",
-  "#fdaaaa",
-  "#f97c7c",
-  "#ee6969",
+  "#FAA19B",
+  "#F88279",
+  "#F66257",
+  "#F44336",
+  "#D63B2F",
+  "#B73229",
+  "#992A22",
+  "#7A221B",
 ];
 
 export type DatasetTableRow = { [key: string]: string | number };

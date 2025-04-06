@@ -1,4 +1,4 @@
-import { DatasetMetadata } from "@/utils/shared";
+import type { DatasetMetadata } from "@/utils/shared";
 import { metadata as metadata1 } from "./afs-2025-2026";
 import { metadata as metadata2 } from "./receipt-heads";
 

@@ -8,3 +8,7 @@ a {
         color-scheme: dark;
     }
 }
+
+/* #chart svg > g text{
+    fill: white;
+} */

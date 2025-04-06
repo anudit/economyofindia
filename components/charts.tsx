@@ -51,42 +51,44 @@ export default function CustomChart({
 					true,
 				)}
 			</Heading>
-			<Chart
-				chartType="PieChart"
-				data={header.concat(data)}
-				options={{
-					backgroundColor: "transparent",
-					fontColor: "black",
-					legend: {
-						position: data.length > 5 ? "right" : "bottom",
-						alignment: "center",
-						textStyle: { color: "#fff" },
-						maxLines: 4,
-					},
-					tooltip: {
-						showColorCode: true,
-					},
-					// chartArea: { width: "80%", height: "80%" },
-					colors: palette == "green" ? COLORS : RED_COLORS,
-					sliceVisibilityThreshold: 0.001,
-					pieSliceBorderColor: "transparent",
-					fontName: mainFontFamily,
-				}}
-				width={"100%"}
-				height={"300px"}
-				legendToggle
-				formatters={[
-					{
-						type: "NumberFormat" as const,
-						column: 1,
-						options: {
-							prefix: supportedCurrencies.get(activeCurrency)?.symbol,
-							negativeColor: "red",
-							negativeParens: true,
+			<div id="chart">
+				<Chart
+					chartType="PieChart"
+					data={header.concat(data)}
+					options={{
+						backgroundColor: "transparent",
+						fontColor: "black",
+						legend: {
+							position: data.length > 5 ? "right" : "bottom",
+							alignment: "center",
+							textStyle: { color: "#fff" },
+							maxLines: 4,
 						},
-					},
-				]}
-			/>
+						tooltip: {
+							showColorCode: true,
+						},
+						// chartArea: { width: "80%", height: "80%" },
+						colors: palette == "green" ? COLORS : RED_COLORS,
+						sliceVisibilityThreshold: 0.001,
+						pieSliceBorderColor: "transparent",
+						fontName: mainFontFamily,
+					}}
+					width={"100%"}
+					height={"300px"}
+					legendToggle
+					formatters={[
+						{
+							type: "NumberFormat" as const,
+							column: 1,
+							options: {
+								prefix: supportedCurrencies.get(activeCurrency)?.symbol,
+								negativeColor: "red",
+								negativeParens: true,
+							},
+						},
+					]}
+				/>
+			</div>
 		</>
 	);
 }

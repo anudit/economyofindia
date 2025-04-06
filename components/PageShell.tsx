@@ -5,6 +5,7 @@ import Head from "next/head";
 import { Sidebar } from "@/components/Sidebar";
 import TopBar from "@/components/TopBar";
 import { type DatasetMetadata, titleCase } from "@/utils/shared";
+import { ProximityPrefetch } from "./ProximityFetch";
 
 export default function PageShell({
 	children,
@@ -91,7 +92,9 @@ export default function PageShell({
 				themeColor="#000000"
 			/>
 			<Flex direction="row" w="100vw" minH="100vh">
-				<Sidebar />
+				<ProximityPrefetch>
+					<Sidebar />
+				</ProximityPrefetch>
 				<Flex direction="column" w={{ base: "94vw", md: "100%" }} minH="100vh">
 					<TopBar metadata={metadata}>{topBarChildren}</TopBar>
 					<Flex

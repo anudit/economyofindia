@@ -33,6 +33,9 @@ export default function StatCard({
 			borderColor="whiteAlpha.400"
 			borderRadius="md"
 			borderWidth="1px"
+			_hover={{
+				borderColor: "whiteAlpha.500",
+			}}
 		>
 			<Flex
 				w="100%"
