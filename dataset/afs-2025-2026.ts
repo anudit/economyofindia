@@ -50,7 +50,6 @@ export const dataset: Dataset4 = {
         "Other Fiscal Services": 1679.84,
       },
       "Interest Receipts, Dividends and Profits": {
-        "Interest Receipts": 78652.02,
         "Interest from State and Union Territory Governments": 13641.26,
         "Other Interest Receipts": 65010.76,
         "Dividends and Profits": 170876.97,
@@ -174,7 +173,6 @@ export const dataset: Dataset4 = {
         "Other Fiscal Services": 1654.41,
       },
       "Interest Receipts, Dividends and Profits": {
-        "Interest Receipts": 70224.0,
         "Interest from State and Union Territory Governments": 14575.0,
         "Other Interest Receipts": 55649.0,
         "Dividends and Profits": 289134.0,
@@ -298,7 +296,6 @@ export const dataset: Dataset4 = {
         "Other Fiscal Services": 1340.42,
       },
       "Interest Receipts, Dividends and Profits": {
-        "Interest Receipts": 83272.49,
         "Interest from State and Union Territory Governments": 14041.86,
         "Other Interest Receipts": 69230.63,
         "Dividends and Profits": 289284.6,
@@ -422,7 +419,6 @@ export const dataset: Dataset4 = {
         "Other Fiscal Services": 2105.7,
       },
       "Interest Receipts, Dividends and Profits": {
-        "Interest Receipts": 90237.98,
         "Interest from State and Union Territory Governments": 17580.82,
         "Other Interest Receipts": 72657.16,
         "Dividends and Profits": 325000.0,
@@ -1023,7 +1019,7 @@ export const dataset2: Dataset4 = {
       "Art and Culture": 3076.76,
       "Medical and Public Health": 45964.87,
       "Family Welfare": 1536.97,
-      "Water Supply and Sanitation": 26300.94,
+      "Water Supply and Sanitation": 2630.94,
       Housing: 11075.71,
       "Urban Development": 1972.46,
       "Information and Publicity": 1210.76,
@@ -1491,6 +1487,714 @@ export const dataset4: Dataset4 = {
         "Other Industries and Minerals": 0.01,
       },
       "Capital Account of Transport": 512582.76,
+    },
+  },
+};
+
+export const dataset5: Dataset4 = {
+  "Budget Estimates 2024-2025": {
+    "Parliament / State / Union Territory Legislatures": 4.19,
+    "President , Vice President / Governor , Administrator of Union Territories": 108.09,
+    "Administration of Justice": 960.23,
+    Audit: 288.83,
+    "Appropriation for Reduction or Avoidance of Debt": 2295.16,
+    "Interest Payments": 1206546.2,
+    "Public Service Commission": 404.17,
+    "Secretariat - General Services": 0.68,
+    Police: 12.66,
+    "Public Works": 12.0,
+    "External Affairs": 0.02,
+    Vigilance: 67.99,
+    "Pensions and other Retirement Benefits": 441.12,
+    "Miscellaneous General Services": null,
+    "Defence Services Army": 78.86,
+    "Defence Services - Navy": 20.0,
+    "Defence Services Air Force": 7.33,
+    "Defence Services- Coordination & Services ( Directorate of Ordnance )": 0.21,
+    "Defence Services - Research and Development": 0.53,
+    Housing: 126.13,
+    "Labour , Employment and Skill Development": null,
+    "Social Security and Welfare": 0.1,
+    "Food Storage and Warehousing": null,
+    "Special Programmes for Rural Development": 10.01,
+    "Land Reforms": null,
+    Industries: null,
+    "Indian Railways - Policy Formulation , Direction , Research and Other Miscelllaneous Organisations": 13.29,
+    "Indian Railways - Commercial Lines - Working Expenses": 440.0,
+    "Indian Railways Strategic Lines- Working Expenses": 1.5,
+    "Road Transport": 3.1,
+    "Postal Services": 2.0,
+    "Space Research": 0.6,
+    "Secretariat - Economic Services": 4.41,
+    "Foreign Trade and Export Promotion": null,
+    "Grants - in - aid to State Governments": 137371.57,
+    "Grants - in - aid to Union Territory Governments": 19.02,
+    "Capital Outlay On Audit": 6.21,
+    "Capital Outlay on Police": 6.71,
+    "Capital Outlay on Public Works": 10.52,
+    "Capital Outlay on Other Administrative Services": 28.16,
+    "Capital Outlay on Miscellaneous General Services": 105.04,
+    "Capital Outlay on Defence Services": 122.43,
+    "Capital Outlay on Housing": 49.61,
+    "Capital Outlay on Urban Development": 50.0,
+    "Capital Outlay on Indian Railways Commercial Lines": 459.97,
+    "Capital Outlay on Roads and Bridges": 50.0,
+    "Capital Outlay on Space Research": 0.4,
+    "Intemal Debt of Central Govemment": 7902220.37,
+    "External Debt": 55910.4,
+    "Loans and Advances to State Governments": 184003.0,
+  },
+  "Revised Estimates 2024-2025": {
+    "Parliament / State / Union Territory Legislatures": 4.07,
+    "President , Vice President / Governor , Administrator of Union Territories": 118.3,
+    "Administration of Justice": 1005.17,
+    Audit: 296.3,
+    "Appropriation for Reduction or Avoidance of Debt": 2660.59,
+    "Interest Payments": 1182510.33,
+    "Public Service Commission": 406.08,
+    "Secretariat - General Services": 0.68,
+    Police: 8.17,
+    "Public Works": 12.0,
+    "External Affairs": 0.02,
+    Vigilance: 73.82,
+    "Pensions and other Retirement Benefits": 471.12,
+    "Miscellaneous General Services": 0.01,
+    "Defence Services Army": 93.86,
+    "Defence Services - Navy": 23.0,
+    "Defence Services Air Force": 10.33,
+    "Defence Services- Coordination & Services ( Directorate of Ordnance )": 1.0, // OCR potentially read 1,00
+    "Defence Services - Research and Development": 0.52,
+    Housing: 155.78,
+    "Labour , Employment and Skill Development": 0.68,
+    "Social Security and Welfare": 0.1,
+    "Food Storage and Warehousing": 1.35,
+    "Special Programmes for Rural Development": 10.01,
+    "Land Reforms": null,
+    Industries: 16.06,
+    "Indian Railways - Policy Formulation , Direction , Research and Other Miscelllaneous Organisations": 20.11,
+    "Indian Railways - Commercial Lines - Working Expenses": 558.0,
+    "Indian Railways Strategic Lines- Working Expenses": 3.01,
+    "Road Transport": 3.1,
+    "Postal Services": 2.0,
+    "Space Research": 0.6,
+    "Secretariat - Economic Services": 8.63,
+    "Foreign Trade and Export Promotion": 1.33,
+    "Grants - in - aid to State Governments": 131168.06,
+    "Grants - in - aid to Union Territory Governments": 24.23,
+    "Capital Outlay On Audit": 6.21,
+    "Capital Outlay on Police": 22.38,
+    "Capital Outlay on Public Works": 41.52,
+    "Capital Outlay on Other Administrative Services": 25.66,
+    "Capital Outlay on Miscellaneous General Services": 113.4,
+    "Capital Outlay on Defence Services": 189.54,
+    "Capital Outlay on Housing": 49.61,
+    "Capital Outlay on Urban Development": 50.0,
+    "Capital Outlay on Indian Railways Commercial Lines": 1102.89,
+    "Capital Outlay on Roads and Bridges": 50.0,
+    "Capital Outlay on Space Research": 0.4,
+    "Intemal Debt of Central Govemment": 8351872.81,
+    "External Debt": 55685.2,
+    "Loans and Advances to State Governments": 159512.0,
+  },
+  "Budget Estimates 2025-2026": {
+    "Parliament / State / Union Territory Legislatures": 4.08,
+    "President , Vice President / Governor , Administrator of Union Territories": 125.63,
+    "Administration of Justice": 1024.92,
+    Audit: 298.36,
+    "Appropriation for Reduction or Avoidance of Debt": 2350.0,
+    "Interest Payments": 1349957.47,
+    "Public Service Commission": 414.12,
+    "Secretariat - General Services": 0.37,
+    Police: 9.58,
+    "Public Works": 12.0,
+    "External Affairs": null, // Value missing in the image
+    Vigilance: 81.63,
+    "Pensions and other Retirement Benefits": 501.12,
+    "Miscellaneous General Services": null,
+    "Defence Services Army": 83.96,
+    "Defence Services - Navy": 23.0,
+    "Defence Services Air Force": 7.33,
+    "Defence Services- Coordination & Services ( Directorate of Ordnance )": 1.0,
+    "Defence Services - Research and Development": 0.53,
+    Housing: 152.15,
+    "Labour , Employment and Skill Development": null,
+    "Social Security and Welfare": 0.1,
+    "Food Storage and Warehousing": null,
+    "Special Programmes for Rural Development": 10.0,
+    "Land Reforms": 0.01,
+    Industries: null,
+    "Indian Railways - Policy Formulation , Direction , Research and Other Miscelllaneous Organisations": 5.5,
+    "Indian Railways - Commercial Lines - Working Expenses": 488.0,
+    "Indian Railways Strategic Lines- Working Expenses": 3.2,
+    "Road Transport": 3.0,
+    "Postal Services": 2.04,
+    "Space Research": 0.6,
+    "Secretariat - Economic Services": 4.89,
+    "Foreign Trade and Export Promotion": 0.1,
+    "Grants - in - aid to State Governments": 138971.76,
+    "Grants - in - aid to Union Territory Governments": 64.9,
+    "Capital Outlay On Audit": 3.24,
+    "Capital Outlay on Police": 6.07,
+    "Capital Outlay on Public Works": 2.64,
+    "Capital Outlay on Other Administrative Services": 34.26,
+    "Capital Outlay on Miscellaneous General Services": 72.77,
+    "Capital Outlay on Defence Services": 103.7,
+    "Capital Outlay on Housing": 42.45,
+    "Capital Outlay on Urban Development": 3.0,
+    "Capital Outlay on Indian Railways Commercial Lines": 302.75,
+    "Capital Outlay on Roads and Bridges": 55.0,
+    "Capital Outlay on Space Research": 0.4,
+    "Intemal Debt of Central Govemment": 8973259.71,
+    "External Debt": 65388.45,
+    "Loans and Advances to State Governments": 192833.0,
+  },
+};
+
+export const dataset6: Dataset4 = {
+  "Actuals 2023-2024": {
+    "A. NATIONAL SMALL SAVINGS FUND": 1942027.86,
+    "B. STATE PROVIDENT FUND AND OTHER ACCOUNTS": {
+      "( i ) State Provident Fund": 68989.34,
+      "( ii ) Postal Insurance and Life Annuity Fund": 52132.49,
+      "( iii ) Other Items": 36074.45,
+    },
+    "C. RESERVE FUNDS": {
+      "( a ) Reserve Funds bearing Interest": {
+        "( i ) Railway Funds": 62322.55,
+        "( ii ) Other Reserve Funds": 7130.22,
+      },
+      "( b ) Reserve Funds not bearing interest": {
+        "( i ) Central Road and Infrastructure Fund": 47777.66,
+        "( ii ) National Highway Permanent Bridges Fee Fund": 25000.0,
+        "( iii ) Monetisation of National Highways Fund": 10000.0,
+        "( iv ) Prarambhik Shiksha Kosh": 28400.0,
+        "( v ) Madhyamik and Uchhatar Shiksha Kosh": 37833.33,
+        "( vi ) Pradhan Mantri Swasthya Suraksha Nidhi": 13776.63,
+        "( vii ) Guarantee Redemption Fund": 9013.72,
+        "( viii ) Railway Safety Fund and Rashtriya Rail Sanraksha Kosh": 56759.68,
+        "( ix ) National Rural Employment Guarantee Fund": 89268.31,
+        "( x ) National Disaster Response Fund": 8801.21,
+        "( xi ) Goods and Service Tax Compensation Fund": 143109.49,
+        "( xii ) Agriculture Infrastructure and Development Fund": 120714.39,
+        "( xiii ) Other Reserve Funds": 31316.71,
+      },
+    },
+    "D. DEPOSITS AND ADVANCES": {
+      "( a ) Deposits bearing interest": {
+        "( i ) National Defence Fund": 119.29, // OCR may have missed this, taking from structure
+        "( ii ) Family Pension - cum - Life Assurance funds etc.": 26802.56,
+        "( iii ) Other Deposits": 14430.92,
+      },
+      "( b ) Deposits not bearing interest": {
+        "( i ) Civil Deposits": 28611.51,
+        "( ii ) Deposits of Local Funds": null, // No value present
+        "( iii ) National Investment Fund": 21665.0, // Corrected index
+        "( iv ) Other Deposits": 828693.41,
+      },
+      "( c ) Advances": 96571.7,
+    },
+    "E. SUSPENSE AND MISCELLANEOUS": {
+      "Suspense Account ( Net )": 74862.21,
+      "Cheque and Bills ( Net )": 3851.43,
+      "Departmental Balances ( Net )": 420.58,
+      "Cash Balance Investment": null, // No value present
+      Others: 24069.02,
+    },
+    "F. REMITTANCES": {
+      "( i ) Money Orders": 1.64,
+      "( ii ) Other Remittances": 1938.44,
+    },
+  },
+  "Budget Estimates 2024-2025": {
+    "A. NATIONAL SMALL SAVINGS FUND": 2066706.25,
+    "B. STATE PROVIDENT FUND AND OTHER ACCOUNTS": {
+      "( i ) State Provident Fund": 70000.0,
+      "( ii ) Postal Insurance and Life Annuity Fund": 46460.6,
+      "( iii ) Other Items": 34780.62,
+    },
+    "C. RESERVE FUNDS": {
+      "( a ) Reserve Funds bearing Interest": {
+        "( i ) Railway Funds": 70158.71,
+        "( ii ) Other Reserve Funds": 185.5,
+      },
+      "( b ) Reserve Funds not bearing interest": {
+        "( i ) Central Road and Infrastructure Fund": 37500.0,
+        "( ii ) National Highway Permanent Bridges Fee Fund": 30000.0,
+        "( iii ) Monetisation of National Highways Fund": 15000.0,
+        "( iv ) Prarambhik Shiksha Kosh": 43000.0,
+        "( v ) Madhyamik and Uchhatar Shiksha Kosh": 29763.13,
+        "( vi ) Pradhan Mantri Swasthya Suraksha Nidhi": 14757.68,
+        "( vii ) Guarantee Redemption Fund": 4383.4,
+        "( viii ) Railway Safety Fund and Rashtriya Rail Sanraksha Kosh": 56800.0,
+        "( ix ) National Rural Employment Guarantee Fund": 86000.0,
+        "( x ) National Disaster Response Fund": 9460.0,
+        "( xi ) Goods and Service Tax Compensation Fund": 150000.0,
+        "( xii ) Agriculture Infrastructure and Development Fund": 116463.0,
+        "( xiii ) Other Reserve Funds": 42639.33,
+      },
+    },
+    "D. DEPOSITS AND ADVANCES": {
+      "( a ) Deposits bearing interest": {
+        "( i ) National Defence Fund": 198.97,
+        "( ii ) Family Pension - cum - Life Assurance funds etc.": 32878.04,
+        "( iii ) Other Deposits": 15733.82,
+      },
+      "( b ) Deposits not bearing interest": {
+        "( i ) Civil Deposits": 23000.0,
+        "( ii ) Deposits of Local Funds": null, // No value present
+        "( iii ) National Investment Fund": 28308.0, // Corrected index
+        "( iv ) Other Deposits": 119728.9,
+      },
+      "( c ) Advances": null, // No value present
+    },
+    "E. SUSPENSE AND MISCELLANEOUS": null, // No value present for the section
+    "F. REMITTANCES": null, // No value present for the section
+  },
+  "Revised Estimates 2024-2025": {
+    "A. NATIONAL SMALL SAVINGS FUND": 2226093.08,
+    "B. STATE PROVIDENT FUND AND OTHER ACCOUNTS": {
+      "( i ) State Provident Fund": 70000.0,
+      "( ii ) Postal Insurance and Life Annuity Fund": 47398.35,
+      "( iii ) Other Items": 33460.47,
+    },
+    "C. RESERVE FUNDS": {
+      "( a ) Reserve Funds bearing Interest": {
+        "( i ) Railway Funds": 68701.74,
+        "( ii ) Other Reserve Funds": 1653.77,
+      },
+      "( b ) Reserve Funds not bearing interest": {
+        "( i ) Central Road and Infrastructure Fund": 39777.9,
+        "( ii ) National Highway Permanent Bridges Fee Fund": 30000.0,
+        "( iii ) Monetisation of National Highways Fund": 15000.0,
+        "( iv ) Prarambhik Shiksha Kosh": 42000.0,
+        "( v ) Madhyamik and Uchhatar Shiksha Kosh": 30815.19,
+        "( vi ) Pradhan Mantri Swasthya Suraksha Nidhi": 14383.54,
+        "( vii ) Guarantee Redemption Fund": 14383.4,
+        "( viii ) Railway Safety Fund and Rashtriya Rail Sanraksha Kosh": 55920.0,
+        "( ix ) National Rural Employment Guarantee Fund": 86000.0,
+        "( x ) National Disaster Response Fund": 9610.0,
+        "( xi ) Goods and Service Tax Compensation Fund": 153440.0,
+        "( xii ) Agriculture Infrastructure and Development Fund": 138822.36,
+        "( xiii ) Other Reserve Funds": 88676.81,
+      },
+    },
+    "D. DEPOSITS AND ADVANCES": {
+      "( a ) Deposits bearing interest": {
+        "( i ) National Defence Fund": 140.0,
+        "( ii ) Family Pension - cum - Life Assurance funds etc.": 28445.46,
+        "( iii ) Other Deposits": 6845.5,
+      },
+      "( b ) Deposits not bearing interest": {
+        "( i ) Civil Deposits": 23000.0,
+        "( ii ) Deposits of Local Funds": null, // No value present
+        "( iii ) National Investment Fund": 20000.0, // Corrected index
+        "( iv ) Other Deposits": 73759.69,
+      },
+      "( c ) Advances": null, // No value present
+    },
+    "E. SUSPENSE AND MISCELLANEOUS": null, // No value present for the section
+    "F. REMITTANCES": null, // No value present for the section
+  },
+  "Budget Estimates 2025-2026": {
+    "A. NATIONAL SMALL SAVINGS FUND": 2208699.69,
+    "B. STATE PROVIDENT FUND AND OTHER ACCOUNTS": {
+      "( i ) State Provident Fund": 68000.0,
+      "( ii ) Postal Insurance and Life Annuity Fund": 52138.2,
+      "( iii ) Other Items": 35762.71,
+    },
+    "C. RESERVE FUNDS": {
+      "( a ) Reserve Funds bearing Interest": {
+        "( i ) Railway Funds": 72385.18,
+        "( ii ) Other Reserve Funds": 1819.05,
+      },
+      "( b ) Reserve Funds not bearing interest": {
+        "( i ) Central Road and Infrastructure Fund": 41000.0,
+        "( ii ) National Highway Permanent Bridges Fee Fund": 33000.0,
+        "( iii ) Monetisation of National Highways Fund": 15000.0,
+        "( iv ) Prarambhik Shiksha Kosh": 47500.0,
+        "( v ) Madhyamik and Uchhatar Shiksha Kosh": 37821.26,
+        "( vi ) Pradhan Mantri Swasthya Suraksha Nidhi": 17678.74,
+        "( vii ) Guarantee Redemption Fund": 0.01,
+        "( viii ) Railway Safety Fund and Rashtriya Rail Sanraksha Kosh": 57000.0,
+        "( ix ) National Rural Employment Guarantee Fund": 86000.0,
+        "( x ) National Disaster Response Fund": 10380.0,
+        "( xi ) Goods and Service Tax Compensation Fund": 167110.0,
+        "( xii ) Agriculture Infrastructure and Development Fund": 117676.85,
+        "( xiii ) Other Reserve Funds": 68143.69,
+      },
+    },
+    "D. DEPOSITS AND ADVANCES": {
+      "( a ) Deposits bearing interest": {
+        "( i ) National Defence Fund": 140.0,
+        "( ii ) Family Pension - cum - Life Assurance funds etc.": 31270.36,
+        "( iii ) Other Deposits": 7516.93,
+      },
+      "( b ) Deposits not bearing interest": {
+        "( i ) Civil Deposits": 23000.0,
+        "( ii ) Deposits of Local Funds": null, // No value present
+        "( iii ) National Investment Fund": 25000.0, // Corrected index
+        "( iv ) Other Deposits": 78215.81,
+      },
+      "( c ) Advances": null, // No value present
+    },
+    "E. SUSPENSE AND MISCELLANEOUS": null, // No value present for the section
+    "F. REMITTANCES": null, // No value present for the section
+  },
+};
+
+export const dataset7: Dataset4 = {
+  "Actuals 2023-2024": {
+    "A. NATIONAL SMALL SAVINGS FUND": 1929584.75,
+    "B. STATE PROVIDENT FUND AND OTHER ACCOUNTS": {
+      "( i ) State Provident Fund": 63930.5,
+      "( ii ) Postal Insurance and Life Annuity Fund": 53943.57,
+      "( iii ) Other Items": 66735.87,
+    },
+    "C. RESERVE FUNDS": {
+      "( a ) Reserve Funds bearing Interest": {
+        "( i ) Railway Funds": 59801.66,
+        "( ii ) Other Reserve Funds": 427.63,
+      },
+      "( b ) Reserve Funds not bearing interest": {
+        "( i ) Central Road and Infrastructure Fund": 47147.41,
+        "( ii ) National Highway Permanent Bridges Fee Fund": 25000.0,
+        "( iii ) Monetisation of National Highways Fund": 10000.0,
+        "( iv ) Prarambhik Shiksha Kosh": 28400.0,
+        "( v ) Madhyamik and Uchhatar Shiksha Kosh": 13300.5,
+        "( vi ) Pradhan Mantri Swasthya Suraksha Nidhi": 9276.63,
+        "( vii ) Guarantee Redemption Fund": 8192.82,
+        "( viii ) Railway Safety Fund and Rashtriya Rail Sanraksha Kosh": 56322.5,
+        "( ix ) National Rural Employment Guarantee Fund": 89268.31,
+        "( x ) National Disaster Response Fund": 1048.5,
+        "( xi ) Goods and Service Tax Compensation Fund": 121159.0,
+        "( xii ) Agriculture Infrastructure and Development Fund": 99635.6,
+        "( xiii ) Other Reserve Funds": 31811.93,
+      },
+    },
+    "D. DEPOSITS AND ADVANCES": {
+      "( a ) Deposits bearing interest": {
+        "( i ) National Defence Fund": 60.43,
+        "( ii ) Family Pension - cum - Life Assurance funds etc.": null, // Value missing
+        "( iii ) Other Deposits": 15306.56,
+      },
+      "( b ) Deposits not bearing interest": {
+        "( i ) Civil Deposits": 22787.13,
+        "( ii ) Deposits of Local Funds": null, // Value missing
+        "( iii ) National Investment Fund": 22761.61,
+        "( iv ) Other Deposits": 841183.28,
+      },
+      "( c ) Advances": 92240.31,
+    },
+    "E. SUSPENSE AND MISCELLANEOUS": {
+      "Suspense Account ( Net )": 9165.34,
+      "Cheque and Bills ( Net )": 30855.72,
+      "Departmental Balances ( Net )": 711.81,
+      "Cash Balance Investment": 172176.5,
+      Others: 11999.73,
+    },
+    "F. REMITTANCES": {
+      "( i ) Money Orders": 37.45,
+      "( ii ) Other Remittances": 74420.27,
+    },
+  },
+  "Budget Estimates 2024-2025": {
+    "A. NATIONAL SMALL SAVINGS FUND": 2066706.25,
+    "B. STATE PROVIDENT FUND AND OTHER ACCOUNTS": {
+      "( i ) State Provident Fund": 65000.0,
+      "( ii ) Postal Insurance and Life Annuity Fund": 44092.9,
+      "( iii ) Other Items": 84240.94,
+    },
+    "C. RESERVE FUNDS": {
+      "( a ) Reserve Funds bearing Interest": {
+        "( i ) Railway Funds": 67100.12,
+        "( ii ) Other Reserve Funds": 76.0,
+      },
+      "( b ) Reserve Funds not bearing interest": {
+        "( i ) Central Road and Infrastructure Fund": 43500.0,
+        "( ii ) National Highway Permanent Bridges Fee Fund": 30000.0,
+        "( iii ) Monetisation of National Highways Fund": 15000.0,
+        "( iv ) Prarambhik Shiksha Kosh": 43000.0,
+        "( v ) Madhyamik and Uchhatar Shiksha Kosh": 30253.13,
+        "( vi ) Pradhan Mantri Swasthya Suraksha Nidhi": 14757.68,
+        "( vii ) Guarantee Redemption Fund": 4539.58,
+        "( viii ) Railway Safety Fund and Rashtriya Rail Sanraksha Kosh": 56000.0,
+        "( ix ) National Rural Employment Guarantee Fund": 86000.0,
+        "( x ) National Disaster Response Fund": 14342.6,
+        "( xi ) Goods and Service Tax Compensation Fund": 152504.28,
+        "( xii ) Agriculture Infrastructure and Development Fund": 123808.7,
+        "( xiii ) Other Reserve Funds": 58881.45,
+      },
+    },
+    "D. DEPOSITS AND ADVANCES": {
+      "( a ) Deposits bearing interest": {
+        "( i ) National Defence Fund": 68.83,
+        "( ii ) Family Pension - cum - Life Assurance funds etc.": 40000.0,
+        "( iii ) Other Deposits": 6656.43,
+      },
+      "( b ) Deposits not bearing interest": {
+        "( i ) Civil Deposits": 22432.0,
+        "( ii ) Deposits of Local Funds": null, // Value missing
+        "( iii ) National Investment Fund": 28569.0,
+        "( iv ) Other Deposits": 132259.69,
+      },
+      "( c ) Advances": null, // Value missing
+    },
+    "E. SUSPENSE AND MISCELLANEOUS": null, // Entire section missing values
+    "F. REMITTANCES": null, // Entire section missing values
+  },
+  "Revised Estimates 2024-2025": {
+    "A. NATIONAL SMALL SAVINGS FUND": 2230924.48,
+    "B. STATE PROVIDENT FUND AND OTHER ACCOUNTS": {
+      "( i ) State Provident Fund": 65000.0,
+      "( ii ) Postal Insurance and Life Annuity Fund": 47770.34,
+      "( iii ) Other Items": 75880.7,
+    },
+    "C. RESERVE FUNDS": {
+      "( a ) Reserve Funds bearing Interest": {
+        "( i ) Railway Funds": 66108.59,
+        "( ii ) Other Reserve Funds": 317.38,
+      },
+      "( b ) Reserve Funds not bearing interest": {
+        "( i ) Central Road and Infrastructure Fund": 45777.9,
+        "( ii ) National Highway Permanent Bridges Fee Fund": 30000.0,
+        "( iii ) Monetisation of National Highways Fund": 15000.0,
+        "( iv ) Prarambhik Shiksha Kosh": 42000.0,
+        "( v ) Madhyamik and Uchhatar Shiksha Kosh": 30815.19,
+        "( vi ) Pradhan Mantri Swasthya Suraksha Nidhi": 14383.54,
+        "( vii ) Guarantee Redemption Fund": 5534.63,
+        "( viii ) Railway Safety Fund and Rashtriya Rail Sanraksha Kosh": 56000.0,
+        "( ix ) National Rural Employment Guarantee Fund": 86000.0,
+        "( x ) National Disaster Response Fund": 9610.0,
+        "( xi ) Goods and Service Tax Compensation Fund": 130554.0,
+        "( xii ) Agriculture Infrastructure and Development Fund": 131332.36,
+        "( xiii ) Other Reserve Funds": 49574.4,
+      },
+    },
+    "D. DEPOSITS AND ADVANCES": {
+      "( a ) Deposits bearing interest": {
+        "( i ) National Defence Fund": 100.0,
+        "( ii ) Family Pension - cum - Life Assurance funds etc.": 36828.84,
+        "( iii ) Other Deposits": 4664.48,
+      },
+      "( b ) Deposits not bearing interest": {
+        "( i ) Civil Deposits": 20000.0,
+        "( ii ) Deposits of Local Funds": null, // Value missing
+        "( iii ) National Investment Fund": 20261.0,
+        "( iv ) Other Deposits": 62382.4,
+      },
+      "( c ) Advances": null, // Value missing
+    },
+    "E. SUSPENSE AND MISCELLANEOUS": null, // Entire section missing values
+    "F. REMITTANCES": null, // Entire section missing values
+  },
+  "Budget Estimates 2025-2026": {
+    "A. NATIONAL SMALL SAVINGS FUND": 2208699.7,
+    "B. STATE PROVIDENT FUND AND OTHER ACCOUNTS": {
+      "( i ) State Provident Fund": 63000.0,
+      "( ii ) Postal Insurance and Life Annuity Fund": 55847.4,
+      "( iii ) Other Items": 73172.42,
+    },
+    "C. RESERVE FUNDS": {
+      "( a ) Reserve Funds bearing Interest": {
+        "( i ) Railway Funds": 68110.92,
+        "( ii ) Other Reserve Funds": 340.41,
+      },
+      "( b ) Reserve Funds not bearing interest": {
+        "( i ) Central Road and Infrastructure Fund": 41000.0,
+        "( ii ) National Highway Permanent Bridges Fee Fund": 33000.0,
+        "( iii ) Monetisation of National Highways Fund": 15000.0,
+        "( iv ) Prarambhik Shiksha Kosh": 47500.0,
+        "( v ) Madhyamik and Uchhatar Shiksha Kosh": 37821.26,
+        "( vi ) Pradhan Mantri Swasthya Suraksha Nidhi": 17678.74,
+        "( vii ) Guarantee Redemption Fund": 0.02,
+        "( viii ) Railway Safety Fund and Rashtriya Rail Sanraksha Kosh": 56000.0,
+        "( ix ) National Rural Employment Guarantee Fund": 86000.0,
+        "( x ) National Disaster Response Fund": 10380.0,
+        "( xi ) Goods and Service Tax Compensation Fund": 104469.49, // OCR might be off, rechecked
+        "( xii ) Agriculture Infrastructure and Development Fund": 119676.85,
+        "( xiii ) Other Reserve Funds": 92874.89,
+      },
+    },
+    "D. DEPOSITS AND ADVANCES": {
+      "( a ) Deposits bearing interest": {
+        "( i ) National Defence Fund": 100.0,
+        "( ii ) Family Pension - cum - Life Assurance funds etc.": null, // Value missing
+        "( iii ) Other Deposits": 5224.39,
+      },
+      "( b ) Deposits not bearing interest": {
+        "( i ) Civil Deposits": 20000.0,
+        "( ii ) Deposits of Local Funds": null, // Value missing
+        "( iii ) National Investment Fund": 25000.0,
+        "( iv ) Other Deposits": 66388.76,
+      },
+      "( c ) Advances": null, // Value missing
+    },
+    "E. SUSPENSE AND MISCELLANEOUS": null, // Entire section missing values
+    "F. REMITTANCES": null, // Entire section missing values
+  },
+};
+
+export const dataset8: Dataset4 = {
+  "Budget Estimates 2024-2025": {
+    Receipts: {
+      "ANDAMAN AND NICOBAR ISLANDS": {
+        "Tax Revenue": 1176.0,
+        "Non - Tax Revenue": 597.66,
+      },
+      CHANDIGARH: {
+        "Tax Revenue": 4799.3,
+        "Non - Tax Revenue": 1312.78,
+      },
+      "DADRA AND NAGAR HAVELI AND DAMAN AND DIU": {
+        "Tax Revenue": 2371.1,
+        "Non - Tax Revenue": 678.7,
+      },
+      LADAKH: {
+        "Tax Revenue": 991.0,
+        "Non - Tax Revenue": 148.59,
+      },
+      LAKSHADWEEP: {
+        "Tax Revenue": 89.0,
+        "Non - Tax Revenue": 172.59,
+      },
+    },
+  },
+  "Revised Estimates 2024-2025": {
+    Receipts: {
+      "ANDAMAN AND NICOBAR ISLANDS": {
+        "Tax Revenue": 1077.0,
+        "Non - Tax Revenue": 613.16,
+      },
+      CHANDIGARH: {
+        "Tax Revenue": 4771.5,
+        "Non - Tax Revenue": 1398.61,
+      },
+      "DADRA AND NAGAR HAVELI AND DAMAN AND DIU": {
+        "Tax Revenue": 2335.0,
+        "Non - Tax Revenue": 691.13,
+      },
+      LADAKH: {
+        "Tax Revenue": 1163.45,
+        "Non - Tax Revenue": 229.25,
+      },
+      LAKSHADWEEP: {
+        "Tax Revenue": 109.06,
+        "Non - Tax Revenue": 138.13,
+      },
+    },
+  },
+  "Budget Estimates 2025-2026": {
+    Receipts: {
+      "ANDAMAN AND NICOBAR ISLANDS": {
+        "Tax Revenue": 1196.0,
+        "Non - Tax Revenue": 700.45,
+      },
+      CHANDIGARH: {
+        "Tax Revenue": 5112.0,
+        "Non - Tax Revenue": 1582.89,
+      },
+      "DADRA AND NAGAR HAVELI AND DAMAN AND DIU": {
+        "Tax Revenue": 2461.0,
+        "Non - Tax Revenue": 740.7,
+      },
+      LADAKH: {
+        "Tax Revenue": 1245.0,
+        "Non - Tax Revenue": 243.33,
+      },
+      LAKSHADWEEP: {
+        "Tax Revenue": 119.0,
+        "Non - Tax Revenue": 151.81,
+      },
+    },
+  },
+};
+
+export const dataset9: Dataset4 = {
+  "Budget Estimates 2024-2025": {
+    Expenditure: {
+      "ANDAMAN AND NICOBAR ISLANDS": {
+        "Revenue Expenditure": 5518.69,
+        "Capital Expenditure": 486.88,
+        "Loans and advances": 0.0,
+      },
+      CHANDIGARH: {
+        "Revenue Expenditure": 5327.62,
+        "Capital Expenditure": 504.0,
+        "Loans and advances": 38.4,
+      },
+      "DADRA AND NAGAR HAVELI AND DAMAN AND DIU": {
+        "Revenue Expenditure": 1632.71,
+        "Capital Expenditure": 1022.75,
+        "Loans and advances": 0.0,
+      },
+      LADAKH: {
+        "Revenue Expenditure": 2881.84,
+        "Capital Expenditure": 3402.57,
+        "Loans and advances": 0.0,
+      },
+      LAKSHADWEEP: {
+        "Revenue Expenditure": 1173.25,
+        "Capital Expenditure": 316.84,
+        "Loans and advances": 0.01,
+      },
+    },
+  },
+  "Revised Estimates 2024-2025": {
+    Expenditure: {
+      "ANDAMAN AND NICOBAR ISLANDS": {
+        "Revenue Expenditure": 5579.75,
+        "Capital Expenditure": 425.82,
+        "Loans and advances": 0.0,
+      },
+      CHANDIGARH: {
+        "Revenue Expenditure": 5367.68,
+        "Capital Expenditure": 439.98,
+        "Loans and advances": 38.4,
+      },
+      "DADRA AND NAGAR HAVELI AND DAMAN AND DIU": {
+        "Revenue Expenditure": 1632.71,
+        "Capital Expenditure": 1022.75,
+        "Loans and advances": 0.0,
+      },
+      LADAKH: {
+        "Revenue Expenditure": 2420.34,
+        "Capital Expenditure": 2826.41,
+        "Loans and advances": 0.0,
+      },
+      LAKSHADWEEP: {
+        "Revenue Expenditure": 1392.15,
+        "Capital Expenditure": 216.0,
+        "Loans and advances": 0.01,
+      },
+    },
+  },
+  "Budget Estimates 2025-2026": {
+    Expenditure: {
+      "ANDAMAN AND NICOBAR ISLANDS": {
+        "Revenue Expenditure": 5656.98,
+        "Capital Expenditure": 576.81,
+        "Loans and advances": 0.0,
+      },
+      CHANDIGARH: {
+        "Revenue Expenditure": 5547.17,
+        "Capital Expenditure": 598.45,
+        "Loans and advances": 50.0,
+      },
+      "DADRA AND NAGAR HAVELI AND DAMAN AND DIU": {
+        "Revenue Expenditure": 1710.0,
+        "Capital Expenditure": 1077.14,
+        "Loans and advances": 0.0,
+      },
+      LADAKH: {
+        "Revenue Expenditure": 2450.0,
+        "Capital Expenditure": 2601.2,
+        "Loans and advances": 0.0,
+      },
+      LAKSHADWEEP: {
+        "Revenue Expenditure": 1296.04,
+        "Capital Expenditure": 290.11,
+        "Loans and advances": 0.01,
+      },
     },
   },
 };
