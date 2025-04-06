@@ -1290,7 +1290,99 @@ export const dataset4: Dataset4 = {
 				"Other Industries": 1644.47,
 				"Other Industries and Minerals": 500.0,
 			},
-			"Capital Account of Transport": 514475.22,
+			"Capital Account of Transport": {
+				"Indian Railways Commercial Lines": 242537.91,
+				"Indian Railways Strategic Lines": 110.55,
+				"Ports and Light Houses": 122.1,
+				Shipping: 13.72,
+				"Civil Aviation": 741.31,
+				"Roads and Bridges": 269865.27,
+				"Road Transport": 30.0,
+				"Inland Water Transport": 1010.5,
+				"Other Transport Services": 43.86,
+			},
+			"Capital Account of Communications": {
+				"Postal Services": 1136.89,
+				"Other Communication Services": 59380.18,
+			},
+			"Capital Account of Science Technology and Environment": {
+				"Atomic Energy Research": 2616.44,
+				"Space Research": 4396.75,
+				"Oceanographic Research": 55.23,
+				"Other Scientific and Environmental Research": 88.67,
+			},
+			"Capital Account of General Economic Services": {
+				Tourism: null, // Value missing in the image for this column
+				"Foreign Trade and Export Promotion": 2.61,
+				Meteorology: 93.1,
+				"Investments in General Financial and Trading Institutions": 11958.48,
+				"Investments in International Financial Institutions": 7309.77,
+				"Other General Economic Services": 380.22,
+			},
+		},
+		"Disbursements of Union Territories without Legislature": 4070.71,
+		"PUBLIC DEBT": {
+			"Internal Debt of Central Government": {
+				"Market Loans": 543639.77,
+				"Buyback / Switching": 180247.88,
+				"14 days Treasury Bills": 4785271.93,
+				"91 days Treasury Bills": 624263.82,
+				"182 days Treasury Bills": 555209.29,
+				"364 days Treasury Bills": 445283.5,
+				"Cash Management Bills": null, // Value missing in the image for this column
+				"Ways and Means Advances": 199313.0,
+				"Redemption of securities issued to International Financial Institutions": 3294.79,
+				"Compensation and Other Bonds": 23054.88,
+				"Redemption of Securities issued to NSSF": 232737.58,
+				"Postal Life Insurance Fund": null, // Value missing in the image for this column
+				"Gold Monetization Scheme": 27.01,
+				"Sovereign Gold Bond Scheme": 3080.17,
+			},
+			"External Debt": 47317.13,
+		},
+		"LOANS AND ADVANCES": {
+			"LOANS FOR SOCIAL SERVICES": {
+				"Loans for Urban Development": 18520.0,
+			},
+			"LOANS FOR ECONOMIC SERVICES": {
+				"Loans for Agriculture and allied activities": {
+					"Loans for Dairy Development": 157.31,
+					"Loans for Food, Storage and Warehousing": 22805.0,
+					"Loans to Agricultural Financial Institutions": 55.47,
+				},
+				"Loans for Energy": {
+					"Loans for Power Projects": 6564.0,
+				},
+				"Loans for Industry and Minerals": {
+					"Loans for Village and Small Industries": 2.0,
+					"Loans for Iron and Steel Industries": null,
+					"Loans for Cement and Non-Metallic Mineral Industries": null,
+					"Loans for Fertilizer Industries": null,
+					"Loans for Chemical and Pharmaceutical Industries": 399.18,
+					"Loans for Engineering Industries": null,
+					"Loans for Telecommunication and Electronic Industries": null,
+					"Loans for Consumer Industries": null,
+					"Other Loans to Industries and Minerals": 60.0,
+				},
+				"Loans for Transport": {
+					"Loans for Ports and Light Houses": null,
+				},
+				"Loans for Science Technology and Environment": {
+					"Loans for Other Scientific Research": null,
+				},
+				"Loans for General Economic Services": {
+					"Loans to General Financial and Trading Institutions": 34.46,
+					"Loans for Other General Economic Services": null,
+				},
+			},
+			"OTHER LOANS": {
+				"Loans and Advances to State Governments": 140863.34,
+				"Loans and Advances to Union Territory Governments": null,
+				"Advances to Foreign Governments": 1611.99,
+				"Loans to Government Servants, etc.": 178.14,
+				"Miscellaneous Loans": 2.69,
+				"Loans and Advances for Union Territories without Legislature": 56.09,
+			},
 		},
 	},
 	"Budget Estimates 2024-2025": {
@@ -1356,7 +1448,99 @@ export const dataset4: Dataset4 = {
 				"Other Industries": 1388.65,
 				"Other Industries and Minerals": 0.02,
 			},
-			"Capital Account of Transport": 511649.78,
+			"Capital Account of Transport": {
+				"Indian Railways Commercial Lines": 251893.08,
+				"Indian Railways Strategic Lines": 106.92,
+				"Ports and Light Houses": 40.01,
+				Shipping: 27.26,
+				"Civil Aviation": 95.05,
+				"Roads and Bridges": 258720.24,
+				"Road Transport": 30.0,
+				"Inland Water Transport": 690.0,
+				"Other Transport Services": 47.22,
+			},
+			"Capital Account of Communications": {
+				"Postal Services": 913.45,
+				"Other Communication Services": 83478.26,
+			},
+			"Capital Account of Science Technology and Environment": {
+				"Atomic Energy Research": 1460.15,
+				"Space Research": 5567.53,
+				"Oceanographic Research": 280.0,
+				"Other Scientific and Environmental Research": 120.24,
+			},
+			"Capital Account of General Economic Services": {
+				Tourism: 1.77,
+				"Foreign Trade and Export Promotion": 2.94,
+				Meteorology: 276.2,
+				"Investments in General Financial and Trading Institutions": 3250.03,
+				"Investments in International Financial Institutions": 1406.51,
+				"Other General Economic Services": 63318.1,
+			},
+		},
+		"Disbursements of Union Territories without Legislature": 5372.99,
+		"PUBLIC DEBT": {
+			"Internal Debt of Central Government": {
+				"Market Loans": 207570.36,
+				"Buyback / Switching": null, // Value missing in the image for this column
+				"14 days Treasury Bills": 5455210.0,
+				"91 days Treasury Bills": 588999.83,
+				"182 days Treasury Bills": 457139.91,
+				"364 days Treasury Bills": 457486.99,
+				"Cash Management Bills": 20000.0,
+				"Ways and Means Advances": 50000.0,
+				"Redemption of securities issued to International Financial Institutions": 7815.94,
+				"Compensation and Other Bonds": 4459.56,
+				"Redemption of Securities issued to NSSF": 342515.96,
+				"Postal Life Insurance Fund": null, // Value missing in the image for this column
+				"Gold Monetization Scheme": 97.0,
+				"Sovereign Gold Bond Scheme": 3500.0,
+			},
+			"External Debt": 55910.4,
+		},
+		"LOANS AND ADVANCES": {
+			"LOANS FOR SOCIAL SERVICES": {
+				"Loans for Urban Development": 21421.43,
+			},
+			"LOANS FOR ECONOMIC SERVICES": {
+				"Loans for Agriculture and allied activities": {
+					"Loans for Dairy Development": 151.0,
+					"Loans for Food, Storage and Warehousing": 50000.0,
+					"Loans to Agricultural Financial Institutions": 58.1,
+				},
+				"Loans for Energy": {
+					"Loans for Power Projects": 6787.68,
+				},
+				"Loans for Industry and Minerals": {
+					"Loans for Village and Small Industries": 2.5,
+					"Loans for Iron and Steel Industries": null,
+					"Loans for Cement and Non-Metallic Mineral Industries": 0.01,
+					"Loans for Fertilizer Industries": 0.05,
+					"Loans for Chemical and Pharmaceutical Industries": 120.12,
+					"Loans for Engineering Industries": 0.08,
+					"Loans for Telecommunication and Electronic Industries": null,
+					"Loans for Consumer Industries": 0.04,
+					"Other Loans to Industries and Minerals": 120.0,
+				},
+				"Loans for Transport": {
+					"Loans for Ports and Light Houses": null,
+				},
+				"Loans for Science Technology and Environment": {
+					"Loans for Other Scientific Research": 0.6,
+				},
+				"Loans for General Economic Services": {
+					"Loans to General Financial and Trading Institutions": 35.96,
+					"Loans for Other General Economic Services": 0.01,
+				},
+			},
+			"OTHER LOANS": {
+				"Loans and Advances to State Governments": 184003.0,
+				"Loans and Advances to Union Territory Governments": 200.01,
+				"Advances to Foreign Governments": 989.7,
+				"Loans to Government Servants, etc.": 225.0,
+				"Miscellaneous Loans": 3.0,
+				"Loans and Advances for Union Territories without Legislature": 38.41,
+			},
 		},
 	},
 	"Revised Estimates 2024-2025": {
@@ -1422,7 +1606,99 @@ export const dataset4: Dataset4 = {
 				"Other Industries": 1386.59,
 				"Other Industries and Minerals": 500.0,
 			},
-			"Capital Account of Transport": 512183.46,
+			"Capital Account of Transport": {
+				"Indian Railways Commercial Lines": 252337.84,
+				"Indian Railways Strategic Lines": 39.46,
+				"Ports and Light Houses": 40.01,
+				Shipping: 38.12,
+				"Civil Aviation": 88.05,
+				"Roads and Bridges": 258853.05,
+				"Road Transport": 30.0,
+				"Inland Water Transport": 707.61,
+				"Other Transport Services": 49.32,
+			},
+			"Capital Account of Communications": {
+				"Postal Services": 893.88,
+				"Other Communication Services": 74154.69,
+			},
+			"Capital Account of Science Technology and Environment": {
+				"Atomic Energy Research": 1408.07,
+				"Space Research": 4728.37,
+				"Oceanographic Research": 135.0,
+				"Other Scientific and Environmental Research": 126.39,
+			},
+			"Capital Account of General Economic Services": {
+				Tourism: 4.49,
+				"Foreign Trade and Export Promotion": 2.99,
+				Meteorology: 1029.6,
+				"Investments in General Financial and Trading Institutions": 3310.0,
+				"Investments in International Financial Institutions": 1539.22,
+				"Other General Economic Services": 9815.07,
+			},
+		},
+		"Disbursements of Union Territories without Legislature": 4570.91,
+		"PUBLIC DEBT": {
+			"Internal Debt of Central Government": {
+				"Market Loans": 361422.24,
+				"Buyback / Switching": 235158.64,
+				"14 days Treasury Bills": 5750288.24,
+				"91 days Treasury Bills": 687745.05,
+				"182 days Treasury Bills": 446683.21,
+				"364 days Treasury Bills": 457486.99,
+				"Cash Management Bills": null, // Value missing in the image for this column
+				"Ways and Means Advances": 55000.0,
+				"Redemption of securities issued to International Financial Institutions": 7785.54,
+				"Compensation and Other Bonds": 1654.31,
+				"Redemption of Securities issued to NSSF": 340484.61,
+				"Postal Life Insurance Fund": null, // Value missing in the image for this column
+				"Gold Monetization Scheme": 132.08,
+				"Sovereign Gold Bond Scheme": 8031.9,
+			},
+			"External Debt": 55685.2,
+		},
+		"LOANS AND ADVANCES": {
+			"LOANS FOR SOCIAL SERVICES": {
+				"Loans for Urban Development": 22093.0,
+			},
+			"LOANS FOR ECONOMIC SERVICES": {
+				"Loans for Agriculture and allied activities": {
+					"Loans for Dairy Development": 151.0,
+					"Loans for Food, Storage and Warehousing": 50000.0,
+					"Loans to Agricultural Financial Institutions": 58.1,
+				},
+				"Loans for Energy": {
+					"Loans for Power Projects": 6198.68,
+				},
+				"Loans for Industry and Minerals": {
+					"Loans for Village and Small Industries": null,
+					"Loans for Iron and Steel Industries": 1140.0,
+					"Loans for Cement and Non-Metallic Mineral Industries": 0.01,
+					"Loans for Fertilizer Industries": null,
+					"Loans for Chemical and Pharmaceutical Industries": 159.12,
+					"Loans for Engineering Industries": 0.08,
+					"Loans for Telecommunication and Electronic Industries": null,
+					"Loans for Consumer Industries": 0.04,
+					"Other Loans to Industries and Minerals": 70.01,
+				},
+				"Loans for Transport": {
+					"Loans for Ports and Light Houses": 146.72,
+				},
+				"Loans for Science Technology and Environment": {
+					"Loans for Other Scientific Research": 0.91,
+				},
+				"Loans for General Economic Services": {
+					"Loans to General Financial and Trading Institutions": 31.45,
+					"Loans for Other General Economic Services": 0.01,
+				},
+			},
+			"OTHER LOANS": {
+				"Loans and Advances to State Governments": 159512.0,
+				"Loans and Advances to Union Territory Governments": 280.01,
+				"Advances to Foreign Governments": 869.7,
+				"Loans to Government Servants, etc.": 225.0,
+				"Miscellaneous Loans": 2.8,
+				"Loans and Advances for Union Territories without Legislature": 38.41,
+			},
 		},
 	},
 	"Budget Estimates 2025-2026": {
@@ -1488,7 +1764,99 @@ export const dataset4: Dataset4 = {
 				"Other Industries": 5688.47,
 				"Other Industries and Minerals": 0.01,
 			},
-			"Capital Account of Transport": 512582.76,
+			"Capital Account of Transport": {
+				"Indian Railways Commercial Lines": 251950.81,
+				"Indian Railways Strategic Lines": 49.19,
+				"Ports and Light Houses": 56.0,
+				Shipping: 27.5,
+				"Civil Aviation": 45.0,
+				"Roads and Bridges": 259117.56,
+				"Road Transport": 30.0,
+				"Inland Water Transport": 1254.81,
+				"Other Transport Services": 51.89,
+			},
+			"Capital Account of Communications": {
+				"Postal Services": 859.89,
+				"Other Communication Services": 49333.62,
+			},
+			"Capital Account of Science Technology and Environment": {
+				"Atomic Energy Research": 1490.81,
+				"Space Research": 6103.63,
+				"Oceanographic Research": 339.6,
+				"Other Scientific and Environmental Research": 189.86,
+			},
+			"Capital Account of General Economic Services": {
+				Tourism: 6.13,
+				"Foreign Trade and Export Promotion": 3.0,
+				Meteorology: 535.47,
+				"Investments in General Financial and Trading Institutions": 4500.02,
+				"Investments in International Financial Institutions": 61291.71,
+				"Other General Economic Services": 42409.92,
+			},
+		},
+		"Disbursements of Union Territories without Legislature": 4747.65,
+		"PUBLIC DEBT": {
+			"Internal Debt of Central Government": {
+				"Market Loans": 395666.06,
+				"Buyback / Switching": 250000.0,
+				"14 days Treasury Bills": 6030452.65,
+				"91 days Treasury Bills": 606191.25,
+				"182 days Treasury Bills": 484082.34,
+				"364 days Treasury Bills": 360809.92,
+				"Cash Management Bills": 50000.0,
+				"Ways and Means Advances": 500000.0,
+				"Redemption of securities issued to International Financial Institutions": 7776.91,
+				"Compensation and Other Bonds": 3115.92,
+				"Redemption of Securities issued to NSSF": 279509.04,
+				"Postal Life Insurance Fund": null, // Value missing in the image for this column
+				"Gold Monetization Scheme": 145.28,
+				"Sovereign Gold Bond Scheme": 5510.34,
+			},
+			"External Debt": 65388.45,
+		},
+		"LOANS AND ADVANCES": {
+			"LOANS FOR SOCIAL SERVICES": {
+				"Loans for Urban Development": 28604.87,
+			},
+			"LOANS FOR ECONOMIC SERVICES": {
+				"Loans for Agriculture and allied activities": {
+					"Loans for Dairy Development": 475.45,
+					"Loans for Food, Storage and Warehousing": 50000.0,
+					"Loans to Agricultural Financial Institutions": null,
+				},
+				"Loans for Energy": {
+					"Loans for Power Projects": 4670.0,
+				},
+				"Loans for Industry and Minerals": {
+					"Loans for Village and Small Industries": null,
+					"Loans for Iron and Steel Industries": null,
+					"Loans for Cement and Non-Metallic Mineral Industries": 0.01,
+					"Loans for Fertilizer Industries": null,
+					"Loans for Chemical and Pharmaceutical Industries": 0.06,
+					"Loans for Engineering Industries": 500.08,
+					"Loans for Telecommunication and Electronic Industries": null,
+					"Loans for Consumer Industries": 0.04,
+					"Other Loans to Industries and Minerals": 80.01,
+				},
+				"Loans for Transport": {
+					"Loans for Ports and Light Houses": null,
+				},
+				"Loans for Science Technology and Environment": {
+					"Loans for Other Scientific Research": 20000.91,
+				},
+				"Loans for General Economic Services": {
+					"Loans to General Financial and Trading Institutions": 31.46,
+					"Loans for Other General Economic Services": 0.01,
+				},
+			},
+			"OTHER LOANS": {
+				"Loans and Advances to State Governments": 192833.0,
+				"Loans and Advances to Union Territory Governments": 380.01,
+				"Advances to Foreign Governments": 375.0,
+				"Loans to Government Servants, etc.": 225.0,
+				"Miscellaneous Loans": 3.1,
+				"Loans and Advances for Union Territories without Legislature": 50.01,
+			},
 		},
 	},
 };
