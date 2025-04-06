@@ -7,7 +7,7 @@
     "build": "next build",
     "postbuild": "bun run next-sitemap",
     "start": "bunx serve@latest out",
-    "lint": "bunx biome check ./components --fix",
+    "lint": "bunx biome check ./components ./pages --fix",
     "meta": "bunx check-site-meta",
     "bundlestats": "ANALYZE=true bun run build",
     "outdated": "bunx npm-check-updates --interactive"

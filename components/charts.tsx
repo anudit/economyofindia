@@ -56,6 +56,7 @@ export default function CustomChart({
 				data={header.concat(data)}
 				options={{
 					backgroundColor: "transparent",
+					fontColor: "black",
 					legend: {
 						position: data.length > 5 ? "right" : "bottom",
 						alignment: "center",

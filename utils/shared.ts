@@ -97,6 +97,7 @@ export const numFormat = (
 export type DataItemValue = number | null;
 export type SimpleDataset = { [key: string]: DataItemValue };
 export type DatasetMetadata = {
+  id: string;
   title: string;
   titleShort: string;
   fileName: string;
@@ -105,6 +106,7 @@ export type DatasetMetadata = {
   ipfsHash: string;
   sha256: string;
   md5: string;
+  api: string;
 };
 
 export const chartDataFormat = (

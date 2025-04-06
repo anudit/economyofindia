@@ -3,6 +3,14 @@ import {
 	Flex,
 	Heading,
 	IconButton,
+	Menu,
+	MenuButton,
+	MenuDivider,
+	MenuGroup,
+	MenuItem,
+	MenuItemOption,
+	MenuList,
+	MenuOptionGroup,
 	Modal,
 	ModalBody,
 	ModalCloseButton,
@@ -14,7 +22,14 @@ import {
 	useBreakpointValue,
 	useDisclosure,
 } from "@chakra-ui/react";
-import { ExternalLink, InfoIcon } from "lucide-react";
+import {
+	CodeIcon,
+	ExternalLink,
+	ExternalLinkIcon,
+	InfoIcon,
+	MenuIcon,
+	PlusIcon,
+} from "lucide-react";
 import Link from "next/link";
 
 import {
@@ -86,47 +101,68 @@ export default function TopBar({
 			</Heading>
 
 			<Stack direction="row">
-				<Select
-					disabled={usdInrRate == null}
-					defaultValue={0}
-					borderRadius="md"
-					onChange={(e) => {
-						setActiveCurrency(
-							Array.from(supportedCurrencies.keys())[
-								e.currentTarget.selectedIndex
-							],
-						);
-					}}
-					w="95px"
-					size="sm"
-				>
-					{Array.from(supportedCurrencies.keys()).map((k, ind) => (
-						<option value={k} key={ind} defaultChecked={ind === 0}>
-							{supportedCurrencies.get(k)?.flag}{" "}
-							{supportedCurrencies.get(k)?.currency}{" "}
-							{ind == 1 && usdInrRate
-								? `(₹${usdInrRate.toFixed(2) || "..."})`
-								: ""}
-						</option>
-					))}
-				</Select>
-				<ButtonGroup isAttached size="sm">
-					<Link href={metadata.sourceFile} target="_blank" passHref>
-						<IconButton
-							icon={<ExternalLink height="12px" width="12px" />}
-							variant="outline"
-							aria-label="View Source File"
-							display="flex"
-						/>
-					</Link>
-					<IconButton
-						icon={<InfoIcon height="16px" width="16px" />}
-						onClick={onOpen}
+				<Menu>
+					<MenuButton
+						as={IconButton}
+						aria-label="Options"
+						icon={<MenuIcon height="16px" width="16px" />}
 						variant="outline"
-						aria-label="View Source File"
-						display="flex"
+						size="sm"
 					/>
-				</ButtonGroup>
+					<MenuList>
+						<MenuOptionGroup
+							defaultValue="asc"
+							title="Currency"
+							type="radio"
+							onChange={(e) => {
+								setActiveCurrency(
+									Array.from(supportedCurrencies.keys())[
+										Number.parseInt(e as string)
+									],
+								);
+							}}
+						>
+							{Array.from(supportedCurrencies.keys()).map((k, ind) => (
+								<MenuItemOption
+									value={k.toString()}
+									key={ind}
+									defaultChecked={ind === 0}
+								>
+									{supportedCurrencies.get(k)?.flag}{" "}
+									{supportedCurrencies.get(k)?.currency}{" "}
+									{ind == 1 && usdInrRate
+										? `(₹${usdInrRate.toFixed(2) || "..."})`
+										: ""}
+								</MenuItemOption>
+							))}
+						</MenuOptionGroup>
+
+						<MenuItem
+							icon={<ExternalLink height="16px" width="16px" />}
+							onClick={() => {
+								window.open(metadata.sourceFile, "_blank");
+							}}
+						>
+							View Source File
+						</MenuItem>
+						<MenuItem
+							icon={<CodeIcon height="16px" width="16px" />}
+							onClick={() => {
+								window.open(metadata.api, "_blank");
+							}}
+						>
+							API
+						</MenuItem>
+						<MenuItem
+							icon={<InfoIcon height="16px" width="16px" />}
+							onClick={onOpen}
+						>
+							<Link href={metadata.sourceFile} target="_blank" passHref>
+								Details
+							</Link>
+						</MenuItem>
+					</MenuList>
+				</Menu>
 			</Stack>
 		</Flex>
 	);

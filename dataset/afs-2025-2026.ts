@@ -1,6 +1,7 @@
 import { Dataset4, DatasetMetadata } from "@/utils/shared";
 
 export const metadata: DatasetMetadata = {
+  id: "afs_2025_26",
   title: "ANNUAL FINANCIAL STATEMENT OF THE CENTRAL GOVERNMENT FOR 2025-2026",
   titleShort: "AFS CG 25-26",
   fileName: "afs_2025_26.pdf",
@@ -9,6 +10,7 @@ export const metadata: DatasetMetadata = {
   ipfsHash: "bafybeibngqfz5n7cxeze2klrw6bblxqwd3ptoqa5y5zl54lcxwiplgd5em",
   md5: "8b7ca6d0db4fa1ff49c0dc63d9ee6e07",
   sha256: "e554c5683d8f9a7e97b10052f5e7b4b02278e68c9fe8dcef3b5e0c1b400012bd",
+  api: "https://economyofindia.com/api/dataset/afs_2025_26",
 };
 
 export const dataset: Dataset4 = {
@@ -2198,3 +2200,15 @@ export const dataset9: Dataset4 = {
     },
   },
 };
+
+export const datasetComplete = [
+  dataset,
+  dataset2,
+  dataset3,
+  dataset4,
+  dataset5,
+  dataset6,
+  dataset7,
+  dataset8,
+  dataset9,
+];
