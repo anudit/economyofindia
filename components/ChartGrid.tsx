@@ -26,8 +26,8 @@ export default function ChartGrid({
 			{Object.entries(dataset).map(([level2Key, level2Val]) => {
 				if (
 					level2Val != null &&
-					typeof level2Val == "object" &&
-					typeof Object.values(level2Val)[0] == "number"
+					typeof level2Val === "object" &&
+					typeof Object.values(level2Val)[0] === "number"
 				) {
 					return (
 						<ChartCard
@@ -35,19 +35,19 @@ export default function ChartGrid({
 							data={chartDataFormat(level2Val as SimpleDataset)}
 							title={level2Key}
 							key={level2Key}
-							route={`${section != undefined ? titleCase(section) + " > " : ""}${titleCase(level2Key)}`}
+							route={`${section !== undefined ? `${titleCase(section)} > ` : ""}${titleCase(level2Key)}`}
 						/>
 					);
 				} else if (
 					level2Val != null &&
-					typeof level2Val == "object" &&
-					typeof Object.values(level2Val)[0] == "object"
+					typeof level2Val === "object" &&
+					typeof Object.values(level2Val)[0] === "object"
 				) {
 					return Object.entries(level2Val).map(([level3Key, level3Val]) => {
 						if (
 							level3Val != null &&
-							typeof level3Val == "object" &&
-							(typeof Object.values(level3Val)[0] != "object" ||
+							typeof level3Val === "object" &&
+							(typeof Object.values(level3Val)[0] !== "object" ||
 								Object.values(level3Val)[0] == null)
 						) {
 							return (
@@ -56,17 +56,17 @@ export default function ChartGrid({
 									data={chartDataFormat(level3Val as SimpleDataset)}
 									title={level3Key}
 									key={level3Key}
-									route={`${section != undefined ? titleCase(section) + " > " : ""}${titleCase(level2Key)}`}
+									route={`${section !== undefined ? `${titleCase(section)} > ` : ""}${titleCase(level2Key)}`}
 								/>
 							);
 						} else if (
 							level3Val != null &&
-							typeof level3Val == "object" &&
-							typeof Object.values(level3Val)[0] == "object" &&
+							typeof level3Val === "object" &&
+							typeof Object.values(level3Val)[0] === "object" &&
 							Object.values(level3Val)[0] != null
 						) {
 							return Object.entries(level3Val).map(([level4Key, level4Val]) => {
-								if (level4Val != null && typeof level4Val == "object") {
+								if (level4Val != null && typeof level4Val === "object") {
 									return (
 										<ChartCard
 											palette={palette}
@@ -77,16 +77,16 @@ export default function ChartGrid({
 											)}
 											title={level4Key}
 											key={level4Key}
-											route={`${section != undefined ? titleCase(section) + " > " : ""}${titleCase(level2Key)} > ${titleCase(level3Key)}`}
+											route={`${section !== undefined ? `${titleCase(section)} > ` : ""}${titleCase(level2Key)} > ${titleCase(level3Key)}`}
 										/>
 									);
-								} else if (typeof level4Val == "number") {
+								} else if (typeof level4Val === "number") {
 									return (
 										<StatCard
 											stat={level4Val * CRORE}
 											title={level4Key}
 											key={level4Key}
-											route={`${section != undefined ? titleCase(section) + " > " : ""}${titleCase(level2Key)} > ${titleCase(level3Key)} > ${titleCase(level4Key)}`}
+											route={`${section !== undefined ? `${titleCase(section)} > ` : ""}${titleCase(level2Key)} > ${titleCase(level3Key)} > ${titleCase(level4Key)}`}
 											palette={palette}
 										/>
 									);
@@ -94,13 +94,13 @@ export default function ChartGrid({
 									return null;
 								}
 							});
-						} else if (typeof level3Val == "number") {
+						} else if (typeof level3Val === "number") {
 							return (
 								<StatCard
 									stat={level3Val * CRORE}
 									title={level3Key}
 									key={level3Key}
-									route={`${section != undefined ? titleCase(section) + " > " : ""}${titleCase(level2Key)} > ${titleCase(level3Key)}`}
+									route={`${section !== undefined ? `${titleCase(section)} > ` : ""}${titleCase(level2Key)} > ${titleCase(level3Key)}`}
 									palette={palette}
 								/>
 							);
@@ -108,13 +108,13 @@ export default function ChartGrid({
 							return null;
 						}
 					});
-				} else if (level2Val != null && typeof level2Val == "number") {
+				} else if (level2Val != null && typeof level2Val === "number") {
 					return (
 						<StatCard
 							stat={level2Val * CRORE}
 							title={level2Key}
 							key={level2Key}
-							route={`${section != undefined ? titleCase(section) : ""}`}
+							route={`${section !== undefined ? titleCase(section) : ""}`}
 							palette={palette}
 						/>
 					);

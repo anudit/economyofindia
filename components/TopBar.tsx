@@ -130,7 +130,7 @@ export default function TopBar({
 								>
 									{supportedCurrencies.get(k)?.flag}{" "}
 									{supportedCurrencies.get(k)?.currency}{" "}
-									{ind == 1 && usdInrRate
+									{ind === 1 && usdInrRate
 										? `(₹${usdInrRate.toFixed(2) || "..."})`
 										: ""}
 								</MenuItemOption>

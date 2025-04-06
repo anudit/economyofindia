@@ -31,7 +31,7 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 		);
 		const resp = (await req.json()) as { rates: { EUR: number; USD: number } };
 		if (Object.keys(resp).includes("rates")) {
-			setUsdInrRate(1 / resp["rates"]["USD"]);
+			setUsdInrRate(1 / resp.rates.USD);
 		} else {
 			console.log("Unable to fetch live USDINR rate.");
 			setUsdInrRate(85.56);

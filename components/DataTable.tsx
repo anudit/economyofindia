@@ -144,7 +144,8 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
 
 		return (
 			<Flex
-				role="row"
+				as="tr"
+				// role="row"
 				key={index}
 				style={style}
 				px={4}
@@ -161,7 +162,9 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
 					const cellContent = String(row[col]);
 					return (
 						<Box
-							role="cell"
+							as="td"
+							key={colIdx}
+							// role="cell"
 							flex="1"
 							pr={2}
 							whiteSpace="nowrap"
@@ -231,7 +234,8 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
 
 			{paginatedData.length > 0 && mounted ? (
 				<Box
-					role="table"
+					as="table"
+					// role="table"
 					height={Math.min(pageSize, paginatedData.length) * ROW_HEIGHT}
 					overflowY="auto"
 					width="100%"
@@ -250,14 +254,20 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
 				</Box>
 			) : (
 				<Flex
-					role="row"
+					as="tr"
+					// role="row"
 					height="40px"
 					align="center"
 					justify="center"
 					border="1px solid"
 					borderColor="gray.100"
 				>
-					<Text role="cell">No records found.</Text>
+					<Text
+						// role="cell"
+						as="td"
+					>
+						No records found.
+					</Text>
 				</Flex>
 			)}
 

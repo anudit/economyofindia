@@ -1,10 +1,16 @@
-import { pipeline } from "stream";
-import { Readable } from "stream";
-import { promisify } from "util";
-import { createGzip } from "zlib";
+import { pipeline } from "node:stream";
+import { Readable } from "node:stream";
+import { promisify } from "node:util";
+import { createGzip } from "node:zlib";
 import { completeMetadata } from "@/dataset";
 import { datasetComplete as datasetComplete1 } from "@/dataset/afs-2025-2026";
 import { dataset as datasetComplete2 } from "@/dataset/receipt-heads";
+import type {
+	Dataset3,
+	Dataset4,
+	DatasetMetadata,
+	DatasetTable,
+} from "@/utils/shared";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 const pipe = promisify(pipeline);
@@ -13,9 +19,22 @@ type ErrorResponse = {
 	error: string;
 };
 
+type Response =
+	| false
+	| {
+			metadata: DatasetMetadata;
+			dataset:
+				| false
+				| DatasetTable
+				| Dataset4
+				| Dataset3
+				| Dataset4[]
+				| Dataset3[];
+	  };
+
 export default async function handler(
 	req: NextApiRequest,
-	res: NextApiResponse<any | ErrorResponse>,
+	res: NextApiResponse<Response | ErrorResponse>,
 ): Promise<void> {
 	if (req.method !== "GET") {
 		res.status(405).json({ error: "Method not allowed" });
@@ -35,11 +54,13 @@ export default async function handler(
 		const all_ids = completeMetadata.map((e) => e.id);
 
 		if (all_ids.includes(id.toLowerCase())) {
-			let dataset: any = false;
-			if (id == "afs_2025_26") {
+			let dataset: Response;
+			if (id === "afs_2025_26") {
 				dataset = { metadata: completeMetadata[0], dataset: datasetComplete1 };
-			} else if (id == "receipt_heads") {
+			} else if (id === "receipt_heads") {
 				dataset = { metadata: completeMetadata[1], dataset: datasetComplete2 };
+			} else {
+				dataset = false;
 			}
 
 			res.setHeader("Cache-Control", "public, max-age=31536000, immutable");

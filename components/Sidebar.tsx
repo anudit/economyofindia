@@ -116,9 +116,6 @@ const fuzzySearch = (
 	// Early return if query is empty
 	if (!query) return [];
 
-	// Normalize query
-	query = query.toLowerCase();
-
 	// Process each item
 	const results = preparedData.map(({ item, searchableFields }) => {
 		// Quick check for exact matches (optimization)
@@ -172,6 +169,7 @@ const SidebarItem = ({
 					align="center"
 					p={2}
 					borderRadius="lg"
+					// biome-ignore lint: no
 					role="group"
 					cursor="pointer"
 					_hover={{
@@ -234,7 +232,7 @@ export const Sidebar = () => {
 		}
 
 		// Fall back to fuzzy search
-		const results = fuzzySearch(query, preparedData, 0.4);
+		const results = fuzzySearch(query.toLowerCase(), preparedData, 0.4);
 
 		const matchedFiles: SidebarDisplayItem[] = results.map(({ item }) => ({
 			fileName: item.fileName,

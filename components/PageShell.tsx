@@ -25,8 +25,8 @@ export default function PageShell({
 				<link rel="icon" href="/rupee.svg" />
 			</Head>
 			<NextSeo
-				title={titleCase(metadata.title) + " - EconomyOfIndia.com"}
-				description={titleCase(metadata.title) + " - EconomyOfIndia.com"}
+				title={`${titleCase(metadata.title)} - EconomyOfIndia.com`}
+				description={`${titleCase(metadata.title)} - EconomyOfIndia.com`}
 				canonical={`https://economyofindia.com${metadata.localLink}`}
 				openGraph={{
 					url: `https://economyofindia.com${metadata.localLink}`,

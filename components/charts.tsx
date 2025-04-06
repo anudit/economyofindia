@@ -68,7 +68,7 @@ export default function CustomChart({
 							showColorCode: true,
 						},
 						// chartArea: { width: "80%", height: "80%" },
-						colors: palette == "green" ? COLORS : RED_COLORS,
+						colors: palette === "green" ? COLORS : RED_COLORS,
 						sliceVisibilityThreshold: 0.001,
 						pieSliceBorderColor: "transparent",
 						fontName: mainFontFamily,
