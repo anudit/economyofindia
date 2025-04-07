@@ -1,7 +1,7 @@
+import { PieChart } from "@/components/Charts";
 import { SupportedCurrencies } from "@/utils/shared";
 import { Flex, GridItem, Heading } from "@chakra-ui/react";
 import { ChartPie } from "lucide-react";
-import { PieChart } from "./Charts";
 import { useSharedContext } from "./SharedContext";
 
 export default function ChartCard({
