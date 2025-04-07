@@ -1,7 +1,7 @@
-import CustomChart from "@/components/charts";
 import { SupportedCurrencies } from "@/utils/shared";
 import { Flex, GridItem, Heading } from "@chakra-ui/react";
 import { ChartPie } from "lucide-react";
+import { PieChart } from "./Charts";
 import { useSharedContext } from "./SharedContext";
 
 export default function ChartCard({
@@ -79,7 +79,7 @@ export default function ChartCard({
 					{title}
 				</Heading>
 
-				<CustomChart
+				<PieChart
 					data={data.map(([k, v]) => [
 						k,
 						activeCurrency === SupportedCurrencies.USD

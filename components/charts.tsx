@@ -2,25 +2,25 @@ import { Heading } from "@chakra-ui/react";
 import { Chart } from "react-google-charts";
 
 import { useMounted } from "@/components/useMounted";
-import { mainFontFamily } from "@/styles/theme";
+import { mainFont, mainFontFamily } from "@/styles/theme";
 import {
 	COLORS,
+	CRORE,
 	RED_COLORS,
-	SupportedCurrencies,
 	numFormat,
 	supportedCurrencies,
 } from "@/utils/shared";
 import { useSharedContext } from "./SharedContext";
 
-const header: Array<Array<string | number>> = [["Pizza", "Popularity"]];
+const header: Array<Array<string | number>> = [["Columnn1", "Columnn2"]];
 
-export default function CustomChart({
+const PieChart = ({
 	data,
 	palette = "green",
 }: {
 	data: Array<Array<string | number>>;
 	palette?: "green" | "red";
-}) {
+}) => {
 	const mounted = useMounted();
 	const { activeCurrency } = useSharedContext();
 
@@ -91,4 +91,63 @@ export default function CustomChart({
 			</div>
 		</>
 	);
-}
+};
+
+export type SankeyDataRow = [string, string, number];
+
+export type SankeyDataWithHeader = [
+	["From", "To", "Weight"],
+	...SankeyDataRow[],
+];
+
+const Sankey = ({ data }: { data: SankeyDataWithHeader }) => {
+	const mounted = useMounted();
+	const { activeCurrency } = useSharedContext();
+
+	if (!mounted) {
+		return null;
+	}
+
+	return (
+		<Chart
+			chartType="Sankey"
+			height="4000px"
+			width="2000px"
+			data={data.map((e, ix) => {
+				if (ix === 0) {
+					return ["From", "To", "Weight", { role: "tooltip", type: "string" }];
+				} else {
+					const valueCol = 2;
+					const tooltip = `${numFormat(
+						(e[valueCol] as number) * CRORE,
+						activeCurrency,
+						true,
+						false,
+					)}`;
+					return [...e, tooltip];
+				}
+			})}
+			options={{
+				sankey: {
+					iterations: 64,
+					node: {
+						nodePadding: 30,
+						label: {
+							fontName: mainFont,
+							fontSize: 12,
+							color: "#ffffff",
+							bold: true,
+							italic: false,
+						},
+					},
+					interactivity: true,
+
+					link: { colorMode: "gradient" },
+				},
+				tooltip: { showColorCode: true },
+			}}
+		/>
+	);
+};
+
+export { PieChart, Sankey };

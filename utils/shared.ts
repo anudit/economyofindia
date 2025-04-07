@@ -65,7 +65,7 @@ export const numFormat = (
 	activeCurrency: SupportedCurrencies,
 	short = false,
 	disableConvert = false,
-): string | null => {
+): string => {
 	if (activeCurrency === SupportedCurrencies.INR) {
 		if (short) {
 			if (num >= CRORE) {
@@ -134,4 +134,12 @@ export function titleCase(s: string) {
 		.split(" ")
 		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
 		.join(" ");
+}
+
+export function sum(arr: number[]) {
+	let res = 0;
+	for (const x of arr) {
+		res += x;
+	}
+	return res;
 }

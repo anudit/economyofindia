@@ -4,7 +4,9 @@ import { promisify } from "node:util";
 import { createGzip } from "node:zlib";
 import { completeMetadata } from "@/dataset";
 import { datasetComplete as datasetComplete1 } from "@/dataset/afs-2025-2026";
+import { completeData as datasetComplete3 } from "@/dataset/import-export";
 import { dataset as datasetComplete2 } from "@/dataset/receipt-heads";
+
 import type {
 	Dataset3,
 	Dataset4,
@@ -23,13 +25,8 @@ type Response =
 	| false
 	| {
 			metadata: DatasetMetadata;
-			dataset:
-				| false
-				| DatasetTable
-				| Dataset4
-				| Dataset3
-				| Dataset4[]
-				| Dataset3[];
+			// biome-ignore lint: no
+			dataset: any;
 	  };
 
 export default async function handler(
@@ -59,6 +56,8 @@ export default async function handler(
 				dataset = { metadata: completeMetadata[0], dataset: datasetComplete1 };
 			} else if (id === "receipt_heads") {
 				dataset = { metadata: completeMetadata[1], dataset: datasetComplete2 };
+			} else if (id === "import_export") {
+				dataset = { metadata: completeMetadata[2], dataset: datasetComplete3 };
 			} else {
 				dataset = false;
 			}
