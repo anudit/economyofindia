@@ -18,10 +18,6 @@ export default function StatCard({
 }) {
 	const { activeCurrency } = useSharedContext();
 
-	useEffect(() => {
-		console.log("stat cur", activeCurrency);
-	}, [activeCurrency]);
-
 	return (
 		<GridItem
 			// w={respWidth}

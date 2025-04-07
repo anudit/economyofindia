@@ -1,12 +1,9 @@
 import {
-	ButtonGroup,
 	Flex,
 	Heading,
 	IconButton,
 	Menu,
 	MenuButton,
-	MenuDivider,
-	MenuGroup,
 	MenuItem,
 	MenuItemOption,
 	MenuList,
@@ -17,19 +14,11 @@ import {
 	ModalContent,
 	ModalHeader,
 	ModalOverlay,
-	Select,
 	Stack,
 	useBreakpointValue,
 	useDisclosure,
 } from "@chakra-ui/react";
-import {
-	CodeIcon,
-	ExternalLink,
-	ExternalLinkIcon,
-	InfoIcon,
-	MenuIcon,
-	PlusIcon,
-} from "lucide-react";
+import { CodeIcon, ExternalLink, InfoIcon, MenuIcon } from "lucide-react";
 import Link from "next/link";
 
 import {
@@ -37,7 +26,6 @@ import {
 	supportedCurrencies,
 	titleCase,
 } from "@/utils/shared";
-import { Underdog } from "next/font/google";
 import { useSharedContext } from "./SharedContext";
 
 export default function TopBar({
@@ -112,7 +100,7 @@ export default function TopBar({
 					/>
 					<MenuList>
 						<MenuOptionGroup
-							defaultValue="asc"
+							defaultValue="0"
 							title="Currency"
 							type="radio"
 							onChange={(e) => {

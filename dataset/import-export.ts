@@ -947,7 +947,7 @@ const rootDataImport: { [key: string]: SankeyDataRow[] } = {
 		{
 			Commodity:
 				"SALT; SULPHUR; EARTHS AND STONE; PLASTERING MATERIALS, LIME AND CEMENT.",
-			Value: 3521928.40,
+			Value: 3521928.4,
 		},
 		{ Commodity: "SHIPS, BOATS AND FLOATING STRUCTURES.", Value: 3109309.02 },
 		{ Commodity: "SILK", Value: 172608.34 },
@@ -1013,7 +1013,7 @@ const rootDataImport: { [key: string]: SankeyDataRow[] } = {
 		},
 		{
 			Commodity: "WORKS OF ART COLLECTORS' PIECES AND ANTIQUES.",
-			Value: 387051.70,
+			Value: 387051.7,
 		},
 		{ Commodity: "ZINC AND ARTICLES THEREOF.", Value: 645379.33 },
 	].map((row) => [`I - ${row.Commodity}`, centerKey, row.Value / 100]),
@@ -1244,7 +1244,7 @@ const rootDataImport: { [key: string]: SankeyDataRow[] } = {
 				"PRODUCTS OF THE MILLING INDUSTRY; MALT; STARCHES; INULIN; WHEAT GLUTEN.",
 			Value: 66874.31,
 		},
-		{ Commodity: "PROJECT GOODS; SOME SPECIAL USES.", Value: 749100.90 },
+		{ Commodity: "PROJECT GOODS; SOME SPECIAL USES.", Value: 749100.9 },
 		{
 			Commodity:
 				"PULP OF WOOD OR OF OTHER FIBROUS CELLULOSIC MATERIAL; WASTE AND SCRAP OF PAPER OR PAPERBOARD.",
@@ -1253,7 +1253,7 @@ const rootDataImport: { [key: string]: SankeyDataRow[] } = {
 		{
 			Commodity:
 				"RAILWAY OR TRAMWAY LOCOMOTIVES, ROLLING STOCK AND PARTS THEREOF; RAILWAY OR TRAMWAY TRACK FIXTURES AND FITTINGS AND PARTS THEREOF; MECHANICAL",
-			Value: 463776.90,
+			Value: 463776.9,
 		},
 		{
 			Commodity: "RAW HIDES AND SKINS (OTHER THAN FURSKINS) AND LEATHER",
@@ -1268,7 +1268,7 @@ const rootDataImport: { [key: string]: SankeyDataRow[] } = {
 		{
 			Commodity:
 				"SALT; SULPHUR; EARTHS AND STONE; PLASTERING MATERIALS, LIME AND CEMENT.",
-			Value: 3144839.60,
+			Value: 3144839.6,
 		},
 		{ Commodity: "SHIPS, BOATS AND FLOATING STRUCTURES.", Value: 2732602.95 },
 		{ Commodity: "SILK", Value: 114830.34 },
@@ -1288,7 +1288,7 @@ const rootDataImport: { [key: string]: SankeyDataRow[] } = {
 				"TANNING OR DYEING EXTRACTS; TANNINS AND THEIR DERI. DYES, PIGMENTS AND OTHER COLOURING MATTER; PAINTS AND VER; PUTTY AND OTHER MASTICS; INKS.",
 			Value: 1839409.99,
 		},
-		{ Commodity: "TIN AND ARTICLES THEREOF.", Value: 308962.50 },
+		{ Commodity: "TIN AND ARTICLES THEREOF.", Value: 308962.5 },
 		{
 			Commodity: "TOBACCO AND MANUFACTURED TOBACCO SUBSTITUTES.",
 			Value: 65934.86,
@@ -1334,7 +1334,7 @@ const rootDataImport: { [key: string]: SankeyDataRow[] } = {
 		},
 		{
 			Commodity: "WORKS OF ART COLLECTORS' PIECES AND ANTIQUES.",
-			Value:199111.485,
+			Value: 199111.485,
 		},
 		{ Commodity: "ZINC AND ARTICLES THEREOF.", Value: 487642.15 },
 	].map((row) => [`I - ${row.Commodity}`, centerKey, row.Value / 100]),
@@ -1791,7 +1791,3852 @@ export const dataset4: SankeyDataWithHeader = [
 	...regionWiseExport["2024-2025"],
 ];
 
+const countryWiseImport: { [key: string]: SankeyDataRow[] } = {
+	"2023-2024": [
+		{
+			Country: "500",
+			Value: 63715.98,
+		},
+		{
+			Country: "AFGHANISTAN",
+			Value: 532702.32,
+		},
+		{
+			Country: "ALBANIA",
+			Value: 6299.06,
+		},
+		{
+			Country: "ALGERIA",
+			Value: 734998.0,
+		},
+		{
+			Country: "AMERI SAMOA",
+			Value: 39.6,
+		},
+		{
+			Country: "ANDORRA",
+			Value: 39.07,
+		},
+		{
+			Country: "ANGOLA",
+			Value: 2895918.9,
+		},
+		{
+			Country: "ANGUILLA",
+			Value: 244.4,
+		},
+		{
+			Country: "ANTARTICA",
+			Value: 419.31,
+		},
+		{
+			Country: "ANTIGUA",
+			Value: 697.3,
+		},
+		{
+			Country: "ARGENTINA",
+			Value: 2063703.97,
+		},
+		{
+			Country: "ARMENIA",
+			Value: 29829.32,
+		},
+		{
+			Country: "ARUBA",
+			Value: 972.2,
+		},
+		{
+			Country: "AUSTRALIA",
+			Value: 13378163.77,
+		},
+		{
+			Country: "AUSTRIA",
+			Value: 763824.51,
+		},
+		{
+			Country: "AZERBAIJAN",
+			Value: 607.91,
+		},
+		{
+			Country: "BAHAMAS",
+			Value: 17264.65,
+		},
+		{
+			Country: "BAHARAIN IS",
+			Value: 687409.24,
+		},
+		{
+			Country: "BANGLADESH PR",
+			Value: 1526945.42,
+		},
+		{
+			Country: "BARBADOS",
+			Value: 2692.66,
+		},
+		{
+			Country: "BELARUS",
+			Value: 12610.81,
+		},
+		{
+			Country: "BELGIUM",
+			Value: 5989669.08,
+		},
+		{
+			Country: "BELIZE",
+			Value: 15461.58,
+		},
+		{
+			Country: "BENIN",
+			Value: 178060.24,
+		},
+		{
+			Country: "BERMUDA",
+			Value: null,
+		},
+		{
+			Country: "BHUTAN",
+			Value: 280749.36,
+		},
+		{
+			Country: "BOLIVIA",
+			Value: 899413.57,
+		},
+		{
+			Country: "BOSNIA-HRZGOVIN",
+			Value: 4301.47,
+		},
+		{
+			Country: "BOTSWANA",
+			Value: 269990.68,
+		},
+		{
+			Country: "BR VIRGN IS",
+			Value: 117232.27,
+		},
+		{
+			Country: "BRAZIL",
+			Value: 5143262.24,
+		},
+		{
+			Country: "BRUNEI",
+			Value: 181709.92,
+		},
+		{
+			Country: "BULGARIA",
+			Value: 159396.74,
+		},
+		{
+			Country: "BURKINA FASO",
+			Value: 168392.24,
+		},
+		{
+			Country: "BURUNDI",
+			Value: null,
+		},
+		{
+			Country: "C AFRI REP",
+			Value: 194.62,
+		},
+		{
+			Country: "CAMBODIA",
+			Value: 181010.07,
+		},
+		{
+			Country: "CAMEROON",
+			Value: 653596.2,
+		},
+		{
+			Country: "CANADA",
+			Value: 3771643.84,
+		},
+		{
+			Country: "CAPE VERDE IS",
+			Value: 3843.04,
+		},
+		{
+			Country: "CAYMAN IS",
+			Value: 0.35,
+		},
+		{
+			Country: "CHAD",
+			Value: 3019.74,
+		},
+		{
+			Country: "CHILE",
+			Value: 1253506.08,
+		},
+		{
+			Country: "CHINA P RP",
+			Value: 84238605.59,
+		},
+		{
+			Country: "CHRISTMAS IS.",
+			Value: null,
+		},
+		{
+			Country: "COCOS IS",
+			Value: null,
+		},
+		{
+			Country: "COLOMBIA",
+			Value: 2542712.95,
+		},
+		{
+			Country: "COMOROS",
+			Value: 15451.63,
+		},
+		{
+			Country: "CONGO D. REP.",
+			Value: 172427.73,
+		},
+		{
+			Country: "CONGO P REP",
+			Value: 101809.32,
+		},
+		{
+			Country: "COSTA RICA",
+			Value: 97601.71,
+		},
+		{
+			Country: "COTE D' IVOIRE",
+			Value: 317996.08,
+		},
+		{
+			Country: "CROATIA",
+			Value: 48096.14,
+		},
+		{
+			Country: "CUBA",
+			Value: 1814.68,
+		},
+		{
+			Country: "CYPRUS",
+			Value: 34163.96,
+		},
+		{
+			Country: "CZECH REPUBLIC",
+			Value: 609249.3,
+		},
+		{
+			Country: "DENMARK",
+			Value: 759101.37,
+		},
+		{
+			Country: "DJIBOUTI",
+			Value: 18400.55,
+		},
+		{
+			Country: "DOMINIC REP",
+			Value: 472624.76,
+		},
+		{
+			Country: "DOMINICA",
+			Value: 414.12,
+		},
+		{
+			Country: "ECUADOR",
+			Value: 658474.41,
+		},
+		{
+			Country: "EGYPT A RP",
+			Value: 957116.08,
+		},
+		{
+			Country: "EL SALVADOR",
+			Value: 2152.77,
+		},
+		{
+			Country: "EQUTL GUINEA",
+			Value: 265366.16,
+		},
+		{
+			Country: "ESTONIA",
+			Value: 114484.44,
+		},
+		{
+			Country: "ETHIOPIA",
+			Value: 67828.16,
+		},
+		{
+			Country: "FIJI IS",
+			Value: 984.78,
+		},
+		{
+			Country: "FINLAND",
+			Value: 755127.2,
+		},
+		{
+			Country: "FR GUIANA",
+			Value: 522.93,
+		},
+		{
+			Country: "FR POLYNESIA",
+			Value: 216.23,
+		},
+		{
+			Country: "FRANCE",
+			Value: 6603907.22,
+		},
+		{
+			Country: "GABON",
+			Value: 263059.5,
+		},
+		{
+			Country: "GAMBIA",
+			Value: 34261.13,
+		},
+		{
+			Country: "GEORGIA",
+			Value: 83591.07,
+		},
+		{
+			Country: "GERMANY",
+			Value: 13774926.69,
+		},
+		{
+			Country: "GHANA",
+			Value: 1171734.68,
+		},
+		{
+			Country: "GIBRALTAR",
+			Value: 250.17,
+		},
+		{
+			Country: "GREECE",
+			Value: 729890.19,
+		},
+		{
+			Country: "GRENADA",
+			Value: 1583.79,
+		},
+		{
+			Country: "GUADELOUPE",
+			Value: 8.23,
+		},
+		{
+			Country: "GUAM",
+			Value: 11.02,
+		},
+		{
+			Country: "GUATEMALA",
+			Value: 25057.3,
+		},
+		{
+			Country: "GUERNSEY",
+			Value: 17.43,
+		},
+		{
+			Country: "GUINEA",
+			Value: 1143860.4,
+		},
+		{
+			Country: "GUINEA BISSAU",
+			Value: 62497.47,
+		},
+		{
+			Country: "GUYANA",
+			Value: 5482.46,
+		},
+		{
+			Country: "HAITI",
+			Value: 12627.79,
+		},
+		{
+			Country: "HEARD MACDONALD",
+			Value: null,
+		},
+		{
+			Country: "HONDURAS",
+			Value: 25365.59,
+		},
+		{
+			Country: "HONG KONG",
+			Value: 16936288.26,
+		},
+		{
+			Country: "HUNGARY",
+			Value: 253985.68,
+		},
+		{
+			Country: "ICELAND",
+			Value: 4957.71,
+		},
+		{
+			Country: "INDONESIA",
+			Value: 19386338.38,
+		},
+		{
+			Country: "IRAN",
+			Value: 517652.49,
+		},
+		{
+			Country: "IRAQ",
+			Value: 24819551.9,
+		},
+		{
+			Country: "IRELAND",
+			Value: 4703455.08,
+		},
+		{
+			Country: "ISRAEL",
+			Value: 1659899.52,
+		},
+		{
+			Country: "ITALY",
+			Value: 4797777.45,
+		},
+		{
+			Country: "JAMAICA",
+			Value: 6192.93,
+		},
+		{
+			Country: "JAPAN",
+			Value: 14648849.45,
+		},
+		{
+			Country: "JORDAN",
+			Value: 1166397.82,
+		},
+		{
+			Country: "KAZAKHSTAN",
+			Value: 78854.15,
+		},
+		{
+			Country: "KENYA",
+			Value: 146047.85,
+		},
+		{
+			Country: "KIRIBATI REP",
+			Value: null,
+		},
+		{
+			Country: "KOREA DP RP",
+			Value: 1167.98,
+		},
+		{
+			Country: "KOREA RP",
+			Value: 17503993.89,
+		},
+		{
+			Country: "KUWAIT",
+			Value: 6929940.35,
+		},
+		{
+			Country: "KYRGHYZSTAN",
+			Value: 7760.72,
+		},
+		{
+			Country: "LAO PD RP",
+			Value: 82601.42,
+		},
+		{
+			Country: "LATVIA",
+			Value: 152053.38,
+		},
+		{
+			Country: "LEBANON",
+			Value: 93272.66,
+		},
+		{
+			Country: "LESOTHO",
+			Value: 57.86,
+		},
+		{
+			Country: "LIBERIA",
+			Value: 10324.36,
+		},
+		{
+			Country: "LIBYA",
+			Value: 197426.52,
+		},
+		{
+			Country: "LIECHTENSTEIN",
+			Value: 7068.87,
+		},
+		{
+			Country: "LITHUANIA",
+			Value: 113090.37,
+		},
+		{
+			Country: "LUXEMBOURG",
+			Value: 218632.17,
+		},
+		{
+			Country: "MACAO",
+			Value: 6250.86,
+		},
+		{
+			Country: "MACEDONIA",
+			Value: 608.31,
+		},
+		{
+			Country: "MADAGASCAR",
+			Value: 158532.25,
+		},
+		{
+			Country: "MALAWI",
+			Value: 48572.53,
+		},
+		{
+			Country: "MALAYSIA",
+			Value: 10557232.39,
+		},
+		{
+			Country: "MALDIVES",
+			Value: 71824.03,
+		},
+		{
+			Country: "MALI",
+			Value: 24243.6,
+		},
+		{
+			Country: "MALTA",
+			Value: 29478.51,
+		},
+		{
+			Country: "MARSHALL ISLAND",
+			Value: 301.17,
+		},
+		{
+			Country: "MARTINIQUE",
+			Value: 493.63,
+		},
+		{
+			Country: "MAURITANIA",
+			Value: 15858.35,
+		},
+		{
+			Country: "MAURITIUS",
+			Value: 60464.38,
+		},
+		{
+			Country: "MAYOTTE",
+			Value: 1309.45,
+		},
+		{
+			Country: "MEXICO",
+			Value: 2568649.68,
+		},
+		{
+			Country: "MICRONESIA",
+			Value: 1.09,
+		},
+		{
+			Country: "MOLDOVA",
+			Value: 3512.84,
+		},
+		{
+			Country: "MONACO",
+			Value: 525.47,
+		},
+		{
+			Country: "MONGOLIA",
+			Value: 848.29,
+		},
+		{
+			Country: "MONTENEGRO",
+			Value: 1440.62,
+		},
+		{
+			Country: "MOROCCO",
+			Value: 1163984.33,
+		},
+		{
+			Country: "MOZAMBIQUE",
+			Value: 2003105.39,
+		},
+		{
+			Country: "MYANMAR",
+			Value: 891433.65,
+		},
+		{
+			Country: "N. MARIANA IS.",
+			Value: 0.47,
+		},
+		{
+			Country: "NAMIBIA",
+			Value: 299042.44,
+		},
+		{
+			Country: "NAURU RP",
+			Value: 2.25,
+		},
+		{
+			Country: "NEPAL",
+			Value: 687941.59,
+		},
+		{
+			Country: "NETHERLAND",
+			Value: 4110021.33,
+		},
+		{
+			Country: "NETHERLANDANTIL",
+			Value: 16144.39,
+		},
+		{
+			Country: "NEW CALEDONIA",
+			Value: 20710.57,
+		},
+		{
+			Country: "NEW ZEALAND",
+			Value: 277444.23,
+		},
+		{
+			Country: "NICARAGUA",
+			Value: 39804.24,
+		},
+		{
+			Country: "NIGER",
+			Value: 115348.34,
+		},
+		{
+			Country: "NIGERIA",
+			Value: 3504864.21,
+		},
+		{
+			Country: "NORFOLK IS",
+			Value: 110.45,
+		},
+		{
+			Country: "NORWAY",
+			Value: 657778.2,
+		},
+		{
+			Country: "OMAN",
+			Value: 3744443.14,
+		},
+		{
+			Country: "PAKISTAN IR",
+			Value: 2382.43,
+		},
+		{
+			Country: "PALAU",
+			Value: 1706.79,
+		},
+		{
+			Country: "PANAMA REPUBLIC",
+			Value: 307150.84,
+		},
+		{
+			Country: "PAPUA N GNA",
+			Value: 390057.5,
+		},
+		{
+			Country: "PARAGUAY",
+			Value: 25280.52,
+		},
+		{
+			Country: "PERU",
+			Value: 2579578.4,
+		},
+		{
+			Country: "PHILIPPINES",
+			Value: 1187663.31,
+		},
+		{
+			Country: "PITCAIRN IS.",
+			Value: null,
+		},
+		{
+			Country: "POLAND",
+			Value: 1245298.36,
+		},
+		{
+			Country: "PORTUGAL",
+			Value: 147639.39,
+		},
+		{
+			Country: "PUERTO RICO",
+			Value: 119621.32,
+		},
+		{
+			Country: "QATAR",
+			Value: 10222185.3,
+		},
+		{
+			Country: "REUNION",
+			Value: 29283.64,
+		},
+		{
+			Country: "ROMANIA",
+			Value: 993781.52,
+		},
+		{
+			Country: "RUSSIA",
+			Value: 50638626.71,
+		},
+		{
+			Country: "RWANDA",
+			Value: 9731.56,
+		},
+		{
+			Country: "SAMOA",
+			Value: 18286.1,
+		},
+		{
+			Country: "SAN MARINO",
+			Value: 55.49,
+		},
+		{
+			Country: "SAO TOME",
+			Value: 18.3,
+		},
+		{
+			Country: "SAUDI ARAB",
+			Value: 26011622.58,
+		},
+		{
+			Country: "SENEGAL",
+			Value: 524755.61,
+		},
+		{
+			Country: "SERBIA",
+			Value: 16138.33,
+		},
+		{
+			Country: "SEYCHELLES",
+			Value: 7198.46,
+		},
+		{
+			Country: "SIERRA LEONE",
+			Value: 25402.63,
+		},
+		{
+			Country: "SINGAPORE",
+			Value: 17554795.61,
+		},
+		{
+			Country: "SINT MAARTEN (DUTCH PART)",
+			Value: 0.64,
+		},
+		{
+			Country: "SLOVAK REP",
+			Value: 55976.0,
+		},
+		{
+			Country: "SLOVENIA",
+			Value: 254566.07,
+		},
+		{
+			Country: "SOLOMON IS",
+			Value: 5081.54,
+		},
+		{
+			Country: "SOMALIA",
+			Value: 23385.58,
+		},
+		{
+			Country: "SOUTH AFRICA",
+			Value: 8725201.13,
+		},
+		{
+			Country: "SOUTH SUDAN",
+			Value: 132.72,
+		},
+		{
+			Country: "SPAIN",
+			Value: 2033332.97,
+		},
+		{
+			Country: "SRI LANKA DSR",
+			Value: 1180447.66,
+		},
+		{
+			Country: "ST HELENA",
+			Value: 43.56,
+		},
+		{
+			Country: "ST KITT N A",
+			Value: 90.47,
+		},
+		{
+			Country: "ST LUCIA",
+			Value: 1021.16,
+		},
+		{
+			Country: "ST VINCENT",
+			Value: 80.18,
+		},
+		{
+			Country: "STATE OF PALEST",
+			Value: 182.35,
+		},
+		{
+			Country: "SUDAN",
+			Value: 274144.78,
+		},
+		{
+			Country: "SURINAME",
+			Value: 18703.95,
+		},
+		{
+			Country: "SWAZILAND",
+			Value: 15682.9,
+		},
+		{
+			Country: "SWEDEN",
+			Value: 1444001.39,
+		},
+		{
+			Country: "SWITZERLAND",
+			Value: 17600983.53,
+		},
+		{
+			Country: "SYRIA",
+			Value: 15189.9,
+		},
+		{
+			Country: "TAIWAN",
+			Value: 6856205.0,
+		},
+		{
+			Country: "TAJIKISTAN",
+			Value: 6.66,
+		},
+		{
+			Country: "TANZANIA REP",
+			Value: 2726350.48,
+		},
+		{
+			Country: "THAILAND",
+			Value: 8203417.7,
+		},
+		{
+			Country: "TIMOR LESTE",
+			Value: 234.8,
+		},
+		{
+			Country: "TOGO",
+			Value: 702571.42,
+		},
+		{
+			Country: "TOKELAU IS",
+			Value: 8.29,
+		},
+		{
+			Country: "TONGA",
+			Value: 13.02,
+		},
+		{
+			Country: "TRINIDAD",
+			Value: 215946.93,
+		},
+		{
+			Country: "TUNISIA",
+			Value: 195291.63,
+		},
+		{
+			Country: "TURKEY",
+			Value: 3132133.37,
+		},
+		{
+			Country: "TURKMENISTAN",
+			Value: 61895.22,
+		},
+		{
+			Country: "TURKS C IS",
+			Value: 355.31,
+		},
+		{
+			Country: "U ARAB EMTS",
+			Value: 39782617.8,
+		},
+		{
+			Country: "UK",
+			Value: 6973121.8,
+		},
+		{
+			Country: "USA",
+			Value: 34931873.41,
+		},
+		{
+			Country: "UGANDA",
+			Value: 729207.93,
+		},
+		{
+			Country: "UKRAINE",
+			Value: 446931.23,
+		},
+		{
+			Country: "UNSPECIFIED",
+			Value: 56923.88,
+		},
+		{
+			Country: "URUGUAY",
+			Value: 111410.53,
+		},
+		{
+			Country: "US MINOR OUTLYING ISLANDS",
+			Value: 28.61,
+		},
+		{
+			Country: "UZBEKISTAN",
+			Value: 81934.94,
+		},
+		{
+			Country: "VANUATU REP",
+			Value: 0.18,
+		},
+		{
+			Country: "VATICAN CITY",
+			Value: 76.45,
+		},
+		{
+			Country: "VENEZUELA",
+			Value: 829466.2,
+		},
+		{
+			Country: "VIETNAM SOC REP",
+			Value: 7739558.4,
+		},
+		{
+			Country: "VIRGIN IS US",
+			Value: 69137.97,
+		},
+		{
+			Country: "WALLIS F IS",
+			Value: 11.39,
+		},
+		{
+			Country: "YEMEN REPUBLC",
+			Value: 158108.98,
+		},
+		{
+			Country: "ZAMBIA",
+			Value: 168752.52,
+		},
+		{
+			Country: "ZIMBABWE",
+			Value: 13742.54,
+		},
+	]
+		.filter(
+			(e) => e.Value != null && typeof e.Value === "number" && e.Value > 0,
+		)
+		.map((row) => [
+			`I - ${row.Country}`,
+			centerKey,
+			row.Value ? row.Value / 100 : 0,
+		]),
+	"2024-2025": [
+		{
+			Country: "AFGHANISTAN",
+			Value: 432121.64,
+		},
+		{
+			Country: "ALBANIA",
+			Value: 5538.07,
+		},
+		{
+			Country: "ALGERIA",
+			Value: 552223.83,
+		},
+		{
+			Country: "AMERI SAMOA",
+			Value: 12.39,
+		},
+		{
+			Country: "ANDORRA",
+			Value: 22.96,
+		},
+		{
+			Country: "ANGOLA",
+			Value: 2801103.5,
+		},
+		{
+			Country: "ANGUILLA",
+			Value: 106.0,
+		},
+		{
+			Country: "ANTARTICA",
+			Value: 226.16,
+		},
+		{
+			Country: "ANTIGUA",
+			Value: 433.22,
+		},
+		{
+			Country: "ARGENTINA",
+			Value: 2420014.53,
+		},
+		{
+			Country: "ARMENIA",
+			Value: 28816.19,
+		},
+		{
+			Country: "ARUBA",
+			Value: 398.58,
+		},
+		{
+			Country: "AUSTRALIA",
+			Value: 10169129.45,
+		},
+		{
+			Country: "AUSTRIA",
+			Value: 614655.27,
+		},
+		{
+			Country: "AZERBAIJAN",
+			Value: 1516.73,
+		},
+		{
+			Country: "BAHAMAS",
+			Value: 4078.71,
+		},
+		{
+			Country: "BAHARAIN IS",
+			Value: 586770.92,
+		},
+		{
+			Country: "BANGLADESH PR",
+			Value: 1276066.91,
+		},
+		{
+			Country: "BARBADOS",
+			Value: 970.91,
+		},
+		{
+			Country: "BELARUS",
+			Value: 13842.23,
+		},
+		{
+			Country: "BELGIUM",
+			Value: 4275602.27,
+		},
+		{
+			Country: "BELIZE",
+			Value: 595.83,
+		},
+		{
+			Country: "BENIN",
+			Value: 83164.34,
+		},
+		{
+			Country: "BERMUDA",
+			Value: 0.25,
+		},
+		{
+			Country: "BHUTAN",
+			Value: 308648.02,
+		},
+		{
+			Country: "BOLIVIA",
+			Value: 273628.11,
+		},
+		{
+			Country: "BOSNIA-HRZGOVIN",
+			Value: 5380.88,
+		},
+		{
+			Country: "BOTSWANA",
+			Value: 217665.89,
+		},
+		{
+			Country: "BR VIRGN IS",
+			Value: 2895.19,
+		},
+		{
+			Country: "BRAZIL",
+			Value: 3056101.79,
+		},
+		{
+			Country: "BRUNEI",
+			Value: 106831.18,
+		},
+		{
+			Country: "BULGARIA",
+			Value: 96975.99,
+		},
+		{
+			Country: "BURKINA FASO",
+			Value: 62288.01,
+		},
+		{
+			Country: "BURUNDI",
+			Value: 743.31,
+		},
+		{
+			Country: "C AFRI REP",
+			Value: 122.0,
+		},
+		{
+			Country: "CAMBODIA",
+			Value: 60113.27,
+		},
+		{
+			Country: "CAMEROON",
+			Value: 278724.69,
+		},
+		{
+			Country: "CANADA",
+			Value: 2961819.57,
+		},
+		{
+			Country: "CAPE VERDE IS",
+			Value: 3007.14,
+		},
+		{
+			Country: "CAYMAN IS",
+			Value: 66409.81,
+		},
+		{
+			Country: "CHAD",
+			Value: 15899.05,
+		},
+		{
+			Country: "CHILE",
+			Value: 1740238.89,
+		},
+		{
+			Country: "CHINA P RP",
+			Value: 70952767.09,
+		},
+		{
+			Country: "CHRISTMAS IS.",
+			Value: 51.37,
+		},
+		{
+			Country: "COCOS IS",
+			Value: 23.35,
+		},
+		{
+			Country: "COLOMBIA",
+			Value: 2045290.3,
+		},
+		{
+			Country: "COMOROS",
+			Value: 9932.83,
+		},
+		{
+			Country: "CONGO D. REP.",
+			Value: 327123.19,
+		},
+		{
+			Country: "CONGO P REP",
+			Value: 116272.77,
+		},
+		{
+			Country: "COSTA RICA",
+			Value: 83632.91,
+		},
+		{
+			Country: "COTE D' IVOIRE",
+			Value: 393334.45,
+		},
+		{
+			Country: "CROATIA",
+			Value: 49034.46,
+		},
+		{
+			Country: "CUBA",
+			Value: 1774.71,
+		},
+		{
+			Country: "CYPRUS",
+			Value: 34784.12,
+		},
+		{
+			Country: "CZECH REPUBLIC",
+			Value: 443037.79,
+		},
+		{
+			Country: "DENMARK",
+			Value: 497427.51,
+		},
+		{
+			Country: "DJIBOUTI",
+			Value: 10681.21,
+		},
+		{
+			Country: "DOMINIC REP",
+			Value: 410684.22,
+		},
+		{
+			Country: "DOMINICA",
+			Value: 119.78,
+		},
+		{
+			Country: "ECUADOR",
+			Value: 245865.86,
+		},
+		{
+			Country: "EGYPT A RP",
+			Value: 720519.13,
+		},
+		{
+			Country: "EL SALVADOR",
+			Value: 2358.64,
+		},
+		{
+			Country: "EQUTL GUINEA",
+			Value: 368116.81,
+		},
+		{
+			Country: "ESTONIA",
+			Value: 80490.49,
+		},
+		{
+			Country: "ETHIOPIA",
+			Value: 44343.08,
+		},
+		{
+			Country: "FIJI IS",
+			Value: 907.2,
+		},
+		{
+			Country: "FINLAND",
+			Value: 554353.86,
+		},
+		{
+			Country: "FR GUIANA",
+			Value: 225.46,
+		},
+		{
+			Country: "FR POLYNESIA",
+			Value: 174.99,
+		},
+		{
+			Country: "FRANCE",
+			Value: 4745366.73,
+		},
+		{
+			Country: "GABON",
+			Value: 211207.37,
+		},
+		{
+			Country: "GAMBIA",
+			Value: 35206.16,
+		},
+		{
+			Country: "GEORGIA",
+			Value: 49654.53,
+		},
+		{
+			Country: "GERMANY",
+			Value: 12053654.13,
+		},
+		{
+			Country: "GHANA",
+			Value: 1172855.55,
+		},
+		{
+			Country: "GIBRALTAR",
+			Value: 18.31,
+		},
+		{
+			Country: "GREECE",
+			Value: 286401.68,
+		},
+		{
+			Country: "GRENADA",
+			Value: 190.23,
+		},
+		{
+			Country: "GUADELOUPE",
+			Value: 219.7,
+		},
+		{
+			Country: "GUAM",
+			Value: 12.2,
+		},
+		{
+			Country: "GUATEMALA",
+			Value: 18432.56,
+		},
+		{
+			Country: "GUERNSEY",
+			Value: null,
+		},
+		{
+			Country: "GUINEA",
+			Value: 506702.22,
+		},
+		{
+			Country: "GUINEA BISSAU",
+			Value: 150485.42,
+		},
+		{
+			Country: "GUYANA",
+			Value: 3387.9,
+		},
+		{
+			Country: "HAITI",
+			Value: 5019.19,
+		},
+		{
+			Country: "HEARD MACDONALD",
+			Value: 3.8,
+		},
+		{
+			Country: "HONDURAS",
+			Value: 23834.57,
+		},
+		{
+			Country: "HONG KONG",
+			Value: 12249222.49,
+		},
+		{
+			Country: "HUNGARY",
+			Value: 276646.41,
+		},
+		{
+			Country: "ICELAND",
+			Value: 6469.5,
+		},
+		{
+			Country: "INDONESIA",
+			Value: 14956552.54,
+		},
+		{
+			Country: "IRAN",
+			Value: 247770.23,
+		},
+		{
+			Country: "IRAQ",
+			Value: 18398000.42,
+		},
+		{
+			Country: "IRELAND",
+			Value: 2322762.8,
+		},
+		{
+			Country: "ISRAEL",
+			Value: 983181.15,
+		},
+		{
+			Country: "ITALY",
+			Value: 3829170.07,
+		},
+		{
+			Country: "JAMAICA",
+			Value: 5787.34,
+		},
+		{
+			Country: "JAPAN",
+			Value: 12075277.1,
+		},
+		{
+			Country: "JORDAN",
+			Value: 1264290.56,
+		},
+		{
+			Country: "KAZAKHSTAN",
+			Value: 50695.61,
+		},
+		{
+			Country: "KENYA",
+			Value: 207736.11,
+		},
+		{
+			Country: "KIRIBATI REP",
+			Value: 18.02,
+		},
+		{
+			Country: "KOREA DP RP",
+			Value: 930.0,
+		},
+		{
+			Country: "KOREA RP",
+			Value: 13392477.58,
+		},
+		{
+			Country: "KUWAIT",
+			Value: 4689126.65,
+		},
+		{
+			Country: "KYRGHYZSTAN",
+			Value: 6554.99,
+		},
+		{
+			Country: "LAO PD RP",
+			Value: 8218.48,
+		},
+		{
+			Country: "LATVIA",
+			Value: 130847.95,
+		},
+		{
+			Country: "LEBANON",
+			Value: 65189.93,
+		},
+		{
+			Country: "LESOTHO",
+			Value: 493.52,
+		},
+		{
+			Country: "LIBERIA",
+			Value: 13399.46,
+		},
+		{
+			Country: "LIBYA",
+			Value: 105711.22,
+		},
+		{
+			Country: "LIECHTENSTEIN",
+			Value: 1234.49,
+		},
+		{
+			Country: "LITHUANIA",
+			Value: 93805.22,
+		},
+		{
+			Country: "LUXEMBOURG",
+			Value: 57705.56,
+		},
+		{
+			Country: "MACAO",
+			Value: 30063.4,
+		},
+		{
+			Country: "MACEDONIA",
+			Value: 1594.6,
+		},
+		{
+			Country: "MADAGASCAR",
+			Value: 120488.28,
+		},
+		{
+			Country: "MALAWI",
+			Value: 55460.37,
+		},
+		{
+			Country: "MALAYSIA",
+			Value: 8036925.1,
+		},
+		{
+			Country: "MALDIVES",
+			Value: 81075.71,
+		},
+		{
+			Country: "MALI",
+			Value: 59067.3,
+		},
+		{
+			Country: "MALTA",
+			Value: 16375.29,
+		},
+		{
+			Country: "MARSHALL ISLAND",
+			Value: 4193.71,
+		},
+		{
+			Country: "MARTINIQUE",
+			Value: 228.86,
+		},
+		{
+			Country: "MAURITANIA",
+			Value: 13988.59,
+		},
+		{
+			Country: "MAURITIUS",
+			Value: 160454.49,
+		},
+		{
+			Country: "MAYOTTE",
+			Value: 969.26,
+		},
+		{
+			Country: "MEXICO",
+			Value: 1846024.6,
+		},
+		{
+			Country: "MICRONESIA",
+			Value: 0.09,
+		},
+		{
+			Country: "MOLDOVA",
+			Value: 856.96,
+		},
+		{
+			Country: "MONACO",
+			Value: 1780.9,
+		},
+		{
+			Country: "MONGOLIA",
+			Value: 68.45,
+		},
+		{
+			Country: "MONTENEGRO",
+			Value: 967.24,
+		},
+		{
+			Country: "MOROCCO",
+			Value: 1153350.74,
+		},
+		{
+			Country: "MOZAMBIQUE",
+			Value: 1406278.76,
+		},
+		{
+			Country: "MYANMAR",
+			Value: 1019517.77,
+		},
+		{
+			Country: "N. MARIANA IS.",
+			Value: null,
+		},
+		{
+			Country: "NAMIBIA",
+			Value: 142514.31,
+		},
+		{
+			Country: "NAURU RP",
+			Value: 1.2,
+		},
+		{
+			Country: "NEPAL",
+			Value: 568004.98,
+		},
+		{
+			Country: "NETHERLAND",
+			Value: 3164232.81,
+		},
+		{
+			Country: "NETHERLANDANTIL",
+			Value: 2438.08,
+		},
+		{
+			Country: "NEW CALEDONIA",
+			Value: 5790.47,
+		},
+		{
+			Country: "NEW ZEALAND",
+			Value: 388977.51,
+		},
+		{
+			Country: "NICARAGUA",
+			Value: 16858.53,
+		},
+		{
+			Country: "NIGER",
+			Value: 27447.48,
+		},
+		{
+			Country: "NIGERIA",
+			Value: 2802533.53,
+		},
+		{
+			Country: "NORFOLK IS",
+			Value: 191.95,
+		},
+		{
+			Country: "NORWAY",
+			Value: 393442.69,
+		},
+		{
+			Country: "OMAN",
+			Value: 4119259.54,
+		},
+		{
+			Country: "PAKISTAN IR",
+			Value: 157.66,
+		},
+		{
+			Country: "PALAU",
+			Value: null,
+		},
+		{
+			Country: "PANAMA REPUBLIC",
+			Value: 60643.23,
+		},
+		{
+			Country: "PAPUA N GNA",
+			Value: 236961.91,
+		},
+		{
+			Country: "PARAGUAY",
+			Value: 21006.16,
+		},
+		{
+			Country: "PERU",
+			Value: 3398859.36,
+		},
+		{
+			Country: "PHILIPPINES",
+			Value: 701514.18,
+		},
+		{
+			Country: "PITCAIRN IS.",
+			Value: 12.45,
+		},
+		{
+			Country: "POLAND",
+			Value: 783678.67,
+		},
+		{
+			Country: "PORTUGAL",
+			Value: 121043.85,
+		},
+		{
+			Country: "PUERTO RICO",
+			Value: 209943.68,
+		},
+		{
+			Country: "QATAR",
+			Value: 7678621.09,
+		},
+		{
+			Country: "REUNION",
+			Value: 19749.45,
+		},
+		{
+			Country: "ROMANIA",
+			Value: 267371.28,
+		},
+		{
+			Country: "RUSSIA",
+			Value: 41599400.69,
+		},
+		{
+			Country: "RWANDA",
+			Value: 9353.51,
+		},
+		{
+			Country: "SAMOA",
+			Value: 1835.87,
+		},
+		{
+			Country: "SAN MARINO",
+			Value: 95.97,
+		},
+		{
+			Country: "SAO TOME",
+			Value: null,
+		},
+		{
+			Country: "SAUDI ARAB",
+			Value: 18912092.97,
+		},
+		{
+			Country: "SENEGAL",
+			Value: 491434.19,
+		},
+		{
+			Country: "SERBIA",
+			Value: 16759.76,
+		},
+		{
+			Country: "SEYCHELLES",
+			Value: 2808.41,
+		},
+		{
+			Country: "SIERRA LEONE",
+			Value: 13405.17,
+		},
+		{
+			Country: "SINGAPORE",
+			Value: 13263184.23,
+		},
+		{
+			Country: "SINT MAARTEN (DUTCH PART)",
+			Value: null,
+		},
+		{
+			Country: "SLOVAK REP",
+			Value: 46818.45,
+		},
+		{
+			Country: "SLOVENIA",
+			Value: 162342.45,
+		},
+		{
+			Country: "SOLOMON IS",
+			Value: 7940.7,
+		},
+		{
+			Country: "SOMALIA",
+			Value: 22276.64,
+		},
+		{
+			Country: "SOUTH AFRICA",
+			Value: 7251960.61,
+		},
+		{
+			Country: "SOUTH SUDAN",
+			Value: 116.42,
+		},
+		{
+			Country: "SPAIN",
+			Value: 1379451.29,
+		},
+		{
+			Country: "SRI LANKA DSR",
+			Value: 784329.27,
+		},
+		{
+			Country: "ST HELENA",
+			Value: 13.51,
+		},
+		{
+			Country: "ST KITT N A",
+			Value: null,
+		},
+		{
+			Country: "ST LUCIA",
+			Value: 948.85,
+		},
+		{
+			Country: "ST VINCENT",
+			Value: 165.79,
+		},
+		{
+			Country: "STATE OF PALEST",
+			Value: 35.4,
+		},
+		{
+			Country: "SUDAN",
+			Value: 321547.27,
+		},
+		{
+			Country: "SURINAME",
+			Value: 21576.5,
+		},
+		{
+			Country: "SWAZILAND",
+			Value: 10707.59,
+		},
+		{
+			Country: "SWEDEN",
+			Value: 1292726.77,
+		},
+		{
+			Country: "SWITZERLAND",
+			Value: 17049297.32,
+		},
+		{
+			Country: "SYRIA",
+			Value: 10527.02,
+		},
+		{
+			Country: "TAIWAN",
+			Value: 6756893.84,
+		},
+		{
+			Country: "TAJIKISTAN",
+			Value: 0.07,
+		},
+		{
+			Country: "TANZANIA REP",
+			Value: 2405831.97,
+		},
+		{
+			Country: "THAILAND",
+			Value: 7808269.58,
+		},
+		{
+			Country: "TIMOR LESTE",
+			Value: 11.54,
+		},
+		{
+			Country: "TOGO",
+			Value: 613481.17,
+		},
+		{
+			Country: "TOKELAU IS",
+			Value: 27.85,
+		},
+		{
+			Country: "TONGA",
+			Value: null,
+		},
+		{
+			Country: "TRINIDAD",
+			Value: 167301.09,
+		},
+		{
+			Country: "TUNISIA",
+			Value: 83361.5,
+		},
+		{
+			Country: "TURKEY",
+			Value: 2115234.0,
+		},
+		{
+			Country: "TURKMENISTAN",
+			Value: 88137.82,
+		},
+		{
+			Country: "TURKS C IS",
+			Value: 268.99,
+		},
+		{
+			Country: "U ARAB EMTS",
+			Value: 38416390.29,
+		},
+		{
+			Country: "UK",
+			Value: 5196519.3,
+		},
+		{
+			Country: "USA",
+			Value: 29356507.55,
+		},
+		{
+			Country: "UGANDA",
+			Value: 185009.65,
+		},
+		{
+			Country: "UKRAINE",
+			Value: 687896.11,
+		},
+		{
+			Country: "UNSPECIFIED",
+			Value: 89735.81,
+		},
+		{
+			Country: "URUGUAY",
+			Value: 99339.86,
+		},
+		{
+			Country: "US MINOR OUTLYING ISLANDS",
+			Value: 200.91,
+		},
+		{
+			Country: "UZBEKISTAN",
+			Value: 9735.72,
+		},
+		{
+			Country: "VANUATU REP",
+			Value: 447.05,
+		},
+		{
+			Country: "VATICAN CITY",
+			Value: 62.11,
+		},
+		{
+			Country: "VENEZUELA",
+			Value: 1014065.33,
+		},
+		{
+			Country: "VIETNAM SOC REP",
+			Value: 6552560.49,
+		},
+		{
+			Country: "VIRGIN IS US",
+			Value: 70.07,
+		},
+		{
+			Country: "WALLIS F IS",
+			Value: null,
+		},
+		{
+			Country: "YEMEN REPUBLC",
+			Value: 104516.86,
+		},
+		{
+			Country: "ZAMBIA",
+			Value: 105723.03,
+		},
+		{
+			Country: "ZIMBABWE",
+			Value: 4795.91,
+		},
+	]
+		.filter(
+			(e) => e.Value != null && typeof e.Value === "number" && e.Value > 0,
+		)
+		.map((row) => [
+			`I - ${row.Country}`,
+			centerKey,
+			row.Value ? row.Value / 100 : 0,
+		]),
+};
+
+const countryWiseExport: { [key: string]: SankeyDataRow[] } = {
+	"2023-2024": [
+		{
+			Country: "AFGHANISTAN",
+			Value: 294271.23,
+		},
+		{
+			Country: "ALBANIA",
+			Value: 955574.35,
+		},
+		{
+			Country: "ALGERIA",
+			Value: 702538.33,
+		},
+		{
+			Country: "AMERI SAMOA",
+			Value: 3440.25,
+		},
+		{
+			Country: "ANDORRA",
+			Value: 262.29,
+		},
+		{
+			Country: "ANGOLA",
+			Value: 578303.97,
+		},
+		{
+			Country: "ANGUILLA",
+			Value: 219.75,
+		},
+		{
+			Country: "ANTARTICA",
+			Value: 215.44,
+		},
+		{
+			Country: "ANTIGUA",
+			Value: 12341.8,
+		},
+		{
+			Country: "ARGENTINA",
+			Value: 899051.77,
+		},
+		{
+			Country: "ARMENIA",
+			Value: 78128.53,
+		},
+		{
+			Country: "ARUBA",
+			Value: 12232.21,
+		},
+		{
+			Country: "AUSTRALIA",
+			Value: 6566764.17,
+		},
+		{
+			Country: "AUSTRIA",
+			Value: 941251.24,
+		},
+		{
+			Country: "AZERBAIJAN",
+			Value: 74289.72,
+		},
+		{
+			Country: "BAHAMAS",
+			Value: 88347.73,
+		},
+		{
+			Country: "BAHARAIN IS",
+			Value: 754172.95,
+		},
+		{
+			Country: "BANGLADESH PR",
+			Value: 9165197.84,
+		},
+		{
+			Country: "BARBADOS",
+			Value: 15594.73,
+		},
+		{
+			Country: "BELARUS",
+			Value: 36287.86,
+		},
+		{
+			Country: "BELGIUM",
+			Value: 6486226.29,
+		},
+		{
+			Country: "BELIZE",
+			Value: 11145.92,
+		},
+		{
+			Country: "BENIN",
+			Value: 621582.04,
+		},
+		{
+			Country: "BERMUDA",
+			Value: 5038.44,
+		},
+		{
+			Country: "BHUTAN",
+			Value: 797993.86,
+		},
+		{
+			Country: "BOLIVIA",
+			Value: 59066.0,
+		},
+		{
+			Country: "BOSNIA-HRZGOVIN",
+			Value: 24217.27,
+		},
+		{
+			Country: "BOTSWANA",
+			Value: 90420.93,
+		},
+		{
+			Country: "BR VIRGN IS",
+			Value: 528.85,
+		},
+		{
+			Country: "BRAZIL",
+			Value: 4980912.58,
+		},
+		{
+			Country: "BRITISH INDIAN",
+			Value: null,
+		},
+		{
+			Country: "BRUNEI",
+			Value: 55799.83,
+		},
+		{
+			Country: "BULGARIA",
+			Value: 185187.44,
+		},
+		{
+			Country: "BURKINA FASO",
+			Value: 99983.45,
+		},
+		{
+			Country: "BURUNDI",
+			Value: 31804.74,
+		},
+		{
+			Country: "C AFRI REP",
+			Value: 54002.75,
+		},
+		{
+			Country: "CAMBODIA",
+			Value: 153433.99,
+		},
+		{
+			Country: "CAMEROON",
+			Value: 375987.25,
+		},
+		{
+			Country: "CANADA",
+			Value: 3183684.74,
+		},
+		{
+			Country: "CAPE VERDE IS",
+			Value: 2611.71,
+		},
+		{
+			Country: "CAYMAN IS",
+			Value: 5900.33,
+		},
+		{
+			Country: "CHAD",
+			Value: 66194.67,
+		},
+		{
+			Country: "CHILE",
+			Value: 979460.08,
+		},
+		{
+			Country: "CHINA P RP",
+			Value: 13796645.41,
+		},
+		{
+			Country: "CHRISTMAS IS.",
+			Value: 2.84,
+		},
+		{
+			Country: "COCOS IS",
+			Value: 10.53,
+		},
+		{
+			Country: "COLOMBIA",
+			Value: 1009130.38,
+		},
+		{
+			Country: "COMOROS",
+			Value: 23162.06,
+		},
+		{
+			Country: "CONGO D. REP.",
+			Value: 480453.1,
+		},
+		{
+			Country: "CONGO P REP",
+			Value: 145814.57,
+		},
+		{
+			Country: "COOK IS",
+			Value: 189.5,
+		},
+		{
+			Country: "COSTA RICA",
+			Value: 152144.74,
+		},
+		{
+			Country: "COTE D' IVOIRE",
+			Value: 567330.33,
+		},
+		{
+			Country: "CROATIA",
+			Value: 193147.99,
+		},
+		{
+			Country: "CUBA",
+			Value: 33288.91,
+		},
+		{
+			Country: "CURACAO",
+			Value: null,
+		},
+		{
+			Country: "CYPRUS",
+			Value: 78584.59,
+		},
+		{
+			Country: "CZECH REPUBLIC",
+			Value: 1151136.5,
+		},
+		{
+			Country: "DENMARK",
+			Value: 708924.86,
+		},
+		{
+			Country: "DJIBOUTI",
+			Value: 947592.84,
+		},
+		{
+			Country: "DOMINIC REP",
+			Value: 287231.65,
+		},
+		{
+			Country: "DOMINICA",
+			Value: 2092.07,
+		},
+		{
+			Country: "ECUADOR",
+			Value: 380381.86,
+		},
+		{
+			Country: "EGYPT A RP",
+			Value: 2915687.98,
+		},
+		{
+			Country: "EL SALVADOR",
+			Value: 106731.23,
+		},
+		{
+			Country: "EQUTL GUINEA",
+			Value: 22191.46,
+		},
+		{
+			Country: "ERITREA",
+			Value: 8324.2,
+		},
+		{
+			Country: "ESTONIA",
+			Value: 64037.89,
+		},
+		{
+			Country: "ETHIOPIA",
+			Value: 405194.0,
+		},
+		{
+			Country: "FALKLAND IS",
+			Value: null,
+		},
+		{
+			Country: "FAROE IS.",
+			Value: 4916.52,
+		},
+		{
+			Country: "FIJI IS",
+			Value: 63153.55,
+		},
+		{
+			Country: "FINLAND",
+			Value: 482563.32,
+		},
+		{
+			Country: "FR GUIANA",
+			Value: 1217.7,
+		},
+		{
+			Country: "FR POLYNESIA",
+			Value: 9931.19,
+		},
+		{
+			Country: "FRANCE",
+			Value: 5912406.11,
+		},
+		{
+			Country: "GABON",
+			Value: 60125.7,
+		},
+		{
+			Country: "GAMBIA",
+			Value: 145448.63,
+		},
+		{
+			Country: "GEORGIA",
+			Value: 163377.13,
+		},
+		{
+			Country: "GERMANY",
+			Value: 8145944.04,
+		},
+		{
+			Country: "GHANA",
+			Value: 910343.59,
+		},
+		{
+			Country: "GIBRALTAR",
+			Value: 688463.79,
+		},
+		{
+			Country: "GREECE",
+			Value: 873559.56,
+		},
+		{
+			Country: "GREENLAND",
+			Value: 189.28,
+		},
+		{
+			Country: "GRENADA",
+			Value: 3646.73,
+		},
+		{
+			Country: "GUADELOUPE",
+			Value: 3819.78,
+		},
+		{
+			Country: "GUAM",
+			Value: 699.91,
+		},
+		{
+			Country: "GUATEMALA",
+			Value: 462898.62,
+		},
+		{
+			Country: "GUERNSEY",
+			Value: null,
+		},
+		{
+			Country: "GUINEA",
+			Value: 576426.57,
+		},
+		{
+			Country: "GUINEA BISSAU",
+			Value: 5782.01,
+		},
+		{
+			Country: "GUYANA",
+			Value: 82335.33,
+		},
+		{
+			Country: "HAITI",
+			Value: 87401.79,
+		},
+		{
+			Country: "HONDURAS",
+			Value: 220142.57,
+		},
+		{
+			Country: "HONG KONG",
+			Value: 6829915.45,
+		},
+		{
+			Country: "HUNGARY",
+			Value: 464769.2,
+		},
+		{
+			Country: "ICELAND",
+			Value: 10064.36,
+		},
+		{
+			Country: "INDONESIA",
+			Value: 4951517.09,
+		},
+		{
+			Country: "INSTALLATIONS IN INTERNATIONAL WATERS",
+			Value: null,
+		},
+		{
+			Country: "IRAN",
+			Value: 1011729.0,
+		},
+		{
+			Country: "IRAQ",
+			Value: 2776676.46,
+		},
+		{
+			Country: "IRELAND",
+			Value: 582089.64,
+		},
+		{
+			Country: "ISRAEL",
+			Value: 3748205.03,
+		},
+		{
+			Country: "ITALY",
+			Value: 7255314.3,
+		},
+		{
+			Country: "JAMAICA",
+			Value: 90376.63,
+		},
+		{
+			Country: "JAPAN",
+			Value: 4269323.34,
+		},
+		{
+			Country: "JERSEY",
+			Value: 0.01,
+		},
+		{
+			Country: "JORDAN",
+			Value: 1212861.96,
+		},
+		{
+			Country: "KAZAKHSTAN",
+			Value: 195928.53,
+		},
+		{
+			Country: "KENYA",
+			Value: 2631294.55,
+		},
+		{
+			Country: "KIRIBATI REP",
+			Value: 857.83,
+		},
+		{
+			Country: "KOREA DP RP",
+			Value: 1700.23,
+		},
+		{
+			Country: "KOREA RP",
+			Value: 5311498.92,
+		},
+		{
+			Country: "KUWAIT",
+			Value: 1743093.2,
+		},
+		{
+			Country: "KYRGHYZSTAN",
+			Value: 37847.12,
+		},
+		{
+			Country: "LAO PD RP",
+			Value: 10659.24,
+		},
+		{
+			Country: "LATVIA",
+			Value: 182514.03,
+		},
+		{
+			Country: "LEBANON",
+			Value: 285446.95,
+		},
+		{
+			Country: "LESOTHO",
+			Value: 4609.05,
+		},
+		{
+			Country: "LIBERIA",
+			Value: 201540.79,
+		},
+		{
+			Country: "LIBYA",
+			Value: 468320.53,
+		},
+		{
+			Country: "LIECHTENSTEIN",
+			Value: 730.23,
+		},
+		{
+			Country: "LITHUANIA",
+			Value: 260445.28,
+		},
+		{
+			Country: "LUXEMBOURG",
+			Value: 32806.72,
+		},
+		{
+			Country: "MACAO",
+			Value: 795.1,
+		},
+		{
+			Country: "MACEDONIA",
+			Value: 30339.12,
+		},
+		{
+			Country: "MADAGASCAR",
+			Value: 191865.5,
+		},
+		{
+			Country: "MALAWI",
+			Value: 72216.99,
+		},
+		{
+			Country: "MALAYSIA",
+			Value: 6016559.47,
+		},
+		{
+			Country: "MALDIVES",
+			Value: 738744.15,
+		},
+		{
+			Country: "MALI",
+			Value: 99089.39,
+		},
+		{
+			Country: "MALTA",
+			Value: 411447.06,
+		},
+		{
+			Country: "MARSHALL ISLAND",
+			Value: 1815.66,
+		},
+		{
+			Country: "MARTINIQUE",
+			Value: 3802.85,
+		},
+		{
+			Country: "MAURITANIA",
+			Value: 79807.9,
+		},
+		{
+			Country: "MAURITIUS",
+			Value: 645385.93,
+		},
+		{
+			Country: "MAYOTTE",
+			Value: 6270.5,
+		},
+		{
+			Country: "MEXICO",
+			Value: 4408459.44,
+		},
+		{
+			Country: "MICRONESIA",
+			Value: 513.32,
+		},
+		{
+			Country: "MOLDOVA",
+			Value: 10356.5,
+		},
+		{
+			Country: "MONACO",
+			Value: 1954.09,
+		},
+		{
+			Country: "MONGOLIA",
+			Value: 27451.56,
+		},
+		{
+			Country: "MONTENEGRO",
+			Value: 28904.98,
+		},
+		{
+			Country: "MONTSERRAT",
+			Value: 100.75,
+		},
+		{
+			Country: "MOROCCO",
+			Value: 855027.77,
+		},
+		{
+			Country: "MOZAMBIQUE",
+			Value: 1650459.78,
+		},
+		{
+			Country: "MYANMAR",
+			Value: 554901.37,
+		},
+		{
+			Country: "N. MARIANA IS.",
+			Value: 254.05,
+		},
+		{
+			Country: "NAMIBIA",
+			Value: 376022.43,
+		},
+		{
+			Country: "NAURU RP",
+			Value: 70.47,
+		},
+		{
+			Country: "NEPAL",
+			Value: 5827488.22,
+		},
+		{
+			Country: "NETHERLAND",
+			Value: 18526011.14,
+		},
+		{
+			Country: "NETHERLANDANTIL",
+			Value: 17734.81,
+		},
+		{
+			Country: "NEW CALEDONIA",
+			Value: 12756.28,
+		},
+		{
+			Country: "NEW ZEALAND",
+			Value: 445651.52,
+		},
+		{
+			Country: "NICARAGUA",
+			Value: 109572.51,
+		},
+		{
+			Country: "NIGER",
+			Value: 38991.83,
+		},
+		{
+			Country: "NIGERIA",
+			Value: 2999722.78,
+		},
+		{
+			Country: "NORFOLK IS",
+			Value: 14.85,
+		},
+		{
+			Country: "NORWAY",
+			Value: 333573.48,
+		},
+		{
+			Country: "OMAN",
+			Value: 3666504.48,
+		},
+		{
+			Country: "PAKISTAN IR",
+			Value: 986318.47,
+		},
+		{
+			Country: "PALAU",
+			Value: 121.28,
+		},
+		{
+			Country: "PANAMA REPUBLIC",
+			Value: 245306.84,
+		},
+		{
+			Country: "PAPUA N GNA",
+			Value: 58029.82,
+		},
+		{
+			Country: "PARAGUAY",
+			Value: 175652.63,
+		},
+		{
+			Country: "PERU",
+			Value: 761664.39,
+		},
+		{
+			Country: "PHILIPPINES",
+			Value: 1736519.61,
+		},
+		{
+			Country: "PITCAIRN IS.",
+			Value: 1.36,
+		},
+		{
+			Country: "POLAND",
+			Value: 2016667.89,
+		},
+		{
+			Country: "PORTUGAL",
+			Value: 980218.87,
+		},
+		{
+			Country: "PUERTO RICO",
+			Value: 116239.73,
+		},
+		{
+			Country: "QATAR",
+			Value: 1407972.73,
+		},
+		{
+			Country: "REUNION",
+			Value: 37522.57,
+		},
+		{
+			Country: "ROMANIA",
+			Value: 1472749.84,
+		},
+		{
+			Country: "RUSSIA",
+			Value: 3528803.5,
+		},
+		{
+			Country: "RWANDA",
+			Value: 110470.45,
+		},
+		{
+			Country: "SAHARWI A.DM RP",
+			Value: 54.73,
+		},
+		{
+			Country: "SAMOA",
+			Value: 1590.77,
+		},
+		{
+			Country: "SAN MARINO",
+			Value: 429.89,
+		},
+		{
+			Country: "SAO TOME",
+			Value: 1267.62,
+		},
+		{
+			Country: "SAUDI ARAB",
+			Value: 9571446.82,
+		},
+		{
+			Country: "SENEGAL",
+			Value: 776052.47,
+		},
+		{
+			Country: "SERBIA",
+			Value: 88482.05,
+		},
+		{
+			Country: "SEYCHELLES",
+			Value: 63089.21,
+		},
+		{
+			Country: "SIERRA LEONE",
+			Value: 221577.45,
+		},
+		{
+			Country: "SINGAPORE",
+			Value: 11939242.02,
+		},
+		{
+			Country: "SINT MAARTEN (DUTCH PART)",
+			Value: 375.1,
+		},
+		{
+			Country: "SLOVAK REP",
+			Value: 159783.45,
+		},
+		{
+			Country: "SLOVENIA",
+			Value: 485870.85,
+		},
+		{
+			Country: "SOLOMON IS",
+			Value: 2476.01,
+		},
+		{
+			Country: "SOMALIA",
+			Value: 679001.11,
+		},
+		{
+			Country: "SOUTH AFRICA",
+			Value: 7208657.83,
+		},
+		{
+			Country: "SOUTH SUDAN",
+			Value: 34542.26,
+		},
+		{
+			Country: "SPAIN",
+			Value: 3967517.76,
+		},
+		{
+			Country: "SRI LANKA DSR",
+			Value: 3410982.33,
+		},
+		{
+			Country: "ST HELENA",
+			Value: 0.13,
+		},
+		{
+			Country: "ST KITT N A",
+			Value: 4136.33,
+		},
+		{
+			Country: "ST LUCIA",
+			Value: 6018.27,
+		},
+		{
+			Country: "ST VINCENT",
+			Value: 1973.1,
+		},
+		{
+			Country: "STATE OF PALEST",
+			Value: 534.58,
+		},
+		{
+			Country: "SUDAN",
+			Value: 666338.5,
+		},
+		{
+			Country: "SURINAME",
+			Value: 24185.93,
+		},
+		{
+			Country: "SVALLBARD AND J",
+			Value: 87.9,
+		},
+		{
+			Country: "SWAZILAND",
+			Value: 20512.93,
+		},
+		{
+			Country: "SWEDEN",
+			Value: 843613.8,
+		},
+		{
+			Country: "SWITZERLAND",
+			Value: 1263803.95,
+		},
+		{
+			Country: "SYRIA",
+			Value: 52271.08,
+		},
+		{
+			Country: "TAIWAN",
+			Value: 1523600.84,
+		},
+		{
+			Country: "TAJIKISTAN",
+			Value: 42684.12,
+		},
+		{
+			Country: "TANZANIA REP",
+			Value: 3826430.09,
+		},
+		{
+			Country: "THAILAND",
+			Value: 4172172.17,
+		},
+		{
+			Country: "TIMOR LESTE",
+			Value: 39713.52,
+		},
+		{
+			Country: "TOGO",
+			Value: 2673621.56,
+		},
+		{
+			Country: "TOKELAU IS",
+			Value: null,
+		},
+		{
+			Country: "TONGA",
+			Value: 1315.33,
+		},
+		{
+			Country: "TRINIDAD",
+			Value: 90263.51,
+		},
+		{
+			Country: "TUNISIA",
+			Value: 363777.6,
+		},
+		{
+			Country: "TURKEY",
+			Value: 5505980.24,
+		},
+		{
+			Country: "TURKMENISTAN",
+			Value: 30981.8,
+		},
+		{
+			Country: "TURKS C IS",
+			Value: 915.48,
+		},
+		{
+			Country: "TUVALU",
+			Value: 88.34,
+		},
+		{
+			Country: "U ARAB EMTS",
+			Value: 29509436.52,
+		},
+		{
+			Country: "UK",
+			Value: 10696405.18,
+		},
+		{
+			Country: "USA",
+			Value: 64176635.11,
+		},
+		{
+			Country: "UGANDA",
+			Value: 420533.05,
+		},
+		{
+			Country: "UKRAINE",
+			Value: 143465.66,
+		},
+		{
+			Country: "UNSPECIFIED",
+			Value: 2472621.68,
+		},
+		{
+			Country: "URUGUAY",
+			Value: 432683.02,
+		},
+		{
+			Country: "US MINOR OUTLYING ISLANDS",
+			Value: 249.04,
+		},
+		{
+			Country: "UZBEKISTAN",
+			Value: 308589.9,
+		},
+		{
+			Country: "VANUATU REP",
+			Value: 3242.28,
+		},
+		{
+			Country: "VATICAN CITY",
+			Value: 75.12,
+		},
+		{
+			Country: "VENEZUELA",
+			Value: 145124.68,
+		},
+		{
+			Country: "VIETNAM SOC REP",
+			Value: 4528848.26,
+		},
+		{
+			Country: "VIRGIN IS US",
+			Value: 4830.77,
+		},
+		{
+			Country: "YEMEN REPUBLC",
+			Value: 725649.32,
+		},
+		{
+			Country: "ZAMBIA",
+			Value: 202279.31,
+		},
+		{
+			Country: "ZIMBABWE",
+			Value: 126169.37,
+		},
+	]
+		.filter(
+			(e) => e.Value != null && typeof e.Value === "number" && e.Value > 0,
+		)
+		.map((row) => [
+			centerKey,
+			`E - ${row.Country}`,
+			row.Value ? row.Value / 100 : 0,
+		]),
+	"2024-2025": [
+		{
+			Country: "AFGHANISTAN",
+			Value: 202488.79,
+		},
+		{
+			Country: "ALBANIA",
+			Value: 42177.57,
+		},
+		{
+			Country: "ALGERIA",
+			Value: 587936.85,
+		},
+		{
+			Country: "AMERI SAMOA",
+			Value: 1919.38,
+		},
+		{
+			Country: "ANDORRA",
+			Value: 177.26,
+		},
+		{
+			Country: "ANGOLA",
+			Value: 330043.6,
+		},
+		{
+			Country: "ANGUILLA",
+			Value: 105.09,
+		},
+		{
+			Country: "ANTARTICA",
+			Value: 173.32,
+		},
+		{
+			Country: "ANTIGUA",
+			Value: 3529.23,
+		},
+		{
+			Country: "ARGENTINA",
+			Value: 591149.15,
+		},
+		{
+			Country: "ARMENIA",
+			Value: 134676.87,
+		},
+		{
+			Country: "ARUBA",
+			Value: 7694.88,
+		},
+		{
+			Country: "AUSTRALIA",
+			Value: 5307485.36,
+		},
+		{
+			Country: "AUSTRIA",
+			Value: 862688.6,
+		},
+		{
+			Country: "AZERBAIJAN",
+			Value: 61235.17,
+		},
+		{
+			Country: "BAHAMAS",
+			Value: 6581.66,
+		},
+		{
+			Country: "BAHARAIN IS",
+			Value: 512661.27,
+		},
+		{
+			Country: "BANGLADESH PR",
+			Value: 6973837.17,
+		},
+		{
+			Country: "BARBADOS",
+			Value: 17354.67,
+		},
+		{
+			Country: "BELARUS",
+			Value: 45798.35,
+		},
+		{
+			Country: "BELGIUM",
+			Value: 3926615.5,
+		},
+		{
+			Country: "BELIZE",
+			Value: 7260.95,
+		},
+		{
+			Country: "BENIN",
+			Value: 713340.55,
+		},
+		{
+			Country: "BERMUDA",
+			Value: 3335.36,
+		},
+		{
+			Country: "BHUTAN",
+			Value: 792442.31,
+		},
+		{
+			Country: "BOLIVIA",
+			Value: 45806.34,
+		},
+		{
+			Country: "BOSNIA-HRZGOVIN",
+			Value: 9756.44,
+		},
+		{
+			Country: "BOTSWANA",
+			Value: 106533.39,
+		},
+		{
+			Country: "BR VIRGN IS",
+			Value: 1327.8,
+		},
+		{
+			Country: "BRAZIL",
+			Value: 4383948.84,
+		},
+		{
+			Country: "BRITISH INDIAN",
+			Value: 18.96,
+		},
+		{
+			Country: "BRUNEI",
+			Value: 38033.22,
+		},
+		{
+			Country: "BULGARIA",
+			Value: 136043.49,
+		},
+		{
+			Country: "BURKINA FASO",
+			Value: 93295.15,
+		},
+		{
+			Country: "BURUNDI",
+			Value: 19748.24,
+		},
+		{
+			Country: "C AFRI REP",
+			Value: 6569.91,
+		},
+		{
+			Country: "CAMBODIA",
+			Value: 122202.21,
+		},
+		{
+			Country: "CAMEROON",
+			Value: 333896.2,
+		},
+		{
+			Country: "CANADA",
+			Value: 2622260.61,
+		},
+		{
+			Country: "CAPE VERDE IS",
+			Value: 2354.04,
+		},
+		{
+			Country: "CAYMAN IS",
+			Value: 59521.76,
+		},
+		{
+			Country: "CHAD",
+			Value: 46078.49,
+		},
+		{
+			Country: "CHILE",
+			Value: 722131.59,
+		},
+		{
+			Country: "CHINA P RP",
+			Value: 8746063.69,
+		},
+		{
+			Country: "CHRISTMAS IS.",
+			Value: 19.02,
+		},
+		{
+			Country: "COCOS IS",
+			Value: 49.34,
+		},
+		{
+			Country: "COLOMBIA",
+			Value: 892826.6,
+		},
+		{
+			Country: "COMOROS",
+			Value: 21728.28,
+		},
+		{
+			Country: "CONGO D. REP.",
+			Value: 345975.21,
+		},
+		{
+			Country: "CONGO P REP",
+			Value: 109451.65,
+		},
+		{
+			Country: "COOK IS",
+			Value: 86.12,
+		},
+		{
+			Country: "COSTA RICA",
+			Value: 137555.4,
+		},
+		{
+			Country: "COTE D' IVOIRE",
+			Value: 598033.8,
+		},
+		{
+			Country: "CROATIA",
+			Value: 209509.74,
+		},
+		{
+			Country: "CUBA",
+			Value: 8540.88,
+		},
+		{
+			Country: "CURACAO",
+			Value: 99.07,
+		},
+		{
+			Country: "CYPRUS",
+			Value: 55378.79,
+		},
+		{
+			Country: "CZECH REPUBLIC",
+			Value: 1410664.74,
+		},
+		{
+			Country: "DENMARK",
+			Value: 526394.77,
+		},
+		{
+			Country: "DJIBOUTI",
+			Value: 423063.96,
+		},
+		{
+			Country: "DOMINIC REP",
+			Value: 238765.98,
+		},
+		{
+			Country: "DOMINICA",
+			Value: 2585.78,
+		},
+		{
+			Country: "ECUADOR",
+			Value: 187055.26,
+		},
+		{
+			Country: "EGYPT A RP",
+			Value: 2106676.52,
+		},
+		{
+			Country: "EL SALVADOR",
+			Value: 94158.84,
+		},
+		{
+			Country: "EQUTL GUINEA",
+			Value: 12343.45,
+		},
+		{
+			Country: "ERITREA",
+			Value: 7789.65,
+		},
+		{
+			Country: "ESTONIA",
+			Value: 45608.68,
+		},
+		{
+			Country: "ETHIOPIA",
+			Value: 271801.53,
+		},
+		{
+			Country: "FALKLAND IS",
+			Value: 2.2,
+		},
+		{
+			Country: "FAROE IS.",
+			Value: 8427.99,
+		},
+		{
+			Country: "FIJI IS",
+			Value: 54583.86,
+		},
+		{
+			Country: "FINLAND",
+			Value: 298903.65,
+		},
+		{
+			Country: "FR GUIANA",
+			Value: 1009.43,
+		},
+		{
+			Country: "FR POLYNESIA",
+			Value: 8074.76,
+		},
+		{
+			Country: "FRANCE",
+			Value: 5051181.23,
+		},
+		{
+			Country: "GABON",
+			Value: 61092.69,
+		},
+		{
+			Country: "GAMBIA",
+			Value: 79326.58,
+		},
+		{
+			Country: "GEORGIA",
+			Value: 174670.84,
+		},
+		{
+			Country: "GERMANY",
+			Value: 6465173.93,
+		},
+		{
+			Country: "GHANA",
+			Value: 824882.59,
+		},
+		{
+			Country: "GIBRALTAR",
+			Value: 397.99,
+		},
+		{
+			Country: "GREECE",
+			Value: 639399.45,
+		},
+		{
+			Country: "GREENLAND",
+			Value: 21.08,
+		},
+		{
+			Country: "GRENADA",
+			Value: 2623.64,
+		},
+		{
+			Country: "GUADELOUPE",
+			Value: 3531.78,
+		},
+		{
+			Country: "GUAM",
+			Value: 413.1,
+		},
+		{
+			Country: "GUATEMALA",
+			Value: 398857.32,
+		},
+		{
+			Country: "GUERNSEY",
+			Value: 0.96,
+		},
+		{
+			Country: "GUINEA",
+			Value: 508524.29,
+		},
+		{
+			Country: "GUINEA BISSAU",
+			Value: 13606.98,
+		},
+		{
+			Country: "GUYANA",
+			Value: 54301.65,
+		},
+		{
+			Country: "HAITI",
+			Value: 56877.26,
+		},
+		{
+			Country: "HONDURAS",
+			Value: 176322.72,
+		},
+		{
+			Country: "HONG KONG",
+			Value: 3733768.82,
+		},
+		{
+			Country: "HUNGARY",
+			Value: 337011.65,
+		},
+		{
+			Country: "ICELAND",
+			Value: 8029.39,
+		},
+		{
+			Country: "INDONESIA",
+			Value: 3655229.62,
+		},
+		{
+			Country: "INSTALLATIONS IN INTERNATIONAL WATERS",
+			Value: 0.08,
+		},
+		{
+			Country: "IRAN",
+			Value: 768125.01,
+		},
+		{
+			Country: "IRAQ",
+			Value: 2002417.48,
+		},
+		{
+			Country: "IRELAND",
+			Value: 511678.5,
+		},
+		{
+			Country: "ISRAEL",
+			Value: 1278742.75,
+		},
+		{
+			Country: "ITALY",
+			Value: 4893678.78,
+		},
+		{
+			Country: "JAMAICA",
+			Value: 54942.66,
+		},
+		{
+			Country: "JAPAN",
+			Value: 3757019.36,
+		},
+		{
+			Country: "JERSEY",
+			Value: 0.04,
+		},
+		{
+			Country: "JORDAN",
+			Value: 471360.31,
+		},
+		{
+			Country: "KAZAKHSTAN",
+			Value: 168877.75,
+		},
+		{
+			Country: "KENYA",
+			Value: 1861365.11,
+		},
+		{
+			Country: "KIRIBATI REP",
+			Value: 2731.53,
+		},
+		{
+			Country: "KOREA DP RP",
+			Value: 1517.01,
+		},
+		{
+			Country: "KOREA RP",
+			Value: 3611516.63,
+		},
+		{
+			Country: "KUWAIT",
+			Value: 1186337.5,
+		},
+		{
+			Country: "KYRGHYZSTAN",
+			Value: 27591.34,
+		},
+		{
+			Country: "LAO PD RP",
+			Value: 7806.91,
+		},
+		{
+			Country: "LATVIA",
+			Value: 146910.37,
+		},
+		{
+			Country: "LEBANON",
+			Value: 174338.73,
+		},
+		{
+			Country: "LESOTHO",
+			Value: 6657.03,
+		},
+		{
+			Country: "LIBERIA",
+			Value: 214929.21,
+		},
+		{
+			Country: "LIBYA",
+			Value: 390777.53,
+		},
+		{
+			Country: "LIECHTENSTEIN",
+			Value: 262.49,
+		},
+		{
+			Country: "LITHUANIA",
+			Value: 152172.71,
+		},
+		{
+			Country: "LUXEMBOURG",
+			Value: 32078.49,
+		},
+		{
+			Country: "MACAO",
+			Value: 1062.85,
+		},
+		{
+			Country: "MACEDONIA",
+			Value: 19650.67,
+		},
+		{
+			Country: "MADAGASCAR",
+			Value: 159378.95,
+		},
+		{
+			Country: "MALAWI",
+			Value: 60859.63,
+		},
+		{
+			Country: "MALAYSIA",
+			Value: 4927970.31,
+		},
+		{
+			Country: "MALDIVES",
+			Value: 351317.7,
+		},
+		{
+			Country: "MALI",
+			Value: 66334.77,
+		},
+		{
+			Country: "MALTA",
+			Value: 234135.03,
+		},
+		{
+			Country: "MARSHALL ISLAND",
+			Value: 2339.68,
+		},
+		{
+			Country: "MARTINIQUE",
+			Value: 3139.64,
+		},
+		{
+			Country: "MAURITANIA",
+			Value: 64847.72,
+		},
+		{
+			Country: "MAURITIUS",
+			Value: 465610.06,
+		},
+		{
+			Country: "MAYOTTE",
+			Value: 4850.09,
+		},
+		{
+			Country: "MEXICO",
+			Value: 3672499.64,
+		},
+		{
+			Country: "MICRONESIA",
+			Value: 625.28,
+		},
+		{
+			Country: "MOLDOVA",
+			Value: 5839.94,
+		},
+		{
+			Country: "MONACO",
+			Value: 3620.89,
+		},
+		{
+			Country: "MONGOLIA",
+			Value: 16870.49,
+		},
+		{
+			Country: "MONTENEGRO",
+			Value: 97882.06,
+		},
+		{
+			Country: "MONTSERRAT",
+			Value: 50.54,
+		},
+		{
+			Country: "MOROCCO",
+			Value: 585654.97,
+		},
+		{
+			Country: "MOZAMBIQUE",
+			Value: 932566.86,
+		},
+		{
+			Country: "MYANMAR",
+			Value: 375864.42,
+		},
+		{
+			Country: "N. MARIANA IS.",
+			Value: 66.66,
+		},
+		{
+			Country: "NAMIBIA",
+			Value: 103292.49,
+		},
+		{
+			Country: "NAURU RP",
+			Value: 14.78,
+		},
+		{
+			Country: "NEPAL",
+			Value: 4496872.42,
+		},
+		{
+			Country: "NETHERLAND",
+			Value: 15140568.24,
+		},
+		{
+			Country: "NETHERLANDANTIL",
+			Value: 11621.98,
+		},
+		{
+			Country: "NEW CALEDONIA",
+			Value: 3902.72,
+		},
+		{
+			Country: "NEW ZEALAND",
+			Value: 415031.75,
+		},
+		{
+			Country: "NICARAGUA",
+			Value: 98886.18,
+		},
+		{
+			Country: "NIGER",
+			Value: 45105.23,
+		},
+		{
+			Country: "NIGERIA",
+			Value: 1784520.14,
+		},
+		{
+			Country: "NORFOLK IS",
+			Value: 509.27,
+		},
+		{
+			Country: "NORWAY",
+			Value: 271782.69,
+		},
+		{
+			Country: "OMAN",
+			Value: 2502409.57,
+		},
+		{
+			Country: "PAKISTAN IR",
+			Value: 339233.83,
+		},
+		{
+			Country: "PALAU",
+			Value: 167.52,
+		},
+		{
+			Country: "PANAMA REPUBLIC",
+			Value: 181415.6,
+		},
+		{
+			Country: "PAPUA N GNA",
+			Value: 42844.03,
+		},
+		{
+			Country: "PARAGUAY",
+			Value: 119864.45,
+		},
+		{
+			Country: "PERU",
+			Value: 609445.59,
+		},
+		{
+			Country: "PHILIPPINES",
+			Value: 1355007.41,
+		},
+		{
+			Country: "PITCAIRN IS.",
+			Value: null,
+		},
+		{
+			Country: "POLAND",
+			Value: 1598505.95,
+		},
+		{
+			Country: "PORTUGAL",
+			Value: 564634.54,
+		},
+		{
+			Country: "PUERTO RICO",
+			Value: 82933.84,
+		},
+		{
+			Country: "QATAR",
+			Value: 1042661.81,
+		},
+		{
+			Country: "REUNION",
+			Value: 32068.87,
+		},
+		{
+			Country: "ROMANIA",
+			Value: 628536.29,
+		},
+		{
+			Country: "RUSSIA",
+			Value: 3161183.58,
+		},
+		{
+			Country: "RWANDA",
+			Value: 62316.41,
+		},
+		{
+			Country: "SAHARWI A.DM RP",
+			Value: 20.63,
+		},
+		{
+			Country: "SAMOA",
+			Value: 964.79,
+		},
+		{
+			Country: "SAN MARINO",
+			Value: 2613.53,
+		},
+		{
+			Country: "SAO TOME",
+			Value: 1024.44,
+		},
+		{
+			Country: "SAUDI ARAB",
+			Value: 7344382.06,
+		},
+		{
+			Country: "SENEGAL",
+			Value: 629594.92,
+		},
+		{
+			Country: "SERBIA",
+			Value: 57565.69,
+		},
+		{
+			Country: "SEYCHELLES",
+			Value: 48283.97,
+		},
+		{
+			Country: "SIERRA LEONE",
+			Value: 233588.14,
+		},
+		{
+			Country: "SINGAPORE",
+			Value: 8734563.73,
+		},
+		{
+			Country: "SINT MAARTEN (DUTCH PART)",
+			Value: 542.26,
+		},
+		{
+			Country: "SLOVAK REP",
+			Value: 224354.33,
+		},
+		{
+			Country: "SLOVENIA",
+			Value: 351442.46,
+		},
+		{
+			Country: "SOLOMON IS",
+			Value: 1766.82,
+		},
+		{
+			Country: "SOMALIA",
+			Value: 444722.83,
+		},
+		{
+			Country: "SOUTH AFRICA",
+			Value: 4878830.31,
+		},
+		{
+			Country: "SOUTH SUDAN",
+			Value: 12685.0,
+		},
+		{
+			Country: "SPAIN",
+			Value: 2921381.57,
+		},
+		{
+			Country: "SRI LANKA DSR",
+			Value: 2890335.25,
+		},
+		{
+			Country: "ST HELENA",
+			Value: 106.78,
+		},
+		{
+			Country: "ST KITT N A",
+			Value: 1839.83,
+		},
+		{
+			Country: "ST LUCIA",
+			Value: 6884.7,
+		},
+		{
+			Country: "ST VINCENT",
+			Value: 2108.66,
+		},
+		{
+			Country: "STATE OF PALEST",
+			Value: 18.15,
+		},
+		{
+			Country: "SUDAN",
+			Value: 337813.18,
+		},
+		{
+			Country: "SURINAME",
+			Value: 15688.31,
+		},
+		{
+			Country: "SVALLBARD AND J",
+			Value: null,
+		},
+		{
+			Country: "SWAZILAND",
+			Value: 14157.23,
+		},
+		{
+			Country: "SWEDEN",
+			Value: 773370.73,
+		},
+		{
+			Country: "SWITZERLAND",
+			Value: 990121.49,
+		},
+		{
+			Country: "SYRIA",
+			Value: 40382.09,
+		},
+		{
+			Country: "TAIWAN",
+			Value: 1101185.9,
+		},
+		{
+			Country: "TAJIKISTAN",
+			Value: 25905.73,
+		},
+		{
+			Country: "TANZANIA REP",
+			Value: 3026954.5,
+		},
+		{
+			Country: "THAILAND",
+			Value: 2980470.33,
+		},
+		{
+			Country: "TIMOR LESTE",
+			Value: 24558.24,
+		},
+		{
+			Country: "TOGO",
+			Value: 1558789.23,
+		},
+		{
+			Country: "TOKELAU IS",
+			Value: 45.92,
+		},
+		{
+			Country: "TONGA",
+			Value: 596.73,
+		},
+		{
+			Country: "TRINIDAD",
+			Value: 78164.95,
+		},
+		{
+			Country: "TUNISIA",
+			Value: 225313.77,
+		},
+		{
+			Country: "TURKEY",
+			Value: 3599882.99,
+		},
+		{
+			Country: "TURKMENISTAN",
+			Value: 30565.0,
+		},
+		{
+			Country: "TURKS C IS",
+			Value: 1200.69,
+		},
+		{
+			Country: "TUVALU",
+			Value: 9.56,
+		},
+		{
+			Country: "U ARAB EMTS",
+			Value: 22575823.26,
+		},
+		{
+			Country: "UK",
+			Value: 9083646.77,
+		},
+		{
+			Country: "USA",
+			Value: 50346214.11,
+		},
+		{
+			Country: "UGANDA",
+			Value: 300740.78,
+		},
+		{
+			Country: "UKRAINE",
+			Value: 109527.31,
+		},
+		{
+			Country: "UNSPECIFIED",
+			Value: 2152165.25,
+		},
+		{
+			Country: "URUGUAY",
+			Value: 97024.76,
+		},
+		{
+			Country: "US MINOR OUTLYING ISLANDS",
+			Value: 446.86,
+		},
+		{
+			Country: "UZBEKISTAN",
+			Value: 320126.6,
+		},
+		{
+			Country: "VANUATU REP",
+			Value: 2398.1,
+		},
+		{
+			Country: "VATICAN CITY",
+			Value: null,
+		},
+		{
+			Country: "VENEZUELA",
+			Value: 137438.04,
+		},
+		{
+			Country: "VIETNAM SOC REP",
+			Value: 3467300.79,
+		},
+		{
+			Country: "VIRGIN IS US",
+			Value: 2805.35,
+		},
+		{
+			Country: "YEMEN REPUBLC",
+			Value: 516691.76,
+		},
+		{
+			Country: "ZAMBIA",
+			Value: 143730.36,
+		},
+		{
+			Country: "ZIMBABWE",
+			Value: 90288.27,
+		},
+	]
+		.filter(
+			(e) => e.Value != null && typeof e.Value === "number" && e.Value > 0,
+		)
+		.map((row) => [
+			centerKey,
+			`E - ${row.Country}`,
+			row.Value ? row.Value / 100 : 0,
+		]),
+};
+
+export const countryWiseTotal: { [key: string]: { [key: string]: number } } = {
+	export: {
+		"2023-2024": sum(
+			countryWiseExport["2023-2024"].map((e) => {
+				const row = e as SankeyDataRow;
+				return row[2] * CRORE;
+			}),
+		),
+		"2024-2025": sum(
+			countryWiseExport["2024-2025"].map((e) => {
+				const row = e as SankeyDataRow;
+				return row[2] * CRORE;
+			}),
+		),
+	},
+	import: {
+		"2023-2024": sum(
+			countryWiseImport["2023-2024"].map((e) => {
+				const row = e as SankeyDataRow;
+				return row[2] * CRORE;
+			}),
+		),
+		"2024-2025": sum(
+			countryWiseImport["2024-2025"].map((e) => {
+				const row = e as SankeyDataRow;
+				return row[2] * CRORE;
+			}),
+		),
+	},
+};
+
+const countryDeficit2324: SankeyDataRow = [
+	centerKey,
+	"E - Deficit",
+	sum(countryWiseImport["2023-2024"].map((e) => e[2])) -
+		sum(countryWiseExport["2023-2024"].map((e) => e[2])),
+];
+
+const countryDeficit2425: SankeyDataRow = [
+	centerKey,
+	"E - Deficit",
+	sum(countryWiseImport["2024-2025"].map((e) => e[2])) -
+		sum(countryWiseExport["2024-2025"].map((e) => e[2])),
+];
+
+export const dataset5: SankeyDataWithHeader = [
+	["From", "To", "Weight"],
+	...countryWiseImport["2023-2024"],
+	countryDeficit2324,
+	...countryWiseExport["2023-2024"],
+];
+export const dataset6: SankeyDataWithHeader = [
+	["From", "To", "Weight"],
+	...countryWiseImport["2024-2025"],
+	countryDeficit2425,
+	...countryWiseExport["2024-2025"],
+];
+
 export const completeData = {
 	commodity: { export: rootDataExport, import: rootDataImport },
 	region: { export: regionWiseExport, import: regionWiseImport },
+	country: { export: countryWiseExport, import: countryWiseImport },
 };

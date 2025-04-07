@@ -104,9 +104,11 @@ export type SankeyDataWithHeader = [
 export const Sankey = ({
 	data,
 	fontSize = 12,
+	height = "5000px",
 }: {
 	data: SankeyDataWithHeader;
 	fontSize?: number;
+	height?: string;
 }) => {
 	const mounted = useMounted();
 	const { activeCurrency } = useSharedContext();
@@ -125,7 +127,7 @@ export const Sankey = ({
 	return (
 		<Chart
 			chartType="Sankey"
-			height="4000px"
+			height={height}
 			width="2000px"
 			data={data.map((e, ix) => {
 				if (ix === 0) {
