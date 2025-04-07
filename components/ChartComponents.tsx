@@ -8,6 +8,7 @@ import {
 	CRORE,
 	RED_COLORS,
 	numFormat,
+	sum,
 	supportedCurrencies,
 } from "@/utils/shared";
 import { useSharedContext } from "./SharedContext";
@@ -100,11 +101,24 @@ export type SankeyDataWithHeader = [
 	...SankeyDataRow[],
 ];
 
-export const Sankey = ({ data }: { data: SankeyDataWithHeader }) => {
+export const Sankey = ({
+	data,
+	fontSize = 12,
+}: {
+	data: SankeyDataWithHeader;
+	fontSize?: number;
+}) => {
 	const mounted = useMounted();
 	const { activeCurrency } = useSharedContext();
 
-	if (!mounted) {
+	const total: number = sum(
+		data.slice(1).map((e) => {
+			const row = e as SankeyDataRow;
+			return row[2];
+		}),
+	);
+
+	if (!mounted && !total) {
 		return null;
 	}
 
@@ -123,7 +137,7 @@ export const Sankey = ({ data }: { data: SankeyDataWithHeader }) => {
 						activeCurrency,
 						true,
 						false,
-					)}`;
+					)} :: ${(((e[valueCol] as number) / total) * 100).toFixed(2)}%`;
 					return [...e, tooltip];
 				}
 			})}
@@ -134,7 +148,7 @@ export const Sankey = ({ data }: { data: SankeyDataWithHeader }) => {
 						nodePadding: 30,
 						label: {
 							fontName: mainFont,
-							fontSize: 12,
+							fontSize: fontSize,
 							color: "#ffffff",
 							bold: true,
 							italic: false,

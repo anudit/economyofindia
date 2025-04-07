@@ -1,5 +1,8 @@
-import type { SankeyDataRow, SankeyDataWithHeader } from "@/components/ChartComponents";
-import { type DatasetMetadata, sum } from "@/utils/shared";
+import type {
+	SankeyDataRow,
+	SankeyDataWithHeader,
+} from "@/components/ChartComponents";
+import { CRORE, type DatasetMetadata, sum } from "@/utils/shared";
 
 export const metadata: DatasetMetadata = {
 	id: "import_export",
@@ -23,7 +26,7 @@ const rootDataExport: { [key: string]: SankeyDataRow[] } = {
 		{
 			Commodity:
 				"FISH AND CRUSTACEANS, MOLLUSCS AND OTHER AQUATIC INVERTABRATES.",
-			Value: 5071041.87,
+			Value: 5071041.86,
 		},
 		{
 			Commodity:
@@ -33,7 +36,7 @@ const rootDataExport: { [key: string]: SankeyDataRow[] } = {
 		{
 			Commodity:
 				"PRODUCTS OF ANIMAL ORIGIN, NOT ELSEWHERE SPECIFIED OR INCLUDED.",
-			Value: 222725.14,
+			Value: 222725.13,
 		},
 		{
 			Commodity:
@@ -42,23 +45,23 @@ const rootDataExport: { [key: string]: SankeyDataRow[] } = {
 		},
 		{
 			Commodity: "EDIBLE VEGETABLES AND CERTAIN ROOTS AND TUBERS.",
-			Value: 1606670.22,
+			Value: 1606670.21,
 		},
 		{
 			Commodity: "EDIBLE FRUIT AND NUTS; PEEL OR CITRUS FRUIT OR MELONS.",
-			Value: 1355804.55,
+			Value: 1355804.54,
 		},
 		{ Commodity: "COFFEE, TEA, MATE AND SPICES.", Value: 3922976.27 },
 		{ Commodity: "CEREALS.", Value: 9096167.17 },
 		{
 			Commodity:
 				"PRODUCTS OF THE MILLING INDUSTRY; MALT; STARCHES; INULIN; WHEAT GLUTEN.",
-			Value: 596835.05,
+			Value: 596835.04,
 		},
 		{
 			Commodity:
 				"OIL SEEDS AND OLEA. FRUITS; MISC. GRAINS, SEEDS AND FRUIT; INDUSTRIAL OR MEDICINAL PLANTS; STRAW AND FODDER.",
-			Value: 1774620.02,
+			Value: 1774620.01,
 		},
 		{
 			Commodity: "LAC; GUMS, RESINS AND OTHER VEGETABLE SAPS AND EXTRACTS.",
@@ -105,7 +108,7 @@ const rootDataExport: { [key: string]: SankeyDataRow[] } = {
 		{
 			Commodity:
 				"SALT; SULPHUR; EARTHS AND STONE; PLASTERING MATERIALS, LIME AND CEMENT.",
-			Value: 1841521.2,
+			Value: 1841521.19,
 		},
 		{ Commodity: "ORES, SLAG AND ASH.", Value: 3535630.35 },
 		{
@@ -116,15 +119,15 @@ const rootDataExport: { [key: string]: SankeyDataRow[] } = {
 		{
 			Commodity:
 				"INORGANIC CHEMICALS; ORGANIC OR INORGANIC COMPOUNDS OF PRECIOUS METALS, OF RARE-EARTH METALS, OR RADI. ELEM. OR OF ISOTOPES.",
-			Value: 2655195.32,
+			Value: 2655195.3,
 		},
-		{ Commodity: "ORGANIC CHEMICALS", Value: 16817193.22 },
-		{ Commodity: "PHARMACEUTICAL PRODUCTS", Value: 18305160.67 },
+		{ Commodity: "ORGANIC CHEMICALS", Value: 16817193.18 },
+		{ Commodity: "PHARMACEUTICAL PRODUCTS", Value: 18305160.66 },
 		{ Commodity: "FERTILISERS.", Value: 107737.69 },
 		{
 			Commodity:
 				"TANNING OR DYEING EXTRACTS; TANNINS AND THEIR DERI. DYES, PIGMENTS AND OTHER COLOURING MATTER; PAINTS AND VER; PUTTY AND OTHER MASTICS; INKS.",
-			Value: 3299723.83,
+			Value: 3299723.82,
 		},
 		{
 			Commodity:
@@ -138,7 +141,7 @@ const rootDataExport: { [key: string]: SankeyDataRow[] } = {
 		},
 		{
 			Commodity: "ALBUMINOIDAL SUBSTANCES; MODIFIED STARCHES; GLUES; ENZYMES.",
-			Value: 313070.99,
+			Value: 313070.98,
 		},
 		{
 			Commodity:
@@ -147,11 +150,11 @@ const rootDataExport: { [key: string]: SankeyDataRow[] } = {
 		},
 		{ Commodity: "PHOTOGRAPHIC OR CINEMATOGRAPHIC GOODS.", Value: 12475.88 },
 		{ Commodity: "MISCELLANEOUS CHEMICAL PRODUCTS.", Value: 5445441.66 },
-		{ Commodity: "PLASTIC AND ARTICLES THEREOF.", Value: 6111706.12 },
-		{ Commodity: "RUBBER AND ARTICLES THEREOF.", Value: 3789020.85 },
+		{ Commodity: "PLASTIC AND ARTICLES THEREOF.", Value: 6111706.11 },
+		{ Commodity: "RUBBER AND ARTICLES THEREOF.", Value: 3789020.84 },
 		{
 			Commodity: "RAW HIDES AND SKINS (OTHER THAN FURSKINS) AND LEATHER",
-			Value: 371486.74,
+			Value: 371486.73,
 		},
 		{
 			Commodity:
@@ -193,43 +196,43 @@ const rootDataExport: { [key: string]: SankeyDataRow[] } = {
 				"WOOL, FINE OR COARSE ANIMAL HAIR, HORSEHAIR YARN AND WOVEN FABRIC.",
 			Value: 136830.52,
 		},
-		{ Commodity: "COTTON.", Value: 5614552.35 },
+		{ Commodity: "COTTON.", Value: 5614552.33 },
 		{
 			Commodity:
 				"OTHER VEGETABLE TEXTILE FIBRES; PAPER YARN AND WOVEN FABRICS OF PAPER YARN.",
 			Value: 391851.49,
 		},
-		{ Commodity: "MAN-MADE FILAMENTS.", Value: 1457640.77 },
+		{ Commodity: "MAN-MADE FILAMENTS.", Value: 1457640.76 },
 		{ Commodity: "MAN-MADE STAPLE FIBRES.", Value: 1356920.95 },
 		{
 			Commodity:
 				"WADDING, FELT AND NONWOVENS; SPACIAL YARNS; TWINE, CORDAGE, ROPES AND CABLES AND ARTICLES THEREOF.",
-			Value: 476032.6,
+			Value: 476032.59,
 		},
 		{
 			Commodity: "CARPETS AND OTHER TEXTILE FLOOR COVERINGS.",
-			Value: 1553046.75,
+			Value: 1553046.74,
 		},
 		{
 			Commodity:
 				"SPECIAL WOVEN FABRICS; TUFTED TEXTILE FABRICS; LACE; TAPESTRIES; TRIMMINGS; EMBROIDERY.",
-			Value: 297978.2,
+			Value: 297978.19,
 		},
 		{
 			Commodity:
 				"IMPREGNATED, COATED, COVERED OR LAMINATED TEXTILE FABRICS; TEXTILE ARTICLES OF A KIND SUITABLE FOR INDUSTRIAL USE.",
-			Value: 390925.06,
+			Value: 396928.61,
 		},
-		{ Commodity: "KNITTED OR CROCHETED FABRICS.", Value: 396928.62 },
+		{ Commodity: "KNITTED OR CROCHETED FABRICS.", Value: 390925.06 },
 		{
 			Commodity:
 				"ARTICLES OF APPAREL AND CLOTHING ACCESSORIES, KNITTED OR CORCHETED.",
-			Value: 5579809.4,
+			Value: 5579809.39,
 		},
 		{
 			Commodity:
 				"ARTICLES OF APPAREL AND CLOTHING ACCESSORIES, NOT KNITTED OR CROCHETED.",
-			Value: 6461281.87,
+			Value: 6461281.86,
 		},
 		{
 			Commodity:
@@ -257,20 +260,20 @@ const rootDataExport: { [key: string]: SankeyDataRow[] } = {
 			Value: 1715709.29,
 		},
 		{ Commodity: "CERAMIC PRODUCTS.", Value: 2523619.63 },
-		{ Commodity: "GLASS AND GLASSWARE.", Value: 914528.34 },
+		{ Commodity: "GLASS AND GLASSWARE.", Value: 914528.33 },
 		{
 			Commodity:
 				"NATURAL OR CULTURED PEARLS, PRECIOUS OR SEMIPRECIOUS STONES,PRE. METALS, CLAD WITH PRE.METAL AND ARTCLS THEREOF;IMIT.JEWLRY COIN.",
 			Value: 27209729.13,
 		},
-		{ Commodity: "IRON AND STEEL", Value: 9811777.36 },
-		{ Commodity: "ARTICLES OF IRON OR STEEL", Value: 8229058.3 },
-		{ Commodity: "COPPER AND ARTICLES THEREOF.", Value: 1917237.05 },
+		{ Commodity: "IRON AND STEEL", Value: 9811777.34 },
+		{ Commodity: "ARTICLES OF IRON OR STEEL", Value: 8229058.29 },
+		{ Commodity: "COPPER AND ARTICLES THEREOF.", Value: 1917237.04 },
 		{ Commodity: "NICKEL AND ARTICLES THEREOF.", Value: 136679.04 },
-		{ Commodity: "ALUMINIUM AND ARTICLES THEREOF.", Value: 6334662.8 },
+		{ Commodity: "ALUMINIUM AND ARTICLES THEREOF.", Value: 6334662.79 },
 		{ Commodity: "LEAD AND ARTICLES THEREOF.", Value: 647005.75 },
 		{ Commodity: "ZINC AND ARTICLES THEREOF.", Value: 601774.25 },
-		{ Commodity: "TIN AND ARTICLES THEREOF.", Value: 13746.32 },
+		{ Commodity: "TIN AND ARTICLES THEREOF.", Value: 13746.31 },
 		{
 			Commodity: "OTHER BASE METALS; CERMETS; ARTICLES THEREOF.",
 			Value: 83903.45,
@@ -284,12 +287,74 @@ const rootDataExport: { [key: string]: SankeyDataRow[] } = {
 		{
 			Commodity:
 				"NUCLEAR REACTORS, BOILERS, MACHINERY AND MECHANICAL APPLIANCES; PARTS THEREOF.",
-			Value: 24886579.84,
+			Value: 24886579.79,
 		},
 		{
 			Commodity:
 				"ELECTRICAL MACHINERY AND EQUIPMENT AND PARTS THEREOF; SOUND RECORDERS AND REPRODUCERS, TELEVISION IMAGE AND SOUND RECORDERS AND REPRODUCERS, AND PARTS.",
-			Value: 28496345.96,
+			Value: 28496345.93,
+		},
+
+		{
+			Commodity:
+				"RAILWAY OR TRAMWAY LOCOMOTIVES, ROLLING-STOCK AND PARTS THEREOF; RAILWAY OR TRAMWAY TRACK FIXTURES AND FITTINGS AND PARTS THEREOF; MECHANICAL",
+			Value: 260991.29,
+		},
+		{
+			Commodity:
+				"VEHICLES OTHER THAN RAILWAY OR TRAMWAY ROLLING STOCK, AND PARTS AND ACCESSORIES THEREOF.",
+			Value: 17294534.84,
+		},
+		{
+			Commodity: "AIRCRAFT, SPACECRAFT, AND PARTS THEREOF.",
+			Value: 2690795.19,
+		},
+		{
+			Commodity: "SHIPS, BOATS AND FLOATING STRUCTURES.",
+			Value: 3359479.71,
+		},
+		{
+			Commodity:
+				"OPTICAL, PHOTOGRAPHIC CINEMATOGRAPHIC MEASURING, CHECKING PRECISION, MEDICAL OR SURGICAL INST. AND APPARATUS PARTS AND ACCESSORIES THEREOF;",
+			Value: 4131390.9,
+		},
+		{
+			Commodity: "CLOCKS AND WATCHES AND PARTS THEREOF.",
+			Value: 76241.43,
+		},
+		{
+			Commodity: "MUSICAL INSTRUMENTS; PARTS AND ACCESSORIES OF SUCH ARTICLES.",
+			Value: 37537.27,
+		},
+		{
+			Commodity: "ARMS AND AMMUNITION; PARTS AND ACCESSORIES THEREOF.",
+			Value: 283812.35,
+		},
+		{
+			Commodity:
+				"FURNITURE; BEDDING, MATTRESSES, MATTRESS SUPPORTS, CUSHIONS AND SIMILAR STUFFED FURNISHING; LAMPS AND LIGHTING FITTINGS NOT ELSEWHERE SPECIFIED OR INC",
+			Value: 2001146.23,
+		},
+		{
+			Commodity:
+				"TOYS, GAMES AND SPORTS REQUISITES; PARTS AND ACCESSORIES THEREOF.",
+			Value: 432954.64,
+		},
+		{
+			Commodity: "MISCELLANEOUS MANUFACTURED ARTICLES.",
+			Value: 598763.64,
+		},
+		{
+			Commodity: "WORKS OF ART COLLECTORS' PIECES AND ANTIQUES.",
+			Value: 279341.13,
+		},
+		{
+			Commodity: "PROJECT GOODS; SOME SPECIAL USES.",
+			Value: 20531.78,
+		},
+		{
+			Commodity: "MISCELLANEOUS GOODS.",
+			Value: 77756.16,
 		},
 	].map((row) => [centerKey, `E - ${row.Commodity}`, row.Value / 100]),
 	"2024-2025": [
@@ -565,6 +630,67 @@ const rootDataExport: { [key: string]: SankeyDataRow[] } = {
 			Commodity:
 				"ELECTRICAL MACHINERY AND EQUIPMENT AND PARTS THEREOF; SOUND RECORDERS AND REPRODUCERS, TELEVISION IMAGE AND SOUND RECORDERS AND REPRODUCERS, AND PARTS.",
 			Value: 25188492.88,
+		},
+		{
+			Commodity:
+				"RAILWAY OR TRAMWAY LOCOMOTIVES, ROLLING-STOCK AND PARTS THEREOF; RAILWAY OR TRAMWAY TRACK FIXTURES AND FITTINGS AND PARTS THEREOF; MECHANICAL",
+			Value: 237271.02,
+		},
+		{
+			Commodity:
+				"VEHICLES OTHER THAN RAILWAY OR TRAMWAY ROLLING STOCK, AND PARTS AND ACCESSORIES THEREOF.",
+			Value: 14106048.24,
+		},
+		{
+			Commodity: "AIRCRAFT, SPACECRAFT, AND PARTS THEREOF.",
+			Value: 4843110.45,
+		},
+		{
+			Commodity: "SHIPS, BOATS AND FLOATING STRUCTURES.",
+			Value: 3122425.24,
+		},
+		{
+			Commodity:
+				"OPTICAL, PHOTOGRAPHIC CINEMATOGRAPHIC MEASURING, CHECKING PRECISION, MEDICAL OR SURGICAL INST. AND APPARATUS PARTS AND ACCESSORIES THEREOF;",
+			Value: 3225701.37,
+		},
+		{
+			Commodity: "CLOCKS AND WATCHES AND PARTS THEREOF.",
+			Value: 44011.37,
+		},
+		{
+			Commodity: "MUSICAL INSTRUMENTS; PARTS AND ACCESSORIES OF SUCH ARTICLES.",
+			Value: 29631.55,
+		},
+		{
+			Commodity: "ARMS AND AMMUNITION; PARTS AND ACCESSORIES THEREOF.",
+			Value: 333073.25,
+		},
+		{
+			Commodity:
+				"FURNITURE; BEDDING, MATTRESSES, MATTRESS SUPPORTS, CUSHIONS AND SIMILAR STUFFED FURNISHING; LAMPS AND LIGHTING FITTINGS NOT ELSEWHERE SPECIFIED OR INC",
+			Value: 1598057.61,
+		},
+		{
+			Commodity:
+				"TOYS, GAMES AND SPORTS REQUISITES; PARTS AND ACCESSORIES THEREOF.",
+			Value: 377301.85,
+		},
+		{
+			Commodity: "MISCELLANEOUS MANUFACTURED ARTICLES.",
+			Value: 461768.81,
+		},
+		{
+			Commodity: "WORKS OF ART COLLECTORS' PIECES AND ANTIQUES.",
+			Value: 87981.27,
+		},
+		{
+			Commodity: "PROJECT GOODS; SOME SPECIAL USES.",
+			Value: 11274.22,
+		},
+		{
+			Commodity: "MISCELLANEOUS GOODS.",
+			Value: 201.69,
 		},
 	].map((row) => [centerKey, `E - ${row.Commodity}`, row.Value / 100]),
 };
@@ -1214,9 +1340,37 @@ const rootDataImport: { [key: string]: SankeyDataRow[] } = {
 	].map((row) => [`I - ${row.Commodity}`, centerKey, row.Value / 100]),
 };
 
-export const completeData = {
-	commodity: { export: rootDataExport, import: rootDataImport },
-};
+export const commodityWiseTotal: { [key: string]: { [key: string]: number } } =
+	{
+		export: {
+			"2023-2024": sum(
+				rootDataExport["2023-2024"].map((e) => {
+					const row = e as SankeyDataRow;
+					return row[2] * CRORE;
+				}),
+			),
+			"2024-2025": sum(
+				rootDataExport["2024-2025"].map((e) => {
+					const row = e as SankeyDataRow;
+					return row[2] * CRORE;
+				}),
+			),
+		},
+		import: {
+			"2023-2024": sum(
+				rootDataImport["2023-2024"].map((e) => {
+					const row = e as SankeyDataRow;
+					return row[2] * CRORE;
+				}),
+			),
+			"2024-2025": sum(
+				rootDataImport["2024-2025"].map((e) => {
+					const row = e as SankeyDataRow;
+					return row[2] * CRORE;
+				}),
+			),
+		},
+	};
 
 const deficit2324: SankeyDataRow = [
 	centerKey,
@@ -1244,3 +1398,400 @@ export const dataset2: SankeyDataWithHeader = [
 	deficit2425,
 	...rootDataExport["2024-2025"],
 ];
+
+const regionWiseExport: { [key: string]: SankeyDataRow[] } = {
+	"2023-2024": [
+		{
+			Region: "EU Countries",
+			Value: 62864789.69,
+		},
+		{
+			Region: "European Free Trade Association (EFTA)",
+			Value: 1608172.02,
+		},
+		{
+			Region: "Other European Countries",
+			Value: 17329903.2,
+		},
+		{
+			Region: "Southern African Customs Union (SACU)",
+			Value: 7700223.16,
+		},
+		{
+			Region: "Other South African Countries",
+			Value: 2557212.43,
+		},
+		{
+			Region: "West Africa",
+			Value: 10625299.23,
+		},
+		{
+			Region: "Central Africa",
+			Value: 1235675.74,
+		},
+		{
+			Region: "East Africa",
+			Value: 9450537.86,
+		},
+		{
+			Region: "North Africa",
+			Value: 5971690.7,
+		},
+		{
+			Region: "North America",
+			Value: 71768779.29,
+		},
+		{
+			Region: "Latin America",
+			Value: 12004194.11,
+		},
+		{
+			Region: "East Asia (Oceania)",
+			Value: 7182953.62,
+		},
+		{
+			Region: "ASEAN",
+			Value: 34119653.05,
+		},
+		{
+			Region: "West Asia- GCC",
+			Value: 46652626.68,
+		},
+		{
+			Region: "Other West Asia",
+			Value: 9812839.79,
+		},
+		{
+			Region: "NE Asia",
+			Value: 31760930.86,
+		},
+		{
+			Region: "South Asia",
+			Value: 21220996.1,
+		},
+		{
+			Region: "CARS Countries",
+			Value: 616031.47,
+		},
+		{
+			Region: "Other CIS Countries",
+			Value: 4034708.9,
+		},
+		{
+			Region: "Unspecified",
+			Value: 3378009.14,
+		},
+	].map((row) => [centerKey, `E - ${row.Region}`, row.Value / 100]),
+	"2024-2025": [
+		{
+			Region: "EU Countries",
+			Value: 48138022.19,
+		},
+		{
+			Region: "European Free Trade Association (EFTA)",
+			Value: 1270196.05,
+		},
+		{
+			Region: "Other European Countries",
+			Value: 12910562.2,
+		},
+		{
+			Region: "Southern African Customs Union (SACU)",
+			Value: 5109470.44,
+		},
+		{
+			Region: "Other South African Countries",
+			Value: 1496629.09,
+		},
+		{
+			Region: "West Africa",
+			Value: 7948988.54,
+		},
+		{
+			Region: "Central Africa",
+			Value: 842288.67,
+		},
+		{
+			Region: "East Africa",
+			Value: 6754978.06,
+		},
+		{
+			Region: "North Africa",
+			Value: 4234172.82,
+		},
+		{
+			Region: "North America",
+			Value: 56640974.37,
+		},
+		{
+			Region: "Latin America",
+			Value: 9519484.02,
+		},
+		{
+			Region: "East Asia (Oceania)",
+			Value: 5852985.54,
+		},
+		{
+			Region: "ASEAN",
+			Value: 25664448.95,
+		},
+		{
+			Region: "West Asia- GCC",
+			Value: 35164275.48,
+		},
+		{
+			Region: "Other West Asia",
+			Value: 5252058.12,
+		},
+		{
+			Region: "NE Asia",
+			Value: 20969004.75,
+		},
+		{
+			Region: "South Asia",
+			Value: 16046527.47,
+		},
+		{
+			Region: "CARS Countries",
+			Value: 573066.43,
+		},
+		{
+			Region: "Other CIS Countries",
+			Value: 3692932.05,
+		},
+		{
+			Region: "Unspecified",
+			Value: 2303021.65,
+		},
+	].map((row) => [centerKey, `E - ${row.Region}`, row.Value / 100]),
+};
+
+const regionWiseImport: { [key: string]: SankeyDataRow[] } = {
+	"2023-2024": [
+		{
+			Region: "EU Countries",
+			Value: 50894926.53,
+		},
+		{
+			Region: "European Free Trade Association (EFTA)",
+			Value: 18270788.32,
+		},
+		{
+			Region: "Other European Countries",
+			Value: 10134042.95,
+		},
+		{
+			Region: "Southern African Customs Union (SACU)",
+			Value: 9309975.01,
+		},
+		{
+			Region: "Other South African Countries",
+			Value: 5081519.35,
+		},
+		{
+			Region: "West Africa",
+			Value: 9287906.86,
+		},
+		{
+			Region: "Central Africa",
+			Value: 963154.11,
+		},
+		{
+			Region: "East Africa",
+			Value: 3252942.97,
+		},
+		{
+			Region: "North Africa",
+			Value: 3522961.34,
+		},
+		{
+			Region: "North America",
+			Value: 41272166.93,
+		},
+		{
+			Region: "Latin America",
+			Value: 17580535.82,
+		},
+		{
+			Region: "East Asia (Oceania)",
+			Value: 14070268.18,
+		},
+		{
+			Region: "ASEAN",
+			Value: 65965760.84,
+		},
+		{
+			Region: "West Asia- GCC",
+			Value: 87378218.41,
+		},
+		{
+			Region: "Other West Asia",
+			Value: 28430073.27,
+		},
+		{
+			Region: "NE Asia",
+			Value: 140192209.32,
+		},
+		{
+			Region: "South Asia",
+			Value: 4282992.81,
+		},
+		{
+			Region: "CARS Countries",
+			Value: 230451.7,
+		},
+		{
+			Region: "Other CIS Countries",
+			Value: 51215709.89,
+		},
+		{
+			Region: "Unspecified",
+			Value: 267632.01,
+		},
+	].map((row) => [`I - ${row.Region}`, centerKey, row.Value / 100]),
+	"2024-2025": [
+		{
+			Region: "EU Countries",
+			Value: 37676763.17,
+		},
+		{
+			Region: "European Free Trade Association (EFTA)",
+			Value: 17450443.99,
+		},
+		{
+			Region: "Other European Countries",
+			Value: 7341993.84,
+		},
+		{
+			Region: "Southern African Customs Union (SACU)",
+			Value: 7623341.92,
+		},
+		{
+			Region: "Other South African Countries",
+			Value: 4317901.21,
+		},
+		{
+			Region: "West Africa",
+			Value: 7416135.31,
+		},
+		{
+			Region: "Central Africa",
+			Value: 593711.08,
+		},
+		{
+			Region: "East Africa",
+			Value: 3004302.47,
+		},
+		{
+			Region: "North Africa",
+			Value: 2936713.69,
+		},
+		{
+			Region: "North America",
+			Value: 34164351.72,
+		},
+		{
+			Region: "Latin America",
+			Value: 15215961.31,
+		},
+		{
+			Region: "East Asia (Oceania)",
+			Value: 10806230.45,
+		},
+		{
+			Region: "ASEAN",
+			Value: 52513686.81,
+		},
+		{
+			Region: "West Asia- GCC",
+			Value: 74402261.46,
+		},
+		{
+			Region: "Other West Asia",
+			Value: 21073476.17,
+		},
+		{
+			Region: "NE Asia",
+			Value: 115457699.95,
+		},
+		{
+			Region: "South Asia",
+			Value: 3450404.2,
+		},
+		{
+			Region: "CARS Countries",
+			Value: 155124.2,
+		},
+		{
+			Region: "Other CIS Countries",
+			Value: 42381983.45,
+		},
+		{
+			Region: "Unspecified",
+			Value: 314207.1,
+		},
+	].map((row) => [`I - ${row.Region}`, centerKey, row.Value / 100]),
+};
+
+export const regionWiseTotal: { [key: string]: { [key: string]: number } } = {
+	export: {
+		"2023-2024": sum(
+			regionWiseExport["2023-2024"].map((e) => {
+				const row = e as SankeyDataRow;
+				return row[2] * CRORE;
+			}),
+		),
+		"2024-2025": sum(
+			regionWiseExport["2024-2025"].map((e) => {
+				const row = e as SankeyDataRow;
+				return row[2] * CRORE;
+			}),
+		),
+	},
+	import: {
+		"2023-2024": sum(
+			regionWiseImport["2023-2024"].map((e) => {
+				const row = e as SankeyDataRow;
+				return row[2] * CRORE;
+			}),
+		),
+		"2024-2025": sum(
+			regionWiseImport["2024-2025"].map((e) => {
+				const row = e as SankeyDataRow;
+				return row[2] * CRORE;
+			}),
+		),
+	},
+};
+
+const regionDeficit2324: SankeyDataRow = [
+	centerKey,
+	"E - Deficit",
+	sum(regionWiseImport["2023-2024"].map((e) => e[2])) -
+		sum(regionWiseExport["2023-2024"].map((e) => e[2])),
+];
+
+const regionDeficit2425: SankeyDataRow = [
+	centerKey,
+	"E - Deficit",
+	sum(regionWiseImport["2024-2025"].map((e) => e[2])) -
+		sum(regionWiseExport["2024-2025"].map((e) => e[2])),
+];
+
+export const dataset3: SankeyDataWithHeader = [
+	["From", "To", "Weight"],
+	...regionWiseImport["2023-2024"],
+	regionDeficit2324,
+	...regionWiseExport["2023-2024"],
+];
+export const dataset4: SankeyDataWithHeader = [
+	["From", "To", "Weight"],
+	...regionWiseImport["2024-2025"],
+	regionDeficit2425,
+	...regionWiseExport["2024-2025"],
+];
+
+export const completeData = {
+	commodity: { export: rootDataExport, import: rootDataImport },
+	region: { export: regionWiseExport, import: regionWiseImport },
+};

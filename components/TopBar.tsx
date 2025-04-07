@@ -37,6 +37,7 @@ import {
 	supportedCurrencies,
 	titleCase,
 } from "@/utils/shared";
+import { Underdog } from "next/font/google";
 import { useSharedContext } from "./SharedContext";
 
 export default function TopBar({
@@ -62,7 +63,7 @@ export default function TopBar({
 			position="sticky"
 			top="0"
 			alignItems="center"
-			justifyContent="space-between"
+			justifyContent={{ base: "space-between", md: "space-between" }}
 			pl="10px"
 			pr="20px"
 			backdropFilter="blur(6px)"
@@ -92,10 +93,10 @@ export default function TopBar({
 
 			<Heading
 				fontSize="sm"
-				position="absolute"
-				left="50%"
-				transform="translateX(-50%)"
 				whiteSpace="nowrap"
+				position={{ base: undefined, md: "absolute" }}
+				left={{ base: undefined, md: "50%" }}
+				transform={{ base: undefined, md: "translateX(-50%)" }}
 			>
 				{titleCase(title as string)}
 			</Heading>
@@ -126,7 +127,7 @@ export default function TopBar({
 								<MenuItemOption
 									value={k.toString()}
 									key={ind}
-									defaultChecked={ind === 0}
+									// _selected={ind === 0}
 								>
 									{supportedCurrencies.get(k)?.flag}{" "}
 									{supportedCurrencies.get(k)?.currency}{" "}
