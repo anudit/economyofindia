@@ -1,4 +1,4 @@
-import type { SankeyDataRow, SankeyDataWithHeader } from "@/components/Charts";
+import type { SankeyDataRow, SankeyDataWithHeader } from "@/components/ChartComponents";
 import { type DatasetMetadata, sum } from "@/utils/shared";
 
 export const metadata: DatasetMetadata = {
