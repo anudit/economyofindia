@@ -14,7 +14,7 @@ import { useSharedContext } from "./SharedContext";
 
 const header: Array<Array<string | number>> = [["Columnn1", "Columnn2"]];
 
-const PieChart = ({
+export const PieChart = ({
 	data,
 	palette = "green",
 }: {
@@ -100,7 +100,7 @@ export type SankeyDataWithHeader = [
 	...SankeyDataRow[],
 ];
 
-const Sankey = ({ data }: { data: SankeyDataWithHeader }) => {
+export const Sankey = ({ data }: { data: SankeyDataWithHeader }) => {
 	const mounted = useMounted();
 	const { activeCurrency } = useSharedContext();
 
@@ -149,5 +149,3 @@ const Sankey = ({ data }: { data: SankeyDataWithHeader }) => {
 		/>
 	);
 };
-
-export { PieChart, Sankey };
