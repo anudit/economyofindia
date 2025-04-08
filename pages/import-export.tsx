@@ -73,7 +73,7 @@ export default function Home() {
 						<ReactInfiniteCanvas
 							ref={canvasRef}
 							onCanvasMount={(mountFunc: ReactInfiniteCanvasHandle) => {
-								mountFunc.fitContentToView({ scale: 0.2 });
+								mountFunc.fitContentToView({ scale: 0.3 });
 							}}
 						>
 							<div>
@@ -111,7 +111,7 @@ export default function Home() {
 						<ReactInfiniteCanvas
 							ref={canvasRef2}
 							onCanvasMount={(mountFunc: ReactInfiniteCanvasHandle) => {
-								mountFunc.fitContentToView({ scale: 0.2 });
+								mountFunc.fitContentToView({ scale: 0.3 });
 							}}
 						>
 							<div>
@@ -152,7 +152,7 @@ export default function Home() {
 						<ReactInfiniteCanvas
 							ref={canvasRef3}
 							onCanvasMount={(mountFunc: ReactInfiniteCanvasHandle) => {
-								mountFunc.fitContentToView({ scale: 0.2 });
+								mountFunc.fitContentToView({ scale: 0.3 });
 							}}
 						>
 							<div>

@@ -145,7 +145,7 @@ export const Sankey = ({
 			})}
 			options={{
 				sankey: {
-					iterations: 64,
+					iterations: 5,
 					node: {
 						nodePadding: 30,
 						label: {
