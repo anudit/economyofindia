@@ -43,17 +43,24 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 		const req = await fetch("/api/version");
 		const resp = (await req.json()) as { buildId: string | undefined };
 		if (typeof resp.buildId === "string") {
-			if (buildId == null) {
-				setBuildId(resp.buildId);
-				console.log("Version:", resp.buildId);
-			} else if (
+			if (
 				typeof buildId === "string" &&
 				resp.buildId.toLowerCase() !== buildId.toLowerCase()
 			) {
 				alert("New version of app available, please refresh.");
 			}
+			if (buildId == null) {
+				setBuildId(resp.buildId);
+				console.log("Version:", resp.buildId);
+			}
+		} else {
+			console.log("Failed to get latest version", resp);
 		}
 	};
+
+	useEffect(() => {
+		console.log("buildId now", buildId);
+	}, [buildId]);
 
 	useEffect(() => {
 		fetchRate();
