@@ -43,6 +43,12 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 		const req = await fetch("/api/version");
 		const resp = (await req.json()) as { buildId: string | undefined };
 		if (typeof resp.buildId === "string") {
+			console.log(
+				typeof buildId === "string",
+				resp.buildId.toLowerCase(),
+				buildId?.toLowerCase(),
+				resp.buildId.toLowerCase() !== buildId?.toLowerCase(),
+			);
 			if (
 				typeof buildId === "string" &&
 				resp.buildId.toLowerCase() !== buildId.toLowerCase()
