@@ -10,9 +10,9 @@ const nextConfig: NextConfig = {
 	poweredByHeader: false,
 	trailingSlash: false,
 	experimental: {
-		turbo: {},
 		optimizeCss: true,
 		reactCompiler: true,
+		viewTransition: true,
 	},
 	images: {
 		unoptimized: true,

@@ -21,6 +21,7 @@ interface SharedProviderProps {
 }
 export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 	const [usdInrRate, setUsdInrRate] = useState<number | null>(null);
+	const [buildId, setBuildId] = useState<string | null>(null);
 	const [activeCurrency, setActiveCurrency] = useState<SupportedCurrencies>(
 		SupportedCurrencies.INR,
 	);
@@ -38,8 +39,26 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 		}
 	};
 
+	const updateVersion = async () => {
+		const req = await fetch("/api/version");
+		const resp = (await req.json()) as { buildId: string | undefined };
+		if (typeof resp.buildId === "string") {
+			if (buildId == null) {
+				// first load
+				setBuildId(resp.buildId);
+				console.log("Version:", resp.buildId);
+			} else if (
+				typeof buildId === "string" &&
+				resp.buildId.toLowerCase() !== buildId.toLowerCase()
+			) {
+				alert("New version of app available, please refresh.");
+			}
+		}
+	};
+
 	useEffect(() => {
 		fetchRate();
+		updateVersion();
 	}, []);
 
 	return (

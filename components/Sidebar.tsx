@@ -162,6 +162,7 @@ const SidebarItem = ({
 	isCollapsed: boolean;
 }) => {
 	const router = useRouter();
+
 	return (
 		<Tooltip label={fileName} placement="right" isDisabled={!isCollapsed}>
 			<Link href={link} prefetch={true}>
