@@ -49,10 +49,7 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 			) {
 				alert("New version of app available, please refresh.");
 			}
-			if (buildId == null) {
-				setBuildId(resp.buildId);
-				console.log("Version:", resp.buildId);
-			}
+			setBuildId(resp.buildId);
 		} else {
 			console.log("Failed to get latest version", resp);
 		}
