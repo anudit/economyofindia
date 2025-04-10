@@ -59,6 +59,7 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 	useEffect(() => {
 		fetchRate();
 		updateVersion();
+		setInterval(updateVersion, 60_000);
 	}, []);
 
 	return (
