@@ -38,7 +38,7 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 			setUsdInrRate(85.56);
 		}
 	};
-	//
+
 	const updateVersion = async () => {
 		const req = await fetch("/api/version");
 		const resp = (await req.json()) as { buildId: string | undefined };
