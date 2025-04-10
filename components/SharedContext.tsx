@@ -44,7 +44,6 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 		const resp = (await req.json()) as { buildId: string | undefined };
 		if (typeof resp.buildId === "string") {
 			if (buildId == null) {
-				// first load
 				setBuildId(resp.buildId);
 				console.log("Version:", resp.buildId);
 			} else if (
