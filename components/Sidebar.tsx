@@ -1,4 +1,4 @@
-import { PdfIcon } from "@/components/Icons";
+import { LiveIcon, PdfIcon } from "@/components/Icons";
 import { completeMetadata } from "@/dataset";
 import type { DatasetMetadata } from "@/utils/shared";
 import {
@@ -182,7 +182,12 @@ const SidebarItem = ({
 					overflow="hidden"
 					justifyContent={isCollapsed ? "center" : "flex-start"}
 				>
-					<Icon as={PdfIcon} mr={isCollapsed ? 0 : 4} boxSize={5} />
+					{fileName.endsWith(".live") ? (
+						<Icon as={LiveIcon} mr={isCollapsed ? 0 : 4} boxSize={5} />
+					) : (
+						<Icon as={PdfIcon} mr={isCollapsed ? 0 : 4} boxSize={5} />
+					)}
+
 					{!isCollapsed && (
 						<Text fontSize="sm" isTruncated>
 							{fileName}

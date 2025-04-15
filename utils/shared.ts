@@ -2,6 +2,49 @@ import { useSharedContext } from "@/components/SharedContext";
 
 export const CRORE = 10000000;
 
+export const average = (arr: number[]): number =>
+	arr.reduce((p, c) => p + c, 0) / arr.length;
+
+export const aqiToDetails = (num: number): { title: string; hex: string } => {
+	if (num > 500) return { title: "Hazardous", hex: "#A8D5BA" };
+	else if (num > 400) return { title: "Severe", hex: "#D88C8C" };
+	else if (num > 300) return { title: "Very Poor", hex: "#F7B6A6" };
+	else if (num > 200) return { title: "Poor", hex: "#FFF1C2" };
+	else if (num > 100) return { title: "Moderate", hex: "#F2DADA" };
+	else if (num > 50) return { title: "Satisfactory", hex: "#C6DEB5" };
+	else return { title: "Good", hex: "#A8D5BA" };
+};
+
+export const STATES = [
+	"Andaman and Nicobar",
+	"Andhra Pradesh",
+	"Assam",
+	"Bihar",
+	"Chandigarh",
+	"Chhattisgarh",
+	"Delhi",
+	"Gujarat",
+	"Haryana",
+	"Himachal Pradesh",
+	"Karnataka",
+	"Kerala",
+	"Madhya Pradesh",
+	"Maharashtra",
+	"Manipur",
+	"Meghalaya",
+	"Mizoram",
+	"Odisha",
+	"Puducherry",
+	"Punjab",
+	"Rajasthan",
+	"Tamil Nadu",
+	"Telangana",
+	"Tripura",
+	"Uttar Pradesh",
+	"Uttarakhand",
+	"West Bengal",
+];
+
 export enum SupportedCurrencies {
 	INR,
 	USD,
