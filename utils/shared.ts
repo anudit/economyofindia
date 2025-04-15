@@ -6,13 +6,13 @@ export const average = (arr: number[]): number =>
 	arr.reduce((p, c) => p + c, 0) / arr.length;
 
 export const aqiToDetails = (num: number): { title: string; hex: string } => {
-	if (num > 500) return { title: "Hazardous", hex: "#A8D5BA" };
-	else if (num > 400) return { title: "Severe", hex: "#D88C8C" };
-	else if (num > 300) return { title: "Very Poor", hex: "#F7B6A6" };
-	else if (num > 200) return { title: "Poor", hex: "#FFF1C2" };
-	else if (num > 100) return { title: "Moderate", hex: "#F2DADA" };
-	else if (num > 50) return { title: "Satisfactory", hex: "#C6DEB5" };
-	else return { title: "Good", hex: "#A8D5BA" };
+	if (num > 500) return { title: "Hazardous", hex: "#ff7c7c" };
+	else if (num > 400) return { title: "Severe", hex: "#ffadad" };
+	else if (num > 300) return { title: "Very Poor", hex: "#F2A89C" };
+	else if (num > 200) return { title: "Poor", hex: "#F7D59C" };
+	else if (num > 100) return { title: "Moderate", hex: "#e4f89b" };
+	else if (num > 50) return { title: "Satisfactory", hex: "#BFD8B8" };
+	else return { title: "Good", hex: "#71e88a" };
 };
 
 export const STATES = [

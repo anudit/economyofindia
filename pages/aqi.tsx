@@ -130,7 +130,7 @@ export default function Home() {
 					size="sm"
 				>
 					<option value={0} key={0}>
-						All
+						All States
 					</option>
 					{STATES.map((k, ind) => (
 						<option value={ind + 1} key={ind + 1}>
@@ -150,7 +150,7 @@ export default function Home() {
 							<Flex key={id} direction="column">
 								<Flex direction="row" mb={2} px={2}>
 									<Flex direction="column" w="100%">
-										<Text fontSize="md" fontWeight={400}>
+										<Text fontSize="md" fontWeight={500}>
 											{e.station.name}
 										</Text>
 										<Text fontSize="xs" mt={-1} fontWeight={200}>
@@ -161,7 +161,9 @@ export default function Home() {
 										</Text>
 									</Flex>
 									<Flex direction="row" w="100px" justifyContent="end">
-										<Heading>{e.aqi.toFixed(0)}</Heading>
+										<Heading color={aqiToDetails(e.aqi).hex}>
+											{e.aqi.toFixed(0)}
+										</Heading>
 									</Flex>
 								</Flex>
 								{e.metrics.map((st, id2) => {
@@ -210,7 +212,10 @@ export default function Home() {
 														}
 													</Text>
 												</Flex>
-												<Text fontSize="xx-large">
+												<Text
+													fontSize="xx-large"
+													color={aqiToDetails(Number.parseInt(st.avg)).hex}
+												>
 													{aqiToDetails(Number.parseInt(st.avg)).title}
 												</Text>
 											</Flex>
