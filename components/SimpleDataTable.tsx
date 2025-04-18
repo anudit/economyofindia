@@ -174,6 +174,7 @@ const DataTable: FC<DataTableProps> = ({ data }) => {
         <Table
           variant="simple"
           size={"sm"}
+          //@ts-ignore
           tableLayout="auto" // allow columns to size to their content/header
           minW="100%" // ensure it won't collapse narrower than its container
         >
