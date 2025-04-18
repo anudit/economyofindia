@@ -199,20 +199,14 @@ const DataTable: FC<DataTableProps> = ({ data }) => {
                       : {}
                   }
                 >
-                  <Flex direction="row">
+                  <Flex
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
                     {titleCase(col)}
                     {getSortIcon(col)}
                   </Flex>
-                  {/* <Button
-                    variant="ghost"
-                    size="sm"
-                    fontWeight="bold"
-                    color="gray.100"
-                    rightIcon=
-                    _hover={{ bg: "gray.600" }}
-                    _active={{ bg: "gray.500" }}
-                  >
-                  </Button> */}
                 </Th>
               ))}
             </Tr>

@@ -268,3 +268,272 @@ export const dataset: DatasetTable = [
     "Outstanding_Liabilities_to_GSDP_FY24BE": 18.6
   }
 ]
+
+export type StateWiseDatasetType = {
+  [key: string]: {
+    "Revenue receipts FY25BE (Rs '00 crore)": number,
+    "Revenue receipts YoY (%)": number,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": number,
+    "Non‑debt Capital Receipts YoY (%)": number,
+    "Revenue expenditure FY25BE (Rs '00 crore)": number,
+    "Revenue expenditure YoY (%)": number,
+    "Capital expenditure FY25BE (Rs '00 crore)": number,
+    "Capital expenditure YoY (%)": number,
+    "Fiscal deficit FY25BE (% of GSDP)": number,
+    "Fiscal deficit change over FY24RE (bps)": number
+  }
+}
+export const dataset2: StateWiseDatasetType = {
+  "Uttar Pradesh": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 6068,
+    "Revenue receipts YoY (%)": 15.5,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 33.0,
+    "Non‑debt Capital Receipts YoY (%)": -0.4,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 5327,
+    "Revenue expenditure YoY (%)": 17.1,
+    "Capital expenditure FY25BE (Rs '00 crore)": 1640,
+    "Capital expenditure YoY (%)": 4.9,
+    "Fiscal deficit FY25BE (% of GSDP)": 3.5,
+    "Fiscal deficit change over FY24RE (bps)": -3
+  },
+  "Maharashtra": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 4995,
+    "Revenue receipts YoY (%)": 2.7,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 24.8,
+    "Non‑debt Capital Receipts YoY (%)": 2.0,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 5195,
+    "Revenue expenditure YoY (%)": 2.7,
+    "Capital expenditure FY25BE (Rs '00 crore)": 928,
+    "Capital expenditure YoY (%)": -2.2,
+    "Fiscal deficit FY25BE (% of GSDP)": 2.6,
+    "Fiscal deficit change over FY24RE (bps)": -18
+  },
+  "Tamil Nadu": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 2990,
+    "Revenue receipts YoY (%)": 9.7,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 48.0,
+    "Non‑debt Capital Receipts YoY (%)": 83.7,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 3483,
+    "Revenue expenditure YoY (%)": 9.7,
+    "Capital expenditure FY25BE (Rs '00 crore)": 642,
+    "Capital expenditure YoY (%)": 24.0,
+    "Fiscal deficit FY25BE (% of GSDP)": 3.4,
+    "Fiscal deficit change over FY24RE (bps)": -1
+  },
+  "Rajasthan": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 2645,
+    "Revenue receipts YoY (%)": 11.3,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 3.3,
+    "Non‑debt Capital Receipts YoY (%)": -2.9,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 2902,
+    "Revenue expenditure YoY (%)": 8.4,
+    "Capital expenditure FY25BE (Rs '00 crore)": 446,
+    "Capital expenditure YoY (%)": 26.1,
+    "Fiscal deficit FY25BE (% of GSDP)": 3.9,
+    "Fiscal deficit change over FY24RE (bps)": -33
+  },
+  "Madhya Pradesh": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 2633,
+    "Revenue receipts YoY (%)": 13.6,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 4.7,
+    "Non‑debt Capital Receipts YoY (%)": -96.5,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 2616,
+    "Revenue expenditure YoY (%)": 13.2,
+    "Capital expenditure FY25BE (Rs '00 crore)": 647,
+    "Capital expenditure YoY (%)": -5.6,
+    "Fiscal deficit FY25BE (% of GSDP)": 4.1,
+    "Fiscal deficit change over FY24RE (bps)": 51
+  },
+  "Karnataka": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 2632,
+    "Revenue receipts YoY (%)": 16.0,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 2.5,
+    "Non‑debt Capital Receipts YoY (%)": 127.3,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 2905,
+    "Revenue expenditure YoY (%)": 20.7,
+    "Capital expenditure FY25BE (Rs '00 crore)": 559,
+    "Capital expenditure YoY (%)": 2.2,
+    "Fiscal deficit FY25BE (% of GSDP)": 3.0,
+    "Fiscal deficit change over FY24RE (bps)": 29
+  },
+  "West Bengal": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 2363,
+    "Revenue receipts YoY (%)": 13.2,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 1.9,
+    "Non‑debt Capital Receipts YoY (%)": -61.5,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 2682,
+    "Revenue expenditure YoY (%)": 13.2,
+    "Capital expenditure FY25BE (Rs '00 crore)": 365,
+    "Capital expenditure YoY (%)": 15.7,
+    "Fiscal deficit FY25BE (% of GSDP)": 3.6,
+    "Fiscal deficit change over FY24RE (bps)": 14
+  },
+  "Gujarat": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 2297,
+    "Revenue receipts YoY (%)": 6.4,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 2.9,
+    "Non‑debt Capital Receipts YoY (%)": 8.3,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 2198,
+    "Revenue expenditure YoY (%)": 11.5,
+    "Capital expenditure FY25BE (Rs '00 crore)": 795,
+    "Capital expenditure YoY (%)": 29.6,
+    "Fiscal deficit FY25BE (% of GSDP)": 2.5,
+    "Fiscal deficit change over FY24RE (bps)": 76
+  },
+  "Bihar": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 2268,
+    "Revenue receipts YoY (%)": 5.7,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 4.4,
+    "Non‑debt Capital Receipts YoY (%)": 1.7,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 2257,
+    "Revenue expenditure YoY (%)": -9.7,
+    "Capital expenditure FY25BE (Rs '00 crore)": 307,
+    "Capital expenditure YoY (%)": -25.9,
+    "Fiscal deficit FY25BE (% of GSDP)": 3.0,
+    "Fiscal deficit change over FY24RE (bps)": -591
+  },
+  "Telangana": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 2212,
+    "Revenue receipts YoY (%)": 30.8,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 35.6,
+    "Non‑debt Capital Receipts YoY (%)": 9797.1,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 2209,
+    "Revenue expenditure YoY (%)": 32.0,
+    "Capital expenditure FY25BE (Rs '00 crore)": 531,
+    "Capital expenditure YoY (%)": 3.9,
+    "Fiscal deficit FY25BE (% of GSDP)": 3.0,
+    "Fiscal deficit change over FY24RE (bps)": -38
+  },
+  "Odisha": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 2110,
+    "Revenue receipts YoY (%)": 13.7,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 5.1,
+    "Non‑debt Capital Receipts YoY (%)": -53.9,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 1836,
+    "Revenue expenditure YoY (%)": 12.6,
+    "Capital expenditure FY25BE (Rs '00 crore)": 603,
+    "Capital expenditure YoY (%)": 24.5,
+    "Fiscal deficit FY25BE (% of GSDP)": 3.5,
+    "Fiscal deficit change over FY24RE (bps)": 50
+  },
+  "Andhra Pradesh": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 2054,
+    "Revenue receipts YoY (%)": 4.4,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 0.1,
+    "Non‑debt Capital Receipts YoY (%)": -17.1,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 2301,
+    "Revenue expenditure YoY (%)": 0.8,
+    "Capital expenditure FY25BE (Rs '00 crore)": 311,
+    "Capital expenditure YoY (%)": 8.5,
+    "Fiscal deficit FY25BE (% of GSDP)": 3.5,
+    "Fiscal deficit change over FY24RE (bps)": -69
+  },
+  "Kerala": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 1387,
+    "Revenue receipts YoY (%)": 9.3,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 11.4,
+    "Non‑debt Capital Receipts YoY (%)": 3.1,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 1665,
+    "Revenue expenditure YoY (%)": 10.0,
+    "Capital expenditure FY25BE (Rs '00 crore)": 178,
+    "Capital expenditure YoY (%)": 5.0,
+    "Fiscal deficit FY25BE (% of GSDP)": 3.4,
+    "Fiscal deficit change over FY24RE (bps)": -5
+  },
+  "Chhattisgarh": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 1259,
+    "Revenue receipts YoY (%)": 13.1,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 1.5,
+    "Non‑debt Capital Receipts YoY (%)": -25.0,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 1248,
+    "Revenue expenditure YoY (%)": -1.7,
+    "Capital expenditure FY25BE (Rs '00 crore)": 226,
+    "Capital expenditure YoY (%)": 4.7,
+    "Fiscal deficit FY25BE (% of GSDP)": 3.8,
+    "Fiscal deficit change over FY24RE (bps)": -352
+  },
+  "Haryana": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 1166,
+    "Revenue receipts YoY (%)": 10.3,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 55.6,
+    "Non‑debt Capital Receipts YoY (%)": 365.6,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 1345,
+    "Revenue expenditure YoY (%)": 13.0,
+    "Capital expenditure FY25BE (Rs '00 crore)": 214,
+    "Capital expenditure YoY (%)": 14.4,
+    "Fiscal deficit FY25BE (% of GSDP)": 2.8,
+    "Fiscal deficit change over FY24RE (bps)": -3
+  },
+  "Assam": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 1119,
+    "Revenue receipts YoY (%)": -4.4,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 22.2,
+    "Non‑debt Capital Receipts YoY (%)": -33.8,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 1101,
+    "Revenue expenditure YoY (%)": -7.0,
+    "Capital expenditure FY25BE (Rs '00 crore)": 266,
+    "Capital expenditure YoY (%)": -15.8,
+    "Fiscal deficit FY25BE (% of GSDP)": 3.5,
+    "Fiscal deficit change over FY24RE (bps)": -170
+  },
+  "Jharkhand": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 1108,
+    "Revenue receipts YoY (%)": 16.4,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 1.0,
+    "Non‑debt Capital Receipts YoY (%)": -98.6,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 918,
+    "Revenue expenditure YoY (%)": 4.2,
+    "Capital expenditure FY25BE (Rs '00 crore)": 286,
+    "Capital expenditure YoY (%)": 9.4,
+    "Fiscal deficit FY25BE (% of GSDP)": 2.0,
+    "Fiscal deficit change over FY24RE (bps)": -71
+  },
+  "Punjab": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 1039,
+    "Revenue receipts YoY (%)": 5.1,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 6.5,
+    "Non‑debt Capital Receipts YoY (%)": 225.0,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 1271,
+    "Revenue expenditure YoY (%)": 3.6,
+    "Capital expenditure FY25BE (Rs '00 crore)": 79,
+    "Capital expenditure YoY (%)": 18.2,
+    "Fiscal deficit FY25BE (% of GSDP)": 3.8,
+    "Fiscal deficit change over FY24RE (bps)": -32
+  },
+  "Himachal Pradesh": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 422,
+    "Revenue receipts YoY (%)": 4.2,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 0.3,
+    "Non‑debt Capital Receipts YoY (%)": 1.8,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 467,
+    "Revenue expenditure YoY (%)": 1.6,
+    "Capital expenditure FY25BE (Rs '00 crore)": 63,
+    "Capital expenditure YoY (%)": -8.0,
+    "Fiscal deficit FY25BE (% of GSDP)": 4.7,
+    "Fiscal deficit change over FY24RE (bps)": -118
+  },
+  "Meghalaya": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 235,
+    "Revenue receipts YoY (%)": 6.0,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 0.3,
+    "Non‑debt Capital Receipts YoY (%)": 8.3,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 197,
+    "Revenue expenditure YoY (%)": 7.4,
+    "Capital expenditure FY25BE (Rs '00 crore)": 59,
+    "Capital expenditure YoY (%)": 2.6,
+    "Fiscal deficit FY25BE (% of GSDP)": 3.8,
+    "Fiscal deficit change over FY24RE (bps)": -7
+  },
+  "Mizoram": {
+    "Revenue receipts FY25BE (Rs '00 crore)": 124,
+    "Revenue receipts YoY (%)": -3.0,
+    "Non‑debt Capital Receipts FY25BE (Rs '00 crore)": 0.3,
+    "Non‑debt Capital Receipts YoY (%)": -0.0,
+    "Revenue expenditure FY25BE (Rs '00 crore)": 118,
+    "Revenue expenditure YoY (%)": -5.5,
+    "Capital expenditure FY25BE (Rs '00 crore)": 20,
+    "Capital expenditure YoY (%)": -8.8,
+    "Fiscal deficit FY25BE (% of GSDP)": 2.8,
+    "Fiscal deficit change over FY24RE (bps)": -189
+  }
+}
