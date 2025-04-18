@@ -174,8 +174,9 @@ export const chartDataFormat = (
 export function titleCase(s: string) {
 	return s
 		.toLowerCase()
+		.replaceAll("_", " ")
 		.split(" ")
-		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+		.map((word) => word === "of" ? "of" :word.charAt(0).toUpperCase() + word.slice(1))
 		.join(" ");
 }
 
