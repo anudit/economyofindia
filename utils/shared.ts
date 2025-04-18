@@ -144,16 +144,22 @@ export const numFormat = (
 
 export type DataItemValue = number | null;
 export type SimpleDataset = { [key: string]: DataItemValue };
+
+export type DatasetMetadataFile = {
+	sourceFile: string;
+	ipfsHash: string;
+	sha256: string;
+	md5: string;
+};
+
 export type DatasetMetadata = {
 	id: string;
 	title: string;
 	titleShort: string;
 	fileName: string;
-	sourceFile: string;
 	localLink: `/${string}`;
-	ipfsHash: string;
-	sha256: string;
-	md5: string;
+	isLive: boolean;
+	sourceFiles: DatasetMetadataFile[];
 	api: string;
 };
 
@@ -176,7 +182,9 @@ export function titleCase(s: string) {
 		.toLowerCase()
 		.replaceAll("_", " ")
 		.split(" ")
-		.map((word) => word === "of" ? "of" :word.charAt(0).toUpperCase() + word.slice(1))
+		.map((word) =>
+			word === "of" ? "of" : word.charAt(0).toUpperCase() + word.slice(1),
+		)
 		.join(" ");
 }
 
@@ -187,3 +195,9 @@ export function sum(arr: number[]) {
 	}
 	return res;
 }
+
+export type BarChartGeneric = {
+	title: string;
+	header: [string, string];
+	data: Array<[string, number]>;
+};

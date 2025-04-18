@@ -94,10 +94,12 @@ const prepareSearchableData = (
 			{ field: "title", value: item.title?.toLowerCase() || "" },
 			{ field: "titleShort", value: item.titleShort?.toLowerCase() || "" },
 			{ field: "fileName", value: item.fileName.toLowerCase() },
-			{ field: "sourceFile", value: item.sourceFile?.toLowerCase() || "" },
-			{ field: "ipfsHash", value: item.ipfsHash?.toLowerCase() || "" },
-			{ field: "sha256", value: item.sha256?.toLowerCase() || "" },
-			{ field: "md5", value: item.md5?.toLowerCase() || "" },
+			{
+				field: "sourceFile",
+				value:
+					item.sourceFiles.map((e) => e.sourceFile.toLowerCase()).join(" ") ||
+					"",
+			},
 		].filter((f) => f.value.length > 0); // Only keep fields with values
 
 		return {
@@ -107,7 +109,6 @@ const prepareSearchableData = (
 	});
 };
 
-// Custom fuzzy search function
 const fuzzySearch = (
 	query: string,
 	preparedData: ReturnType<typeof prepareSearchableData>,

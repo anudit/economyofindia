@@ -6,10 +6,17 @@ export const metadata: DatasetMetadata = {
 	titleShort: "RECEIPT HEADS",
 	fileName: "receipt_heads.pdf",
 	localLink: "/receipt-heads",
-	sourceFile: "https://cga.nic.in/DownloadPDF.aspx?filenameid=1894",
-	ipfsHash: "bafybeihjn2ce3tt5qfdhxhqivo42phhefdux3hu5exqgkiqo6y3u6kx2wi",
-	md5: "bc7ce1f2ff238d44349bd61795032628",
-	sha256: "d847d25b2621a012636d077d24b1b3fd24eab4f0d4038bda5393fc2734521ff6",
+	isLive: false,
+	sourceFiles: [
+		{
+			sourceFile: "https://cga.nic.in/DownloadPDF.aspx?filenameid=1894",
+			ipfsHash: "bafybeihjn2ce3tt5qfdhxhqivo42phhefdux3hu5exqgkiqo6y3u6kx2wi",
+			md5: "bc7ce1f2ff238d44349bd61795032628",
+			sha256:
+				"d847d25b2621a012636d077d24b1b3fd24eab4f0d4038bda5393fc2734521ff6",
+		},
+	],
+
 	api: "https://economyofindia.com/api/dataset/receipt_heads",
 };
 

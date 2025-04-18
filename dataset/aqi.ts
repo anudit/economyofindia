@@ -6,9 +6,15 @@ export const metadata: DatasetMetadata = {
 	titleShort: "AQI",
 	fileName: "aqi.live",
 	localLink: "/aqi",
-	sourceFile: "https://airquality.cpcb.gov.in/AQI_India/",
-	ipfsHash: "",
-	md5: "",
-	sha256: "",
+	isLive: true,
+	sourceFiles: [
+		{
+			sourceFile: "https://airquality.cpcb.gov.in/AQI_India/",
+			ipfsHash: "",
+			md5: "",
+			sha256: "",
+		},
+	],
+
 	api: "https://aqi.economyofindia.com",
 };

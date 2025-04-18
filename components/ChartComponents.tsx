@@ -4,6 +4,7 @@ import { Chart } from "react-google-charts";
 import { useMounted } from "@/components/useMounted";
 import { mainFont, mainFontFamily } from "@/styles/theme";
 import {
+	type BarChartGeneric,
 	COLORS,
 	CRORE,
 	RED_COLORS,
@@ -161,6 +162,45 @@ export const Sankey = ({
 					link: { colorMode: "gradient" },
 				},
 				tooltip: { showColorCode: true },
+			}}
+		/>
+	);
+};
+
+export const BarChart = ({
+	data,
+	header,
+}: {
+	data: BarChartGeneric["data"];
+	header: string[];
+}) => {
+	const mounted = useMounted();
+
+	if (!mounted) {
+		return null;
+	}
+
+	return (
+		<Chart
+			chartType="ColumnChart"
+			data={[header, ...data]}
+			options={{
+				//@ts-expect-error
+				backgroundColor: { fill: "transparent" },
+				hAxis: {
+					textStyle: { color: "white", fontSize: 11 },
+					titleTextStyle: { color: "white" },
+					gridlines: { color: "#3e3a52" },
+					minorGridlines: { color: "#3e3a52" },
+				},
+				vAxis: {
+					textStyle: { color: "white" },
+					titleTextStyle: { color: "white" },
+					gridlines: { color: "#2F2C3E" },
+					minorGridlines: { color: "#2F2C3E" },
+					// format: "percent",
+				},
+				legend: { position: "none" },
 			}}
 		/>
 	);

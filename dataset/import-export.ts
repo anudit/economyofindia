@@ -10,10 +10,16 @@ export const metadata: DatasetMetadata = {
 	titleShort: "Import Export Data",
 	fileName: "import_export.pdf",
 	localLink: "/import-export",
-	sourceFile: "https://tradestat.commerce.gov.in/eidb/ecom2q.asp",
-	ipfsHash: "",
-	md5: "",
-	sha256: "",
+	isLive: true,
+	sourceFiles: [
+		{
+			sourceFile: "https://tradestat.commerce.gov.in/eidb/ecom2q.asp",
+			ipfsHash: "",
+			md5: "",
+			sha256: "",
+		},
+	],
+
 	api: "https://economyofindia.com/api/dataset/import_export",
 };
 

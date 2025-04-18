@@ -126,14 +126,19 @@ export default function TopBar({
 							))}
 						</MenuOptionGroup>
 
-						<MenuItem
-							icon={<ExternalLink height="16px" width="16px" />}
-							onClick={() => {
-								window.open(metadata.sourceFile, "_blank");
-							}}
-						>
-							View Source File
-						</MenuItem>
+						{metadata?.sourceFiles.map((e, id) => {
+							return (
+								<MenuItem
+									key={id}
+									icon={<ExternalLink height="16px" width="16px" />}
+									onClick={() => {
+										window.open(e.sourceFile, "_blank");
+									}}
+								>
+									View Source File {id + 1}
+								</MenuItem>
+							);
+						})}
 						<MenuItem
 							icon={<CodeIcon height="16px" width="16px" />}
 							onClick={() => {
@@ -146,9 +151,7 @@ export default function TopBar({
 							icon={<InfoIcon height="16px" width="16px" />}
 							onClick={onOpen}
 						>
-							<Link href={metadata.sourceFile} target="_blank" passHref>
-								Details
-							</Link>
+							Details
 						</MenuItem>
 					</MenuList>
 				</Menu>
