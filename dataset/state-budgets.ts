@@ -19,6 +19,13 @@ export const metadata: DatasetMetadata = {
 			md5: "",
 			sha256: "",
 		},
+		{
+			sourceFile:
+				"https://prsindia.org/files/budget/State_of_State_Finances-2024-25.pdf",
+			ipfsHash: "",
+			md5: "",
+			sha256: "",
+		},
 	],
 
 	api: "https://economyofindia.com/api/dataset/state_budgets",

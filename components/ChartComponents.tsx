@@ -8,6 +8,7 @@ import {
 	COLORS,
 	CRORE,
 	RED_COLORS,
+	SupportedCurrencies,
 	numFormat,
 	sum,
 	supportedCurrencies,
@@ -19,12 +20,14 @@ const header: Array<Array<string | number>> = [["Columnn1", "Columnn2"]];
 export const PieChart = ({
 	data,
 	palette = "green",
+	type = "currency",
 }: {
-	data: Array<Array<string | number>>;
+	data: Array<[string, number]>;
 	palette?: "green" | "red";
+	type?: "currency" | "value";
 }) => {
 	const mounted = useMounted();
-	const { activeCurrency } = useSharedContext();
+	const { activeCurrency, usdInrRate } = useSharedContext();
 
 	if (!mounted) {
 		return null;
@@ -50,13 +53,23 @@ export const PieChart = ({
 						.reduce((partialSum, a) => partialSum + a, 0),
 					activeCurrency,
 					true,
-					true,
+					false,
+					type === "value",
 				)}
 			</Heading>
 			<div id="chart">
 				<Chart
 					chartType="PieChart"
-					data={header.concat(data)}
+					data={header.concat(
+						data.map((e) => {
+							return [
+								e[0],
+								activeCurrency === SupportedCurrencies.INR
+									? e[1]
+									: e[1] / (usdInrRate as number),
+							];
+						}),
+					)}
 					options={{
 						backgroundColor: "transparent",
 						fontColor: "black",
@@ -83,7 +96,10 @@ export const PieChart = ({
 							type: "NumberFormat" as const,
 							column: 1,
 							options: {
-								prefix: supportedCurrencies.get(activeCurrency)?.symbol,
+								prefix:
+									type === "currency"
+										? supportedCurrencies.get(activeCurrency)?.symbol
+										: "",
 								negativeColor: "red",
 								negativeParens: true,
 							},

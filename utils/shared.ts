@@ -85,6 +85,7 @@ export const RED_COLORS = [
 export type DatasetTableRow = { [key: string]: string | number };
 export type DatasetTable = Array<DatasetTableRow>;
 
+export type PieChartGeneric = [string, number][];
 export type Dataset3 = {
 	[key: string]:
 		| {
@@ -108,31 +109,32 @@ export const numFormat = (
 	activeCurrency: SupportedCurrencies,
 	short = false,
 	disableConvert = false,
+	hideSymbol = false,
 ): string => {
 	if (activeCurrency === SupportedCurrencies.INR) {
 		if (short) {
 			if (num >= CRORE) {
-				return `₹${new Intl.NumberFormat("en-IN", { maximumFractionDigits: 2 }).format(num / CRORE)}Cr`;
+				return `${hideSymbol === false ? "₹" : ""}${new Intl.NumberFormat("en-IN", { maximumFractionDigits: 2 }).format(num / CRORE)}Cr`;
 			} else if (num >= 100000) {
-				return `₹${new Intl.NumberFormat("en-IN", { maximumFractionDigits: 2 }).format(num / 100000)}L`;
+				return `${hideSymbol === false ? "₹" : ""}${new Intl.NumberFormat("en-IN", { maximumFractionDigits: 2 }).format(num / 100000)}L`;
 			} else {
-				return `₹${new Intl.NumberFormat("en-IN", { maximumFractionDigits: 2 }).format(num)}`;
+				return `${hideSymbol === false ? "₹" : ""}${new Intl.NumberFormat("en-IN", { maximumFractionDigits: 2 }).format(num)}`;
 			}
 		} else {
-			return `₹ ${new Intl.NumberFormat("en-IN", { maximumSignificantDigits: 3 }).format(num)}`;
+			return `${hideSymbol === false ? "₹" : ""} ${new Intl.NumberFormat("en-IN", { maximumSignificantDigits: 3 }).format(num)}`;
 		}
 	} else if (activeCurrency === SupportedCurrencies.USD) {
 		const { usdInrRate } = useSharedContext();
 		const usdValue = disableConvert ? num : num / (usdInrRate || 1);
 		if (short) {
 			if (usdValue >= 1e12) {
-				return `$${new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(usdValue / 1e9)}Tr`;
+				return `${hideSymbol === false ? "$" : ""}${new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(usdValue / 1e9)}Tr`;
 			} else if (usdValue >= 1e9) {
-				return `$${new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(usdValue / 1e9)}Bn`;
+				return `${hideSymbol === false ? "$" : ""}${new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(usdValue / 1e9)}Bn`;
 			} else if (usdValue >= 1e6) {
-				return `$${new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(usdValue / 1e6)}M`;
+				return `${hideSymbol === false ? "$" : ""}${new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(usdValue / 1e6)}M`;
 			} else {
-				return `$${new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(usdValue)}`;
+				return `${hideSymbol === false ? "$" : ""}${new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(usdValue)}`;
 			}
 		} else {
 			return `${new Intl.NumberFormat("en-US", { maximumSignificantDigits: 3 }).format(usdValue)} USD`;

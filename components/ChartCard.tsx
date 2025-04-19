@@ -81,13 +81,14 @@ export default function ChartCard({
 
 				<PieChart
 					data={data.map(([k, v]) => [
-						k,
+						k as string,
 						activeCurrency === SupportedCurrencies.USD
 							? //@ts-ignore
 								Number.parseFloat(v) / (usdInrRate | 1)
-							: v,
+							: (v as number),
 					])}
 					palette={palette}
+					type="value"
 				/>
 			</Flex>
 		</GridItem>
