@@ -6,7 +6,7 @@
 		"dev": "next dev --turbopack",
 		"build": "next build --turbopack",
 		"postbuild": "bun run next-sitemap",
-		"start": "bunx serve@latest out",
+		"start": "next start",
 		"lint": "bunx biome check --fix --unsafe",
 		"meta": "bunx check-site-meta",
 		"bundlestats": "ANALYZE=true bun run build",

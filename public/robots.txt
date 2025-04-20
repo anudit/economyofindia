@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://economyofindia.com
+
+# Sitemaps
+Sitemap: https://economyofindia.com/sitemap.xml
