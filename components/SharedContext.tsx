@@ -9,12 +9,12 @@ import {
 } from "react";
 
 import { SupportedCurrencies } from "@/utils/shared";
+import { useToast } from "@chakra-ui/react";
 
 interface SharedType {
 	usdInrRate: number | null;
 	activeCurrency: SupportedCurrencies;
 	setActiveCurrency: (currency: SupportedCurrencies) => void;
-	// Optional: isNewVersionAvailable: boolean;
 }
 export const SharedContext = createContext<SharedType | undefined>(undefined);
 
@@ -26,10 +26,10 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 	const [activeCurrency, setActiveCurrency] = useState<SupportedCurrencies>(
 		SupportedCurrencies.INR,
 	);
-	const initialBuildIdRef = useRef<string | null>(null); // Store the initial ID
+	const initialBuildIdRef = useRef<string | null>(null);
 	const [isNewVersionAvailable, setIsNewVersionAvailable] = useState(false);
+  const toast = useToast();
 
-	// --- Fetch Currency Rate (Keep separate or combine as needed) ---
 	useEffect(() => {
 		const fetchRate = async () => {
 			try {
@@ -57,24 +57,18 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 		fetchRate();
 	}, []);
 
-	// --- Check for New App Version ---
 	useEffect(() => {
 		let intervalId: NodeJS.Timeout | null = null;
 
-		// 1. Get the initial build ID using your API route
 		const getInitialBuildId = async () => {
 			try {
-				const req = await fetch("/api/version"); // Use your API route here
+				const req = await fetch("https://economyofindia.com/api/version");
 				if (!req.ok) {
 					throw new Error(`Failed to fetch initial version: ${req.statusText}`);
 				}
 				const resp = (await req.json()) as { buildId: string | undefined };
 				if (typeof resp.buildId === "string" && resp.buildId !== "unknown") {
 					initialBuildIdRef.current = resp.buildId.trim();
-					console.log(
-						"Initial Build ID fetched from API:",
-						initialBuildIdRef.current,
-					);
 				} else {
 					console.error(
 						"Failed to get valid initial buildId from /api/version",
@@ -89,16 +83,13 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 			}
 		};
 
-		// 2. Function to check the latest version by fetching the static file
 		const checkVersion = async () => {
 			if (!initialBuildIdRef.current) {
 				console.log("Initial build ID not available, skipping version check.");
-				return; // Don't check if we couldn't get the initial ID
+				return;
 			}
 
 			try {
-				// Fetch the static version.txt file
-				// Add cache-busting
 				const response = await fetch(
 					`https://economyofindia.com/api/version?t=${Date.now()}`,
 					{
@@ -111,15 +102,14 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 				);
 
 				if (!response.ok) {
-					// Handle case where the file might not exist in older versions if just added
 					if (response.status === 404) {
 						console.warn(
-							"version.txt not found (maybe old deployment?), skipping check.",
+							"version not found (maybe old deployment?), skipping check.",
 						);
 						return;
 					}
 					throw new Error(
-						`Failed to fetch latest version.txt: ${response.statusText}`,
+						`Failed to fetch latest version: ${response.statusText}`,
 					);
 				}
 
@@ -128,60 +118,47 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 				};
 
 				if (!latestBuildId) {
-					console.warn("Fetched latest version.txt was empty or 'unknown'.");
+					console.warn("Fetched latest version was empty or 'unknown'.");
 					return;
 				}
 
-				console.log(
-					"Checking version - Initial (from API):",
-					initialBuildIdRef.current,
-					"Latest (from version.txt):",
-					latestBuildId,
-				);
-
-				// Compare the latest fetched ID with the initial one
 				if (
 					initialBuildIdRef.current.toLowerCase() !==
 					latestBuildId.toLowerCase()
 				) {
-					console.log("New version detected via version.txt!");
+					console.log("New version detected via version!");
 					setIsNewVersionAvailable(true);
-					if (intervalId) clearInterval(intervalId); // Optional: Stop checking once detected
+					if (intervalId) clearInterval(intervalId);
 				}
 			} catch (error) {
-				console.error(
-					"Failed to check for new version via version.txt:",
-					error,
-				);
+				console.error("Failed to check for new version via version:", error);
 			}
 		};
 
-		// --- Setup ---
 		getInitialBuildId().then(() => {
-			// Start polling only after attempting to get the initial ID
-			if (!initialBuildIdRef.current) return; // Don't poll if initial fetch failed
+			if (!initialBuildIdRef.current) return;
 
-			checkVersion(); // Check immediately once
-			intervalId = setInterval(checkVersion, 60_000); // Check every 60 seconds
+			checkVersion();
+			intervalId = setInterval(checkVersion, 60_000);
 		});
 
-		// Cleanup interval on component unmount
 		return () => {
 			if (intervalId) {
 				console.log("Clearing version check interval");
 				clearInterval(intervalId);
 			}
 		};
-	}, []); // Runs once on mount
+	}, []);
 
-	// --- Effect to Show Alert ---
 	useEffect(() => {
 		if (isNewVersionAvailable) {
-			alert(
-				"A new version of the app is available. Please refresh the page to update.",
-			);
-			// Reset state if needed for dismissible notifications
-			// setIsNewVersionAvailable(false);
+			toast({
+        title: "A new version of the app is available. Please refresh the page to update.",
+        position: 'bottom-right',
+        isClosable: true,
+        colorScheme:"green",
+        status:"info",
+      })
 		}
 	}, [isNewVersionAvailable]);
 
@@ -191,7 +168,6 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 				usdInrRate,
 				activeCurrency,
 				setActiveCurrency,
-				// isNewVersionAvailable // expose if needed
 			}}
 		>
 			{children}

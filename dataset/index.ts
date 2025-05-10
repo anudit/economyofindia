@@ -5,6 +5,7 @@ import { metadata as metadata3 } from "./import-export";
 import { metadata as metadata2 } from "./receipt-heads";
 import { metadata as metadata5 } from "./state-budgets";
 import { metadata as metadata6 } from "./upi";
+import { metadata as metadata7 } from "./migration";
 
 export const completeMetadata: Array<DatasetMetadata> = [
 	metadata1,
@@ -13,4 +14,5 @@ export const completeMetadata: Array<DatasetMetadata> = [
 	metadata4,
 	metadata5,
 	metadata6,
+	metadata7,
 ];

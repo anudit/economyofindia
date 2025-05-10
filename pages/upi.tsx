@@ -2,9 +2,7 @@ import { Flex, Heading, SimpleGrid, Text, chakra } from "@chakra-ui/react";
 
 import { BarChart, PieChart } from "@/components/ChartComponents";
 import PageShell from "@/components/PageShell";
-import { useSharedContext } from "@/components/SharedContext";
 import { dataset, dataset2, metadata } from "@/dataset/upi";
-import { CRORE, numFormat } from "@/utils/shared";
 
 export default function Home() {
 	return (
