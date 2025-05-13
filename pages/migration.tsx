@@ -7,14 +7,10 @@ import { dataset, metadata } from "@/dataset/migration";
 export default function Home() {
 	return (
 		<PageShell metadata={metadata}>
-			<Heading as="h1" size="lg" maxW="95%">
-			  Net Migration from India
-			</Heading>
-			<br />
-			  <BarChart header={dataset.header} data={dataset.data} />
-			<Flex maxW="95vw">
-			</Flex>
-			<br />
+			<Flex w={{base: "90%", md: "100%"}} maxW="900px" flexDirection="column" mb={4}>
+        <Heading as="h3" fontSize="18px" fontWeight={300} >Net Migration from India</Heading>
+        <BarChart header={dataset.header} data={dataset.data} />
+      </Flex>
 		</PageShell>
 	);
 }

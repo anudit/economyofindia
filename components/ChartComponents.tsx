@@ -208,12 +208,14 @@ export const BarChart = ({
 					titleTextStyle: { color: "white" },
 					gridlines: { color: "#3e3a52" },
 					minorGridlines: { color: "#3e3a52" },
+					// title: header[0]
 				},
 				vAxis: {
 					textStyle: { color: "white" },
 					titleTextStyle: { color: "white" },
 					gridlines: { color: "#2F2C3E" },
 					minorGridlines: { color: "#2F2C3E" },
+          title: header[1]
 					// format: "percent",
 				},
 				legend: { position: "none" },

@@ -13,7 +13,7 @@ export default function Home() {
 			<br />
 			{dataset.map((d, id) => {
 				return (
-					<Flex key={id} w="95%" direction="column" my={2}>
+					<Flex key={id} w={{base: "90%", md: "100%"}} maxW="900px" direction="column" my={2}>
 						<Heading as="h2" size="md">
 							{d.title}
 						</Heading>

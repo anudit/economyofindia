@@ -1,6 +1,7 @@
 import { useSharedContext } from "@/components/SharedContext";
 
 export const CRORE = 10000000;
+export const LAKH = 100000;
 
 export const average = (arr: number[]): number =>
 	arr.reduce((p, c) => p + c, 0) / arr.length;
@@ -152,6 +153,7 @@ export type DatasetMetadataFile = {
 	ipfsHash: string;
 	sha256: string;
 	md5: string;
+  wayback?: string;
 };
 
 export type DatasetMetadata = {
@@ -161,6 +163,7 @@ export type DatasetMetadata = {
 	fileName: string;
 	localLink: `/${string}`;
 	isLive: boolean;
+	wayback?: string;
 	sourceFiles: DatasetMetadataFile[];
 	api: string;
 };
@@ -201,5 +204,5 @@ export function sum(arr: number[]) {
 export type BarChartGeneric = {
 	title: string;
 	header: [string, string];
-	data: Array<[string, number]>;
+	data: [string, number][];
 };
