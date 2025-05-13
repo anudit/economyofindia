@@ -1,6 +1,6 @@
-import { Heading, Select, useBreakpointValue } from "@chakra-ui/react";
+import { Flex, Heading, Select, useBreakpointValue } from "@chakra-ui/react";
 
-import { BarChart } from "@/components/ChartComponents";
+import { BarChart, PieChart } from "@/components/ChartComponents";
 import PageShell from "@/components/PageShell";
 import { dataset, metadata } from "@/dataset/taxpayers";
 import { useState } from "react";
@@ -38,17 +38,21 @@ export default function Home() {
 			</Heading>
 			<br />
 			{dataset[section].map((d, id) => {
-				return (
-					<BarChart
-						key={id}
-						header={d.header}
-						data={d.data}
-						options={{
-							direction: "vertical",
-							width: chartWidth,
-							height: 250,
-						}}
-					/>
+        return (
+          <Flex direction={{ base: "column", lg:"row"}} key={id}>
+            <Flex direction= "column" w={{base: '200px', lg:"400px"}}>
+						<PieChart data={d.data} hideLegend={true} />
+						</Flex>
+  					<BarChart
+  						header={d.header}
+  						data={d.data}
+  						options={{
+  							direction: "vertical",
+  							width: chartWidth,
+  							height: 250,
+  						}}
+            />
+					</Flex>
 				);
 			})}
 		</PageShell>

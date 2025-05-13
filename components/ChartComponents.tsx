@@ -23,10 +23,12 @@ export const PieChart = ({
 	data,
 	palette = "green",
 	type = "currency",
+	hideLegend = false,
 }: {
 	data: Array<[string, number]>;
 	palette?: "green" | "red";
 	type?: "currency" | "value";
+	hideLegend?: boolean
 }) => {
 	const mounted = useMounted();
 	const { activeCurrency, usdInrRate } = useSharedContext();
@@ -75,7 +77,7 @@ export const PieChart = ({
 					options={{
 						backgroundColor: "transparent",
 						fontColor: "black",
-						legend: {
+						legend: hideLegend === true ? 'none' : {
 							position: data.length > 5 ? "right" : "bottom",
 							alignment: "center",
 							textStyle: { color: "#fff" },
@@ -92,7 +94,7 @@ export const PieChart = ({
 					}}
 					width={"100%"}
 					height={"300px"}
-					legendToggle
+					legendToggle={!hideLegend}
 					formatters={[
 						{
 							type: "NumberFormat" as const,
