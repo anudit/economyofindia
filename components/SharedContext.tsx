@@ -28,7 +28,7 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 	);
 	const initialBuildIdRef = useRef<string | null>(null);
 	const [isNewVersionAvailable, setIsNewVersionAvailable] = useState(false);
-  const toast = useToast();
+	const toast = useToast();
 
 	useEffect(() => {
 		const fetchRate = async () => {
@@ -153,12 +153,13 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 	useEffect(() => {
 		if (isNewVersionAvailable) {
 			toast({
-        title: "A new version of the app is available. Please refresh the page to update.",
-        position: 'bottom-right',
-        isClosable: true,
-        colorScheme:"green",
-        status:"info",
-      })
+				title:
+					"A new version of the app is available. Please refresh the page to update.",
+				position: "bottom-right",
+				isClosable: true,
+				colorScheme: "green",
+				status: "info",
+			});
 		}
 	}, [isNewVersionAvailable]);
 

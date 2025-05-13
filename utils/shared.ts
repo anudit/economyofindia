@@ -153,7 +153,7 @@ export type DatasetMetadataFile = {
 	ipfsHash: string;
 	sha256: string;
 	md5: string;
-  wayback?: string;
+	wayback?: string;
 };
 
 export type DatasetMetadata = {
@@ -205,4 +205,10 @@ export type BarChartGeneric = {
 	title: string;
 	header: [string, string];
 	data: [string, number][];
+};
+
+export type BarChartGenericWithStyle = {
+	title: string;
+	header: [string, string, { role: "style" }];
+	data: [string, number, string][];
 };

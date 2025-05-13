@@ -1,10 +1,11 @@
-import { Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import { Chart } from "react-google-charts";
 
 import { useMounted } from "@/components/useMounted";
 import { mainFont, mainFontFamily } from "@/styles/theme";
 import {
 	type BarChartGeneric,
+	type BarChartGenericWithStyle,
 	COLORS,
 	CRORE,
 	RED_COLORS,
@@ -13,6 +14,7 @@ import {
 	sum,
 	supportedCurrencies,
 } from "@/utils/shared";
+import { useBreakpointValue } from "@chakra-ui/react";
 import { useSharedContext } from "./SharedContext";
 
 const header: Array<Array<string | number>> = [["Columnn1", "Columnn2"]];
@@ -186,40 +188,70 @@ export const Sankey = ({
 export const BarChart = ({
 	data,
 	header,
+	options = {},
 }: {
-	data: BarChartGeneric["data"];
-	header: string[];
+	data: BarChartGeneric["data"] | BarChartGenericWithStyle["data"];
+	header: BarChartGeneric["header"] | BarChartGenericWithStyle["header"];
+	options: {
+		direction?: "horizontal" | "vertical";
+		height?: number;
+		width?: number;
+	};
 }) => {
 	const mounted = useMounted();
-
+	const chartWidth = useBreakpointValue(
+		{ base: 400, md: 600, lg: 1000 },
+		{ ssr: true },
+	);
 	if (!mounted) {
 		return null;
 	}
 
 	return (
-		<Chart
-			chartType="ColumnChart"
-			data={[header, ...data]}
-			options={{
-				//@ts-expect-error
-				backgroundColor: { fill: "transparent" },
-				hAxis: {
-					textStyle: { color: "white", fontSize: 11 },
-					titleTextStyle: { color: "white" },
-					gridlines: { color: "#3e3a52" },
-					minorGridlines: { color: "#3e3a52" },
-					// title: header[0]
-				},
-				vAxis: {
-					textStyle: { color: "white" },
-					titleTextStyle: { color: "white" },
-					gridlines: { color: "#2F2C3E" },
-					minorGridlines: { color: "#2F2C3E" },
-          title: header[1]
-					// format: "percent",
-				},
-				legend: { position: "none" },
-			}}
-		/>
+		<Flex
+      className="barContainer"
+			w={{ base: "200px", sm: "300px", md: "600px", lg: "1000px" }}
+			maxW="1000px"
+			minW="0"
+			flexDirection="column"
+			mb={4}
+			overflowX="scroll"
+			overflowY="hidden"
+		>
+			<Box minW={`${chartWidth}px`} w={`${chartWidth}px`} flexShrink={0}>
+				<Chart
+					chartType={
+						options.direction === "horizontal" ? "ColumnChart" : "BarChart"
+					}
+					data={[header, ...data]}
+					options={{
+						backgroundColor: {
+							fill: "transparent",
+							stroke: "none",
+							strokeWidth: 0,
+						},
+						height: options.height,
+						width: options.width,
+						hAxis: {
+							textStyle: { color: "white", fontSize: 12 },
+							titleTextStyle: { color: "white" },
+							gridlines: { color: "#3e3a52" },
+							minorGridlines: { color: "#3e3a52" },
+							// title: header[0]
+						},
+						bars: "horizontal", // no effect on ColumnChart
+						vAxis: {
+							textStyle: { color: "white", fontSize: 12 },
+							titleTextStyle: { color: "white" },
+							gridlines: { color: "#2F2C3E" },
+							minorGridlines: { color: "#2F2C3E" },
+							title: header[1],
+							// format: "percent",
+						},
+						legend: { position: "none" },
+					}}
+				/>
+			</Box>
+		</Flex>
 	);
 };

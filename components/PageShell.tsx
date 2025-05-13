@@ -106,6 +106,8 @@ export default function PageShell({
 						m="5px"
 						borderRadius="10px"
 						overflow="scroll"
+						flex="1"
+						minW="0"
 					>
 						{children}
 					</Flex>
