@@ -1,9 +1,12 @@
 import { Flex, Heading, Select, useBreakpointValue } from "@chakra-ui/react";
 
+import LiveValue from "@/components/AnimatedNumber";
 import { BarChart, PieChart } from "@/components/ChartComponents";
 import PageShell from "@/components/PageShell";
+import { useSharedContext } from "@/components/SharedContext";
 import { SingleStat } from "@/components/SingleStat";
-import { dataset, dataset2, metadata } from "@/dataset/taxpayers";
+import { population } from "@/dataset/population";
+import { calcs, dataset, dataset2, metadata } from "@/dataset/taxpayers";
 import { sum } from "@/utils/shared";
 import { useState } from "react";
 
@@ -13,6 +16,7 @@ export default function Home() {
 		{ ssr: true },
 	);
 	const [section, setSection] = useState<string>(Object.keys(dataset)[4]);
+	const { usdInrRate, activeCurrency } = useSharedContext();
 
 	return (
 		<PageShell
@@ -39,6 +43,27 @@ export default function Home() {
 				Taxpayers {section}
 			</Heading>
 			<br />
+			<Flex
+				direction="column"
+				bg="gray.900"
+				p={4}
+				borderRadius="md"
+				boxShadow="md"
+				border="1px solid"
+				borderColor="gray.700"
+				w="fit-content"
+			>
+				<Heading as="h3" size="xs" fontWeight={300} mb={2}>
+					Live Debt Clock (INR)
+				</Heading>
+
+				<LiveValue
+					startValue={calcs.debt}
+					ratePerSec={calcs.ratePerSec}
+					type="currency"
+				/>
+			</Flex>
+			<br />
 			<Flex flexDirection={{ base: "column", md: "row" }}>
 				<SingleStat
 					title="Debt per Taxpayer"
@@ -52,6 +77,11 @@ export default function Home() {
 					value={sum(
 						dataset["AY 2023-24"][0].data.slice(1).flatMap((e) => e[1]),
 					)}
+					type="value"
+					extra={`(${(
+						sum(dataset["AY 2023-24"][0].data.slice(1).flatMap((e) => e[1])) /
+							population
+					).toFixed(2)}%)`}
 				/>
 				<SingleStat
 					title="Total Debt"

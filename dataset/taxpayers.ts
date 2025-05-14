@@ -5,6 +5,7 @@ import {
 	type Dict,
 	LAKH,
 	type StatGeneric,
+	sum,
 } from "@/utils/shared";
 
 export const metadata: DatasetMetadata = {
@@ -18,6 +19,12 @@ export const metadata: DatasetMetadata = {
 		{
 			sourceFile:
 				"https://sansad.in/getFile/annex/266/AU2478_4DCl3C.pdf?source=pqars",
+			ipfsHash: "",
+			md5: "",
+			sha256: "",
+		},
+		{
+			sourceFile: "https://www.indiabudget.gov.in/doc/rec/annex9.pdf",
 			ipfsHash: "",
 			md5: "",
 			sha256: "",
@@ -484,4 +491,11 @@ export const dataset2: Dict<StatGeneric> = {
 		"Internal debt and other liabilities": 19014852.01 * CRORE,
 		"External debt": 663920.67 * CRORE,
 	},
+};
+
+export const calcs = {
+	debt: sum(Object.values(dataset2["2024-2025"])),
+	ratePerSec: Math.floor((sum(Object.values(dataset2["2025-2026"])) -
+		sum(Object.values(dataset2["2024-2025"]))) /
+		(365 * 24 * 60 * 60))
 };

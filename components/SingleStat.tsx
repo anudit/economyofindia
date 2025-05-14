@@ -6,10 +6,14 @@ export const SingleStat = ({
 	title,
 	value,
 	palette,
+	type = "currency",
+	extra = "",
 }: {
 	title: string;
 	value: number;
 	palette?: "green" | "red";
+	type?: "currency" | "value";
+	extra?: string;
 }) => {
 	const { activeCurrency } = useSharedContext();
 	return (
@@ -38,7 +42,16 @@ export const SingleStat = ({
 						: undefined
 				}
 			>
-				{numFormat(value, activeCurrency, true)}
+				{numFormat(
+					value,
+					activeCurrency,
+					true,
+					type === "value",
+					type === "value",
+				)}
+				<span style={{ fontSize: "12px", fontWeight: 300, marginLeft: 2 }}>
+					{extra}
+				</span>
 			</Text>
 		</Flex>
 	);
