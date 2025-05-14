@@ -2,7 +2,9 @@ import {
 	type BarChartGeneric,
 	CRORE,
 	type DatasetMetadata,
+	type Dict,
 	LAKH,
+	type StatGeneric,
 } from "@/utils/shared";
 
 export const metadata: DatasetMetadata = {
@@ -470,4 +472,16 @@ export const dataset: { [key: string]: BarChartGeneric[] } = {
 			].map((e) => [e[0], (e[1] as number) * LAKH] as [string, number]),
 		},
 	],
+};
+
+//https://www.indiabudget.gov.in/doc/rec/annex9.pdf
+export const dataset2: Dict<StatGeneric> = {
+	"2024-2025": {
+		"Internal debt and other liabilities": 17555988.6 * CRORE,
+		"External debt": 618295.76 * CRORE,
+	},
+	"2025-2026": {
+		"Internal debt and other liabilities": 19014852.01 * CRORE,
+		"External debt": 663920.67 * CRORE,
+	},
 };

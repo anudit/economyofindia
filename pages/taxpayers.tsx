@@ -2,7 +2,9 @@ import { Flex, Heading, Select, useBreakpointValue } from "@chakra-ui/react";
 
 import { BarChart, PieChart } from "@/components/ChartComponents";
 import PageShell from "@/components/PageShell";
-import { dataset, metadata } from "@/dataset/taxpayers";
+import { SingleStat } from "@/components/SingleStat";
+import { dataset, dataset2, metadata } from "@/dataset/taxpayers";
+import { sum } from "@/utils/shared";
 import { useState } from "react";
 
 export default function Home() {
@@ -37,21 +39,41 @@ export default function Home() {
 				Taxpayers {section}
 			</Heading>
 			<br />
+			<Flex flexDirection={{ base: "column", md: "row" }}>
+				<SingleStat
+					title="Debt per Taxpayer"
+					value={
+						sum(Object.values(dataset2["2024-2025"])) /
+						sum(dataset["AY 2023-24"][0].data.slice(1).flatMap((e) => e[1]))
+					}
+				/>
+				<SingleStat
+					title="Total Taxpayers"
+					value={sum(
+						dataset["AY 2023-24"][0].data.slice(1).flatMap((e) => e[1]),
+					)}
+				/>
+				<SingleStat
+					title="Total Debt"
+					value={sum(Object.values(dataset2["2024-2025"]))}
+				/>
+			</Flex>
+			<br />
 			{dataset[section].map((d, id) => {
-        return (
-          <Flex direction={{ base: "column", lg:"row"}} key={id}>
-            <Flex direction= "column" w={{base: '200px', lg:"400px"}}>
-						<PieChart data={d.data} hideLegend={true} />
+				return (
+					<Flex direction={{ base: "column", lg: "row" }} key={id}>
+						<Flex direction="column" w={{ base: "200px", lg: "400px" }}>
+							<PieChart data={d.data} hideLegend={true} />
 						</Flex>
-  					<BarChart
-  						header={d.header}
-  						data={d.data}
-  						options={{
-  							direction: "vertical",
-  							width: chartWidth,
-  							height: 250,
-  						}}
-            />
+						<BarChart
+							header={d.header}
+							data={d.data}
+							options={{
+								direction: "vertical",
+								width: chartWidth,
+								height: 250,
+							}}
+						/>
 					</Flex>
 				);
 			})}

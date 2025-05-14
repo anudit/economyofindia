@@ -207,6 +207,10 @@ export type BarChartGeneric = {
 	data: [string, number][];
 };
 
+export type Dict<T> = { [key: string]: T };
+
+export type StatGeneric = Dict<number>;
+
 export type BarChartGenericWithStyle = {
 	title: string;
 	header: [string, string, { role: "style" }];

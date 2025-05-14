@@ -28,7 +28,7 @@ export const PieChart = ({
 	data: Array<[string, number]>;
 	palette?: "green" | "red";
 	type?: "currency" | "value";
-	hideLegend?: boolean
+	hideLegend?: boolean;
 }) => {
 	const mounted = useMounted();
 	const { activeCurrency, usdInrRate } = useSharedContext();
@@ -77,12 +77,15 @@ export const PieChart = ({
 					options={{
 						backgroundColor: "transparent",
 						fontColor: "black",
-						legend: hideLegend === true ? 'none' : {
-							position: data.length > 5 ? "right" : "bottom",
-							alignment: "center",
-							textStyle: { color: "#fff" },
-							maxLines: 4,
-						},
+						legend:
+							hideLegend === true
+								? "none"
+								: {
+										position: data.length > 5 ? "right" : "bottom",
+										alignment: "center",
+										textStyle: { color: "#fff" },
+										maxLines: 4,
+									},
 						tooltip: {
 							showColorCode: true,
 						},
@@ -211,7 +214,7 @@ export const BarChart = ({
 
 	return (
 		<Flex
-      className="barContainer"
+			className="barContainer"
 			w={{ base: "200px", sm: "300px", md: "600px", lg: "1000px" }}
 			maxW="1000px"
 			minW="0"
