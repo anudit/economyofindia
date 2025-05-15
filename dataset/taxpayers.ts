@@ -495,7 +495,9 @@ export const dataset2: Dict<StatGeneric> = {
 
 export const calcs = {
 	debt: sum(Object.values(dataset2["2024-2025"])),
-	ratePerSec: Math.floor((sum(Object.values(dataset2["2025-2026"])) -
-		sum(Object.values(dataset2["2024-2025"]))) /
-		(365 * 24 * 60 * 60))
+	ratePerSec: Math.floor(
+		(sum(Object.values(dataset2["2025-2026"])) -
+			sum(Object.values(dataset2["2024-2025"]))) /
+			(365 * 24 * 60 * 60),
+	),
 };

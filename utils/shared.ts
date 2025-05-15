@@ -203,8 +203,8 @@ export function sum(arr: number[]) {
 
 export type BarChartGeneric = {
 	title: string;
-	header: [string, string];
-	data: [string, number][];
+	header: string[];
+	data: [string, ...number[]][];
 };
 
 export type Dict<T> = { [key: string]: T };
@@ -215,4 +215,11 @@ export type BarChartGenericWithStyle = {
 	title: string;
 	header: [string, string, { role: "style" }];
 	data: [string, number, string][];
+};
+
+export type AreaChartGeneric = {
+	xyAxis: Array<string | undefined>;
+	columns: string[];
+	colors?: string[];
+	data: [string, ...number[]][];
 };

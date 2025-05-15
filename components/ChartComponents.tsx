@@ -4,6 +4,7 @@ import { Chart } from "react-google-charts";
 import { useMounted } from "@/components/useMounted";
 import { mainFont, mainFontFamily } from "@/styles/theme";
 import {
+	type AreaChartGeneric,
 	type BarChartGeneric,
 	type BarChartGenericWithStyle,
 	COLORS,
@@ -244,7 +245,6 @@ export const BarChart = ({
 							minorGridlines: { color: "#3e3a52" },
 							// title: header[0]
 						},
-						bars: "horizontal", // no effect on ColumnChart
 						vAxis: {
 							textStyle: { color: "white", fontSize: 12 },
 							titleTextStyle: { color: "white" },
@@ -253,10 +253,100 @@ export const BarChart = ({
 							title: header[1],
 							// format: "percent",
 						},
+						bars: "horizontal", // no effect on ColumnChart
 						legend: { position: "none" },
 					}}
 				/>
 			</Box>
 		</Flex>
+	);
+};
+
+export const StackedAreaChart = ({
+	data,
+	columns,
+	xyAxis,
+	colors = ["#FF6347", "#00BFFF", "#BDB76B", "#DAFF00", "#1E90FF", "#90EE90"],
+}: AreaChartGeneric) => {
+	return (
+		<div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+			<Chart
+				chartType="AreaChart"
+				width="100%"
+				height="300px"
+				// @ts-ignore
+				data={[columns].concat(data)}
+				options={{
+					isStacked: true,
+					backgroundColor: {
+						fill: "transparent",
+						stroke: "none",
+						strokeWidth: 0,
+					},
+					hAxis: {
+						textStyle: { color: "white", fontSize: 12 },
+						titleTextStyle: { color: "white" },
+						gridlines: { color: "#3e3a52" },
+						// minorGridlines: { color: "#3e3a52" },
+						title: xyAxis[0],
+					},
+					vAxis: {
+						textStyle: { color: "white", fontSize: 12 },
+						titleTextStyle: { color: "white" },
+						// gridlines: { color: "#2F2C3E" },
+						// minorGridlines: { color: "#2F2C3E" },
+						minValue: 0,
+						title: xyAxis[1],
+						format: "decimal",
+					},
+					height: 300,
+					tooltip: { showColorCode: true },
+					legend: {
+						position: "bottom",
+						textStyle: { color: "white", fontSize: 12 },
+					},
+					areaOpacity: 0.4,
+					colors: colors,
+				}}
+			/>
+		</div>
+	);
+};
+
+export const LineChart = ({ data, header }: BarChartGeneric) => {
+	return (
+		<div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+			<Chart
+				chartType="LineChart"
+				width="100%"
+				height="300px"
+				data={[header, ...data]}
+				options={{
+					isStacked: true,
+					backgroundColor: {
+						fill: "transparent",
+						stroke: "none",
+						strokeWidth: 0,
+					},
+					hAxis: {
+						textStyle: { color: "white", fontSize: 12 },
+						titleTextStyle: { color: "white" },
+						gridlines: { color: "#3e3a52" },
+					},
+					vAxis: {
+						textStyle: { color: "white", fontSize: 12 },
+						titleTextStyle: { color: "white" },
+						minValue: 0,
+						format: "decimal",
+					},
+					height: 300,
+					tooltip: { showColorCode: true },
+					legend: {
+						position: "bottom",
+						textStyle: { color: "white", fontSize: 12 },
+					},
+				}}
+			/>
+		</div>
 	);
 };

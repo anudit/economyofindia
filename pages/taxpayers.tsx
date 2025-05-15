@@ -79,8 +79,9 @@ export default function Home() {
 					)}
 					type="value"
 					extra={`(${(
-						sum(dataset["AY 2023-24"][0].data.slice(1).flatMap((e) => e[1])) /
-							population
+						(sum(dataset["AY 2023-24"][0].data.slice(1).flatMap((e) => e[1])) /
+							population) *
+							100
 					).toFixed(2)}%)`}
 				/>
 				<SingleStat
@@ -93,7 +94,11 @@ export default function Home() {
 				return (
 					<Flex direction={{ base: "column", lg: "row" }} key={id}>
 						<Flex direction="column" w={{ base: "200px", lg: "400px" }}>
-							<PieChart data={d.data} hideLegend={true} />
+
+							<PieChart
+							//@ts-ignore
+							data={d.data}
+							hideLegend={true} />
 						</Flex>
 						<BarChart
 							header={d.header}

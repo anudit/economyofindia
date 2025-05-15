@@ -24,6 +24,7 @@ export default function Home() {
 							{ role: "style" },
 						] as BarChartGenericWithStyle["header"]
 					}
+					//@ts-ignore
 					data={dataset.data.map((e) => [
 						...e,
 						e[1] > 0 ? "color: green" : "color: red",
