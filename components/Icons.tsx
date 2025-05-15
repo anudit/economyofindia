@@ -38,3 +38,10 @@ export const LiveIcon = (props: ComponentProps<typeof Icon>) => (
 		/>
 	</Icon>
 );
+
+export const WaybackIcon = (props: ComponentProps<typeof Icon>) => (
+	<Icon viewBox="32 60 67 74" {...props}>
+  	<path fill="#ab2e33" d="M63 125V60h-9v66l-1 1h-1V60h-9v67h-2V60h-9v65s0 4 2 6c3 3 7 3 7 3h12s4 0 7-3c3-2 3-6 3-6"/>
+    <path fill="#211e1e" d="M91 60H77c-8 0-8 7-8 7v66h7V66s0-2 2-2h3v69h6V64h3c2 0 2 2 2 2v67h7V67s0-7-8-7"/>
+	</Icon>
+);

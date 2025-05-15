@@ -6,6 +6,7 @@ export const metadata: DatasetMetadata = {
 	titleShort: "AQI",
 	fileName: "aqi.live",
 	localLink: "/aqi",
+	wayback:"http://web.archive.org/web/20250515150640/https://economyofindia.com/aqi",
 	isLive: true,
 	sourceFiles: [
 		{

@@ -6,6 +6,7 @@ export const metadata: DatasetMetadata = {
 	titleShort: "Net Migration",
 	fileName: "migration.pdf",
 	localLink: "/migration",
+	wayback:"http://web.archive.org/web/20250515150426/https://economyofindia.com/migration",
 	isLive: true,
 	sourceFiles: [
 		{

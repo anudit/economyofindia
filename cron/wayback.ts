@@ -3,6 +3,7 @@ import { completeMetadata } from "../dataset/index";
 async function getStatus(link: string) {
   const data = await fetch(`http://archive.org/wayback/available?url=${link}`);
   const resp = await data.json();
+  console.log(resp);
   return resp;
 }
 
@@ -25,10 +26,10 @@ async function main() {
 	);
 
   for (let i = 0; i < sitelinks.length; i++) {
-    await save(sitelinks[sitelinks.length-1-i]);
+    await getStatus(sitelinks[sitelinks.length-1-i]);
   }
   for (let i = 0; i < sourceLinks.length; i++) {
-    await save(sourceLinks[i]);
+    await getStatus(sourceLinks[i]);
   }
 
 }

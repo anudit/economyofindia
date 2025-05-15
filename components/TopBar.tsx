@@ -27,6 +27,7 @@ import {
 	titleCase,
 } from "@/utils/shared";
 import { useSharedContext } from "./SharedContext";
+import { WaybackIcon } from "./Icons";
 
 export default function TopBar({
 	metadata,
@@ -125,6 +126,15 @@ export default function TopBar({
 								</MenuItemOption>
 							))}
 						</MenuOptionGroup>
+
+            { metadata.wayback && (<MenuItem
+							icon={<WaybackIcon height="16px" width="16px" />}
+							onClick={() => {
+								window.open(metadata.wayback, "_blank");
+							}}
+						>
+						  Wayback Machine
+						</MenuItem>) }
 
 						{metadata?.sourceFiles.map((e, id) => {
 							return (

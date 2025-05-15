@@ -10,6 +10,7 @@ export const metadata: DatasetMetadata = {
 	titleShort: "State Budget Analysis",
 	fileName: "state_budgets.pdf",
 	localLink: "/state-budgets",
+	wayback:"http://web.archive.org/web/20250515150622/https://economyofindia.com/state-budgets",
 	isLive: false,
 	sourceFiles: [
 		{

@@ -11,6 +11,7 @@ export const metadata: DatasetMetadata = {
 	titleShort: "Energy",
 	fileName: "energy.pdf",
 	localLink: "/energy",
+	wayback:"http://web.archive.org/web/20250515150059/https://economyofindia.com/energy",
 	isLive: false,
 	sourceFiles: [
 		{

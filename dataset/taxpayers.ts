@@ -14,11 +14,12 @@ export const metadata: DatasetMetadata = {
 	titleShort: "Taxpayers",
 	fileName: "taxpayers.pdf",
 	localLink: "/taxpayers",
+	wayback:"https://web.archive.org/web/20250515150241/https://economyofindia.com/taxpayers",
 	isLive: false,
 	sourceFiles: [
 		{
 			sourceFile:
-				"https://sansad.in/getFile/annex/266/AU2478_4DCl3C.pdf?source=pqars",
+				"https://sansad.in/getFile/annex/266clear/AU2478_4DCl3C.pdf?source=pqars",
 			ipfsHash: "",
 			md5: "",
 			sha256: "",
