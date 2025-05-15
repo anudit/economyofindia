@@ -37,8 +37,9 @@ export default function Home() {
 						),
 					])}
 				/>
+				<br />
 				<Heading fontSize="lg" fontWeight="300">
-					How much of the installed electricity growth
+					Installed electricity growth compared to Industrial growth.
 				</Heading>
 				<LineChart title="" header={dataset2.header} data={dataset2.data} />
 			</Flex>
