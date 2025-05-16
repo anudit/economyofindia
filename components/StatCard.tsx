@@ -14,7 +14,7 @@ export default function StatCard({
 	stat: number;
 	title: string;
 	route: string;
-	palette?: "green" | "red";
+	palette?: "green" | "red" | string[];
 }) {
 	const { activeCurrency } = useSharedContext();
 
@@ -77,7 +77,7 @@ export default function StatCard({
 				w="100%"
 				h="310px"
 				display="flex"
-				color={palette === "green" ? COLORS[2] : RED_COLORS[2]}
+				color={typeof palette === 'object' ? palette[0] : palette === "green" ? COLORS[2] : RED_COLORS[2]}
 				justifyContent="center"
 				alignItems="center"
 				p="10px"

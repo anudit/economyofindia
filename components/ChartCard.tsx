@@ -13,7 +13,7 @@ export default function ChartCard({
 	data: Array<Array<string | number>>;
 	title: string;
 	route: string;
-	palette?: "green" | "red";
+	palette?: "green" | "red" | string[];
 }) {
 	const { usdInrRate, activeCurrency } = useSharedContext();
 

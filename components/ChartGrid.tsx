@@ -13,10 +13,12 @@ export default function ChartGrid({
 	dataset,
 	palette = "green",
 	section,
+	convert = false
 }: {
 	dataset: Dataset3;
-	palette?: "green" | "red";
+	palette?: "green" | "red" | string[];
 	section?: string;
+	convert?: boolean
 }) {
 	if (!dataset) {
 		return <Text>Data not available</Text>;
@@ -32,7 +34,7 @@ export default function ChartGrid({
 					return (
 						<ChartCard
 							palette={palette}
-							data={chartDataFormat(level2Val as SimpleDataset)}
+							data={chartDataFormat(level2Val as SimpleDataset, convert)}
 							title={level2Key}
 							key={level2Key}
 							route={`${section !== undefined ? `${titleCase(section)} > ` : ""}${titleCase(level2Key)}`}
@@ -53,7 +55,7 @@ export default function ChartGrid({
 							return (
 								<ChartCard
 									palette={palette}
-									data={chartDataFormat(level3Val as SimpleDataset)}
+									data={chartDataFormat(level3Val as SimpleDataset, convert)}
 									title={level3Key}
 									key={level3Key}
 									route={`${section !== undefined ? `${titleCase(section)} > ` : ""}${titleCase(level2Key)}`}
@@ -73,7 +75,7 @@ export default function ChartGrid({
 											data={chartDataFormat(
 												level4Val as {
 													[key: string]: number | null;
-												},
+												}, convert
 											)}
 											title={level4Key}
 											key={level4Key}

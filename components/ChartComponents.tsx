@@ -27,7 +27,7 @@ export const PieChart = ({
 	hideLegend = false,
 }: {
 	data: Array<[string, number]>;
-	palette?: "green" | "red";
+	palette?: "green" | "red" | string[];
 	type?: "currency" | "value";
 	hideLegend?: boolean;
 }) => {
@@ -91,8 +91,8 @@ export const PieChart = ({
 							showColorCode: true,
 						},
 						// chartArea: { width: "80%", height: "80%" },
-						colors: palette === "green" ? COLORS : RED_COLORS,
-						sliceVisibilityThreshold: 0.001,
+						colors: typeof palette === 'object' ? palette : palette === "green" ? COLORS : RED_COLORS,
+						sliceVisibilityThreshold: 0,
 						pieSliceBorderColor: "transparent",
 						fontName: mainFontFamily,
 					}}
