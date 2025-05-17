@@ -203,6 +203,7 @@ export const BarChart = ({
 		direction?: "horizontal" | "vertical";
 		height?: number;
 		width?: number;
+    fontSize?: number;
 	};
 }) => {
 	const mounted = useMounted();
@@ -240,18 +241,18 @@ export const BarChart = ({
 						height: options.height,
 						width: options.width,
 						hAxis: {
-							textStyle: { color: "white", fontSize: 12 },
+							textStyle: { color: "white", fontSize:  12 },
 							titleTextStyle: { color: "white" },
 							gridlines: { color: "#3e3a52" },
 							minorGridlines: { color: "#3e3a52" },
 							// title: header[0]
 						},
 						vAxis: {
-							textStyle: { color: "white", fontSize: 12 },
+							textStyle: { color: "white", fontSize: options.fontSize || 12 },
 							titleTextStyle: { color: "white" },
 							gridlines: { color: "#2F2C3E" },
 							minorGridlines: { color: "#2F2C3E" },
-							title: header[1],
+							title: options.direction === "horizontal" ? header[1] : header[0],
 							// format: "percent",
 						},
 						bars: "horizontal", // no effect on ColumnChart
