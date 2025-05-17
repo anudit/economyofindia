@@ -171,16 +171,16 @@ export type DatasetMetadata = {
 export const chartDataFormat = (
 	data: SimpleDataset,
 	convert = true
-): Array<Array<string | number>> => {
+): Array<[string, number]> => {
 	return Object.entries(data)
 		.map(([k, v], ind) => {
 			if (v != null && v !== 0) {
-				return [k, v * (convert === true ? CRORE : 1)];
+				return [k as string, (v * (convert === true ? CRORE : 1) as number)];
 			} else {
 				return null;
 			}
 		})
-		.filter((e) => e != null);
+		.filter((e) => e != null) as Array<[string, number]>;
 };
 
 export function titleCase(s: string) {

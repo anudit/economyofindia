@@ -73,7 +73,7 @@ export const PieChart = ({
 									? e[1]
 									: e[1] / (usdInrRate as number),
 							];
-						}),
+						})
 					)}
 					options={{
 						backgroundColor: "transparent",
@@ -82,7 +82,7 @@ export const PieChart = ({
 							hideLegend === true
 								? "none"
 								: {
-										position: data.length > 5 ? "right" : "bottom",
+										position: data.length >= 5 ? "right" : "bottom",
 										alignment: "center",
 										textStyle: { color: "#fff" },
 										maxLines: 4,
@@ -90,7 +90,8 @@ export const PieChart = ({
 						tooltip: {
 							showColorCode: true,
 						},
-						// chartArea: { width: "80%", height: "80%" },
+						// slices: typeof palette === 'object' ? palette.map((e, ind)=>{return {ind:{color:e}}}): undefined,
+						chartArea: { width: "80%", height: "80%" },
 						colors: typeof palette === 'object' ? palette : palette === "green" ? COLORS : RED_COLORS,
 						sliceVisibilityThreshold: 0,
 						pieSliceBorderColor: "transparent",

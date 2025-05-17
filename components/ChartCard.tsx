@@ -10,7 +10,7 @@ export default function ChartCard({
 	route,
 	palette = "green",
 }: {
-	data: Array<Array<string | number>>;
+	data: Array<[string, number]>;
 	title: string;
 	route: string;
 	palette?: "green" | "red" | string[];

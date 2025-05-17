@@ -3,6 +3,7 @@ import {
 	Dataset3,
 	type Dataset4,
 	type DatasetMetadata,
+	Dict,
 	sum,
 } from "@/utils/shared";
 
@@ -218,7 +219,7 @@ export const dataset2: BarChartGeneric = {
 	data: [["1950",8.59,null],["1956",13.04,null],["1961",12.25,null],["1966",18.8,null],["1974",10.58,null],["1979",12.02,null],["1985",9.94,null],["1990",9.89,null],["1997",4.94,null],["2002",4.49,null],["2007",5.19,null],["2012",9,2.2],["2014",10.77,0.47],["2017",10.31,2.14],["2022",4.1,3.87],["2023",4.15,5.83],["2024",6.23,3.92],["2025",7.52,3.22]],
 };
 
-export const dataset3: Dataset3 = {
+export const dataset3: Dict<Dict<number>> = {
   "Andhra Pradesh": {
     "Small Hydro Power": 163.31,
     "Wind Power": 4096.65,

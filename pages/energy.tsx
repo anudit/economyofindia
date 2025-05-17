@@ -1,11 +1,18 @@
-import { Flex, Heading, SimpleGrid } from "@chakra-ui/react";
+import { Text, Flex, Heading, SimpleGrid } from "@chakra-ui/react";
 
 import PageShell from "@/components/PageShell";
 import { dataset, dataset2, dataset3, metadata, stats } from "@/dataset/energy";
 
 import { StackedAreaChart } from "@/components/ChartComponents";
 import { LineChart } from "@/components/ChartComponents";
-import ChartGrid from "@/components/ChartGrid";
+import ChartCard from "@/components/ChartCard";
+import StatCard from "@/components/StatCard";
+import type { Dataset3, Dict } from "@/utils/shared";
+import {
+	type SimpleDataset,
+	chartDataFormat,
+	titleCase,
+} from "@/utils/shared";
 
 export default function Home() {
 	return (
@@ -54,21 +61,53 @@ export default function Home() {
 						section={"Electricity"}
 						convert={false}
 						palette={[
-  "#19a3d2", // Small Hydro Power
-  "#99a2b0", // Wind Power
-  "#2E7D32", // Biomass Power Bagasse Cogeneration
-  "#1B5E20", // Biomass Cogeneration (Non-Bagasse)
-  "#C2185B", // Waste to Energy
-  "#D81B60", // Waste to Energy (Off-grid)
-  "#c9cd3b", // Ground Mounted Solar
-  "#996633", // PM-Surya Ghar Yojana Solar (Rooftop)
-  "#7F4D00", // Hybrid Solar
-  "#663300", // Off-grid Solar/KUSUM
-  "#1976D2"  // Large Hydro
-]}
+              "#19a3d2", // Small Hydro Power
+              "#99a2b0", // Wind Power
+              "#2E7D32", // Biomass Power Bagasse Cogeneration
+              "#1B5E20", // Biomass Cogeneration (Non-Bagasse)
+              "#C2185B", // Waste to Energy
+              "#D81B60", // Waste to Energy (Off-grid)
+              "#c9cd3b", // Ground Mounted Solar
+              "#989c00", // PM-Surya Ghar Yojana Solar (Rooftop)
+              "#7F4D00", // Hybrid Solar
+              "#d2b32b", // Off-grid Solar/KUSUM
+              "#1976D2"  // Large Hydro
+            ]}
 					/>
 				</SimpleGrid>
 			</Flex>
 		</PageShell>
+	);
+}
+
+function ChartGrid({
+	dataset,
+	palette,
+	section,
+	convert = false
+}: {
+	dataset: Dict<Dict<number>>;
+	palette:string[];
+	section?: string;
+	convert?: boolean
+}) {
+  if (!dataset) {
+    return <Text>Data not available</Text>;
+  }
+
+	return (
+		<>
+			{Object.entries(dataset).map(([level2Key, level2Val]) => {
+			  return (
+  				<ChartCard
+  					palette={Object.values(level2Val).map((e, ix)=>e<=0 ? "black": palette[ix])}
+  					data={Object.entries(level2Val)}
+  					title={level2Key}
+  					key={level2Key}
+  					route={`${section !== undefined ? `${titleCase(section)} > ` : ""}${titleCase(level2Key)}`}
+  				/>
+  			);
+			})}
+		</>
 	);
 }
