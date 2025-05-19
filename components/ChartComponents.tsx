@@ -26,7 +26,7 @@ export const PieChart = ({
 	type = "currency",
 	hideLegend = false,
 }: {
-	data: Array<[string, number]>;
+	data: [string, ...number[]][];
 	palette?: "green" | "red" | string[];
 	type?: "currency" | "value";
 	hideLegend?: boolean;

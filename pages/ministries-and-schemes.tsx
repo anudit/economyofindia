@@ -18,7 +18,6 @@ export default function Home() {
 				</Heading>
 				<br/>
 				<PieChart
-					header={dataset.header }
 					data={dataset.data.sort((a, b) => b[1] - a[1])}
 					type="currency"
 					// options={{ direction: "vertical", height: 800, fontSize: 8 }}
@@ -33,15 +32,14 @@ export default function Home() {
 				</Heading>
 				<br/>
 				<PieChart
-					header={dataset2.header }
-					data={dataset2.data.map(e=>[e[0], e[1] <= 0 ? 0 : e[1]]).sort((a, b) => b[1] - a[1])}
+					data={dataset2.data.map(e=>[e[0], e[1] <= 0 ? 0 : e[1]]).sort((a, b) => b[1] - a[1]) as [string, ...number[]][]}
 					type="currency"
 					// options={{ direction: "vertical", height: 800, fontSize: 8 }}
 				/>
 				<BarChart
 					header={dataset2.header }
-					data={dataset2.data}
-					options={{ direction: "vertical", height: 800, fontSize: 8 }}
+					data={dataset2.data.map(e=>[e[0], e[1] <= 0 ? 0 : e[1]]).sort((a, b) => b[1] - a[1]) as [string, ...number[]][]}
+					options={{ direction: "vertical", height: 800, fontSize: 6 }}
 				/>
 			</Flex>
 		</PageShell>
