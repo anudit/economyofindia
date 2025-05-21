@@ -26,10 +26,10 @@ async function main() {
 	);
 
 	for (let i = 0; i < sitelinks.length; i++) {
-		await getStatus(sitelinks[sitelinks.length - 1 - i]);
+		await save(sitelinks[sitelinks.length - 1 - i]);
 	}
 	for (let i = 0; i < sourceLinks.length; i++) {
-		await getStatus(sourceLinks[i]);
+		await save(sourceLinks[i]);
 	}
 }
 
