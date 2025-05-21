@@ -13,12 +13,12 @@ export default function ChartGrid({
 	dataset,
 	palette = "green",
 	section,
-	convert = false
+	convert = false,
 }: {
 	dataset: Dataset3;
 	palette?: "green" | "red" | string[];
 	section?: string;
-	convert?: boolean
+	convert?: boolean;
 }) {
 	if (!dataset) {
 		return <Text>Data not available</Text>;
@@ -75,7 +75,8 @@ export default function ChartGrid({
 											data={chartDataFormat(
 												level4Val as {
 													[key: string]: number | null;
-												}, convert
+												},
+												convert,
 											)}
 											title={level4Key}
 											key={level4Key}

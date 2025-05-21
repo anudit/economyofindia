@@ -7,7 +7,8 @@ export const metadata: DatasetMetadata = {
 	fileName: "afs_2025_26.pdf",
 	localLink: "/",
 	isLive: false,
-	wayback: "https://web.archive.org/web/20250515150842/https://economyofindia.com/",
+	wayback:
+		"https://web.archive.org/web/20250515150842/https://economyofindia.com/",
 	sourceFiles: [
 		{
 			sourceFile: "https://www.indiabudget.gov.in/doc/AFS/allafs.pdf",

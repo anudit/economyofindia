@@ -73,7 +73,7 @@ export const PieChart = ({
 									? e[1]
 									: e[1] / (usdInrRate as number),
 							];
-						})
+						}),
 					)}
 					options={{
 						backgroundColor: "transparent",
@@ -92,7 +92,12 @@ export const PieChart = ({
 						},
 						// slices: typeof palette === 'object' ? palette.map((e, ind)=>{return {ind:{color:e}}}): undefined,
 						chartArea: { width: "80%", height: "80%" },
-						colors: typeof palette === 'object' ? palette : palette === "green" ? COLORS : RED_COLORS,
+						colors:
+							typeof palette === "object"
+								? palette
+								: palette === "green"
+									? COLORS
+									: RED_COLORS,
 						sliceVisibilityThreshold: 0,
 						pieSliceBorderColor: "transparent",
 						fontName: mainFontFamily,
@@ -131,10 +136,12 @@ export const Sankey = ({
 	data,
 	fontSize = 12,
 	height = "5000px",
+	iters = 5,
 }: {
 	data: SankeyDataWithHeader;
 	fontSize?: number;
 	height?: string;
+	iters?: number;
 }) => {
 	const mounted = useMounted();
 	const { activeCurrency } = useSharedContext();
@@ -171,7 +178,7 @@ export const Sankey = ({
 			})}
 			options={{
 				sankey: {
-					iterations: 5,
+					iterations: iters,
 					node: {
 						nodePadding: 30,
 						label: {
@@ -203,7 +210,7 @@ export const BarChart = ({
 		direction?: "horizontal" | "vertical";
 		height?: number;
 		width?: number;
-    fontSize?: number;
+		fontSize?: number;
 	};
 }) => {
 	const mounted = useMounted();
@@ -241,7 +248,7 @@ export const BarChart = ({
 						height: options.height,
 						width: options.width,
 						hAxis: {
-							textStyle: { color: "white", fontSize:  12 },
+							textStyle: { color: "white", fontSize: 12 },
 							titleTextStyle: { color: "white" },
 							gridlines: { color: "#3e3a52" },
 							minorGridlines: { color: "#3e3a52" },

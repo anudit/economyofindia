@@ -94,11 +94,11 @@ export default function Home() {
 				return (
 					<Flex direction={{ base: "column", lg: "row" }} key={id}>
 						<Flex direction="column" w={{ base: "200px", lg: "400px" }}>
-
 							<PieChart
-							//@ts-ignore
-							data={d.data}
-							hideLegend={true} />
+								//@ts-ignore
+								data={d.data}
+								hideLegend={true}
+							/>
 						</Flex>
 						<BarChart
 							header={d.header}

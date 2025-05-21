@@ -77,7 +77,13 @@ export default function StatCard({
 				w="100%"
 				h="310px"
 				display="flex"
-				color={typeof palette === 'object' ? palette[0] : palette === "green" ? COLORS[2] : RED_COLORS[2]}
+				color={
+					typeof palette === "object"
+						? palette[0]
+						: palette === "green"
+							? COLORS[2]
+							: RED_COLORS[2]
+				}
 				justifyContent="center"
 				alignItems="center"
 				p="10px"

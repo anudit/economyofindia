@@ -7,7 +7,8 @@ export const metadata: DatasetMetadata = {
 	fileName: "receipt_heads.pdf",
 	localLink: "/receipt-heads",
 	isLive: false,
-	wayback: "http://web.archive.org/web/20250515000452/https://economyofindia.com/receipt-heads",
+	wayback:
+		"http://web.archive.org/web/20250515000452/https://economyofindia.com/receipt-heads",
 	sourceFiles: [
 		{
 			sourceFile: "https://cga.nic.in/DownloadPDF.aspx?filenameid=1894",

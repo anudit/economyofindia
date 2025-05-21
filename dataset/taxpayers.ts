@@ -14,7 +14,8 @@ export const metadata: DatasetMetadata = {
 	titleShort: "Taxpayers",
 	fileName: "taxpayers.pdf",
 	localLink: "/taxpayers",
-	wayback:"https://web.archive.org/web/20250515150241/https://economyofindia.com/taxpayers",
+	wayback:
+		"https://web.archive.org/web/20250515150241/https://economyofindia.com/taxpayers",
 	isLive: false,
 	sourceFiles: [
 		{

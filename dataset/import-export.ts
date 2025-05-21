@@ -11,7 +11,8 @@ export const metadata: DatasetMetadata = {
 	fileName: "import_export.pdf",
 	localLink: "/import-export",
 	isLive: true,
-	wayback: "https://web.archive.org/web/20250515144259/https://economyofindia.com/import-export",
+	wayback:
+		"https://web.archive.org/web/20250515144259/https://economyofindia.com/import-export",
 	sourceFiles: [
 		{
 			sourceFile: "https://tradestat.commerce.gov.in/eidb/ecom2q.asp",

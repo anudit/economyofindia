@@ -1,20 +1,20 @@
 import { completeMetadata } from "../dataset/index";
 
 async function getStatus(link: string) {
-  const data = await fetch(`http://archive.org/wayback/available?url=${link}`);
-  const resp = await data.json();
-  console.log(resp);
-  return resp;
+	const data = await fetch(`http://archive.org/wayback/available?url=${link}`);
+	const resp = await data.json();
+	console.log(resp);
+	return resp;
 }
 
 async function save(link: string) {
-  console.log('🟡', link);
-  const data = await fetch(`https://web.archive.org/save/${link}`);
-  const resp = await data.text();
-  if(data.ok){
-    console.log('🟢', link)
-  }
-  return resp;
+	console.log("🟡", link);
+	const data = await fetch(`https://web.archive.org/save/${link}`);
+	const resp = await data.text();
+	if (data.ok) {
+		console.log("🟢", link);
+	}
+	return resp;
 }
 
 async function main() {
@@ -25,13 +25,12 @@ async function main() {
 		e.sourceFiles.map((f) => f.sourceFile),
 	);
 
-  for (let i = 0; i < sitelinks.length; i++) {
-    await getStatus(sitelinks[sitelinks.length-1-i]);
-  }
-  for (let i = 0; i < sourceLinks.length; i++) {
-    await getStatus(sourceLinks[i]);
-  }
-
+	for (let i = 0; i < sitelinks.length; i++) {
+		await getStatus(sitelinks[sitelinks.length - 1 - i]);
+	}
+	for (let i = 0; i < sourceLinks.length; i++) {
+		await getStatus(sourceLinks[i]);
+	}
 }
 
 main();

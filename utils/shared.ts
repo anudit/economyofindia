@@ -170,12 +170,12 @@ export type DatasetMetadata = {
 
 export const chartDataFormat = (
 	data: SimpleDataset,
-	convert = true
+	convert = true,
 ): Array<[string, number]> => {
 	return Object.entries(data)
 		.map(([k, v], ind) => {
 			if (v != null && v !== 0) {
-				return [k as string, (v * (convert === true ? CRORE : 1) as number)];
+				return [k as string, (v * (convert === true ? CRORE : 1)) as number];
 			} else {
 				return null;
 			}

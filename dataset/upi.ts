@@ -11,7 +11,8 @@ export const metadata: DatasetMetadata = {
 	titleShort: "UPI Stats",
 	fileName: "upi.pdf",
 	localLink: "/upi",
-	wayback:"http://web.archive.org/web/20250515150444/https://economyofindia.com/upi",
+	wayback:
+		"http://web.archive.org/web/20250515150444/https://economyofindia.com/upi",
 	isLive: false,
 	sourceFiles: [
 		{
