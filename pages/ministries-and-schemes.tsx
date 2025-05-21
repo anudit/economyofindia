@@ -1,4 +1,4 @@
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { Button, Flex, Heading, Text } from "@chakra-ui/react";
 
 import { BarChart, PieChart, Sankey } from "@/components/ChartComponents";
 import PageShell from "@/components/PageShell";
@@ -7,6 +7,7 @@ import { dataset, dataset2, dataset3, metadata } from "@/dataset/ministries";
 import dynamic from "next/dynamic";
 import { useEffect, useRef } from "react";
 import type { ReactInfiniteCanvasHandle } from "react-infinite-canvas";
+import { Fullscreen } from "lucide-react";
 
 const ReactInfiniteCanvas = dynamic(
 	() => import("react-infinite-canvas").then((mod) => mod.ReactInfiniteCanvas),
@@ -70,7 +71,9 @@ export default function Home() {
 					}
 					options={{ direction: "vertical", height: 800, fontSize: 6 }}
 				/>
-
+				<Heading as="h3" fontSize="18px" fontWeight={300}>
+					Ministry/Scheme/State wise Expense FY 2024/25
+				</Heading>
 				<Flex maxW="100%" height="700px">
 					<ReactInfiniteCanvas
 					  className="inf"
@@ -80,14 +83,15 @@ export default function Home() {
 						}}
 					>
   					<>
-  					  <Text onClick={handleFullScreen}>Full Screen</Text>
+  					  <Button size="lg" leftIcon={<Fullscreen />} onClick={handleFullScreen}>Full Screen</Button>
   						<Sankey
   							data={[["From", "To", "Weight"]].concat(dataset3)}
-  							iters={20}
+                height="10000px"
+  							iters={5}
   						/>
   					</>
 					</ReactInfiniteCanvas>
-				</Flex>
+					</Flex>
 			</Flex>
 		</PageShell>
 	);

@@ -17,6 +17,7 @@ import {
 } from "@/utils/shared";
 import { useBreakpointValue } from "@chakra-ui/react";
 import { useSharedContext } from "./SharedContext";
+import Responsive from "./Responsive";
 
 const header: Array<Array<string | number>> = [["Columnn1", "Columnn2"]];
 
@@ -39,7 +40,16 @@ export const PieChart = ({
 	}
 
 	return (
-		<>
+		<Flex
+			className="pieContainer"
+			w="100%"
+			maxW="1000px"
+			minW="0"
+			h={"300px"}
+			flexDirection="column"
+			overflowX="scroll"
+			overflowY="hidden"
+		>
 			<Heading
 				as="h4"
 				fontSize="sm"
@@ -62,66 +72,68 @@ export const PieChart = ({
 					type === "value",
 				)}
 			</Heading>
-			<div id="chart">
-				<Chart
-					chartType="PieChart"
-					data={header.concat(
-						data.map((e) => {
-							return [
-								e[0],
-								activeCurrency === SupportedCurrencies.INR
-									? e[1]
-									: e[1] / (usdInrRate as number),
-							];
-						}),
-					)}
-					options={{
-						backgroundColor: "transparent",
-						fontColor: "black",
-						legend:
-							hideLegend === true
-								? "none"
-								: {
-										position: data.length >= 5 ? "right" : "bottom",
-										alignment: "center",
-										textStyle: { color: "#fff" },
-										maxLines: 4,
-									},
-						tooltip: {
-							showColorCode: true,
-						},
-						// slices: typeof palette === 'object' ? palette.map((e, ind)=>{return {ind:{color:e}}}): undefined,
-						chartArea: { width: "80%", height: "80%" },
-						colors:
-							typeof palette === "object"
-								? palette
-								: palette === "green"
-									? COLORS
-									: RED_COLORS,
-						sliceVisibilityThreshold: 0,
-						pieSliceBorderColor: "transparent",
-						fontName: mainFontFamily,
-					}}
-					width={"100%"}
-					height={"300px"}
-					legendToggle={!hideLegend}
-					formatters={[
-						{
-							type: "NumberFormat" as const,
-							column: 1,
-							options: {
-								prefix:
-									type === "currency"
-										? supportedCurrencies.get(activeCurrency)?.symbol
-										: "",
-								negativeColor: "red",
-								negativeParens: true,
-							},
-						},
-					]}
-				/>
-			</div>
-		</>
+			<Responsive>
+        {(width, height) => (
+          <Chart
+            chartType="PieChart"
+            data={header.concat(
+              data.map((e) => {
+                return [
+                  e[0],
+                  activeCurrency === SupportedCurrencies.INR
+                    ? e[1]
+                    : e[1] / (usdInrRate as number),
+                ];
+              }),
+            )}
+            options={{
+              backgroundColor: "transparent",
+              fontColor: "black",
+              legend:
+                hideLegend === true
+                  ? "none"
+                  : {
+                    position: data.length >= 5 ? "right" : "bottom",
+                    alignment: "center",
+                    textStyle: { color: "#fff" },
+                    maxLines: 4,
+                  },
+              tooltip: {
+                showColorCode: true,
+              },
+              // slices: typeof palette === 'object' ? palette.map((e, ind)=>{return {ind:{color:e}}}): undefined,
+              chartArea: { width: "80%", height: "80%" },
+              colors:
+                typeof palette === "object"
+                  ? palette
+                  : palette === "green"
+                    ? COLORS
+                    : RED_COLORS,
+              sliceVisibilityThreshold: 0,
+              pieSliceBorderColor: "transparent",
+              fontName: mainFontFamily,
+            }}
+            width={`${width}px`}
+            height={"300px"}
+            legendToggle={!hideLegend}
+            formatters={[
+              {
+                type: "NumberFormat" as const,
+                column: 1,
+                options: {
+                  prefix:
+                    type === "currency"
+                      ? supportedCurrencies.get(activeCurrency)?.symbol
+                      : "",
+                  negativeColor: "red",
+                  negativeParens: true,
+                },
+              },
+            ]}
+          />
+        )}
+			</Responsive>
+		</Flex>
 	);
 };
 
@@ -214,10 +226,7 @@ export const BarChart = ({
 	};
 }) => {
 	const mounted = useMounted();
-	const chartWidth = useBreakpointValue(
-		{ base: 400, md: 600, lg: 1000 },
-		{ ssr: true },
-	);
+
 	if (!mounted) {
 		return null;
 	}
@@ -225,48 +234,52 @@ export const BarChart = ({
 	return (
 		<Flex
 			className="barContainer"
-			w={{ base: "200px", sm: "300px", md: "600px", lg: "1000px" }}
+			w="100%"
 			maxW="1000px"
 			minW="0"
+			h={options.height || "300px"}
 			flexDirection="column"
 			mb={4}
 			overflowX="scroll"
 			overflowY="hidden"
 		>
-			<Box minW={`${chartWidth}px`} w={`${chartWidth}px`} flexShrink={0}>
-				<Chart
-					chartType={
-						options.direction === "horizontal" ? "ColumnChart" : "BarChart"
-					}
-					data={[header, ...data]}
-					options={{
-						backgroundColor: {
-							fill: "transparent",
-							stroke: "none",
-							strokeWidth: 0,
-						},
-						height: options.height,
-						width: options.width,
-						hAxis: {
-							textStyle: { color: "white", fontSize: 12 },
-							titleTextStyle: { color: "white" },
-							gridlines: { color: "#3e3a52" },
-							minorGridlines: { color: "#3e3a52" },
-							// title: header[0]
-						},
-						vAxis: {
-							textStyle: { color: "white", fontSize: options.fontSize || 12 },
-							titleTextStyle: { color: "white" },
-							gridlines: { color: "#2F2C3E" },
-							minorGridlines: { color: "#2F2C3E" },
-							title: options.direction === "horizontal" ? header[1] : header[0],
-							// format: "percent",
-						},
-						bars: "horizontal", // no effect on ColumnChart
-						legend: { position: "none" },
-					}}
-				/>
-			</Box>
+		<Responsive>
+      {(width, height) => (
+        <Chart
+     			chartType={
+     					options.direction === "horizontal" ? "ColumnChart" : "BarChart"
+     			}
+     			data={[header, ...data]}
+     			options={{
+     					backgroundColor: {
+     					fill: "transparent",
+     					stroke: "none",
+     					strokeWidth: 0,
+     					},
+     					height: height,
+     					width: width,
+     					hAxis: {
+     					textStyle: { color: "white", fontSize: 12 },
+     					titleTextStyle: { color: "white" },
+     					gridlines: { color: "#3e3a52" },
+     					minorGridlines: { color: "#3e3a52" },
+     					// title: header[0]
+     					},
+     					vAxis: {
+     					textStyle: { color: "white", fontSize: options.fontSize || 12 },
+     					titleTextStyle: { color: "white" },
+     					gridlines: { color: "#2F2C3E" },
+     					minorGridlines: { color: "#2F2C3E" },
+     					title: options.direction === "horizontal" ? header[1] : header[0],
+     					// format: "percent",
+     					},
+     					bars: "horizontal", // no effect on ColumnChart
+     					legend: { position: "none" },
+     			}}
+   			/>
+        )}
+
+		</Responsive>
 		</Flex>
 	);
 };
