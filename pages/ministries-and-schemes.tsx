@@ -1,4 +1,4 @@
-import { Flex, Heading } from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 
 import { BarChart, PieChart, Sankey } from "@/components/ChartComponents";
 import PageShell from "@/components/PageShell";
@@ -17,9 +17,14 @@ const ReactInfiniteCanvas = dynamic(
 
 export default function Home() {
 	const canvasRef = useRef<ReactInfiniteCanvasHandle>(null);
-	// useEffect(() => {
-	//   console.log(dataset3);
-	// }, []);
+
+  const handleFullScreen = () => {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        document.querySelector(".inf")?.requestFullscreen();
+      }
+  };
 
 	return (
 		<PageShell metadata={metadata}>
@@ -65,17 +70,22 @@ export default function Home() {
 					}
 					options={{ direction: "vertical", height: 800, fontSize: 6 }}
 				/>
+
 				<Flex maxW="100%" height="700px">
 					<ReactInfiniteCanvas
+					  className="inf"
 						ref={canvasRef}
 						onCanvasMount={(mountFunc: ReactInfiniteCanvasHandle) => {
 							mountFunc.fitContentToView({ scale: 0.3 });
 						}}
 					>
-						<Sankey
-							data={[["From", "To", "Weight"]].concat(dataset3)}
-							iters={20}
-						/>
+  					<>
+  					  <Text onClick={handleFullScreen}>Full Screen</Text>
+  						<Sankey
+  							data={[["From", "To", "Weight"]].concat(dataset3)}
+  							iters={20}
+  						/>
+  					</>
 					</ReactInfiniteCanvas>
 				</Flex>
 			</Flex>
