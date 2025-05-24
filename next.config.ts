@@ -20,13 +20,13 @@ const nextConfig: NextConfig = {
 		unoptimized: true,
 	},
 	async rewrites() {
-    return [
-      {
-        source: "/llms.txt",
-        destination: "/api/llm",
-      },
-    ];
-  },
+		return [
+			{
+				source: "/llms.txt",
+				destination: "/api/llm",
+			},
+		];
+	},
 };
 
 // Configure next-pwa

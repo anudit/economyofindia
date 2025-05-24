@@ -1,12 +1,17 @@
 import { Flex, Heading, Select, useBreakpointValue } from "@chakra-ui/react";
 
 import LiveValue from "@/components/AnimatedNumber";
-import { BarChart, PieChart } from "@/components/ChartComponents";
+import { BarChart, LineChart, PieChart } from "@/components/ChartComponents";
 import PageShell from "@/components/PageShell";
-import { useSharedContext } from "@/components/SharedContext";
 import { SingleStat } from "@/components/SingleStat";
 import { population } from "@/dataset/population";
-import { calcs, dataset, dataset2, metadata } from "@/dataset/taxpayers";
+import {
+	calcs,
+	dataset,
+	dataset2,
+	dataset3,
+	metadata,
+} from "@/dataset/taxpayers";
 import { sum } from "@/utils/shared";
 import { useState } from "react";
 
@@ -16,7 +21,6 @@ export default function Home() {
 		{ ssr: true },
 	);
 	const [section, setSection] = useState<string>(Object.keys(dataset)[4]);
-	const { usdInrRate, activeCurrency } = useSharedContext();
 
 	return (
 		<PageShell
@@ -58,7 +62,7 @@ export default function Home() {
 				</Heading>
 
 				<LiveValue
-					startValue={calcs.debt}
+					startValue={calcs.debt + calcs.off}
 					ratePerSec={calcs.ratePerSec}
 					type="currency"
 				/>
@@ -87,6 +91,17 @@ export default function Home() {
 				<SingleStat
 					title="Total Debt"
 					value={sum(Object.values(dataset2["2024-2025"]))}
+				/>
+			</Flex>
+			<br />
+			<Flex direction="column" w={"90%"}>
+				<Heading as="h3" size="sm" fontWeight={300}>
+					External Debt owed to World Bank (Billion USD)
+				</Heading>
+				<LineChart
+					data={dataset3.data}
+					header={dataset3.header}
+					title="External Debt owed to World Bank"
 				/>
 			</Flex>
 			<br />

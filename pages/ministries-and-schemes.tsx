@@ -4,10 +4,10 @@ import { BarChart, PieChart, Sankey } from "@/components/ChartComponents";
 import PageShell from "@/components/PageShell";
 import { useMounted } from "@/components/useMounted";
 import { dataset, dataset2, dataset3, metadata } from "@/dataset/ministries";
+import { Fullscreen } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useEffect, useRef } from "react";
 import type { ReactInfiniteCanvasHandle } from "react-infinite-canvas";
-import { Fullscreen } from "lucide-react";
 
 const ReactInfiniteCanvas = dynamic(
 	() => import("react-infinite-canvas").then((mod) => mod.ReactInfiniteCanvas),
@@ -19,13 +19,13 @@ const ReactInfiniteCanvas = dynamic(
 export default function Home() {
 	const canvasRef = useRef<ReactInfiniteCanvasHandle>(null);
 
-  const handleFullScreen = () => {
-      if (document.fullscreenElement) {
-        document.exitFullscreen();
-      } else {
-        document.querySelector(".inf")?.requestFullscreen();
-      }
-  };
+	const handleFullScreen = () => {
+		if (document.fullscreenElement) {
+			document.exitFullscreen();
+		} else {
+			document.querySelector(".inf")?.requestFullscreen();
+		}
+	};
 
 	return (
 		<PageShell metadata={metadata}>
@@ -76,22 +76,28 @@ export default function Home() {
 				</Heading>
 				<Flex maxW="100%" height="700px">
 					<ReactInfiniteCanvas
-					  className="inf"
+						className="inf"
 						ref={canvasRef}
 						onCanvasMount={(mountFunc: ReactInfiniteCanvasHandle) => {
 							mountFunc.fitContentToView({ scale: 0.3 });
 						}}
 					>
-  					<>
-  					  <Button size="lg" leftIcon={<Fullscreen />} onClick={handleFullScreen}>Full Screen</Button>
-  						<Sankey
-  							data={[["From", "To", "Weight"]].concat(dataset3)}
-                height="10000px"
-  							iters={5}
-  						/>
-  					</>
+						<>
+							<Button
+								size="lg"
+								leftIcon={<Fullscreen />}
+								onClick={handleFullScreen}
+							>
+								Full Screen
+							</Button>
+							<Sankey
+								data={[["From", "To", "Weight"]].concat(dataset3)}
+								height="10000px"
+								iters={5}
+							/>
+						</>
 					</ReactInfiniteCanvas>
-					</Flex>
+				</Flex>
 			</Flex>
 		</PageShell>
 	);

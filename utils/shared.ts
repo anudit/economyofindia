@@ -202,6 +202,13 @@ export function sum(arr: number[]) {
 	return res;
 }
 
+export const daysSinceNow = (startDate: Date) => {
+	const now = Date.now();
+	const diffMs = now - startDate.getTime();
+	const daysSince = diffMs / (1000 * 60 * 60 * 24);
+	return daysSince;
+};
+
 export type BarChartGeneric = {
 	title: string;
 	header: string[];

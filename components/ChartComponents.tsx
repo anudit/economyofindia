@@ -16,8 +16,8 @@ import {
 	supportedCurrencies,
 } from "@/utils/shared";
 import { useBreakpointValue } from "@chakra-ui/react";
-import { useSharedContext } from "./SharedContext";
 import Responsive from "./Responsive";
+import { useSharedContext } from "./SharedContext";
 
 const header: Array<Array<string | number>> = [["Columnn1", "Columnn2"]];
 
@@ -73,65 +73,65 @@ export const PieChart = ({
 				)}
 			</Heading>
 			<Responsive>
-        {(width, height) => (
-          <Chart
-            chartType="PieChart"
-            data={header.concat(
-              data.map((e) => {
-                return [
-                  e[0],
-                  activeCurrency === SupportedCurrencies.INR
-                    ? e[1]
-                    : e[1] / (usdInrRate as number),
-                ];
-              }),
-            )}
-            options={{
-              backgroundColor: "transparent",
-              fontColor: "black",
-              legend:
-                hideLegend === true
-                  ? "none"
-                  : {
-                    position: data.length >= 5 ? "right" : "bottom",
-                    alignment: "center",
-                    textStyle: { color: "#fff" },
-                    maxLines: 4,
-                  },
-              tooltip: {
-                showColorCode: true,
-              },
-              // slices: typeof palette === 'object' ? palette.map((e, ind)=>{return {ind:{color:e}}}): undefined,
-              chartArea: { width: "80%", height: "80%" },
-              colors:
-                typeof palette === "object"
-                  ? palette
-                  : palette === "green"
-                    ? COLORS
-                    : RED_COLORS,
-              sliceVisibilityThreshold: 0,
-              pieSliceBorderColor: "transparent",
-              fontName: mainFontFamily,
-            }}
-            width={`${width}px`}
-            height={"300px"}
-            legendToggle={!hideLegend}
-            formatters={[
-              {
-                type: "NumberFormat" as const,
-                column: 1,
-                options: {
-                  prefix:
-                    type === "currency"
-                      ? supportedCurrencies.get(activeCurrency)?.symbol
-                      : "",
-                  negativeColor: "red",
-                  negativeParens: true,
-                },
-              },
-            ]}
-          />
-        )}
+				{(width, height) => (
+					<Chart
+						chartType="PieChart"
+						data={header.concat(
+							data.map((e) => {
+								return [
+									e[0],
+									activeCurrency === SupportedCurrencies.INR
+										? e[1]
+										: e[1] / (usdInrRate as number),
+								];
+							}),
+						)}
+						options={{
+							backgroundColor: "transparent",
+							fontColor: "black",
+							legend:
+								hideLegend === true
+									? "none"
+									: {
+											position: data.length >= 5 ? "right" : "bottom",
+											alignment: "center",
+											textStyle: { color: "#fff" },
+											maxLines: 4,
+										},
+							tooltip: {
+								showColorCode: true,
+							},
+							// slices: typeof palette === 'object' ? palette.map((e, ind)=>{return {ind:{color:e}}}): undefined,
+							chartArea: { width: "80%", height: "80%" },
+							colors:
+								typeof palette === "object"
+									? palette
+									: palette === "green"
+										? COLORS
+										: RED_COLORS,
+							sliceVisibilityThreshold: 0,
+							pieSliceBorderColor: "transparent",
+							fontName: mainFontFamily,
+						}}
+						width={`${width}px`}
+						height={"300px"}
+						legendToggle={!hideLegend}
+						formatters={[
+							{
+								type: "NumberFormat" as const,
+								column: 1,
+								options: {
+									prefix:
+										type === "currency"
+											? supportedCurrencies.get(activeCurrency)?.symbol
+											: "",
+									negativeColor: "red",
+									negativeParens: true,
+								},
+							},
+						]}
+					/>
+				)}
 			</Responsive>
 		</Flex>
 	);
@@ -243,43 +243,43 @@ export const BarChart = ({
 			overflowX="scroll"
 			overflowY="hidden"
 		>
-		<Responsive>
-      {(width, height) => (
-        <Chart
-     			chartType={
-     					options.direction === "horizontal" ? "ColumnChart" : "BarChart"
-     			}
-     			data={[header, ...data]}
-     			options={{
-     					backgroundColor: {
-     					fill: "transparent",
-     					stroke: "none",
-     					strokeWidth: 0,
-     					},
-     					height: height,
-     					width: width,
-     					hAxis: {
-     					textStyle: { color: "white", fontSize: 12 },
-     					titleTextStyle: { color: "white" },
-     					gridlines: { color: "#3e3a52" },
-     					minorGridlines: { color: "#3e3a52" },
-     					// title: header[0]
-     					},
-     					vAxis: {
-     					textStyle: { color: "white", fontSize: options.fontSize || 12 },
-     					titleTextStyle: { color: "white" },
-     					gridlines: { color: "#2F2C3E" },
-     					minorGridlines: { color: "#2F2C3E" },
-     					title: options.direction === "horizontal" ? header[1] : header[0],
-     					// format: "percent",
-     					},
-     					bars: "horizontal", // no effect on ColumnChart
-     					legend: { position: "none" },
-     			}}
-   			/>
-        )}
-
-		</Responsive>
+			<Responsive>
+				{(width, height) => (
+					<Chart
+						chartType={
+							options.direction === "horizontal" ? "ColumnChart" : "BarChart"
+						}
+						data={[header, ...data]}
+						options={{
+							backgroundColor: {
+								fill: "transparent",
+								stroke: "none",
+								strokeWidth: 0,
+							},
+							height: height,
+							width: width,
+							hAxis: {
+								textStyle: { color: "white", fontSize: 12 },
+								titleTextStyle: { color: "white" },
+								gridlines: { color: "#3e3a52" },
+								minorGridlines: { color: "#3e3a52" },
+								// title: header[0]
+							},
+							vAxis: {
+								textStyle: { color: "white", fontSize: options.fontSize || 12 },
+								titleTextStyle: { color: "white" },
+								gridlines: { color: "#2F2C3E" },
+								minorGridlines: { color: "#2F2C3E" },
+								title:
+									options.direction === "horizontal" ? header[1] : header[0],
+								// format: "percent",
+							},
+							bars: "horizontal", // no effect on ColumnChart
+							legend: { position: "none" },
+						}}
+					/>
+				)}
+			</Responsive>
 		</Flex>
 	);
 };

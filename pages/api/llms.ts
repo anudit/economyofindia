@@ -5,7 +5,7 @@ export default async function handler(
 	res: NextApiResponse<
 		{ buildId: string | undefined } | { message: string } | string
 	>,
-): Promise<void> {
+): Promise<any> {
 	res.setHeader("Access-Control-Allow-Credentials", "true");
 	res.setHeader("Access-Control-Allow-Origin", "*");
 	res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
@@ -19,7 +19,7 @@ export default async function handler(
 
 	// Handle actual GET request
 	if (req.method === "GET") {
-  	new Response("datatatatatat", { status: 200 });
+		return "datatatatatat";
 	} else {
 		// Handle any other HTTP methods not allowed
 		res.setHeader("Allow", ["GET", "OPTIONS"]);
