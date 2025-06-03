@@ -230,4 +230,5 @@ export type AreaChartGeneric = {
 	columns: string[];
 	colors?: string[];
 	data: [string, ...number[]][];
+	type?: "value" | "currency"
 };

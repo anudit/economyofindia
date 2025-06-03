@@ -35,12 +35,16 @@ export default function Home() {
 						"Wind, Solar & Other RE",
 					]}
 					data={Object.entries(dataset).map(([key, val]) => [
-						key,
+						new Date(String(key)),
 						...Object.values(val).map((e) =>
 							typeof e === "number" ? e / 1000 : 0,
 						),
 					])}
 				/>
+				<br />
+				<br />
+				<br />
+				<br />
 				<br />
 				<Heading fontSize="lg" fontWeight="300">
 					Installed electricity growth compared to Industrial growth.

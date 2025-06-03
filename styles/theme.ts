@@ -16,6 +16,7 @@ const theme = extendTheme({
 				color: colorMode === "dark" ? "white" : "#6e5f4e",
 				heading: `${mainFontFamily},-apple-system,BlinkMacSystemFont,Arial`,
 				body: `${mainFontFamily},-apple-system,BlinkMacSystemFont,Arial`,
+        borderColor: 'none'
 			},
 		}),
 	},

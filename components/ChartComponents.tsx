@@ -289,7 +289,11 @@ export const StackedAreaChart = ({
 	columns,
 	xyAxis,
 	colors = ["#FF6347", "#00BFFF", "#BDB76B", "#DAFF00", "#1E90FF", "#90EE90"],
+	type = "value"
 }: AreaChartGeneric) => {
+
+  const { activeCurrency, usdInrRate } = useSharedContext();
+
 	return (
 		<div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
 			<Chart
@@ -297,7 +301,7 @@ export const StackedAreaChart = ({
 				width="100%"
 				height="300px"
 				// @ts-ignore
-				data={[columns].concat(data)}
+				data={type === 'currency' && activeCurrency === SupportedCurrencies.USD ? [columns].concat(data.map(e=>[e[0], Number.parseInt(e[1]/usdInrRate), Number.parseInt(e[2]/usdInrRate), Number.parseInt(e[3]/usdInrRate)])) : [columns].concat(data) }
 				options={{
 					isStacked: true,
 					backgroundColor: {
@@ -308,25 +312,29 @@ export const StackedAreaChart = ({
 					hAxis: {
 						textStyle: { color: "white", fontSize: 12 },
 						titleTextStyle: { color: "white" },
-						gridlines: { color: "#3e3a52" },
-						// minorGridlines: { color: "#3e3a52" },
+						gridlines: {color:'transparent'},
+						// minorGridlines: null,
 						title: xyAxis[0],
 					},
 					vAxis: {
 						textStyle: { color: "white", fontSize: 12 },
 						titleTextStyle: { color: "white" },
-						// gridlines: { color: "#2F2C3E" },
+						gridlines: {color:'transparent'},
 						// minorGridlines: { color: "#2F2C3E" },
 						minValue: 0,
 						title: xyAxis[1],
 						format: "decimal",
 					},
-					height: 300,
-					tooltip: { showColorCode: true },
+					height: 400,
+					selectionMode: 'multiple',
+					tooltip: { showColorCode: true, trigger: 'both' },
+					aggregationTarget: 'category',
 					legend: {
 						position: "bottom",
 						textStyle: { color: "white", fontSize: 12 },
 					},
+					 explorer: { actions: ['dragToZoom', 'rightClickToReset'], axis: 'horizontal' },
+					crosshair: { trigger: 'both' },
 					areaOpacity: 0.4,
 					colors: colors,
 				}}

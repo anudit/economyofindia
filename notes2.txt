@@ -1,0 +1,57 @@
+from graphviz import Digraph
+from IPython.display import Image, display
+
+# Updated money flow with policy rates and inflation
+dot = Digraph('moneyflow2', format='png')
+dot.attr(rankdir='LR', fontname="Helvetica", labelloc="t", fontsize="20",
+         label="Indian Monetary System: Money Creation, Policy Rates & Inflation (May 2025)")
+
+# Default node style
+dot.attr('node', shape='box', style='rounded,filled', fillcolor='white', fontsize="11")
+
+# Core nodes
+dot.node('A', 'RBI (Central Bank)')
+dot.node('B', 'Government of India', shape='ellipse')
+dot.node('C', 'Currency in Circulation\n+ Bankers\' Deposits with RBI\n+ Other Deposits with RBI')
+dot.node('D', 'Commercial Banks\n(Public & Private)')
+dot.node('E', 'Money Supply Expansion', shape='ellipse')
+dot.node('F', 'M1', fillcolor='#ff99ff')
+dot.node('G', 'M2', fillcolor='#ff99ff')
+dot.node('H', 'M3', fillcolor='#ff99ff')
+dot.node('I', 'Normal Person / Businesses')
+
+# New policy & macro nodes
+dot.node('R', 'Repo Rate\n6.00% (9 Apr 2025)', shape='diamond', fillcolor='#e6f7ff')
+dot.node('RR', 'Reverse Repo Rate\n3.35%', shape='diamond', fillcolor='#e6f7ff')
+dot.node('INF', 'Inflation (CPI YoY)\n3.16% (Apr 2025)', shape='ellipse', fillcolor='#ffe6cc')
+
+# Main flows
+dot.edge('A', 'B', label='Issues Currency;\nBuys Govt Bonds')
+dot.edge('A', 'C', label='Creates Reserve Money (M0)\n7.5% CAGR (23-24)')
+dot.edge('C', 'D', label='Banks hold CRR,\nlend rest')
+dot.edge('D', 'E', label='Deposit Multiplier')
+dot.edge('E', 'F', label='Creates M1:\nCurrency with public + Demand Deposits\n+ Other deposits with RBI\n10% CAGR')
+dot.edge('E', 'G', label='Creates M2:\nM1 + Savings deposits with Post Office\n10.5% CAGR')
+dot.edge('E', 'H', label='Creates M3:\nM1 + Time Deposits with Banks\n9.5% CAGR')
+dot.edge('D', 'I', label='Provides Loans,\nSavings, Payments')
+
+# Secondary fiscal flows
+dot.edge('B', 'I', label='Government spends\n(Salaries, Welfare, Infra)', style='dashed')
+dot.edge('I', 'D', label='Spends, Deposits\nMoney in Banks', style='dashed')
+
+# Policy rate interactions
+dot.edge('A', 'R', label='Sets', style='dotted')
+dot.edge('A', 'RR', label='Sets', style='dotted')
+dot.edge('R', 'D', label='Borrowing cost;\ninfluences lending', style='dotted')
+dot.edge('D', 'RR', label='Parks excess\nliquidity', style='dashed')
+
+# Inflation loop
+dot.edge('H', 'INF', label='Broad money\n→ prices', style='dotted')
+dot.edge('INF', 'A', label='Influences\npolicy stance', style='dashed')
+
+# Render to file
+file_path = '/mnt/data/moneyflow_policy.png'
+dot.render('/mnt/data/moneyflow_policy', view=False)
+
+# Display within notebook
+display(Image(filename=file_path))

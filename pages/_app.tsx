@@ -7,7 +7,7 @@ import Head from "next/head";
 
 export default function App({ Component, pageProps }: AppProps) {
 	return (
-		<ChakraProvider theme={customTheme} resetCSS>
+		<ChakraProvider theme={customTheme}>
 			<SharedProvider>
 				<Head>
 					<meta name="viewport" content="width=device-width, initial-scale=1" />
