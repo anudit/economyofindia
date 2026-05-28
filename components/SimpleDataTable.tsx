@@ -1,22 +1,12 @@
-import type { DatasetTable, DatasetTableRow } from "@/utils/shared";
-import { titleCase } from "@/utils/shared";
 import {
 	Box,
-	Button,
 	ButtonGroup,
 	Flex,
-	HStack,
 	IconButton,
 	Input,
-	Select,
+	NativeSelect,
 	Table,
-	TableContainer,
-	Tbody,
-	Td,
 	Text,
-	Th,
-	Thead,
-	Tr,
 } from "@chakra-ui/react";
 import debounce from "lodash.debounce";
 import {
@@ -27,8 +17,10 @@ import {
 	ChevronsLeftIcon,
 	ChevronsRightIcon,
 } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
 import type { FC } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import type { DatasetTable, DatasetTableRow } from "@/utils/shared";
+import { titleCase } from "@/utils/shared";
 
 interface DataTableProps {
 	data: DatasetTable;
@@ -41,7 +33,6 @@ interface SortConfig {
 }
 
 const DataTable: FC<DataTableProps> = ({ data }) => {
-	// --- state ---
 	const [tableData, setTableData] = useState<DatasetTableRow[]>(data ?? []);
 	const [searchInput, setSearchInput] = useState("");
 	const [searchTerm, setSearchTerm] = useState("");
@@ -49,17 +40,14 @@ const DataTable: FC<DataTableProps> = ({ data }) => {
 	const [currentPage, setCurrentPage] = useState(0);
 	const [pageSize, setPageSize] = useState(20);
 
-	// Sync incoming data
 	useEffect(() => {
 		setTableData(data ?? []);
 	}, [data]);
 
-	// Reset to first page whenever the search term changes
 	useEffect(() => {
 		setCurrentPage(0);
 	}, [searchTerm]);
 
-	// Debounce updating the actual search term
 	const debouncedSetSearchTerm = useMemo(
 		() => debounce((val: string) => setSearchTerm(val), 150),
 		[],
@@ -70,17 +58,14 @@ const DataTable: FC<DataTableProps> = ({ data }) => {
 		};
 	}, [debouncedSetSearchTerm]);
 
-	// Figure out column keys (assumes all rows share same shape)
 	const columns = useMemo(() => {
 		if (tableData.length === 0) return [];
 		return Object.keys(tableData[0]);
 	}, [tableData]);
 
-	// Apply search and sort
 	const filteredData = useMemo(() => {
 		let result = [...tableData];
 
-		// filter
 		if (searchTerm) {
 			const lower = searchTerm.toLowerCase();
 			result = result.filter((row) =>
@@ -90,7 +75,6 @@ const DataTable: FC<DataTableProps> = ({ data }) => {
 			);
 		}
 
-		// sort
 		if (sortConfig?.direction && sortConfig.key) {
 			result.sort((a, b) => {
 				const aVal = a[sortConfig.key];
@@ -107,18 +91,15 @@ const DataTable: FC<DataTableProps> = ({ data }) => {
 		return result;
 	}, [tableData, searchTerm, sortConfig]);
 
-	// Pagination calculations
 	const pageCount = Math.ceil(filteredData.length / pageSize);
 	const paginatedData = useMemo(() => {
 		const start = currentPage * pageSize;
 		return filteredData.slice(start, start + pageSize);
 	}, [filteredData, currentPage, pageSize]);
 
-	// Handlers for sorting
 	const handleSort = useCallback((key: string) => {
 		setSortConfig((prev) => {
 			if (prev?.key === key) {
-				// cycle asc → desc → none → asc
 				const dir =
 					prev.direction === "asc"
 						? "desc"
@@ -144,7 +125,7 @@ const DataTable: FC<DataTableProps> = ({ data }) => {
 	);
 
 	return (
-		<TableContainer
+		<Box
 			p={4}
 			bg="gray.900"
 			border="1px solid"
@@ -152,9 +133,7 @@ const DataTable: FC<DataTableProps> = ({ data }) => {
 			borderRadius="md"
 			boxShadow="md"
 			maxW="90vw"
-			// make it scrollable on narrow screens
 		>
-			{/* Search input */}
 			<Input
 				placeholder="Search..."
 				value={searchInput}
@@ -170,18 +149,17 @@ const DataTable: FC<DataTableProps> = ({ data }) => {
 			/>
 
 			<Flex maxW="100%" overflowX="auto">
-				{/* Table */}
-				<Table
-					variant="simple"
-					size={"sm"}
-					//@ts-ignore
-					tableLayout="auto" // allow columns to size to their content/header
-					minW="100%" // ensure it won't collapse narrower than its container
-				>
-					<Thead position="sticky" top={0} bg="gray.700" zIndex={1} h="60px">
-						<Tr h="60px">
+				<Table.Root variant="line" size="sm">
+					<Table.Header
+						position="sticky"
+						top={0}
+						bg="gray.700"
+						zIndex={1}
+						h="60px"
+					>
+						<Table.Row h="60px">
 							{columns.map((col, idx) => (
-								<Th
+								<Table.ColumnHeader
 									key={col}
 									textTransform="capitalize"
 									fontSize="sm"
@@ -207,20 +185,20 @@ const DataTable: FC<DataTableProps> = ({ data }) => {
 										{titleCase(col)}
 										{getSortIcon(col)}
 									</Flex>
-								</Th>
+								</Table.ColumnHeader>
 							))}
-						</Tr>
-					</Thead>
-					<Tbody>
+						</Table.Row>
+					</Table.Header>
+					<Table.Body>
 						{paginatedData.length > 0 ? (
 							paginatedData.map((row, idx) => (
-								<Tr
+								<Table.Row
 									key={idx}
 									bg={idx % 2 === 0 ? "gray.800" : "gray.700"}
 									_hover={{ bg: "gray.600" }}
 								>
 									{columns.map((col, cidx) => (
-										<Td
+										<Table.Cell
 											key={cidx}
 											fontWeight={cidx === 0 ? "medium" : "normal"}
 											whiteSpace="nowrap"
@@ -238,54 +216,57 @@ const DataTable: FC<DataTableProps> = ({ data }) => {
 											}
 										>
 											{String(row[col])}
-										</Td>
+										</Table.Cell>
 									))}
-								</Tr>
+								</Table.Row>
 							))
 						) : (
-							<Tr>
-								<Td colSpan={columns.length}>
+							<Table.Row>
+								<Table.Cell colSpan={columns.length}>
 									<Text textAlign="center">No records found.</Text>
-								</Td>
-							</Tr>
+								</Table.Cell>
+							</Table.Row>
 						)}
-					</Tbody>
-				</Table>
+					</Table.Body>
+				</Table.Root>
 			</Flex>
 
-			{/* Pagination controls */}
 			<Flex justify="space-between" align="center" mt={4} wrap="wrap" gap={2}>
-				<ButtonGroup spacing={2}>
+				<ButtonGroup attached={false}>
 					<IconButton
 						aria-label="First page"
 						size="sm"
-						icon={<ChevronsLeftIcon size={16} />}
 						onClick={() => setCurrentPage(0)}
-						isDisabled={currentPage === 0}
-					/>
+						disabled={currentPage === 0}
+					>
+						<ChevronsLeftIcon size={16} />
+					</IconButton>
 					<IconButton
 						aria-label="Previous page"
 						size="sm"
-						icon={<ChevronLeftIcon size={16} />}
 						onClick={() => setCurrentPage((p) => Math.max(0, p - 1))}
-						isDisabled={currentPage === 0}
-					/>
+						disabled={currentPage === 0}
+					>
+						<ChevronLeftIcon size={16} />
+					</IconButton>
 					<IconButton
 						aria-label="Next page"
 						size="sm"
-						icon={<ChevronRightIcon size={16} />}
 						onClick={() =>
 							setCurrentPage((p) => Math.min(pageCount - 1, p + 1))
 						}
-						isDisabled={currentPage >= pageCount - 1}
-					/>
+						disabled={currentPage >= pageCount - 1}
+					>
+						<ChevronRightIcon size={16} />
+					</IconButton>
 					<IconButton
 						aria-label="Last page"
 						size="sm"
-						icon={<ChevronsRightIcon size={16} />}
 						onClick={() => setCurrentPage(pageCount - 1)}
-						isDisabled={currentPage >= pageCount - 1}
-					/>
+						disabled={currentPage >= pageCount - 1}
+					>
+						<ChevronsRightIcon size={16} />
+					</IconButton>
 				</ButtonGroup>
 
 				<Text color="gray.300" fontSize="sm">
@@ -297,23 +278,26 @@ const DataTable: FC<DataTableProps> = ({ data }) => {
 					<Text color="gray.300" fontSize="sm">
 						Rows per page:
 					</Text>
-					<Select
-						size="sm"
-						w="80px"
-						bg="gray.800"
-						color="gray.100"
-						value={pageSize}
-						onChange={(e) => setPageSize(Number(e.target.value))}
-					>
-						{[10, 20, 50, 100].map((size) => (
-							<option key={size} value={size}>
-								{size}
-							</option>
-						))}
-					</Select>
+					<NativeSelect.Root size="sm" width="80px">
+						<NativeSelect.Field
+							bg="gray.800"
+							color="gray.100"
+							value={pageSize}
+							onChange={(e) =>
+								setPageSize(Number((e.target as HTMLSelectElement).value))
+							}
+						>
+							{[10, 20, 50, 100].map((size) => (
+								<option key={size} value={size}>
+									{size}
+								</option>
+							))}
+						</NativeSelect.Field>
+						<NativeSelect.Indicator />
+					</NativeSelect.Root>
 				</Flex>
 			</Flex>
-		</TableContainer>
+		</Box>
 	);
 };
 

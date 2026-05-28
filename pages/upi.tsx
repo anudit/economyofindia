@@ -1,4 +1,4 @@
-import { Flex, Heading, SimpleGrid, Text, chakra } from "@chakra-ui/react";
+import { Flex, Heading, SimpleGrid } from "@chakra-ui/react";
 
 import { BarChart, PieChart } from "@/components/ChartComponents";
 import PageShell from "@/components/PageShell";
@@ -32,7 +32,7 @@ export default function Home() {
 				);
 			})}
 			<br />
-			<SimpleGrid columns={[1, null, 2]}>
+			<SimpleGrid columns={[1, null, 2]} gap={2}>
 				{Object.entries(dataset2).map(([key, val], id) => {
 					return (
 						<Flex key={id} w="95%" direction="column" my={2}>

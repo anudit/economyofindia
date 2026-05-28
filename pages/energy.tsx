@@ -1,14 +1,10 @@
 import { Flex, Heading, SimpleGrid, Text } from "@chakra-ui/react";
-
+import ChartCard from "@/components/ChartCard";
+import { LineChart, StackedAreaChart } from "@/components/ChartComponents";
 import PageShell from "@/components/PageShell";
 import { dataset, dataset2, dataset3, metadata, stats } from "@/dataset/energy";
-
-import ChartCard from "@/components/ChartCard";
-import { StackedAreaChart } from "@/components/ChartComponents";
-import { LineChart } from "@/components/ChartComponents";
-import StatCard from "@/components/StatCard";
-import type { Dataset3, Dict } from "@/utils/shared";
-import { type SimpleDataset, chartDataFormat, titleCase } from "@/utils/shared";
+import type { Dict } from "@/utils/shared";
+import { titleCase } from "@/utils/shared";
 
 export default function Home() {
 	return (
@@ -34,12 +30,14 @@ export default function Home() {
 						"Hydro",
 						"Wind, Solar & Other RE",
 					]}
-					data={Object.entries(dataset).map(([key, val]) => [
-						new Date(String(key)),
-						...Object.values(val).map((e) =>
-							typeof e === "number" ? e / 1000 : 0,
-						),
-					])}
+					data={
+						Object.entries(dataset).map(([key, val]) => [
+							String(key),
+							...Object.values(val).map((e) =>
+								typeof e === "number" ? e / 1000 : 0,
+							),
+						]) as [string, ...number[]][]
+					}
 				/>
 				<br />
 				<br />
@@ -55,7 +53,7 @@ export default function Home() {
 					State-wise installed capacity of Renewable Power (MW)
 				</Heading>
 				<br />
-				<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={2} w="100%">
+				<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} gap={2} w="100%">
 					<ChartGrid
 						dataset={dataset3}
 						section={"Electricity"}

@@ -1,5 +1,5 @@
-import { COLORS, RED_COLORS, numFormat } from "@/utils/shared";
 import { Flex, Heading, Text } from "@chakra-ui/react";
+import { COLORS, numFormat, RED_COLORS } from "@/utils/shared";
 import { useSharedContext } from "./SharedContext";
 
 export const SingleStat = ({

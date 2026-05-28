@@ -1,23 +1,21 @@
-import { LiveIcon, PdfIcon } from "@/components/Icons";
-import { completeMetadata } from "@/dataset";
-import type { DatasetMetadata } from "@/utils/shared";
 import {
 	Box,
 	Flex,
 	Icon,
 	IconButton,
 	Input,
-	InputGroup,
-	InputLeftElement,
+	Stack,
 	Text,
-	Tooltip,
-	VStack,
 	useBreakpointValue,
 } from "@chakra-ui/react";
 import { PanelLeftClose, PanelLeftOpen, SearchIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
+import { LiveIcon, PdfIcon } from "@/components/Icons";
+import { Tooltip } from "@/components/ui/tooltip";
+import { completeMetadata } from "@/dataset";
+import type { DatasetMetadata } from "@/utils/shared";
 
 type SidebarDisplayItem = {
 	fileName: string;
@@ -28,43 +26,35 @@ const allDisplayFiles: SidebarDisplayItem[] = completeMetadata.map((e) => ({
 	link: e.localLink,
 }));
 
-// Optimized Levenshtein distance calculation
 const levenshteinDistance = (s1: string, s2: string): number => {
-	// Both strings should already be lowercase at this point
 	const m = s1.length;
 	const n = s2.length;
 
-	// Early termination for empty strings
 	if (m === 0) return n;
 	if (n === 0) return m;
 
-	// Optimization: if strings are too different in length, they won't be good matches
 	if (Math.abs(m - n) > Math.min(m, n) * 0.5) {
-		return Math.max(m, n); // Return a large distance
+		return Math.max(m, n);
 	}
 
-	// We only need two rows of the matrix for computation
 	let prevRow = Array(n + 1).fill(0);
 	let currRow = Array(n + 1).fill(0);
 
-	// Initialize the first row
 	for (let j = 0; j <= n; j++) {
 		prevRow[j] = j;
 	}
 
-	// Fill the matrix
 	for (let i = 1; i <= m; i++) {
 		currRow[0] = i;
 
 		for (let j = 1; j <= n; j++) {
 			const cost = s1[i - 1] === s2[j - 1] ? 0 : 1;
 			currRow[j] = Math.min(
-				prevRow[j] + 1, // deletion
-				currRow[j - 1] + 1, // insertion
-				prevRow[j - 1] + cost, // substitution
+				prevRow[j] + 1,
+				currRow[j - 1] + 1,
+				prevRow[j - 1] + cost,
 			);
 
-			// Optimization: transposition
 			if (
 				i > 1 &&
 				j > 1 &&
@@ -75,14 +65,12 @@ const levenshteinDistance = (s1: string, s2: string): number => {
 			}
 		}
 
-		// Swap rows for next iteration
 		[prevRow, currRow] = [currRow, prevRow];
 	}
 
-	return prevRow[n]; // The distance is in prevRow because we swapped
+	return prevRow[n];
 };
 
-// Prepare searchable fields once for each item
 const prepareSearchableData = (
 	metadata: DatasetMetadata[],
 ): Array<{
@@ -100,7 +88,7 @@ const prepareSearchableData = (
 					item.sourceFiles.map((e) => e.sourceFile.toLowerCase()).join(" ") ||
 					"",
 			},
-		].filter((f) => f.value.length > 0); // Only keep fields with values
+		].filter((f) => f.value.length > 0);
 
 		return {
 			item,
@@ -114,40 +102,31 @@ const fuzzySearch = (
 	preparedData: ReturnType<typeof prepareSearchableData>,
 	threshold = 0.4,
 ): { item: DatasetMetadata; score: number }[] => {
-	// Early return if query is empty
 	if (!query) return [];
 
-	// Process each item
 	const results = preparedData.map(({ item, searchableFields }) => {
-		// Quick check for exact matches (optimization)
 		for (const { value } of searchableFields) {
 			if (value.includes(query)) {
 				return { item, score: 0 };
 			}
 		}
 
-		// Calculate best score across all fields
-		let bestScore = 1.0; // Start with worst possible score
+		let bestScore = 1.0;
 
 		for (const { value } of searchableFields) {
-			// Skip if the field is too different in length
 			if (Math.abs(value.length - query.length) > query.length) continue;
 
-			// Calculate normalized Levenshtein distance
 			const distance = levenshteinDistance(query, value);
 			const normalizedScore = distance / Math.max(query.length, value.length);
 
-			// Keep the best score
 			bestScore = Math.min(bestScore, normalizedScore);
 
-			// Early termination if we found a perfect match
 			if (bestScore === 0) break;
 		}
 
 		return { item, score: bestScore };
 	});
 
-	// Filter and sort results
 	return results
 		.filter((result) => result.score <= threshold)
 		.sort((a, b) => a.score - b.score);
@@ -165,13 +144,16 @@ const SidebarItem = ({
 	const router = useRouter();
 
 	return (
-		<Tooltip label={fileName} placement="right" isDisabled={!isCollapsed}>
+		<Tooltip
+			label={fileName}
+			positioning={{ placement: "right" }}
+			disabled={!isCollapsed}
+		>
 			<Link href={link} prefetch={true}>
 				<Flex
 					align="center"
 					p={2}
 					borderRadius="lg"
-					// biome-ignore lint: no
 					role="group"
 					cursor="pointer"
 					_hover={{
@@ -184,13 +166,17 @@ const SidebarItem = ({
 					justifyContent={isCollapsed ? "center" : "flex-start"}
 				>
 					{fileName.endsWith(".live") ? (
-						<Icon as={LiveIcon} mr={isCollapsed ? 0 : 4} boxSize={5} />
+						<Icon asChild mr={isCollapsed ? 0 : 4} boxSize={5}>
+							<LiveIcon />
+						</Icon>
 					) : (
-						<Icon as={PdfIcon} mr={isCollapsed ? 0 : 4} boxSize={5} />
+						<Icon asChild mr={isCollapsed ? 0 : 4} boxSize={5}>
+							<PdfIcon />
+						</Icon>
 					)}
 
 					{!isCollapsed && (
-						<Text fontSize="sm" isTruncated>
+						<Text fontSize="sm" truncate>
 							{fileName}
 						</Text>
 					)}
@@ -210,13 +196,11 @@ export const Sidebar = () => {
 	const toggleSidebar = () => setIsCollapsed(!isCollapsed);
 	const sidebarWidth = isCollapsed ? "49px" : "250px";
 
-	// Prepare searchable data once on component mount
 	const preparedData = useMemo(
 		() => prepareSearchableData(completeMetadata),
 		[],
 	);
 
-	// Debounce search for better performance
 	useEffect(() => {
 		const query = searchQuery.trim();
 		if (!query) {
@@ -226,7 +210,6 @@ export const Sidebar = () => {
 
 		const startTime = performance.now();
 
-		// Simple substring search first for exact matches
 		const exactMatches = allDisplayFiles.filter((file) =>
 			file.fileName.toLowerCase().includes(query.toLowerCase()),
 		);
@@ -238,7 +221,6 @@ export const Sidebar = () => {
 			return;
 		}
 
-		// Fall back to fuzzy search
 		const results = fuzzySearch(query.toLowerCase(), preparedData, 0.4);
 
 		const matchedFiles: SidebarDisplayItem[] = results.map(({ item }) => ({
@@ -271,21 +253,20 @@ export const Sidebar = () => {
 		>
 			<Flex justify={isCollapsed ? "center" : "flex-start"} align="center">
 				<IconButton
-					icon={
-						isCollapsed ? (
-							<PanelLeftOpen strokeWidth={2} size={22} />
-						) : (
-							<PanelLeftClose strokeWidth={2} size={22} />
-						)
-					}
 					onClick={toggleSidebar}
 					aria-label="Open Sidebar"
 					variant="ghost"
 					size="sm"
-				/>
+				>
+					{isCollapsed ? (
+						<PanelLeftOpen strokeWidth={2} size={22} />
+					) : (
+						<PanelLeftClose strokeWidth={2} size={22} />
+					)}
+				</IconButton>
 			</Flex>
 
-			<InputGroup
+			<Flex
 				onClick={() => {
 					isCollapsed ? toggleSidebar() : null;
 				}}
@@ -293,20 +274,22 @@ export const Sidebar = () => {
 				display="flex"
 				alignItems="center"
 				mt={4}
+				position="relative"
 			>
-				<InputLeftElement pointerEvents="none">
+				<Box position="absolute" left="8px" pointerEvents="none">
 					<SearchIcon color="white" size={14} />
-				</InputLeftElement>
+				</Box>
 				<Input
 					type="text"
 					placeholder="Search"
-					variant="unstyled"
+					variant="flushed"
 					value={searchQuery}
 					onChange={(e) => setSearchQuery(e.target.value)}
+					pl="28px"
 				/>
-			</InputGroup>
+			</Flex>
 
-			<VStack align="stretch" spacing={1} flexGrow={1} mt={4}>
+			<Stack align="stretch" gap={1} flexGrow={1} mt={4}>
 				{filteredFiles.map(({ fileName, link }, i) => (
 					<SidebarItem
 						key={i}
@@ -315,7 +298,7 @@ export const Sidebar = () => {
 						isCollapsed={isCollapsed as boolean}
 					/>
 				))}
-			</VStack>
+			</Stack>
 		</Box>
 	);
 };

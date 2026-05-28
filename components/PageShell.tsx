@@ -1,9 +1,10 @@
-import { Flex, useColorModeValue } from "@chakra-ui/react";
-import { NextSeo } from "next-seo";
+import { Flex } from "@chakra-ui/react";
 import Head from "next/head";
+import { generateNextSeo } from "next-seo/pages";
 
 import { Sidebar } from "@/components/Sidebar";
 import TopBar from "@/components/TopBar";
+import { useColorModeValue } from "@/components/ui/color-mode";
 import { type DatasetMetadata, titleCase } from "@/utils/shared";
 import { ProximityPrefetch } from "./ProximityFetch";
 
@@ -24,11 +25,11 @@ export default function PageShell({
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/rupee.svg" />
 			</Head>
-			<NextSeo
-				title={`${titleCase(metadata.title)} - EconomyOfIndia.com`}
-				description={`${titleCase(metadata.title)} - EconomyOfIndia.com`}
-				canonical={`https://economyofindia.com${metadata.localLink}`}
-				openGraph={{
+			{generateNextSeo({
+				title: `${titleCase(metadata.title)} - EconomyOfIndia.com`,
+				description: `${titleCase(metadata.title)} - EconomyOfIndia.com`,
+				canonical: `https://economyofindia.com${metadata.localLink}`,
+				openGraph: {
 					url: `https://economyofindia.com${metadata.localLink}`,
 					title: metadata.title,
 					description: metadata.title,
@@ -49,18 +50,18 @@ export default function PageShell({
 						authors: ["EcnonomyOfIndia.com"],
 						tags: ["Economy", "India", "Details"],
 					},
-				}}
-				twitter={{
+				},
+				twitter: {
 					handle: "@ProjectOmnid",
 					site: "@ProjectOmnid",
 					cardType: "summary_large_image",
-				}}
-				robotsProps={{
+				},
+				robotsProps: {
 					maxSnippet: -1,
 					maxImagePreview: "large",
 					maxVideoPreview: -1,
-				}}
-				additionalMetaTags={[
+				},
+				additionalMetaTags: [
 					{
 						name: "keywords",
 						content: "Economy,India,Details",
@@ -73,8 +74,8 @@ export default function PageShell({
 						httpEquiv: "content-type",
 						content: "text/html; charset=utf-8",
 					},
-				]}
-				additionalLinkTags={[
+				],
+				additionalLinkTags: [
 					{
 						rel: "icon",
 						href: "/favicon.svg",
@@ -88,9 +89,9 @@ export default function PageShell({
 						href: "/apple-touch-icon.png",
 						sizes: "180x180",
 					},
-				]}
-				themeColor="#000000"
-			/>
+				],
+				themeColor: "#000000",
+			})}
 			<Flex direction="row" w="100vw" minH="100vh">
 				<ProximityPrefetch>
 					<Sidebar />

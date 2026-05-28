@@ -1,6 +1,14 @@
-import { Sankey, type SankeyDataRow } from "@/components/ChartComponents";
+import {
+	Flex,
+	GridItem,
+	Heading,
+	NativeSelect,
+	SimpleGrid,
+} from "@chakra-ui/react";
+import dynamic from "next/dynamic";
+import { useRef, useState } from "react";
+import { Sankey } from "@/components/ChartComponents";
 import PageShell from "@/components/PageShell";
-import { useSharedContext } from "@/components/SharedContext";
 import { SingleStat } from "@/components/SingleStat";
 import {
 	commodityWiseTotal,
@@ -14,16 +22,6 @@ import {
 	metadata,
 	regionWiseTotal,
 } from "@/dataset/import-export";
-import {
-	Flex,
-	GridItem,
-	Heading,
-	Select,
-	SimpleGrid,
-	Text,
-} from "@chakra-ui/react";
-import dynamic from "next/dynamic";
-import { useRef, useState } from "react";
 
 const ReactInfiniteCanvas = dynamic(
 	() => import("react-infinite-canvas").then((mod) => mod.ReactInfiniteCanvas),
@@ -47,24 +45,28 @@ export default function Home() {
 		<PageShell
 			metadata={metadata}
 			topBarChildren={
-				<Select
-					defaultValue={1}
-					borderRadius="md"
+				<NativeSelect.Root
+					defaultValue="1"
 					onChange={(e) => {
-						setSection(totalSections[e.currentTarget.selectedIndex]);
+						setSection(
+							totalSections[(e.target as HTMLSelectElement).selectedIndex],
+						);
 					}}
-					w={{ base: "130px", sm: "130px", md: "250px" }}
 					size="sm"
+					width={{ base: "130px", sm: "130px", md: "250px" }}
 				>
-					{totalSections.map((k, ind) => (
-						<option value={ind} key={ind}>
-							{k}
-						</option>
-					))}
-				</Select>
+					<NativeSelect.Field borderRadius="md">
+						{totalSections.map((k, ind) => (
+							<option value={ind} key={ind}>
+								{k}
+							</option>
+						))}
+					</NativeSelect.Field>
+					<NativeSelect.Indicator />
+				</NativeSelect.Root>
 			}
 		>
-			<SimpleGrid columns={{ base: 1, sm: 1, lg: 2 }} spacing={2}>
+			<SimpleGrid columns={{ base: 1, sm: 1, lg: 2 }} gap={2}>
 				<GridItem>
 					<Heading as="h3" size="sm" mb={4}>
 						Import/Export :: Commodity-wise
@@ -77,7 +79,7 @@ export default function Home() {
 							}}
 						>
 							<div>
-								<SimpleGrid columns={3} spacing={5} w="600px">
+								<SimpleGrid columns={3} gap={5} w="600px">
 									<SingleStat
 										title="Total Imports"
 										value={commodityWiseTotal.import[section]}
@@ -115,7 +117,7 @@ export default function Home() {
 							}}
 						>
 							<div>
-								<SimpleGrid columns={3} spacing={5} w="600px">
+								<SimpleGrid columns={3} gap={5} w="600px">
 									<SingleStat
 										title="Total Imports"
 										value={regionWiseTotal.import[section]}
@@ -156,7 +158,7 @@ export default function Home() {
 							}}
 						>
 							<div>
-								<SimpleGrid columns={3} spacing={5} w="600px">
+								<SimpleGrid columns={3} gap={5} w="600px">
 									<SingleStat
 										title="Total Imports"
 										value={countryWiseTotal.import[section]}

@@ -1,4 +1,4 @@
-import { Flex, Heading, SimpleGrid, Text, chakra } from "@chakra-ui/react";
+import { chakra, Flex, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import { MinusIcon, PlusIcon, TrendingDown, TrendingUp } from "lucide-react";
 
 import { BarChart } from "@/components/ChartComponents";
@@ -16,7 +16,7 @@ export default function Home() {
 				Key fiscal indicators for states (FY25 BE)
 			</Heading>
 			<br />
-			<SimpleGrid maxW="95%" columns={[1, 1, 2, 3, 4]}>
+			<SimpleGrid maxW="95%" columns={[1, 1, 2, 3, 4]} gap={2}>
 				{Object.entries(dataset2).map(([state, value], id) => {
 					return (
 						<Stat

@@ -1,7 +1,7 @@
-import { PieChart } from "@/components/ChartComponents";
-import { SupportedCurrencies } from "@/utils/shared";
 import { Flex, GridItem, Heading } from "@chakra-ui/react";
 import { ChartPie } from "lucide-react";
+import { PieChart } from "@/components/ChartComponents";
+import { SupportedCurrencies } from "@/utils/shared";
 import { useSharedContext } from "./SharedContext";
 
 export default function ChartCard({
@@ -56,7 +56,7 @@ export default function ChartCard({
 					w="100%"
 					color="whiteAlpha.700"
 					fontWeight={400}
-					isTruncated
+					truncate
 					title={route}
 				>
 					{route}

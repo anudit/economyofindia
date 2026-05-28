@@ -173,7 +173,7 @@ export const chartDataFormat = (
 	convert = true,
 ): Array<[string, number]> => {
 	return Object.entries(data)
-		.map(([k, v], ind) => {
+		.map(([k, v], _ind) => {
 			if (v != null && v !== 0) {
 				return [k as string, (v * (convert === true ? CRORE : 1)) as number];
 			} else {
@@ -230,5 +230,5 @@ export type AreaChartGeneric = {
 	columns: string[];
 	colors?: string[];
 	data: [string, ...number[]][];
-	type?: "value" | "currency"
+	type?: "value" | "currency";
 };

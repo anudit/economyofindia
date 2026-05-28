@@ -1,6 +1,5 @@
 import {
 	type BarChartGeneric,
-	Dataset3,
 	type Dataset4,
 	type DatasetMetadata,
 	type Dict,
@@ -217,7 +216,6 @@ export const dataset2: BarChartGeneric = {
 		"Electricity Generation Installed Capacity Growth YoY%",
 		"Index of Industrial Production Growth YoY%",
 	],
-	//@ts-expect-error
 	data: [
 		["1950", 8.59, null],
 		["1956", 13.04, null],
@@ -237,7 +235,7 @@ export const dataset2: BarChartGeneric = {
 		["2023", 4.15, 5.83],
 		["2024", 6.23, 3.92],
 		["2025", 7.52, 3.22],
-	],
+	] as unknown as [string, ...number[]][],
 };
 
 export const dataset3: Dict<Dict<number>> = {

@@ -1,22 +1,13 @@
 import {
-	type DatasetTable,
-	type DatasetTableRow,
-	titleCase,
-} from "@/utils/shared";
-import {
 	Box,
 	Button,
 	ButtonGroup,
 	Flex,
 	IconButton,
 	Input,
-	Select,
+	NativeSelect,
 	Table,
-	TableContainer,
 	Text,
-	Th,
-	Thead,
-	Tr,
 } from "@chakra-ui/react";
 import debounce from "lodash.debounce";
 import {
@@ -29,7 +20,12 @@ import {
 } from "lucide-react";
 import type React from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { FixedSizeList, type ListChildComponentProps } from "react-window";
+import { List, type RowComponentProps } from "react-window";
+import {
+	type DatasetTable,
+	type DatasetTableRow,
+	titleCase,
+} from "@/utils/shared";
 
 interface DataTableProps {
 	data: DatasetTable;
@@ -138,14 +134,13 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
 		[sortConfig],
 	);
 
-	const Row = ({ index, style }: ListChildComponentProps) => {
+	const Row = ({ index, style }: RowComponentProps) => {
 		const row = paginatedData[index];
 		const bg = index % 2 === 0 ? "gray.800" : "gray.700";
 
 		return (
 			<Flex
 				as="tr"
-				// role="row"
 				key={index}
 				style={style}
 				px={4}
@@ -164,7 +159,6 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
 						<Box
 							as="td"
 							key={colIdx}
-							// role="cell"
 							flex="1"
 							pr={2}
 							whiteSpace="nowrap"
@@ -182,7 +176,7 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
 	};
 
 	return (
-		<TableContainer
+		<Box
 			bg="gray.900"
 			p={4}
 			borderRadius="md"
@@ -203,11 +197,11 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
 				_placeholder={{ color: "gray.500" }}
 			/>
 
-			<Table variant="simple" size="sm">
-				<Thead position="sticky" top={0} zIndex={1} bg="gray.700">
-					<Tr>
+			<Table.Root variant="line" size="sm">
+				<Table.Header position="sticky" top={0} zIndex={1} bg="gray.700">
+					<Table.Row>
 						{columns.map((col) => (
-							<Th
+							<Table.ColumnHeader
 								key={col}
 								textTransform="capitalize"
 								fontWeight="bold"
@@ -217,7 +211,6 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
 								<Button
 									variant="ghost"
 									onClick={() => handleSort(col)}
-									rightIcon={getSortIcon(col)}
 									fontWeight="bold"
 									size="sm"
 									color="gray.100"
@@ -225,84 +218,79 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
 									_active={{ bg: "gray.500" }}
 								>
 									{titleCase(col)}
+									{getSortIcon(col)}
 								</Button>
-							</Th>
+							</Table.ColumnHeader>
 						))}
-					</Tr>
-				</Thead>
-			</Table>
+					</Table.Row>
+				</Table.Header>
+			</Table.Root>
 
 			{paginatedData.length > 0 && mounted ? (
 				<Box
 					as="table"
-					// role="table"
-					height={Math.min(pageSize, paginatedData.length) * ROW_HEIGHT}
-					overflowY="auto"
 					width="100%"
+					height={Math.min(pageSize, paginatedData.length) * ROW_HEIGHT}
 					border="1px solid"
 					borderColor="gray.700"
 					borderRadius="md"
 				>
-					<FixedSizeList
-						height={Math.min(pageSize, paginatedData.length) * ROW_HEIGHT}
-						itemCount={paginatedData.length}
-						itemSize={ROW_HEIGHT}
-						width="100%"
-					>
-						{Row}
-					</FixedSizeList>
+					<List
+						rowCount={paginatedData.length}
+						rowHeight={ROW_HEIGHT}
+						rowComponent={Row}
+						rowProps={{} as any}
+					/>
 				</Box>
 			) : (
 				<Flex
 					as="tr"
-					// role="row"
 					height="40px"
 					align="center"
 					justify="center"
 					border="1px solid"
 					borderColor="gray.100"
 				>
-					<Text
-						// role="cell"
-						as="td"
-					>
-						No records found.
-					</Text>
+					<Text as="td">No records found.</Text>
 				</Flex>
 			)}
 
 			<Flex justify="space-between" align="center" mt={4} wrap="wrap" gap={2}>
-				<ButtonGroup spacing={2}>
+				<ButtonGroup attached={false}>
 					<IconButton
-						icon={<ChevronsLeftIcon size={16} />}
 						onClick={() => setCurrentPage(0)}
-						isDisabled={currentPage === 0}
+						disabled={currentPage === 0}
 						aria-label="First page"
 						size="sm"
-					/>
+					>
+						<ChevronsLeftIcon size={16} />
+					</IconButton>
 					<IconButton
-						icon={<ChevronLeftIcon size={16} />}
 						onClick={() => setCurrentPage((p) => Math.max(0, p - 1))}
-						isDisabled={currentPage === 0}
+						disabled={currentPage === 0}
 						aria-label="Previous page"
 						size="sm"
-					/>
+					>
+						<ChevronLeftIcon size={16} />
+					</IconButton>
 					<IconButton
-						icon={<ChevronRightIcon size={16} />}
 						onClick={() =>
 							setCurrentPage((p) => Math.min(pageCount - 1, p + 1))
 						}
-						isDisabled={currentPage >= pageCount - 1}
+						disabled={currentPage >= pageCount - 1}
 						aria-label="Next page"
 						size="sm"
-					/>
+					>
+						<ChevronRightIcon size={16} />
+					</IconButton>
 					<IconButton
-						icon={<ChevronsRightIcon size={16} />}
 						onClick={() => setCurrentPage(pageCount - 1)}
-						isDisabled={currentPage >= pageCount - 1}
+						disabled={currentPage >= pageCount - 1}
 						aria-label="Last page"
 						size="sm"
-					/>
+					>
+						<ChevronsRightIcon size={16} />
+					</IconButton>
 				</ButtonGroup>
 
 				<Text color="gray.300" fontSize="sm">
@@ -312,22 +300,25 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
 
 				<Flex align="center" gap={2}>
 					<Text color="gray.300">Rows per page:</Text>
-					<Select
-						value={pageSize}
-						onChange={(e) => setPageSize(Number(e.target.value))}
-						w="80px"
-						size="sm"
-						bg="gray.800"
-						color="gray.100"
-					>
-						{[10, 20, 50, 100].map((size) => (
-							<option key={size} value={size}>
-								{size}
-							</option>
-						))}
-					</Select>
+					<NativeSelect.Root size="sm" width="80px">
+						<NativeSelect.Field
+							bg="gray.800"
+							color="gray.100"
+							value={pageSize}
+							onChange={(e) =>
+								setPageSize(Number((e.target as HTMLSelectElement).value))
+							}
+						>
+							{[10, 20, 50, 100].map((size) => (
+								<option key={size} value={size}>
+									{size}
+								</option>
+							))}
+						</NativeSelect.Field>
+						<NativeSelect.Indicator />
+					</NativeSelect.Root>
 				</Flex>
 			</Flex>
-		</TableContainer>
+		</Box>
 	);
 };

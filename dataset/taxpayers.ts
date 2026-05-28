@@ -3,9 +3,9 @@ import {
 	CRORE,
 	type DatasetMetadata,
 	type Dict,
+	daysSinceNow,
 	LAKH,
 	type StatGeneric,
-	daysSinceNow,
 	sum,
 } from "@/utils/shared";
 
@@ -575,5 +575,5 @@ export const dataset3: BarChartGeneric = {
 		["2021", 39741584000],
 		["2022", 38257424000],
 		["2023", 39283871000],
-	].map((e) => [e[0], e[1] / 1_000_000_000]),
+	].map((e) => [e[0], (e[1] as number) / 1_000_000_000] as [string, number]),
 };

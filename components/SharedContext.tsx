@@ -1,15 +1,15 @@
 import {
+	createContext,
 	type FC,
 	type ReactNode,
-	createContext,
 	useContext,
 	useEffect,
 	useRef,
 	useState,
 } from "react";
 
+import { toaster } from "@/components/ui/toaster";
 import { SupportedCurrencies } from "@/utils/shared";
-import { useToast } from "@chakra-ui/react";
 
 interface SharedType {
 	usdInrRate: number | null;
@@ -28,13 +28,12 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 	);
 	const initialBuildIdRef = useRef<string | null>(null);
 	const [isNewVersionAvailable, setIsNewVersionAvailable] = useState(false);
-	const toast = useToast();
 
 	useEffect(() => {
 		const fetchRate = async () => {
 			try {
 				const req = await fetch(
-					"https://api.frankfurter.app/latest?to=USD,EUR&from=INR",
+					"https://corsproxy.io/?url=https://api.frankfurter.app/latest?to=USD,EUR&from=INR",
 				);
 				if (!req.ok) throw new Error(`HTTP error! status: ${req.status}`);
 				const resp = (await req.json()) as {
@@ -152,13 +151,10 @@ export const SharedProvider: FC<SharedProviderProps> = ({ children }) => {
 
 	useEffect(() => {
 		if (isNewVersionAvailable) {
-			toast({
+			toaster.create({
 				title:
 					"A new version of the app is available. Please refresh the page to update.",
-				position: "bottom-right",
-				isClosable: true,
-				colorScheme: "green",
-				status: "info",
+				type: "info",
 			});
 		}
 	}, [isNewVersionAvailable]);

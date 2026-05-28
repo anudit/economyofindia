@@ -1,5 +1,10 @@
-import { Flex, Heading, Select, useBreakpointValue } from "@chakra-ui/react";
-
+import {
+	Flex,
+	Heading,
+	NativeSelect,
+	useBreakpointValue,
+} from "@chakra-ui/react";
+import { useState } from "react";
 import LiveValue from "@/components/AnimatedNumber";
 import { BarChart, LineChart, PieChart } from "@/components/ChartComponents";
 import PageShell from "@/components/PageShell";
@@ -13,7 +18,6 @@ import {
 	metadata,
 } from "@/dataset/taxpayers";
 import { sum } from "@/utils/shared";
-import { useState } from "react";
 
 export default function Home() {
 	const chartWidth = useBreakpointValue(
@@ -26,21 +30,27 @@ export default function Home() {
 		<PageShell
 			metadata={metadata}
 			topBarChildren={
-				<Select
-					defaultValue={4}
-					borderRadius="md"
+				<NativeSelect.Root
+					defaultValue="4"
 					onChange={(e) => {
-						setSection(Object.keys(dataset)[e.currentTarget.selectedIndex]);
+						setSection(
+							Object.keys(dataset)[
+								Number.parseInt((e.target as HTMLSelectElement).value, 10)
+							],
+						);
 					}}
-					w={{ base: "70px", sm: "120px", md: "250px" }}
 					size="sm"
+					width={{ base: "70px", sm: "120px", md: "250px" }}
 				>
-					{Object.keys(dataset).map((k, ind) => (
-						<option value={ind} key={ind}>
-							{k}
-						</option>
-					))}
-				</Select>
+					<NativeSelect.Field borderRadius="md">
+						{Object.keys(dataset).map((k, ind) => (
+							<option value={ind} key={ind}>
+								{k}
+							</option>
+						))}
+					</NativeSelect.Field>
+					<NativeSelect.Indicator />
+				</NativeSelect.Root>
 			}
 		>
 			<Heading as="h2" size="md">
@@ -109,11 +119,7 @@ export default function Home() {
 				return (
 					<Flex direction={{ base: "column", lg: "row" }} key={id}>
 						<Flex direction="column" w={{ base: "200px", lg: "400px" }}>
-							<PieChart
-								//@ts-ignore
-								data={d.data}
-								hideLegend={true}
-							/>
+							<PieChart data={d.data} hideLegend={true} />
 						</Flex>
 						<BarChart
 							header={d.header}

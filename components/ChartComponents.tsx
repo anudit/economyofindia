@@ -1,6 +1,5 @@
-import { Box, Flex, Heading } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import { Chart } from "react-google-charts";
-
 import { useMounted } from "@/components/useMounted";
 import { mainFont, mainFontFamily } from "@/styles/theme";
 import {
@@ -9,13 +8,12 @@ import {
 	type BarChartGenericWithStyle,
 	COLORS,
 	CRORE,
+	numFormat,
 	RED_COLORS,
 	SupportedCurrencies,
-	numFormat,
 	sum,
 	supportedCurrencies,
 } from "@/utils/shared";
-import { useBreakpointValue } from "@chakra-ui/react";
 import Responsive from "./Responsive";
 import { useSharedContext } from "./SharedContext";
 
@@ -73,7 +71,7 @@ export const PieChart = ({
 				)}
 			</Heading>
 			<Responsive>
-				{(width, height) => (
+				{(width, _height) => (
 					<Chart
 						chartType="PieChart"
 						data={header.concat(
@@ -289,10 +287,9 @@ export const StackedAreaChart = ({
 	columns,
 	xyAxis,
 	colors = ["#FF6347", "#00BFFF", "#BDB76B", "#DAFF00", "#1E90FF", "#90EE90"],
-	type = "value"
+	type = "value",
 }: AreaChartGeneric) => {
-
-  const { activeCurrency, usdInrRate } = useSharedContext();
+	const { activeCurrency, usdInrRate } = useSharedContext();
 
 	return (
 		<div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
@@ -300,8 +297,27 @@ export const StackedAreaChart = ({
 				chartType="AreaChart"
 				width="100%"
 				height="300px"
-				// @ts-ignore
-				data={type === 'currency' && activeCurrency === SupportedCurrencies.USD ? [columns].concat(data.map(e=>[e[0], Number.parseInt(e[1]/usdInrRate), Number.parseInt(e[2]/usdInrRate), Number.parseInt(e[3]/usdInrRate)])) : [columns].concat(data) }
+				data={
+					(type === "currency" && activeCurrency === SupportedCurrencies.USD
+						? ([columns] as any[]).concat(
+								data.map((e) => [
+									e[0],
+									Number.parseInt(
+										String((e[1] as number) / (usdInrRate ?? 1)),
+										10,
+									),
+									Number.parseInt(
+										String((e[2] as number) / (usdInrRate ?? 1)),
+										10,
+									),
+									Number.parseInt(
+										String((e[3] as number) / (usdInrRate ?? 1)),
+										10,
+									),
+								]),
+							)
+						: ([columns] as any[]).concat(data)) as any
+				}
 				options={{
 					isStacked: true,
 					backgroundColor: {
@@ -312,29 +328,32 @@ export const StackedAreaChart = ({
 					hAxis: {
 						textStyle: { color: "white", fontSize: 12 },
 						titleTextStyle: { color: "white" },
-						gridlines: {color:'transparent'},
+						gridlines: { color: "transparent" },
 						// minorGridlines: null,
 						title: xyAxis[0],
 					},
 					vAxis: {
 						textStyle: { color: "white", fontSize: 12 },
 						titleTextStyle: { color: "white" },
-						gridlines: {color:'transparent'},
+						gridlines: { color: "transparent" },
 						// minorGridlines: { color: "#2F2C3E" },
 						minValue: 0,
 						title: xyAxis[1],
 						format: "decimal",
 					},
 					height: 400,
-					selectionMode: 'multiple',
-					tooltip: { showColorCode: true, trigger: 'both' },
-					aggregationTarget: 'category',
+					selectionMode: "multiple",
+					tooltip: { showColorCode: true, trigger: "both" },
+					aggregationTarget: "category",
 					legend: {
 						position: "bottom",
 						textStyle: { color: "white", fontSize: 12 },
 					},
-					 explorer: { actions: ['dragToZoom', 'rightClickToReset'], axis: 'horizontal' },
-					crosshair: { trigger: 'both' },
+					explorer: {
+						actions: ["dragToZoom", "rightClickToReset"],
+						axis: "horizontal",
+					},
+					crosshair: { trigger: "both" },
 					areaOpacity: 0.4,
 					colors: colors,
 				}}

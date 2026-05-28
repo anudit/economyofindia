@@ -1,15 +1,21 @@
+import {
+	Flex,
+	Heading,
+	NativeSelect,
+	SimpleGrid,
+	Text,
+} from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import PageShell from "@/components/PageShell";
 import { metadata } from "@/dataset/aqi";
-import { STATES, aqiToDetails } from "@/utils/shared";
-import { Flex, Heading, Select, SimpleGrid, Text } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { aqiToDetails, STATES } from "@/utils/shared";
 
 async function decompressGzipUint8Array(compressedData: Uint8Array) {
 	// Create a DecompressionStream instance with 'gzip' as the format.
 	const ds = new DecompressionStream("gzip");
 
 	// Convert the input Uint8Array to a ReadableStream by wrapping it in a Response.
-	const compressedStream = new Response(compressedData).body;
+	const compressedStream = new Response(compressedData as BodyInit).body;
 	if (!compressedStream)
 		throw new Error("Invalid input to decompressGzipUint8Array");
 
@@ -118,30 +124,35 @@ export default function Home() {
 		<PageShell
 			metadata={metadata}
 			topBarChildren={
-				<Select
-					defaultValue={0}
-					borderRadius="md"
+				<NativeSelect.Root
+					defaultValue="0"
 					onChange={(e) => {
-						const sel = e.currentTarget.selectedIndex;
+						const sel = (e.target as HTMLSelectElement).selectedIndex;
 						if (sel === 0) setState("All");
-						else setState(STATES[e.currentTarget.selectedIndex - 1]);
+						else
+							setState(
+								STATES[(e.target as HTMLSelectElement).selectedIndex - 1],
+							);
 					}}
-					w={{ base: "130px", sm: "130px", md: "250px" }}
 					size="sm"
+					width={{ base: "130px", sm: "130px", md: "250px" }}
 				>
-					<option value={0} key={0}>
-						All States
-					</option>
-					{STATES.map((k, ind) => (
-						<option value={ind + 1} key={ind + 1}>
-							{k}
+					<NativeSelect.Field borderRadius="md">
+						<option value="0" key={0}>
+							All States
 						</option>
-					))}
-				</Select>
+						{STATES.map((k, ind) => (
+							<option value={ind + 1} key={ind + 1}>
+								{k}
+							</option>
+						))}
+					</NativeSelect.Field>
+					<NativeSelect.Indicator />
+				</NativeSelect.Root>
 			}
 		>
 			{data !== null ? (
-				<SimpleGrid columns={[1, null, null, 2]} spacing="40px">
+				<SimpleGrid columns={[1, null, null, 2]} gap="40px">
 					{data
 						.filter((e) =>
 							state === "All" ? true : e.station.stateID === state,
@@ -180,11 +191,13 @@ export default function Home() {
 											<Flex
 												direction="row"
 												w={{
-													base: `${Math.max(((Number.parseInt(st.avg) % 500) / 500) * 100, 10)}%`,
-													lg: `${Math.max((((Number.parseInt(st.avg) % 500) / 500) * 100) / 2, 3)}%`,
+													base: `${Math.max(((Number.parseInt(st.avg, 10) % 500) / 500) * 100, 10)}%`,
+													lg: `${Math.max((((Number.parseInt(st.avg, 10) % 500) / 500) * 100) / 2, 3)}%`,
 												}}
 												h="50px"
-												background={aqiToDetails(Number.parseInt(st.avg)).hex}
+												background={
+													aqiToDetails(Number.parseInt(st.avg, 10)).hex
+												}
 												borderRadius="30px"
 												position="absolute"
 											/>
@@ -214,9 +227,9 @@ export default function Home() {
 												</Flex>
 												<Text
 													fontSize="xx-large"
-													color={aqiToDetails(Number.parseInt(st.avg)).hex}
+													color={aqiToDetails(Number.parseInt(st.avg, 10)).hex}
 												>
-													{aqiToDetails(Number.parseInt(st.avg)).title}
+													{aqiToDetails(Number.parseInt(st.avg, 10)).title}
 												</Text>
 											</Flex>
 										</Flex>

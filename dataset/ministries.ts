@@ -66,7 +66,7 @@ export const dataset: BarChartGeneric = {
 		["Min. of Textiles", 55.1933],
 		["Min. of Women and Child Development", 0.6113],
 		["Min. of Youth Affairs and Sports", 39.0553],
-	].map((e) => [e[0], e[1] * CRORE]),
+	].map((e) => [e[0], (e[1] as number) * CRORE]) as [string, ...number[]][],
 };
 
 export const dataset2: BarChartGeneric = {
@@ -238,7 +238,10 @@ export const dataset2: BarChartGeneric = {
 		],
 		["ASSISTANCE TO NATIONAL SPORTS FEDERATION", 18.75],
 		["KHELO INDIA", 20.3053],
-	].map((e) => [titleCase(e[0]), e[1] * CRORE]),
+	].map((e) => [titleCase(e[0] as string), (e[1] as number) * CRORE]) as [
+		string,
+		...number[],
+	][],
 };
 
 type Entry = [string, string, string];

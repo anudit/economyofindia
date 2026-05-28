@@ -1,13 +1,13 @@
+import { Text } from "@chakra-ui/react";
 import ChartCard from "@/components/ChartCard";
 import StatCard from "@/components/StatCard";
 import type { Dataset3 } from "@/utils/shared";
 import {
 	CRORE,
-	type SimpleDataset,
 	chartDataFormat,
+	type SimpleDataset,
 	titleCase,
 } from "@/utils/shared";
-import { Text } from "@chakra-ui/react";
 
 export default function ChartGrid({
 	dataset,

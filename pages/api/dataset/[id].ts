@@ -1,19 +1,12 @@
-import { pipeline } from "node:stream";
-import { Readable } from "node:stream";
+import { pipeline, Readable } from "node:stream";
 import { promisify } from "node:util";
 import { createGzip } from "node:zlib";
+import type { NextApiRequest, NextApiResponse } from "next";
 import { completeMetadata } from "@/dataset";
 import { datasetComplete as datasetComplete1 } from "@/dataset/afs-2025-2026";
 import { completeData as datasetComplete3 } from "@/dataset/import-export";
 import { dataset as datasetComplete2 } from "@/dataset/receipt-heads";
-
-import type {
-	Dataset3,
-	Dataset4,
-	DatasetMetadata,
-	DatasetTable,
-} from "@/utils/shared";
-import type { NextApiRequest, NextApiResponse } from "next";
+import type { DatasetMetadata } from "@/utils/shared";
 
 const pipe = promisify(pipeline);
 

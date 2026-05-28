@@ -1,0 +1,2621 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            Desalination Thermodynamic Explorer & Indian Plants Database
+        </title>
+        <!-- Tailwind CSS for sleek utility styling -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Chart.js for beautiful interactive line graphs -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <!-- KaTeX for LaTeX formula rendering -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+        />
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"
+        ></script>
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+        ></script>
+        <!-- Lucide Icons for clean dashboard visual assets -->
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+            body {
+                font-family: "Inter", sans-serif;
+            }
+            /* Custom scrollbar styling for premium look */
+            ::-webkit-scrollbar {
+                width: 8px;
+                height: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #1e293b;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #475569;
+                border-radius: 4px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #64748b;
+            }
+            /* Glassmorphism utility */
+            .glass {
+                background: rgba(30, 41, 59, 0.7);
+                backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+            }
+        </style>
+    </head>
+    <body class="bg-slate-950 text-slate-100 min-h-screen pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+            <!-- ── FOUR CORE CHALLENGES ── -->
+            <section class="challenge-section mb-10">
+                <!-- Header -->
+                <div class="p-5 rounded-2xl mb-5 text-center">
+                    <h2 class="text-lg font-bold text-white mb-1">
+                        De-Salination — Four Core Challenges
+                    </h2>
+                    <p class="text-xs text-slate-400">
+                        Physics floor
+                        <span class="text-white font-mono">1.06 kWh/m³</span>
+                        &nbsp;→&nbsp; Best plant today
+                        <span class="text-white font-mono">2.43 kWh/m³</span>
+                        &nbsp;→&nbsp; Older plants
+                        <span class="text-white font-mono">4.5+ kWh/m³</span>
+                    </p>
+                    <p class="text-[11px] text-slate-500 mt-1">
+                        The gap between the physics floor and real plants comes
+                        from four compounding losses.
+                    </p>
+                </div>
+
+                <!-- Challenge cards grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <!-- Challenge 1: Osmotic Pressure -->
+                    <div
+                        class="glass p-5 rounded-2xl border-t-2 border-blue-500/50"
+                    >
+                        <div class="flex items-center gap-2 mb-3">
+                            <span
+                                class="text-[10px] font-bold text-blue-400/60 uppercase tracking-widest"
+                                >Challenge 1</span
+                            >
+                            <span class="text-xs font-bold text-blue-300"
+                                >Osmotic Pressure</span
+                            >
+                        </div>
+                        <p class="text-xs text-slate-300 mb-3">
+                            Salt in water creates a natural pressure that
+                            resists flow through the membrane. You must pump
+                            harder than this pressure just to move any water
+                            across — and seawater requires
+                            <strong class="text-white">~30 bar</strong> before a
+                            single drop passes.
+                        </p>
+                        <div
+                            class="bg-blue-500/8 rounded-lg p-3 mb-3 border border-blue-500/15"
+                        >
+                            <p
+                                class="text-[10px] text-blue-300/50 uppercase tracking-wider mb-1"
+                            >
+                                Van 't Hoff Law
+                            </p>
+                            <div class="text-blue-200 text-sm">
+                                $$\Pi = i \cdot C \cdot R \cdot T$$
+                            </div>
+                            <div class="mt-2 space-y-0.5">
+                                <p class="text-[11px] text-blue-300/60"><span class="text-blue-200/80">Π</span> — osmotic pressure (bar)</p>
+                                <p class="text-[11px] text-blue-300/60"><span class="text-blue-200/80">i</span> — ion count per molecule (NaCl = 2)</p>
+                                <p class="text-[11px] text-blue-300/60"><span class="text-blue-200/80">C</span> — salt concentration (mol/m³)</p>
+                                <p class="text-[11px] text-blue-300/60"><span class="text-blue-200/80">R, T</span> — gas constant &amp; temperature (K)</p>
+                            </div>
+                            <p class="text-[11px] text-blue-300/60 mt-2 font-medium">
+                                Seawater: $$\Pi \approx 29.7\ \text{bar}$$
+                            </p>
+                        </div>
+                        <div class="flex gap-3">
+                            <div
+                                class="flex-1 bg-slate-800/40 rounded-lg p-2.5"
+                            >
+                                <p class="text-[10px] text-slate-400 mb-0.5">
+                                    Can it be beaten?
+                                </p>
+                                <p class="text-xs text-amber-300 font-medium">
+                                    Partially — better membranes reduce
+                                    overpressure needed above the osmotic floor.
+                                </p>
+                            </div>
+                            <div
+                                class="flex-1 bg-slate-800/40 rounded-lg p-2.5"
+                            >
+                                <p class="text-[10px] text-slate-400 mb-0.5">
+                                    Gap cost
+                                </p>
+                                <p class="text-xs text-white font-mono">
+                                    +0.3–1.0 kWh/m³
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Challenge 2: Gibbs Floor -->
+                    <div
+                        class="glass p-5 rounded-2xl border-t-2 border-purple-500/50"
+                    >
+                        <div class="flex items-center gap-2 mb-3">
+                            <span
+                                class="text-[10px] font-bold text-purple-400/60 uppercase tracking-widest"
+                                >Challenge 2</span
+                            >
+                            <span class="text-xs font-bold text-purple-300"
+                                >The Thermodynamic Floor</span
+                            >
+                        </div>
+                        <p class="text-xs text-slate-300 mb-3">
+                            Separating salt from water requires energy by the
+                            laws of thermodynamics — even a perfect machine with
+                            zero friction cannot go below this limit. It sets a
+                            hard minimum that no desalination process can ever
+                            undercut.
+                        </p>
+                        <div
+                            class="bg-purple-500/8 rounded-lg p-3 mb-3 border border-purple-500/15"
+                        >
+                            <p
+                                class="text-[10px] text-purple-300/50 uppercase tracking-wider mb-1"
+                            >
+                                Gibbs Free Energy
+                            </p>
+                            <div class="text-purple-200 text-sm">
+                                $$W_{\min} = -\Pi_0 \cdot \ln(1 - Y)$$
+                            </div>
+                            <div class="mt-2 space-y-0.5">
+                                <p class="text-[11px] text-purple-300/60"><span class="text-purple-200/80">W<sub>min</sub></span> — minimum energy to separate (kWh/m³)</p>
+                                <p class="text-[11px] text-purple-300/60"><span class="text-purple-200/80">Π₀</span> — feed osmotic pressure (~0.82 kWh/m³ equiv.)</p>
+                                <p class="text-[11px] text-purple-300/60"><span class="text-purple-200/80">Y</span> — water recovery fraction (e.g. 0.5 = 50%)</p>
+                            </div>
+                            <p class="text-[11px] text-purple-300/60 mt-2 font-medium">
+                                At 50% recovery: $$SEC_{\min} \approx 1.06\ \text{kWh/m}^3$$
+                            </p>
+                        </div>
+                        <div class="flex gap-3">
+                            <div
+                                class="flex-1 bg-slate-800/40 rounded-lg p-2.5"
+                            >
+                                <p class="text-[10px] text-slate-400 mb-0.5">
+                                    Can it be beaten?
+                                </p>
+                                <p class="text-xs text-red-400 font-medium">
+                                    No — it is a law of physics. The goal is to
+                                    approach it, not cross it.
+                                </p>
+                            </div>
+                            <div
+                                class="flex-1 bg-slate-800/40 rounded-lg p-2.5"
+                            >
+                                <p class="text-[10px] text-slate-400 mb-0.5">
+                                    Best plant today
+                                </p>
+                                <p class="text-xs text-white font-mono">
+                                    2.43 kWh/m³
+                                </p>
+                                <p class="text-[10px] text-purple-400/70">
+                                    2.3× the floor
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Challenge 3: Recovery Penalty -->
+                    <div
+                        class="glass p-5 rounded-2xl border-t-2 border-amber-500/50"
+                    >
+                        <div class="flex items-center gap-2 mb-3">
+                            <span
+                                class="text-[10px] font-bold text-amber-400/60 uppercase tracking-widest"
+                                >Challenge 3</span
+                            >
+                            <span class="text-xs font-bold text-amber-300"
+                                >The Recovery Penalty</span
+                            >
+                        </div>
+                        <p class="text-xs text-slate-300 mb-3">
+                            As you extract more fresh water, the remaining brine
+                            becomes saltier — raising its osmotic pressure. The
+                            pump must work harder for each additional litre.
+                            Push recovery above ~50% and energy costs rise
+                            sharply.
+                        </p>
+                        <div
+                            class="bg-amber-500/8 rounded-lg p-3 mb-3 border border-amber-500/15"
+                        >
+                            <p
+                                class="text-[10px] text-amber-300/50 uppercase tracking-wider mb-1"
+                            >
+                                Logarithmic Penalty
+                            </p>
+                            <div class="text-amber-200 text-sm">
+                                $$SEC_{\min}(Y) = \frac{-\Pi_0}{Y} \cdot \ln(1 - Y)$$
+                            </div>
+                            <div class="mt-2 space-y-0.5">
+                                <p class="text-[11px] text-amber-300/60"><span class="text-amber-200/80">SEC<sub>min</sub></span> — minimum specific energy at recovery Y</p>
+                                <p class="text-[11px] text-amber-300/60"><span class="text-amber-200/80">Π₀</span> — initial feed osmotic pressure</p>
+                                <p class="text-[11px] text-amber-300/60"><span class="text-amber-200/80">Y</span> — fraction of feed converted to fresh water</p>
+                            </div>
+                            <p class="text-[11px] text-amber-300/60 mt-2 font-medium">
+                                50% recovery: 1.14 &nbsp;|&nbsp; 80% recovery: 1.66 kWh/m³
+                            </p>
+                        </div>
+                        <div class="flex gap-3">
+                            <div
+                                class="flex-1 bg-slate-800/40 rounded-lg p-2.5"
+                            >
+                                <p class="text-[10px] text-slate-400 mb-0.5">
+                                    Can it be beaten?
+                                </p>
+                                <p class="text-xs text-amber-300 font-medium">
+                                    Partially — Batch RO tracks pressure
+                                    dynamically; 40–50% recovery is the current
+                                    sweet spot.
+                                </p>
+                            </div>
+                            <div
+                                class="flex-1 bg-slate-800/40 rounded-lg p-2.5"
+                            >
+                                <p class="text-[10px] text-slate-400 mb-0.5">
+                                    Gap cost
+                                </p>
+                                <p class="text-xs text-white font-mono">
+                                    +0.3–0.6 kWh/m³
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Challenge 4: ERD & Pump Losses -->
+                    <div
+                        class="glass p-5 rounded-2xl border-t-2 border-red-500/50"
+                    >
+                        <div class="flex items-center gap-2 mb-3">
+                            <span
+                                class="text-[10px] font-bold text-red-400/60 uppercase tracking-widest"
+                                >Challenge 4</span
+                            >
+                            <span class="text-xs font-bold text-red-300"
+                                >Energy Recovery &amp; Pump Losses</span
+                            >
+                        </div>
+                        <p class="text-xs text-slate-300 mb-3">
+                            High-pressure brine exits the membrane still
+                            carrying most of its pressure energy. Without an
+                            energy recovery device (ERD), that energy is wasted
+                            as heat. Pump inefficiency adds more loss on top —
+                            together this is the single biggest gap driver.
+                        </p>
+                        <div
+                            class="bg-red-500/8 rounded-lg p-3 mb-3 border border-red-500/15"
+                        >
+                            <p
+                                class="text-[10px] text-red-300/50 uppercase tracking-wider mb-1"
+                            >
+                                Actual Plant SEC
+                            </p>
+                            <div class="text-red-200 text-[12px]">
+                                $$SEC = \frac{\Pi_0}{Y \cdot \eta_{\text{pump}} \cdot \eta_{\text{ERD}}} \cdot \ln\!\left(\frac{1}{1-Y}\right) + SEC_{\text{pre}}$$
+                            </div>
+                            <div class="mt-2 space-y-0.5">
+                                <p class="text-[11px] text-red-300/60"><span class="text-red-200/80">η<sub>pump</sub></span> — pump efficiency (best ~0.92; older ~0.80)</p>
+                                <p class="text-[11px] text-red-300/60"><span class="text-red-200/80">η<sub>ERD</sub></span> — energy recovery efficiency (isobaric ~0.96; none = 1.0 i.e. no recovery)</p>
+                                <p class="text-[11px] text-red-300/60"><span class="text-red-200/80">SEC<sub>pre</sub></span> — pretreatment energy (filtration, chemicals: ~0.2–0.5 kWh/m³)</p>
+                            </div>
+                            <div class="flex gap-4 mt-2">
+                                <span class="text-[11px] text-red-300/60"
+                                    >No ERD:
+                                    <span class="text-red-200 font-mono"
+                                        >5–7 kWh/m³</span
+                                    ></span
+                                >
+                                <span class="text-[11px] text-red-300/60"
+                                    >Isobaric ERD:
+                                    <span class="text-red-200 font-mono"
+                                        >2.43 kWh/m³</span
+                                    ></span
+                                >
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <div
+                                class="flex-1 bg-slate-800/40 rounded-lg p-2.5"
+                            >
+                                <p class="text-[10px] text-slate-400 mb-0.5">
+                                    Can it be beaten?
+                                </p>
+                                <p class="text-xs text-emerald-400 font-medium">
+                                    Yes — isobaric ERDs (96% efficiency) already
+                                    recover most brine pressure. Further gains
+                                    are marginal.
+                                </p>
+                            </div>
+                            <div
+                                class="flex-1 bg-slate-800/40 rounded-lg p-2.5"
+                            >
+                                <p class="text-[10px] text-slate-400 mb-0.5">
+                                    Gap cost
+                                </p>
+                                <p class="text-xs text-white font-mono">
+                                    +1.4–3.5 kWh/m³
+                                </p>
+                                <p class="text-[10px] text-red-400/70">
+                                    largest single factor
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gap Summary Bar -->
+                <div class="glass p-4 rounded-2xl">
+                    <p
+                        class="text-[10px] text-slate-500 uppercase tracking-wider mb-3 text-center"
+                    >
+                        Cumulative energy gap — physics floor to real plant
+                    </p>
+                    <div class="flex h-6 rounded-lg overflow-hidden mb-2">
+                        <div
+                            class="bg-blue-700 flex items-center justify-center text-[10px] font-bold text-blue-100"
+                            style="width: 22%"
+                        >
+                            ⌊ 1.06
+                        </div>
+                        <div
+                            class="bg-purple-700 flex items-center justify-center text-[10px] font-bold text-purple-100"
+                            style="width: 9%"
+                        >
+                            +Π
+                        </div>
+                        <div
+                            class="bg-amber-600 flex items-center justify-center text-[10px] font-bold text-amber-100"
+                            style="width: 10%"
+                        >
+                            +Y
+                        </div>
+                        <div
+                            class="bg-red-700 flex items-center justify-center text-[10px] font-bold text-red-100"
+                            style="width: 12%"
+                        >
+                            +η
+                        </div>
+                        <div
+                            class="bg-red-500 flex items-center justify-center text-[10px] font-bold text-red-100"
+                            style="width: 47%"
+                        >
+                            ← without ERD
+                        </div>
+                    </div>
+                    <div
+                        class="flex justify-between text-[11px] text-slate-400"
+                    >
+                        <span
+                            >Physics floor &nbsp;<span
+                                class="text-white font-mono"
+                                >1.06</span
+                            ></span
+                        >
+                        <span
+                            >Dahej best &nbsp;<span class="text-white font-mono"
+                                >2.43</span
+                            ></span
+                        >
+                        <span
+                            >Older plants &nbsp;<span
+                                class="text-white font-mono"
+                                >4.5+ kWh/m³</span
+                            ></span
+                        >
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Live Simulator -->
+            <div class="glass p-6 rounded-2xl mb-8 shadow-xl">
+                <!-- Single collapsible header -->
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i data-lucide="sliders" class="text-blue-400 w-5 h-5"></i>
+                        Live Simulator
+                    </h2>
+                    <div class="flex items-center gap-2">
+                        <button
+                            id="reset-btn"
+                            class="text-xs text-slate-400 hover:text-white flex items-center gap-1 transition-colors"
+                        >
+                            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                            Reset
+                        </button>
+                        <button
+                            id="simulator-toggle"
+                            class="text-slate-400 hover:text-white transition-colors p-1 rounded"
+                            aria-expanded="false"
+                            aria-label="Expand Live Simulator"
+                        >
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-200" id="simulator-chevron"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Collapsible body -->
+                <div id="simulator-body" class="hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-6">
+                        <!-- Controls Column -->
+                        <div class="lg:col-span-5 flex flex-col gap-6">
+                            <!-- Active Plant Notification Badge -->
+                            <div
+                                id="active-plant-badge"
+                                class="hidden bg-blue-500/10 border border-blue-500/30 p-3 rounded-lg flex items-center justify-between"
+                            >
+                                <div class="flex items-center gap-2">
+                                    <span class="relative flex h-2 w-2">
+                                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                                    </span>
+                                    <span class="text-xs text-slate-300">Simulating:
+                                        <strong id="active-plant-name" class="text-white">Minjur Plant</strong>
+                                    </span>
+                                </div>
+                                <button id="clear-plant-btn" class="text-[10px] text-slate-400 hover:text-red-400 uppercase font-semibold">Clear</button>
+                            </div>
+
+                            <!-- Sliders -->
+                            <div class="space-y-6">
+                                <!-- Salinity (S) -->
+                                <div class="space-y-2">
+                                    <div class="flex justify-between items-center text-sm">
+                                        <label for="salinity" class="font-medium text-slate-300">Feed Water Salinity</label>
+                                        <span class="bg-blue-500/10 text-blue-400 text-xs px-2 py-0.5 rounded font-mono font-bold" id="salinity-label">35.0 g/kg</span>
+                                    </div>
+                                    <input type="range" id="salinity" min="1" max="80" step="0.5" value="35" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-500" />
+                                    <div class="flex justify-between text-[10px] text-slate-500">
+                                        <span>Freshwater (&lt;2)</span>
+                                        <span>Brackish (2-15)</span>
+                                        <span>Typical Seawater (35)</span>
+                                        <span>High Salinity (70+)</span>
+                                    </div>
+                                </div>
+
+                                <!-- Temperature (T) -->
+                                <div class="space-y-2">
+                                    <div class="flex justify-between items-center text-sm">
+                                        <label for="temp" class="font-medium text-slate-300">Feed Water Temperature</label>
+                                        <span class="bg-amber-500/10 text-amber-400 text-xs px-2 py-0.5 rounded font-mono font-bold" id="temp-label">25.0 °C</span>
+                                    </div>
+                                    <input type="range" id="temp" min="5" max="50" step="0.5" value="25" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500" />
+                                    <div class="flex justify-between text-[10px] text-slate-500">
+                                        <span>Cold Stream (5°C)</span>
+                                        <span>Standard (25°C)</span>
+                                        <span>Warm Discharge (50°C)</span>
+                                    </div>
+                                </div>
+
+                                <!-- Water Recovery (Y) -->
+                                <div class="space-y-2">
+                                    <div class="flex justify-between items-center text-sm">
+                                        <label for="recovery" class="font-medium text-slate-300">Recovery Ratio (Y)</label>
+                                        <span class="bg-emerald-500/10 text-emerald-400 text-xs px-2 py-0.5 rounded font-mono font-bold" id="recovery-label">50%</span>
+                                    </div>
+                                    <input type="range" id="recovery" min="5" max="90" step="1" value="50" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500" />
+                                    <div class="flex justify-between text-[10px] text-slate-500">
+                                        <span>Low Recovery (5%)</span>
+                                        <span>Standard SWRO (50%)</span>
+                                        <span>Extreme Recovery (90%)</span>
+                                    </div>
+                                </div>
+
+                                <!-- Process Markup Factor -->
+                                <div class="space-y-2">
+                                    <div class="flex justify-between items-center text-sm">
+                                        <label for="markup" class="font-medium text-slate-300">SOTA Energy Loss Multiplier</label>
+                                        <span class="bg-rose-500/10 text-rose-400 text-xs px-2 py-0.5 rounded font-mono font-bold" id="markup-label">2.3x</span>
+                                    </div>
+                                    <input type="range" id="markup" min="1.1" max="4.0" step="0.1" value="2.3" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-rose-500" />
+                                    <div class="flex justify-between text-[10px] text-slate-500">
+                                        <span>Near-Reversible (1.2x)</span>
+                                        <span>Singapore / Israel (2.0x-2.5x)</span>
+                                        <span>High Friction (4.0x)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Live Thermodynamic Summary Box -->
+                            <div class="bg-slate-900/60 rounded-xl p-4 border border-slate-800/80">
+                                <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Live Equation Output</h3>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <span class="text-[10px] text-slate-400 block">Osmotic Pressure (Π₀)</span>
+                                        <span id="osmotic-val" class="text-base font-bold text-blue-300">2.97 MPa</span>
+                                        <span class="text-[10px] text-slate-500 block">~29.7 bar</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] text-slate-400 block">Gibbs Separation Work</span>
+                                        <span id="gibbs-work" class="text-base font-bold text-purple-400">0.82 kWh/m³</span>
+                                        <span class="text-[10px] text-slate-500 block">At infinitesimal limit</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Visualization Column -->
+                        <div class="lg:col-span-7 flex flex-col gap-6">
+                            <div>
+                                <h3 class="text-sm font-semibold text-slate-300 mb-1 flex items-center gap-2">
+                                    <i data-lucide="line-chart" class="text-blue-400 w-4 h-4"></i>
+                                    The Thermodynamic Limit Curve
+                                </h3>
+                                <p class="text-xs text-slate-500 mb-4">SEC (kWh/m³) across the full recovery range. The curve surges as brine approaches saturation.</p>
+                            </div>
+
+                            <!-- Key Metrics -->
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-slate-900/80 rounded-xl p-4 border border-slate-800 flex items-center justify-between">
+                                    <div>
+                                        <span class="text-xs text-slate-400 block">Thermodynamic Minimum (SEC<sub>min</sub>)</span>
+                                        <span id="sec-min-output" class="text-3xl font-black text-blue-400">1.06 <span class="text-sm font-normal text-slate-400">kWh/m³</span></span>
+                                    </div>
+                                    <div class="bg-blue-500/10 p-2.5 rounded-lg border border-blue-500/20">
+                                        <i data-lucide="activity" class="text-blue-400 w-6 h-6"></i>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-900/80 rounded-xl p-4 border border-slate-800 flex items-center justify-between">
+                                    <div>
+                                        <span class="text-xs text-slate-400 block">SOTA Plant Estimate</span>
+                                        <span id="sec-sota-output" class="text-3xl font-black text-rose-400">2.44 <span class="text-sm font-normal text-slate-400">kWh/m³</span></span>
+                                    </div>
+                                    <div class="bg-rose-500/10 p-2.5 rounded-lg border border-rose-500/20">
+                                        <i data-lucide="zap" class="text-rose-400 w-6 h-6"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Canvas Chart -->
+                            <div class="relative w-full h-[260px] md:h-[300px]">
+                                <canvas id="liveSECChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /simulator-body -->
+            </div>
+
+            <!-- Plant Table -->
+            <div class="mb-8">
+                <div class="flex flex-col sm:flex-row sm:items-center gap-3 mb-4">
+                    <div class="relative w-full sm:w-64">
+                        <input
+                            type="text"
+                            id="db-search"
+                            placeholder="Search by plant, builder..."
+                            class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 pl-10 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                        />
+                        <i
+                            data-lucide="search"
+                            class="absolute left-3.5 top-2.5 text-slate-500 w-4 h-4"
+                        ></i>
+                    </div>
+                    <select
+                        id="capacity-filter"
+                        class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 cursor-pointer"
+                    >
+                        <option value="all">All Capacities</option>
+                        <option value="large">Large (&gt;= 100 MLD)</option>
+                        <option value="small">Small (&lt; 100 MLD)</option>
+                    </select>
+                    <select
+                        id="energy-filter"
+                        class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 cursor-pointer"
+                    >
+                        <option value="all">All Energy Sources</option>
+                        <option value="renewable">Renewable</option>
+                        <option value="nonrenewable">Non-Renewable</option>
+                    </select>
+                    <span id="table-mld-summary" class="text-xs text-slate-500 sm:ml-1"></span>
+                </div>
+
+                <div class="overflow-x-auto rounded-xl border border-slate-800">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead>
+                            <tr
+                                class="bg-slate-900/95 text-slate-300 uppercase text-[10px] tracking-wider border-b border-slate-800 font-bold"
+                            >
+                                <th
+                                    class="py-2.5 px-4 cursor-pointer hover:text-white sort-header"
+                                    data-sort="name"
+                                >
+                                    Name <span class="sort-arrow ml-0.5"></span>
+                                </th>
+                                <th class="py-2.5 px-4 text-center">Risks</th>
+                                <th
+                                    class="py-2.5 px-4 text-center cursor-pointer hover:text-white sort-header"
+                                    data-sort="capacity"
+                                >
+                                    MLD <span class="sort-arrow ml-0.5"></span>
+                                </th>
+                                <th
+                                    class="py-2.5 px-4 text-center cursor-pointer hover:text-white sort-header min-w-[90px]"
+                                    data-sort="capex"
+                                >
+                                    Capex (Cr INR)
+                                    <span class="sort-arrow ml-0.5"></span>
+                                </th>
+                                <th
+                                    class="py-2.5 px-4 text-center cursor-pointer hover:text-white sort-header"
+                                    data-sort="outPrice"
+                                >
+                                    Cost / m³
+                                    <span class="sort-arrow ml-0.5"></span>
+                                </th>
+                                <th
+                                    class="py-2.5 px-4 text-center cursor-pointer hover:text-white sort-header"
+                                    data-sort="process"
+                                >
+                                    Tech <span class="sort-arrow ml-0.5"></span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody
+                            id="plant-table-body"
+                            class="divide-y divide-slate-800/60 bg-slate-950/40"
+                        >
+                            <tr id="table-loading-row">
+                                <td
+                                    colspan="6"
+                                    class="text-center py-12 text-slate-500"
+                                >
+                                    <div
+                                        class="flex justify-center items-center gap-2"
+                                    >
+                                        <span
+                                            class="animate-spin rounded-full h-4 w-4 border-b-2 border-emerald-400"
+                                        ></span>
+                                        Parsing & compiling databases...
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div
+                    class="flex justify-between items-center mt-3 text-xs text-slate-400"
+                >
+                    <span id="datatable-summary"
+                        >Showing 0 matching plant profiles</span
+                    >
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Tooltip Node for Datatable Cell Hovering -->
+        <div
+            id="table-tooltip"
+            class="absolute hidden bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl p-4 shadow-2xl max-w-sm z-50 pointer-events-none transition-all duration-150 ease-out"
+        ></div>
+
+        <!-- STYLED COMPLETED RUNNABLE INTERACTIVE CODE -->
+        <script>
+            // Thermodynamic & Mathematical Constants
+            const R = 8.3144; // Universal Gas Constant (J / mol*K)
+            const V_m = 1.802e-5; // Molar volume of water (m³/mol)
+            const MW_NaCl = 58.44; // Molecular weight of NaCl (g/mol)
+
+            // App State Management
+            let appState = {
+                salinity: 35.0, // g/kg
+                temp: 25.0, // °C
+                recovery: 0.5, // ratio
+                markup: 2.3, // SOTA gap markup multiplier
+                loadedPlants: [], // parsed merged plants
+                activeSimulatedPlant: null,
+                sortCol: null,
+                sortDir: "asc",
+            };
+
+            // Tooltip Management
+            const tooltipNode = document.getElementById("table-tooltip");
+
+            // Chart Definition Variable
+            let secChartInstance = null;
+
+            // Classify developer as Public, Private, or PPP
+            function classifyDeveloper(devStr) {
+                if (!devStr || devStr === "N/A")
+                    return { label: "Unknown", color: "slate" };
+
+                const lower = devStr.toLowerCase();
+                const hasSeparator = devStr.includes("/");
+
+                const publicKw = [
+                    "municipal corporation",
+                    "water supply",
+                    "drainage board",
+                    "bmc",
+                    "cmwssb",
+                    "gwil",
+                    "gidc",
+                    "twad",
+                    "government",
+                    "municipal",
+                    "brihanmumbai",
+                    "gujarat water infrastructure",
+                    "gujarat industrial development",
+                ];
+                const privateKw = [
+                    "ltd",
+                    "limited",
+                    "industries",
+                    "power",
+                    "corp",
+                    "reliance",
+                    "adani",
+                    "ivrcl",
+                    "befesa",
+                    "va tech wabag",
+                    "larsen & toubro",
+                    "shapoorji pallonji",
+                    "essar projects",
+                    "cobra instalaciones",
+                    "cwd l",
+                    "joint venture",
+                ];
+
+                const isPublic = publicKw.some((kw) => lower.includes(kw));
+                const isPrivate = privateKw.some((kw) => lower.includes(kw));
+
+                if (hasSeparator) return { label: "PPP", color: "amber" };
+                if (isPublic && !isPrivate)
+                    return { label: "Public", color: "emerald" };
+                if (isPrivate && !isPublic)
+                    return { label: "Private", color: "blue" };
+                if (isPublic && isPrivate)
+                    return { label: "PPP", color: "amber" };
+                return { label: "Private", color: "blue" };
+            }
+
+            // Classify plant stage as Planning, Building, or Operational
+            function classifyStage(plant) {
+                if (plant.stage === "planning")
+                    return { label: "Planning", color: "blue" };
+                if (plant.stage === "building")
+                    return { label: "Building", color: "amber" };
+                if (plant.stage === "operational")
+                    return { label: "Operational", color: "emerald" };
+                const allText = Object.values(plant).join(" ").toLowerCase();
+                if (
+                    allText.includes("proposed") ||
+                    allText.includes("planning")
+                )
+                    return { label: "Planning", color: "blue" };
+                if (
+                    allText.includes("construction") ||
+                    allText.includes("building")
+                )
+                    return { label: "Building", color: "amber" };
+                return { label: "Operational", color: "emerald" };
+            }
+
+            // Source (electricity input) & Output (final sale) water costs per m³
+            function getWaterCosts(plant) {
+                const INR_PER_USD = 95.76;
+                if (plant.srcSec != null && plant.outInr != null) {
+                    const srcInr = plant.srcSec * (plant.srcElecRate || 7.5);
+                    const usd = (n) => n / INR_PER_USD;
+                    return {
+                        sourceInr: srcInr,
+                        sourceUsd: usd(srcInr),
+                        sourceDisplay: `₹${srcInr.toFixed(2)}`,
+                        sourceSrc: `SEC ~${plant.srcSec} kWh/m³ × ₹${plant.srcElecRate || 7.5}/kWh`,
+                        outputInr: plant.outInr,
+                        outputUsd: usd(plant.outInr),
+                        outputDisplay: `₹${plant.outInr.toFixed(2)}`,
+                        outputSrc: plant.outSrc || null,
+                    };
+                }
+                return {
+                    sourceInr: null,
+                    sourceUsd: null,
+                    sourceDisplay: "—",
+                    sourceSrc: null,
+                    outputInr: null,
+                    outputUsd: null,
+                    outputDisplay: "—",
+                    outputSrc: null,
+                };
+            }
+
+            function getPlantEnergyProfile(plant) {
+                if (plant.renew !== undefined)
+                    return {
+                        renew: plant.renew,
+                        brine: plant.brine,
+                        comp: plant.complaints,
+                    };
+                return { renew: null, brine: null, comp: null };
+            }
+
+            function getProcessLabel(plant) {
+                if (plant.processLabel) return plant.processLabel;
+                const a = (
+                    plant.process ||
+                    plant.Likelyprocessarchitecturekind ||
+                    ""
+                ).toLowerCase();
+                if (a.includes("ultrafiltration") || a.includes(" uf "))
+                    return "SWRO+UF";
+                if (a.includes("multi-effect") || a.includes(" med")) {
+                    if (
+                        a.includes("swro") ||
+                        a.includes("reverse osmosis") ||
+                        a.includes(" ro")
+                    )
+                        return "MED+SWRO";
+                }
+                if (a.includes("multi-stage") || a.includes(" msf")) {
+                    if (
+                        a.includes("swro") ||
+                        a.includes("reverse osmosis") ||
+                        a.includes(" ro")
+                    )
+                        return "MSF+SWRO";
+                }
+                if (a.includes("multi-effect") || a.includes("med "))
+                    return "MED";
+                if (a.includes("multi-stage") || a.includes("msf "))
+                    return "MSF";
+                return "SWRO";
+            }
+
+            function riskColor(val, goodIsTrue) {
+                if (val === null || val === undefined) return "#eab308";
+                const good = goodIsTrue ? val : !val;
+                return good ? "#22c55e" : "#ef4444";
+            }
+
+            // 0=none(green), 1=some(yellow), 2=major(red), null=unknown(yellow)
+            function complaintColor(val) {
+                if (val === null || val === undefined) return "#eab308";
+                if (val === 0) return "#22c55e";
+                if (val === 1) return "#eab308";
+                return "#ef4444";
+            }
+
+            function riskLabel(kind, val) {
+                if (val === null || val === undefined)
+                    return `${kind}: Unknown`;
+                if (kind === "Renewables")
+                    return val
+                        ? `${kind}: Uses renewables`
+                        : `${kind}: Grid/fossil only`;
+                if (kind === "Brine")
+                    return val
+                        ? `${kind}: Discharges brine to sea`
+                        : `${kind}: No marine brine discharge`;
+                if (kind === "Complaints") {
+                    if (val === 0) return `${kind}: None reported`;
+                    if (val === 1) return `${kind}: Some public concerns`;
+                    return `${kind}: Major protests / NGT cases`;
+                }
+                return "";
+            }
+
+            function renderRiskSvg(renewVal, brineVal, compVal) {
+                const colors = [
+                    riskColor(renewVal, true),
+                    riskColor(brineVal, false),
+                    complaintColor(compVal),
+                ];
+                const cx = 16,
+                    cy = 16,
+                    r = 12,
+                    sw = 4,
+                    segGap = 30;
+                // 3 segments × 90° each + 3 gaps × 30° = 360°
+                const starts = [15, 135, 255];
+                const ends = [105, 225, 345];
+
+                function pt(angleDeg) {
+                    const rad = ((angleDeg - 90) * Math.PI) / 180;
+                    return `${(cx + r * Math.cos(rad)).toFixed(2)},${(cy + r * Math.sin(rad)).toFixed(2)}`;
+                }
+
+                let paths = "";
+                for (let i = 0; i < 3; i++) {
+                    paths += `<path d="M${pt(starts[i])} A${r},${r} 0 0,1 ${pt(ends[i])}" stroke="${colors[i]}" stroke-width="${sw}" fill="none" stroke-linecap="round"/>`;
+                }
+                return `<svg viewBox="0 0 32 32" class="w-8 h-8">${paths}</svg>`;
+            }
+
+            // Numerical Value Extractor for raw data display in columns
+            function extractRawNumber(valueStr) {
+                if (!valueStr) return null;
+                // Cleans out commas and non-numeric characters but retains decimal structure
+                const cleaned = valueStr.toString().replace(/,/g, "");
+                const matched = cleaned.match(/[-+]?[0-9]*\.?[0-9]+/);
+                return matched ? parseFloat(matched[0]) : null;
+            }
+
+            // Formula to evaluate minimum work of desalination
+            function calculateSEC(salinity, tempC, recoveryRatio) {
+                const T = tempC + 273.15; // Kelvin Convert
+
+                // We approximate the concentration of salt particles
+                // Standard SWRO assumes sodium-chloride ionic dissociation factor (i ~ 2)
+                const molarSaltBase = (salinity / MW_NaCl) * 2;
+
+                // Osmotic pressure baseline calculation via Van 't Hoff: P0 (Pascals)
+                const P0 = molarSaltBase * R * T * 1000;
+
+                let secJoulesPerM3 = 0;
+                if (recoveryRatio <= 0.001) {
+                    secJoulesPerM3 = P0;
+                } else {
+                    // Logarithmic open continuous system thermodynamic curve
+                    secJoulesPerM3 =
+                        (-P0 / recoveryRatio) * Math.log(1 - recoveryRatio);
+                }
+
+                // Conversion factor from Joules/m³ to kWh/m³ (1 J = 2.77778e-7 kWh)
+                return secJoulesPerM3 * 2.77778e-7;
+            }
+
+            const plantDatabase = [
+                {
+                    name: "Minjur Desalination Plant",
+                    capacity: "100 MLD",
+                    location: "Kattupalli, Minjur, near Chennai (Tamil Nadu)",
+                    developer:
+                        "Chennai Water Desalination Ltd (CWDL) / Joint Venture of IVRCL & Befesa Spain",
+                    capex: "₹600 Crore INR",
+                    om: "25-year DBOOT contract, operational fee ₹48.66/kL",
+                    process:
+                        "Two-stage SWRO with pressure exchanger ERDs and disk filter pre-treatment",
+                    processLabel: "SWRO",
+                    stage: "operational",
+                    renew: false,
+                    brine: true,
+                    complaints: 2,
+                    srcSec: 4.5,
+                    srcElecRate: 7.5,
+                    outInr: 48.66,
+                    outSrc: "Bulk purchase agreement (CWDL→CMWSSB)",
+                    commissionYear: 2010,
+                },
+                {
+                    name: "Nemmeli Desalination Plant (Stage 1)",
+                    capacity: "100 MLD",
+                    location: "Nemmeli, ECR, Chennai (Tamil Nadu)",
+                    developer: "CMWSSB / VA Tech Wabag",
+                    capex: "₹807 Crore INR",
+                    om: "7-year O&M commitment with fixed water purchasing tariff",
+                    process:
+                        "SWRO with spiral wound polyamide membranes and pelton turbine energy converters",
+                    processLabel: "SWRO",
+                    stage: "operational",
+                    renew: false,
+                    brine: true,
+                    complaints: 2,
+                    srcSec: 4.0,
+                    srcElecRate: 7.5,
+                    outInr: 50,
+                    outSrc: "Est. — older CMWSSB plant, similar to Minjur",
+                    commissionYear: 2013,
+                },
+                {
+                    name: "Nemmeli Desalination Plant (Stage 2)",
+                    capacity: "150 MLD",
+                    location: "Nemmeli, Chennai Coast (Tamil Nadu)",
+                    developer: "CMWSSB / Cobra Instalaciones y Servicios",
+                    capex: "₹1,257 Crore INR",
+                    om: "20-year O&M including membrane replacement cycles and power guarantees",
+                    process:
+                        "SWRO with Ultrafiltration pre-treatment and high-flow brine energy recycle",
+                    processLabel: "SWRO+UF",
+                    stage: "operational",
+                    renew: false,
+                    brine: true,
+                    complaints: 1,
+                    srcSec: 3.2,
+                    srcElecRate: 7.5,
+                    outInr: 55,
+                    outSrc: "CMWSSB stated range ₹50–60/kL",
+                    commissionYear: 2024,
+                },
+                {
+                    name: "Dahej Industrial Desalination Project",
+                    capacity: "100 MLD",
+                    location: "Dahej, Bharuch District (Gujarat)",
+                    developer: "GIDC / Larsen & Toubro",
+                    capex: "₹881 Crore INR",
+                    om: "15-year industrial supply agreement for petrochemical consumers",
+                    process:
+                        "Standard SWRO optimized for Gulf of Khambhat conditions with chemical dosing pre-filters",
+                    processLabel: "SWRO",
+                    stage: "operational",
+                    renew: false,
+                    brine: true,
+                    complaints: 0,
+                    srcSec: 2.43,
+                    srcElecRate: 7.5,
+                    outInr: 26,
+                    outSrc: "Industrial tariff (GIDC); L&T: 242,922 kWh/day @ 100,000 m³/day",
+                    commissionYear: 2022,
+                },
+                {
+                    name: "Mundra Captive Desalination Complex",
+                    capacity: "110 MLD",
+                    location: "Mundra SEZ, Kutch Region (Gujarat)",
+                    developer: "Adani Power & Mundra Utilities Infrastructure",
+                    capex: "₹950 Crore INR",
+                    om: "Captive plant model with O&M integrated in thermal power plant cycle",
+                    process:
+                        "Hybrid Multi-Effect Distillation (MED) with secondary Seawater RO",
+                    processLabel: "MED+SWRO",
+                    stage: "operational",
+                    renew: false,
+                    brine: true,
+                    complaints: 0,
+                    srcSec: 8,
+                    srcElecRate: 7.5,
+                    outInr: 38,
+                    outSrc: "Est. — captive industrial, MED+SWRO hybrid",
+                    commissionYear: null,
+                },
+                {
+                    name: "Jamnagar Refinery Captive Plant",
+                    capacity: "400 MLD",
+                    location: "Moti Khavdi, Jamnagar (Gujarat)",
+                    developer: "Reliance Industries Limited (RIL)",
+                    capex: "₹3,200 Crore INR",
+                    om: "Captive industrial with ultra-high reliability guarantees",
+                    process:
+                        "Mega-scale SWRO coupled with Multi-Stage Flash (MSF) systems",
+                    processLabel: "MSF+SWRO",
+                    stage: "operational",
+                    renew: false,
+                    brine: true,
+                    complaints: 0,
+                    srcSec: 12,
+                    srcElecRate: 7.5,
+                    outInr: 35,
+                    outSrc: "Est. — captive, large MED+SWRO hybrid (MED dominant)",
+                    commissionYear: null,
+                },
+                {
+                    name: "Gundavali Municipal Plant (Proposed)",
+                    capacity: "200 MLD",
+                    location: "Manori/Gundavali, Mumbai (Maharashtra)",
+                    developer: "Brihanmumbai Municipal Corporation (BMC)",
+                    capex: "₹1,600 Crore INR",
+                    om: "Proposed 20-year municipal O&M with state-subsidized power",
+                    process:
+                        "Advanced SWRO with automated CIP and dual isobaric chamber ERDs",
+                    processLabel: "SWRO",
+                    stage: "planning",
+                    renew: null,
+                    brine: null,
+                    complaints: null,
+                    srcSec: 3.2,
+                    srcElecRate: 8.5,
+                    outInr: 42,
+                    outSrc: "Est. — comparable to Manori Mumbai proposal",
+                    commissionYear: null,
+                },
+                {
+                    name: "Mandvi Municipal Desalination Project",
+                    capacity: "100 MLD",
+                    location: "Mandvi Coast, Kutch District (Gujarat)",
+                    developer: "GWIL / Shapoorji Pallonji Corp",
+                    capex: "₹750 Crore INR",
+                    om: "10-year PPP with water distribution guarantees to Kutch grid",
+                    process:
+                        "Standard SWRO with deep marine intakes and optimized feed manifolds",
+                    processLabel: "SWRO",
+                    stage: "operational",
+                    renew: false,
+                    brine: true,
+                    complaints: 0,
+                    srcSec: 4.0,
+                    srcElecRate: 7.5,
+                    outInr: 44,
+                    outSrc: "Est. — municipal SWRO, GWIL PPP (100 MLD)",
+                    commissionYear: null,
+                },
+                {
+                    name: "Kuthiraimozhi SWRO Facility",
+                    capacity: "60 MLD",
+                    location:
+                        "Kuthiraimozhi, Thoothukudi District (Tamil Nadu)",
+                    developer: "TWAD Board / VA Tech Wabag",
+                    capex: "₹540 Crore INR",
+                    om: "5-year O&M transitioned to state water board engineers",
+                    process:
+                        "High-salt SWRO with robust sand filtration pre-treatment",
+                    processLabel: "SWRO",
+                    stage: "operational",
+                    renew: false,
+                    brine: true,
+                    complaints: 0,
+                    srcSec: 4.5,
+                    srcElecRate: 7.5,
+                    outInr: 48,
+                    outSrc: "Est. — municipal SWRO, TWAD Board operated (60 MLD)",
+                    commissionYear: null,
+                },
+                {
+                    name: "Dwarka Municipal Desal Plant",
+                    capacity: "50 MLD",
+                    location:
+                        "Dwarka Coastline, Devbhumi Dwarka District (Gujarat)",
+                    developer: "GWIL / Essar Projects Limited",
+                    capex: "₹420 Crore INR",
+                    om: "12-year O&M clause matching municipal water delivery volumes",
+                    process:
+                        "SWRO with horizontal radial beach wells to reduce algae fouling",
+                    processLabel: "SWRO",
+                    stage: "operational",
+                    renew: false,
+                    brine: true,
+                    complaints: 0,
+                    srcSec: 5.0,
+                    srcElecRate: 7.5,
+                    outInr: 50,
+                    outSrc: "Est. — small-scale municipal SWRO (50 MLD)",
+                    commissionYear: null,
+                },
+                {
+                    name: "Perur Desalination Plant",
+                    capacity: "400 MLD",
+                    location:
+                        "Perur village, ECR, Chengalpattu, near Chennai, Tamil Nadu",
+                    developer:
+                        "CMWSSB with JICA funding; EPC by VA TECH WABAG–Metito JV",
+                    capex: "₹4,276 Crore INR",
+                    om: "JICA-backed DBOOT with long-term O&M bundled",
+                    process:
+                        "Large SWRO with open-sea intake, DAF, gravity media filters, ERDs",
+                    processLabel: "SWRO",
+                    stage: "building",
+                    renew: null,
+                    brine: null,
+                    complaints: 2,
+                    srcSec: 3.0,
+                    srcElecRate: 7.5,
+                    outInr: 45,
+                    outSrc: "Est. — large-scale SWRO, JICA-funded, under construction",
+                    commissionYear: null,
+                },
+                {
+                    name: "Manori Desalination Plant",
+                    capacity: "200 MLD",
+                    location:
+                        "Manori, near Malad/Marve coast, Mumbai, Maharashtra",
+                    developer: "BMC; EPC contractor via tender",
+                    capex: "₹3,520 Crore INR",
+                    om: "20-year DBO with open-sea intake and pre-treatment",
+                    process:
+                        "SWRO on DBO basis with open-sea intake and multi-stage pre-treatment",
+                    processLabel: "SWRO",
+                    stage: "planning",
+                    renew: null,
+                    brine: null,
+                    complaints: 2,
+                    srcSec: 3.2,
+                    srcElecRate: 8.5,
+                    outInr: 42,
+                    outSrc: "Est. bulk cost (BMC planning)",
+                    commissionYear: null,
+                },
+                {
+                    name: "Pattipulam Desalination Plant",
+                    capacity: "200 MLD",
+                    location:
+                        "Pattipulam, south of Nemmeli on ECR, Chennai, Tamil Nadu",
+                    developer: "State government / CMWSSB",
+                    capex: "₹1,000 Crore INR (est.)",
+                    om: "Planned municipal O&M matching existing Chennai plants",
+                    process:
+                        "Planned municipal SWRO similar to existing Chennai plants",
+                    processLabel: "SWRO",
+                    stage: "planning",
+                    renew: null,
+                    brine: null,
+                    complaints: 0,
+                    srcSec: 3.2,
+                    srcElecRate: 7.5,
+                    outInr: 50,
+                    outSrc: "Est. — comparable to Nemmeli Chennai plants",
+                    commissionYear: null,
+                },
+                {
+                    name: "SIPCOT Tuticorin Desalination Plant",
+                    capacity: "60 MLD",
+                    location:
+                        "Mullakkadu Village, Thoothukudi Industrial Complex (Tamil Nadu)",
+                    developer:
+                        "SIPCOT / Implemented via IDE Technologies & JWIL Infra JV",
+                    capex: "₹650 Crore INR (est.)",
+                    om: "15-year industrial DBOOT contract with strict process water uptime clauses",
+                    process:
+                        "Advanced SWRO optimized for high-turbidity Gulf of Mannar waters with specialized intake screens",
+                    processLabel: "SWRO",
+                    stage: "building",
+                    renew: false,
+                    brine: true,
+                    complaints: 0,
+                    srcSec: 3.4,
+                    srcElecRate: 7.5,
+                    outInr: 45,
+                    outSrc: "Est. — dedicated industrial supply tariff (SIPCOT framework)",
+                    commissionYear: null,
+                },
+                {
+                    name: "Dholera SIR Desalination Plant",
+                    capacity: "50 MLD",
+                    location:
+                        "Dholera Special Investment Region, Ahmedabad District (Gujarat)",
+                    developer:
+                        "Dholera Industrial City Development Limited (DICDL) / SPML Infra",
+                    capex: "₹1,049 Crore INR",
+                    om: "Public smart-city infrastructure contract with modular 150 MLD expansion provisions",
+                    process:
+                        "SWRO with comprehensive pre-treatment designed to support clean semiconductor fabrication",
+                    processLabel: "SWRO",
+                    stage: "building",
+                    renew: null,
+                    brine: true,
+                    complaints: 0,
+                    srcSec: 3.5,
+                    srcElecRate: 7.2,
+                    outInr: 40,
+                    outSrc: "Est. — premium smart-city industrial grid pricing model",
+                    commissionYear: null,
+                },
+                {
+                    name: "Bhavnagar Municipal Desalination Project",
+                    capacity: "70 MLD",
+                    location: "Bhavnagar Coastline, Gulf of Khambhat (Gujarat)",
+                    developer:
+                        "Gujarat Water Infrastructure Limited (GWIL) / Central PSU Promoted",
+                    capex: "₹525 Crore INR (est.)",
+                    om: "Proposed 20-year municipal PPP distribution layout for Saurashtra grid",
+                    process:
+                        "SWRO with specialized heavy chemical dosing to handle extreme tidal silt variances",
+                    processLabel: "SWRO",
+                    stage: "planning",
+                    renew: null,
+                    brine: null,
+                    complaints: 0,
+                    srcSec: 4.2,
+                    srcElecRate: 7.5,
+                    outInr: 44,
+                    outSrc: "Est. — aligned with baseline GWIL municipal water supply targets",
+                    commissionYear: null,
+                },
+                {
+                    name: "Gir Somnath Municipal Plant",
+                    capacity: "30 MLD",
+                    location:
+                        "Veraval Coastline, Gir Somnath District (Gujarat)",
+                    developer:
+                        "Gujarat Water Infrastructure Limited (GWIL) / Appointed Concessionaire",
+                    capex: "₹280 Crore INR (est.)",
+                    om: "Planned municipal supply agreement with domestic consumption pricing subsidies",
+                    process:
+                        "Standard SWRO with beach well sub-surface intakes to reduce marine organism fouling",
+                    processLabel: "SWRO",
+                    stage: "planning",
+                    renew: null,
+                    brine: null,
+                    complaints: 0,
+                    srcSec: 4.0,
+                    srcElecRate: 7.5,
+                    outInr: 46,
+                    outSrc: "Est. — localized regional drinking water pricing structure",
+                    commissionYear: null,
+                },
+                {
+                    name: "Munambam Municipal Plant",
+                    capacity: "10 MLD",
+                    location: "Munambam Fishing Harbour, Kochi (Kerala)",
+                    developer: "Kerala Water Authority (KWA)",
+                    capex: "₹95 Crore INR (est.)",
+                    om: "Public municipal management model with regional state power balancing",
+                    process:
+                        "Compact footprint SWRO with customized energy recovery devices for lower volume flows",
+                    processLabel: "SWRO",
+                    stage: "planning",
+                    renew: null,
+                    brine: null,
+                    complaints: 1,
+                    srcSec: 3.8,
+                    srcElecRate: 8.0,
+                    outInr: 48,
+                    outSrc: "Est. — initial state-level coastal municipal pricing projections",
+                    commissionYear: null,
+                },
+                {
+                    name: "Kavaratti Island LTTD Facility",
+                    capacity: "0.1 MLD",
+                    location: "Kavaratti Island Lagoon (Lakshadweep)",
+                    developer:
+                        "National Institute of Ocean Technology (NIOT) / Ministry of Earth Sciences",
+                    capex: "₹35 Crore INR (est.)",
+                    om: "Publicly funded domestic utility model optimized for zero fossil fuel baseline option",
+                    process:
+                        "Low-Temperature Thermal Desalination (LTTD) utilizing deep sea ocean thermal gradients",
+                    processLabel: "LTTD",
+                    stage: "operational",
+                    renew: true,
+                    brine: false,
+                    complaints: 0,
+                    srcSec: 6.0,
+                    srcElecRate: 0.0,
+                    outInr: 65,
+                    outSrc: "Est. production cost profile — fully subsidized domestic supply",
+                    commissionYear: 2005,
+                },
+                {
+                    name: "Agatti Island LTTD Facility",
+                    capacity: "0.1 MLD",
+                    location: "Agatti Island Coastline (Lakshadweep)",
+                    developer:
+                        "National Institute of Ocean Technology (NIOT) / Ministry of Earth Sciences",
+                    capex: "₹30 Crore INR (est.)",
+                    om: "Publicly managed ecosystem built directly for isolated island water security",
+                    process:
+                        "Low-Temperature Thermal Desalination (LTTD) flashing warm surface water under vacuum",
+                    processLabel: "LTTD",
+                    stage: "operational",
+                    renew: true,
+                    brine: false,
+                    complaints: 0,
+                    srcSec: 6.0,
+                    srcElecRate: 0.0,
+                    outInr: 65,
+                    outSrc: "Est. production cost profile — fully subsidized domestic supply",
+                    commissionYear: 2011,
+                },
+                {
+                    name: "CPCL Nagapattinam Desalination Plant",
+                    capacity: "60 MLD",
+                    location:
+                        "Nagapattinam, Cauvery Basin Refinery Complex (Tamil Nadu)",
+                    developer:
+                        "Chennai Petroleum Corporation Limited (CPCL) / SUEZ India",
+                    capex: "₹600 Crore INR (est.)",
+                    om: "Build-Own-Operate-Transfer (BOOT) captive industrial framework for refinery process lines",
+                    process:
+                        "High-recovery SWRO with robust ultrafiltration pre-treatment and zero liquid discharge (ZLD) optimization features",
+                    processLabel: "SWRO+UF",
+                    stage: "building",
+                    renew: false,
+                    brine: true,
+                    complaints: 0,
+                    srcSec: 3.5,
+                    srcElecRate: 7.5,
+                    outInr: 32,
+                    outSrc: "Est. — heavy industrial captive cost baseline profile",
+                    commissionYear: null,
+                },
+                {
+                    name: "NTPC Simhadri Green Hydrogen Desal Facility",
+                    capacity: "0.5 MLD",
+                    location:
+                        "Simhadri Super Thermal Power Station, Visakhapatnam (Andhra Pradesh)",
+                    developer: "NTPC Limited / Bloom Energy Consortium",
+                    capex: "₹45 Crore INR (est.)",
+                    om: "Captive research and development framework tied directly to a 1-TPD green hydrogen production facility",
+                    process:
+                        "Ultrapure SWRO paired with multi-stage electrodeionization (EDI) for high-grade electrolyzer feed requirements",
+                    processLabel: "SWRO+EDI",
+                    stage: "operational",
+                    renew: true,
+                    brine: true,
+                    complaints: 0,
+                    srcSec: 4.8,
+                    srcElecRate: 0.0,
+                    outInr: 90,
+                    outSrc: "Est. high-purity premium production cost (captive utility power matching)",
+                    commissionYear: 2024,
+                },
+                {
+                    name: "Amini Island LTTD Facility",
+                    capacity: "0.1 MLD",
+                    location: "Amini Island (Lakshadweep Cluster)",
+                    developer:
+                        "National Institute of Ocean Technology (NIOT) / Ministry of Earth Sciences",
+                    capex: "₹32 Crore INR",
+                    om: "Central government subsidized island utility model managed under public water supply division",
+                    process:
+                        "Low-Temperature Thermal Desalination (LTTD) utilizing deep ocean vacuum flash techniques",
+                    processLabel: "LTTD",
+                    stage: "operational",
+                    renew: true,
+                    brine: false,
+                    complaints: 0,
+                    srcSec: 6.0,
+                    srcElecRate: 0.0,
+                    outInr: 65,
+                    outSrc: "Est. baseline performance standard for Lakshadweep municipal fleet",
+                    commissionYear: 2023,
+                },
+                {
+                    name: "Kadmat Island LTTD Facility",
+                    capacity: "0.1 MLD",
+                    location: "Kadmat Island Lagoon (Lakshadweep Cluster)",
+                    developer:
+                        "National Institute of Ocean Technology (NIOT) / Ministry of Earth Sciences",
+                    capex: "₹32 Crore INR",
+                    om: "Central government subsidized island utility model managed under public water supply division",
+                    process:
+                        "Low-Temperature Thermal Desalination (LTTD) utilizing deep ocean vacuum flash techniques",
+                    processLabel: "LTTD",
+                    stage: "operational",
+                    renew: true,
+                    brine: false,
+                    complaints: 0,
+                    srcSec: 6.0,
+                    srcElecRate: 0.0,
+                    outInr: 65,
+                    outSrc: "Est. baseline performance standard for Lakshadweep municipal fleet",
+                    commissionYear: 2023,
+                },
+                {
+                    name: "Chetlat Island LTTD Facility",
+                    capacity: "0.1 MLD",
+                    location: "Chetlat Island Coastline (Lakshadweep Cluster)",
+                    developer:
+                        "National Institute of Ocean Technology (NIOT) / Ministry of Earth Sciences",
+                    capex: "₹32 Crore INR",
+                    om: "Central government subsidized island utility model managed under public water supply division",
+                    process:
+                        "Low-Temperature Thermal Desalination (LTTD) utilizing deep ocean vacuum flash techniques",
+                    processLabel: "LTTD",
+                    stage: "operational",
+                    renew: true,
+                    brine: false,
+                    complaints: 0,
+                    srcSec: 6.0,
+                    srcElecRate: 0.0,
+                    outInr: 65,
+                    outSrc: "Est. baseline performance standard for Lakshadweep municipal fleet",
+                    commissionYear: 2023,
+                },
+                {
+                    name: "Kalpeni Island LTTD Facility",
+                    capacity: "0.1 MLD",
+                    location: "Kalpeni Island (Lakshadweep Cluster)",
+                    developer:
+                        "National Institute of Ocean Technology (NIOT) / Ministry of Earth Sciences",
+                    capex: "₹32 Crore INR",
+                    om: "Central government subsidized island utility model managed under public water supply division",
+                    process:
+                        "Low-Temperature Thermal Desalination (LTTD) utilizing deep ocean vacuum flash techniques",
+                    processLabel: "LTTD",
+                    stage: "operational",
+                    renew: true,
+                    brine: false,
+                    complaints: 0,
+                    srcSec: 6.0,
+                    srcElecRate: 0.0,
+                    outInr: 65,
+                    outSrc: "Est. baseline performance standard for Lakshadweep municipal fleet",
+                    commissionYear: 2024,
+                },
+                {
+                    name: "Kiltan Island LTTD Facility",
+                    capacity: "0.1 MLD",
+                    location: "Kiltan Island Lagoon (Lakshadweep Cluster)",
+                    developer:
+                        "National Institute of Ocean Technology (NIOT) / Ministry of Earth Sciences",
+                    capex: "₹32 Crore INR",
+                    om: "Central government subsidized island utility model managed under public water supply division",
+                    process:
+                        "Low-Temperature Thermal Desalination (LTTD) utilizing deep ocean vacuum flash techniques",
+                    processLabel: "LTTD",
+                    stage: "operational",
+                    renew: true,
+                    brine: false,
+                    complaints: 0,
+                    srcSec: 6.0,
+                    srcElecRate: 0.0,
+                    outInr: 65,
+                    outSrc: "Est. baseline performance standard for Lakshadweep municipal fleet",
+                    commissionYear: 2024,
+                },
+                {
+                    name: "Bitra Island LTTD Mini-Facility",
+                    capacity: "0.05 MLD",
+                    location: "Bitra Tiny Atoll (Lakshadweep Cluster)",
+                    developer:
+                        "National Institute of Ocean Technology (NIOT) / Ministry of Earth Sciences",
+                    capex: "₹18 Crore INR",
+                    om: "Scaled down municipal outpost model to fit lower geographic area limits",
+                    process:
+                        "Micro-scale Low-Temperature Thermal Desalination (LTTD) with compact deep-sea cooling pipe configurations",
+                    processLabel: "LTTD",
+                    stage: "operational",
+                    renew: true,
+                    brine: false,
+                    complaints: 0,
+                    srcSec: 6.5,
+                    srcElecRate: 0.0,
+                    outInr: 75,
+                    outSrc: "Est. production adjustment matching small footprint overheads",
+                    commissionYear: 2024,
+                },
+                {
+                    name: "Chennai Perur Desalination Plant (JICA-funded)",
+                    capacity: "400 MLD",
+                    location:
+                        "Perur village, ECR, Chengalpattu / Kancheepuram District, near Chennai (Tamil Nadu)",
+                    developer:
+                        "CMWSSB with JICA funding; EPC by VA TECH WABAG–Metito JV",
+                    capex: "₹4,276 Crore INR",
+                    om: "JICA-backed DBOOT/DBO framework with long-term O&M bundled into the EPC contract",
+                    process:
+                        "Large SWRO plant with open-sea intake, dissolved air flotation (DAF), gravity media filtration and energy-recovery devices, designed as Chennai’s fourth mega-desalination facility",
+                    processLabel: "SWRO",
+                    stage: "building",
+                    renew: null,
+                    brine: null,
+                    complaints: 2,
+                    srcSec: 3.0,
+                    srcElecRate: 7.5,
+                    outInr: 45,
+                    outSrc: "Est. — large-scale SWRO, JICA-funded, under construction",
+                    commissionYear: null,
+                },
+                {
+                    name: "Vizhinjam Desalination Project",
+                    capacity: "~100 MLD",
+                    location:
+                        "Vizhinjam / Thiruvananthapuram Urban Area (Kerala)",
+                    developer:
+                        "Yet to be finalized; Kerala state urban water supply / port-linked proposal",
+                    capex: null,
+                    om: "Concept / proposal stage for Thiruvananthapuram coastal corridor; O&M structure not yet bid out",
+                    process:
+                        "Planned seawater reverse osmosis (SWRO) plant linked to Vizhinjam International Seaport–Thiruvananthapuram water grid, aimed at augmenting urban potable supply",
+                    processLabel: "SWRO",
+                    stage: "planning",
+                    renew: null,
+                    brine: null,
+                    complaints: null,
+                    srcSec: null,
+                    srcElecRate: null,
+                    outInr: null,
+                    outSrc: "No tariff or SEC data publicly disclosed; still at proposal / planning stage",
+                    commissionYear: null,
+                },
+                {
+                    name: "JNPA / Nhava Sheva Desalination Project",
+                    capacity: "~200 MLD",
+                    location: "Nhava Sheva, Navi Mumbai (Maharashtra)",
+                    developer:
+                        "Jawaharlal Nehru Port Authority (JNPA) – proposed captive / municipal supply plant",
+                    capex: null,
+                    om: "Early-stage port-led industrial / urban supply proposal; O&M concession structure to be determined",
+                    process:
+                        "Proposed SWRO desalination plant intended to serve JNPA port operations, SEZ industries and parts of the Navi Mumbai urban water grid",
+                    processLabel: "SWRO",
+                    stage: "planning",
+                    renew: null,
+                    brine: null,
+                    complaints: null,
+                    srcSec: null,
+                    srcElecRate: null,
+                    outInr: null,
+                    outSrc: "No bulk water tariff announced; project remains at feasibility / planning level",
+                    commissionYear: null,
+                },
+                {
+                    name: "Paradip Industrial Desalination Projects",
+                    capacity: "Various (10+ MLD aggregate)",
+                    location:
+                        "Paradip Port and Refinery Belt, Jagatsinghpur District (Odisha)",
+                    developer:
+                        "Paradip Port Trust (PPT) / IOCL Paradip Refinery / NIOT and other industrial operators",
+                    capex: null,
+                    om: "Mixture of captive refinery/industrial supplies and an NIOT-led SWRO plant for Paradip Port Trust township",
+                    process:
+                        "Cluster of SWRO and related desalination systems supplying process and potable water to Paradip Port township, IOCL’s Paradip refinery and nearby industrial consumers",
+                    processLabel: "SWRO",
+                    stage: "operational",
+                    renew: null,
+                    brine: true,
+                    complaints: 0,
+                    srcSec: null,
+                    srcElecRate: null,
+                    outInr: null,
+                    outSrc: "Multiple captive and municipal schemes with separate tariffs; no single consolidated bulk-water price",
+                    commissionYear: null,
+                },
+                {
+                    name: "Ennore / North Chennai Desal Expansion",
+                    capacity: "~400 MLD (cumulative proposals)",
+                    location:
+                        "Ennore–North Chennai Coastline, Chennai (Tamil Nadu)",
+                    developer:
+                        "CMWSSB / TANGEDCO / NIOT (various proposed municipal and power-plant-linked schemes)",
+                    capex: null,
+                    om: "Set of proposed municipal SWRO expansions and power-plant-linked pilots; no unified long-term O&M contract awarded yet",
+                    process:
+                        "Combination of proposed SWRO expansion projects and thermal/LTTD pilots linked to North Chennai and Ennore power stations, separate from Minjur and Nemmeli schemes",
+                    processLabel: "SWRO+LTTD",
+                    stage: "planning",
+                    renew: null,
+                    brine: null,
+                    complaints: null,
+                    srcSec: null,
+                    srcElecRate: null,
+                    outInr: null,
+                    outSrc: "Cumulative capacity refers to multiple proposal-stage projects; tariffs to be discovered via future tenders",
+                    commissionYear: null,
+                },
+                {
+                    name: "Reliance Jamnagar Desalination Expansion Units",
+                    capacity: "Additional modules beyond 400 MLD",
+                    location:
+                        "Jamnagar Refinery & Petrochemical Complex, Moti Khavdi (Gujarat)",
+                    developer:
+                        "Reliance Industries Limited (RIL) with EPC contractors such as VA Tech Wabag",
+                    capex: "₹430 Crore+ INR (recent 53 MLD EPC order; excludes original 400 MLD complex)",
+                    om: "Captive industrial desalination trains with long-term O&M to guarantee ultra-high reliability for refinery and petrochemical process water",
+                    process:
+                        "Additional SWRO and thermal desalination modules integrated with the existing ~400 MLD captive desal complex at Jamnagar, supplying high-reliability process water",
+                    processLabel: "MSF+SWRO",
+                    stage: "operational",
+                    renew: false,
+                    brine: true,
+                    complaints: 0,
+                    srcSec: null,
+                    srcElecRate: null,
+                    outInr: null,
+                    outSrc: "Captive industrial scheme; water price internal to refinery operations and not published as bulk tariff",
+                    commissionYear: null,
+                },
+                {
+                    name: "Tata Mundra UMPP SWRO Plant",
+                    capacity: "~25 MLD",
+                    location:
+                        "Tunda–Mundra Coastal Belt, Kutch District (Gujarat)",
+                    developer:
+                        "Coastal Gujarat Power Limited (CGPL) / Aquatech International (SWRO EPC)",
+                    capex: null,
+                    om: "Captive desalination facility for Mundra Ultra Mega Power Project with O&M integrated into station utilities and process-water systems",
+                    process:
+                        "Seawater Reverse Osmosis (SWRO) plant of roughly 25 MLD capacity providing demineralised and process water to India’s first 4,000 MW Ultra Mega Power Project",
+                    processLabel: "SWRO",
+                    stage: "operational",
+                    renew: false,
+                    brine: true,
+                    complaints: 0,
+                    srcSec: null,
+                    srcElecRate: null,
+                    outInr: null,
+                    outSrc: "Captive UMPP process-water supply; no standalone public tariff disclosed for the SWRO output",
+                    commissionYear: null,
+                },
+                {
+                    name: "Minicoy Island Desalination Facility",
+                    capacity: "0.1 MLD",
+                    location: "Minicoy Island, Lakshadweep",
+                    developer:
+                        "National Institute of Ocean Technology (NIOT) / Ministry of Earth Sciences",
+                    capex: null,
+                    om: "NIOT-developed LTTD desalination plant supplying potable water to the island community under a publicly funded utility model",
+                    process:
+                        "Low-Temperature Thermal Desalination (LTTD) using warm surface seawater flash-evaporated under vacuum and condensed with cold deep-sea water, avoiding chemicals and concentrated brine",
+                    processLabel: "LTTD",
+                    stage: "operational",
+                    renew: true,
+                    brine: false,
+                    complaints: 0,
+                    srcSec: null,
+                    srcElecRate: null,
+                    outInr: null,
+                    outSrc: "Production cost effectively fully subsidized; residents are not billed a commercial per-m³ tariff",
+                    commissionYear: null,
+                },
+                {
+                    name: "Andaman & Nicobar Island Desal Units",
+                    capacity: "Small-scale (multiple units)",
+                    location:
+                        "Port Blair and selected remote islands (Andaman & Nicobar Islands)",
+                    developer:
+                        "National Institute of Ocean Technology (NIOT) / Andaman Public Works Department (APWD)",
+                    capex: null,
+                    om: "Publicly funded RO and LTTD units managed as part of the islands’ water-supply utilities to support Port Blair and remote habitations",
+                    process:
+                        "Mix of small seawater RO and pilot LTTD systems deployed to enhance potable-water security in Andaman & Nicobar’s island clusters",
+                    processLabel: "RO/LTTD",
+                    stage: "operational",
+                    renew: null,
+                    brine: null,
+                    complaints: 0,
+                    srcSec: null,
+                    srcElecRate: null,
+                    outInr: null,
+                    outSrc: "Island water schemes are fully subsidized; no unified commercial bulk-water tariff is published",
+                    commissionYear: null,
+                },
+                {
+                    name: "Solar Desalination Pilot Plants (IIT-M / NIOT)",
+                    capacity: "Pilot scale (≈0.01 MLD per unit)",
+                    location:
+                        "IIT Madras Campus & Vivekananda Kendra / Kanyakumari Test Site (Tamil Nadu)",
+                    developer:
+                        "IIT Madras (Refrigeration and Air Conditioning Laboratory) with NIOT / Ministry of Earth Sciences support",
+                    capex: null,
+                    om: "Research pilot plants operated by IIT Madras; O&M focused on performance testing, reliability studies and optimization rather than commercial service levels",
+                    process:
+                        "Solar-driven multi-effect desalination (solar MED) and related solar desalination prototypes using flat-plate solar collectors, falling-film evaporators and vacuum operation to produce low-TDS distillate",
+                    processLabel: "Solar+MED",
+                    stage: "operational",
+                    renew: true,
+                    brine: true,
+                    complaints: 0,
+                    srcSec: null,
+                    srcElecRate: null,
+                    outInr: null,
+                    outSrc: "Research prototypes; no bulk sale price, SEC or tariff published for pilot-scale output",
+                    commissionYear: null,
+                },
+                {
+                    name: "Chennai Perur Desalination Plant (JICA-funded)",
+                    capacity: "400 MLD",
+                    location:
+                        "Perur village, ECR, Chengalpattu / Kancheepuram District, near Chennai (Tamil Nadu)",
+                    developer:
+                        "CMWSSB with JICA funding; EPC by VA TECH WABAG–Metito JV",
+                    capex: "₹4,276 Crore INR",
+                    om: "JICA-backed DBOOT/DBO framework with long-term O&M bundled into the EPC contract",
+                    process:
+                        "Large SWRO plant with open-sea intake, dissolved air flotation (DAF), gravity media filtration and energy-recovery devices, designed as Chennai’s fourth mega-desalination facility",
+                    processLabel: "SWRO",
+                    stage: "building",
+                    renew: null,
+                    brine: true,
+                    complaints: 2,
+                    srcSec: 3.0,
+                    srcElecRate: 7.5,
+                    outInr: 45,
+                    outSrc: "Est. — large-scale SWRO, JICA-funded, under construction",
+                    commissionYear: null,
+                },
+                {
+                    name: "Vizhinjam Desalination Project",
+                    capacity: "~100 MLD",
+                    location:
+                        "Vizhinjam / Thiruvananthapuram Urban Area (Kerala)",
+                    developer:
+                        "Yet to be finalized; Kerala state urban water supply / port-linked proposal",
+                    capex: null,
+                    om: "Concept / proposal stage for Thiruvananthapuram coastal corridor; O&M structure not yet bid out",
+                    process:
+                        "Planned seawater reverse osmosis (SWRO) plant linked to Vizhinjam International Seaport–Thiruvananthapuram water grid, aimed at augmenting urban potable supply",
+                    processLabel: "SWRO",
+                    stage: "planning",
+                    renew: null,
+                    brine: null,
+                    complaints: null,
+                    srcSec: null,
+                    srcElecRate: null,
+                    outInr: null,
+                    outSrc: "No tariff or SEC data publicly disclosed; still at proposal / planning stage",
+                    commissionYear: null,
+                },
+                {
+                    name: "JNPA / Nhava Sheva Desalination Project",
+                    capacity:
+                        "~200 MLD (concept; 45 MLD block estimate in JNPA water plan)",
+                    location: "Nhava Sheva, Navi Mumbai (Maharashtra)",
+                    developer:
+                        "Jawaharlal Nehru Port Authority (JNPA) – proposed captive / municipal supply plant",
+                    capex: "₹550.29 Crore INR",
+                    om: "Early-stage port-led industrial / urban supply proposal; block cost covers water-supply system including pipeline to desalination plant",
+                    process:
+                        "Proposed SWRO desalination plant intended to serve JNPA port operations, SEZ industries and parts of the Navi Mumbai urban water grid",
+                    processLabel: "SWRO",
+                    stage: "planning",
+                    renew: null,
+                    brine: null,
+                    complaints: null,
+                    srcSec: null,
+                    srcElecRate: null,
+                    outInr: null,
+                    outSrc: "JNPA land-use / infrastructure plan includes a 45 MLD desalination-linked water-supply system costed at about ₹550.29 crore for planning purposes",
+                    commissionYear: null,
+                },
+                {
+                    name: "Paradip Industrial Desalination Projects",
+                    capacity: "Various (10+ MLD aggregate)",
+                    location:
+                        "Paradip Port and Refinery Belt, Jagatsinghpur District (Odisha)",
+                    developer:
+                        "Paradip Port Trust (PPT) / IOCL Paradip Refinery / NIOT and other industrial operators",
+                    capex: "₹116 Crore INR",
+                    om: "Mixture of captive refinery/industrial supplies and an NIOT-led SWRO plant for Paradip Port Trust township",
+                    process:
+                        "Cluster of SWRO and related desalination systems supplying process and potable water to Paradip Port township, IOCL’s Paradip refinery and nearby industrial consumers",
+                    processLabel: "SWRO",
+                    stage: "operational",
+                    renew: null,
+                    brine: true,
+                    complaints: 0,
+                    srcSec: null,
+                    srcElecRate: null,
+                    outInr: null,
+                    outSrc: "NIOT–PPT MoU covers a 10 MLD SWRO plant for Paradip township at an estimated cost of about ₹116 crore; other captive industrial trains are separate",
+                    commissionYear: null,
+                },
+                {
+                    name: "Ennore / North Chennai Desal Expansion",
+                    capacity: "~400 MLD (cumulative proposals)",
+                    location:
+                        "Ennore–North Chennai Coastline, Chennai (Tamil Nadu)",
+                    developer:
+                        "CMWSSB / TANGEDCO / NIOT (various proposed municipal and power-plant-linked schemes)",
+                    capex: null,
+                    om: "Set of proposed municipal SWRO expansions and power-plant-linked pilots; no unified long-term O&M contract awarded yet",
+                    process:
+                        "Combination of proposed SWRO expansion projects and thermal/LTTD pilots linked to North Chennai and Ennore power stations, separate from Minjur and Nemmeli schemes",
+                    processLabel: "SWRO+LTTD",
+                    stage: "planning",
+                    renew: null,
+                    brine: null,
+                    complaints: null,
+                    srcSec: null,
+                    srcElecRate: null,
+                    outInr: null,
+                    outSrc: "Cumulative capacity refers to multiple proposal-stage projects; tariffs to be discovered via future tenders",
+                    commissionYear: null,
+                },
+                {
+                    name: "Reliance Jamnagar Desalination Expansion Units",
+                    capacity:
+                        "53 MLD (recent expansion; total complex > 400 MLD)",
+                    location:
+                        "Jamnagar Refinery & Petrochemical Complex, Moti Khavdi (Gujarat)",
+                    developer:
+                        "Reliance Industries Limited (RIL) with EPC contractors such as VA Tech Wabag",
+                    capex: "₹430 Crore+ INR",
+                    om: "Captive industrial desalination trains with long-term O&M to guarantee ultra-high reliability for refinery and petrochemical process water",
+                    process:
+                        "Additional SWRO and thermal desalination modules integrated with the existing ~400 MLD captive desal complex at Jamnagar, supplying high-reliability process water",
+                    processLabel: "MSF+SWRO",
+                    stage: "building",
+                    renew: false,
+                    brine: true,
+                    complaints: 0,
+                    srcSec: null,
+                    srcElecRate: null,
+                    outInr: null,
+                    outSrc: "VA Tech Wabag received a ~₹4.3 billion EPC order for a 53 MLD SWRO plant at RIL Jamnagar; water remains captive with no published bulk tariff",
+                    commissionYear: null,
+                },
+                {
+                    name: "Tata Mundra UMPP SWRO Plant",
+                    capacity: "~25 MLD",
+                    location:
+                        "Tunda–Mundra Coastal Belt, Kutch District (Gujarat)",
+                    developer:
+                        "Coastal Gujarat Power Limited (CGPL) / Aquatech International (SWRO EPC)",
+                    capex: null,
+                    om: "Captive desalination facility for Mundra Ultra Mega Power Project with O&M integrated into station utilities and process-water systems",
+                    process:
+                        "Seawater Reverse Osmosis (SWRO) plant of roughly 25 MLD capacity providing demineralised and process water to India’s first 4,000 MW Ultra Mega Power Project",
+                    processLabel: "SWRO",
+                    stage: "operational",
+                    renew: false,
+                    brine: true,
+                    complaints: 0,
+                    srcSec: null,
+                    srcElecRate: null,
+                    outInr: null,
+                    outSrc: "Captive UMPP process-water supply; no standalone public tariff disclosed for the SWRO output",
+                    commissionYear: null,
+                },
+                {
+                    name: "Minicoy Island Desalination Facility",
+                    capacity: "0.1 MLD",
+                    location: "Minicoy Island, Lakshadweep",
+                    developer:
+                        "National Institute of Ocean Technology (NIOT) / Ministry of Earth Sciences",
+                    capex: null,
+                    om: "NIOT-developed LTTD desalination plant supplying potable water to the island community under a publicly funded utility model",
+                    process:
+                        "Low-Temperature Thermal Desalination (LTTD) using warm surface seawater flash-evaporated under vacuum and condensed with cold deep-sea water, avoiding chemicals and concentrated brine",
+                    processLabel: "LTTD",
+                    stage: "operational",
+                    renew: true,
+                    brine: false,
+                    complaints: 0,
+                    srcSec: null,
+                    srcElecRate: null,
+                    outInr: null,
+                    outSrc: "One of three 0.1 MLD LTTD plants (Kavaratti, Minicoy, Agatti) installed by NIOT in Lakshadweep; production costs effectively fully subsidized",
+                    commissionYear: null,
+                },
+                {
+                    name: "Andaman & Nicobar Island Desal Units",
+                    capacity: "Small-scale (multiple units)",
+                    location:
+                        "Port Blair and selected remote islands (Andaman & Nicobar Islands)",
+                    developer:
+                        "National Institute of Ocean Technology (NIOT) / Andaman Public Works Department (APWD)",
+                    capex: null,
+                    om: "Publicly funded RO and LTTD units managed as part of the islands’ water-supply utilities to support Port Blair and remote habitations",
+                    process:
+                        "Mix of small seawater RO and pilot LTTD systems deployed to enhance potable-water security in Andaman & Nicobar’s island clusters",
+                    processLabel: "RO/LTTD",
+                    stage: "operational",
+                    renew: null,
+                    brine: null,
+                    complaints: 0,
+                    srcSec: null,
+                    srcElecRate: null,
+                    outInr: null,
+                    outSrc: "Island water schemes are fully subsidized; no unified commercial bulk-water tariff is published",
+                    commissionYear: null,
+                },
+                {
+                    name: "Solar Desalination Pilot Plants (IIT-M / NIOT)",
+                    capacity: "Pilot scale (≈0.01 MLD per unit)",
+                    location:
+                        "IIT Madras Campus & Vivekananda Kendra / Kanyakumari Test Site (Tamil Nadu)",
+                    developer:
+                        "IIT Madras (Refrigeration and Air Conditioning Laboratory) with NIOT / Ministry of Earth Sciences support",
+                    capex: "₹1.34 Crore INR",
+                    om: "Research pilot plants operated by IIT Madras; O&M focused on performance testing, reliability studies and optimization rather than commercial service levels",
+                    process:
+                        "Solar-driven multi-effect desalination (solar MED) and related solar desalination prototypes using flat-plate solar collectors, falling-film evaporators and vacuum operation to produce low-TDS distillate",
+                    processLabel: "Solar+MED",
+                    stage: "operational",
+                    renew: true,
+                    brine: true,
+                    complaints: 0,
+                    srcSec: null,
+                    srcElecRate: null,
+                    outInr: null,
+                    outSrc: "Solar MED demonstrator at Kanyakumari and related IIT-M systems produce ~7,000–10,000 L/day of distillate; project budget about ₹1.34 crore under MoES funding",
+                    commissionYear: null,
+                },
+            ];
+
+            // Re-renders graph curves and triggers visual changes
+            function evaluateCalculations() {
+                // Collect UI parameters
+                appState.salinity = parseFloat(
+                    document.getElementById("salinity").value,
+                );
+                appState.temp = parseFloat(
+                    document.getElementById("temp").value,
+                );
+                appState.recovery =
+                    parseFloat(document.getElementById("recovery").value) / 100;
+                appState.markup = parseFloat(
+                    document.getElementById("markup").value,
+                );
+
+                // Update Slider Labels
+                document.getElementById("salinity-label").innerText =
+                    `${appState.salinity.toFixed(1)} g/kg`;
+                document.getElementById("temp-label").innerText =
+                    `${appState.temp.toFixed(1)} °C`;
+                document.getElementById("recovery-label").innerText =
+                    `${(appState.recovery * 100).toFixed(0)}%`;
+                document.getElementById("markup-label").innerText =
+                    `${appState.markup.toFixed(1)}x`;
+
+                // Perform specific calculation outputs
+                const activeOsmoticP =
+                    ((appState.salinity / MW_NaCl) *
+                        2 *
+                        R *
+                        (appState.temp + 273.15) *
+                        1000) /
+                    1e6; // MPa
+                const idealGibbsAtZero = calculateSEC(
+                    appState.salinity,
+                    appState.temp,
+                    0.001,
+                );
+
+                document.getElementById("osmotic-val").innerText =
+                    `${activeOsmoticP.toFixed(2)} MPa`;
+                document.getElementById("gibbs-work").innerText =
+                    `${idealGibbsAtZero.toFixed(2)} kWh/m³`;
+
+                const secMin = calculateSEC(
+                    appState.salinity,
+                    appState.temp,
+                    appState.recovery,
+                );
+                const secSOTA = secMin * appState.markup;
+
+                document.getElementById("sec-min-output").innerHTML =
+                    `${secMin.toFixed(2)} <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">kWh/m³</span>`;
+                document.getElementById("sec-sota-output").innerHTML =
+                    `${secSOTA.toFixed(2)} <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">kWh/m³</span>`;
+
+                updateChartData(secMin, secSOTA);
+            }
+
+            // Reset UI state to chemical standard conditions
+            function resetToStandard() {
+                document.getElementById("salinity").value = 35;
+                document.getElementById("temp").value = 25;
+                document.getElementById("recovery").value = 50;
+                document.getElementById("markup").value = 2.3;
+
+                appState.activeSimulatedPlant = null;
+                document
+                    .getElementById("active-plant-badge")
+                    .classList.add("hidden");
+
+                evaluateCalculations();
+            }
+
+            // Loads a selected plant profile directly into our thermodynamic calculations
+            function loadPlantIntoSimulator(plant) {
+                appState.activeSimulatedPlant = plant;
+
+                // Auto populate approximate values matching real configuration or standard
+                const capacityNum = extractRawNumber(plant.CapacityMLD) || 100;
+
+                // Simulate typical seawater or estuary conditions based on coordinates/location names
+                let simulatedSalinity = 35.0; // standard
+                if (
+                    plant.ProjectName.toLowerCase().includes("gujarat") ||
+                    plant.Morepreciselocation.toLowerCase().includes(
+                        "gujarat",
+                    ) ||
+                    plant.Morepreciselocation.toLowerCase().includes("kutch")
+                ) {
+                    simulatedSalinity = 42.0; // Higher salinity average in Arabian Sea/Kutch gulf
+                }
+
+                // Auto-populate values in the controls
+                document.getElementById("salinity").value = simulatedSalinity;
+                document.getElementById("temp").value = 27.5; // typical warm sub-tropical coastal average
+                document.getElementById("recovery").value = 50; // Standard nominal recovery ratio
+
+                // Highlight inside the controls column
+                document.getElementById("active-plant-name").innerText =
+                    plant.ProjectName;
+                document
+                    .getElementById("active-plant-badge")
+                    .classList.remove("hidden");
+
+                // Trigger calculation update
+                evaluateCalculations();
+
+                // Scroll smoothly to top layout to show changes
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+
+            // Constructs the reactive canvas line chart
+            function initializeChart() {
+                const ctx = document
+                    .getElementById("liveSECChart")
+                    .getContext("2d");
+
+                secChartInstance = new Chart(ctx, {
+                    type: "line",
+                    data: {
+                        labels: [],
+                        datasets: [
+                            {
+                                label: "Thermodynamic Limit (Ideal Minimum)",
+                                borderColor: "#3b82f6",
+                                backgroundColor: "rgba(59, 130, 246, 0.05)",
+                                borderWidth: 3,
+                                fill: true,
+                                data: [],
+                                pointRadius: 0,
+                            },
+                            {
+                                label: "State-of-the-Art Operations (Estimated)",
+                                borderColor: "#f43f5e",
+                                borderDash: [5, 5],
+                                borderWidth: 2,
+                                data: [],
+                                pointRadius: 0,
+                            },
+                            {
+                                label: "Current Operating Point",
+                                backgroundColor: "#10b981",
+                                borderColor: "#059669",
+                                borderWidth: 2,
+                                data: [],
+                                pointRadius: 6,
+                                pointHoverRadius: 8,
+                                showLine: false,
+                            },
+                        ],
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                grid: { color: "rgba(255, 255, 255, 0.05)" },
+                                ticks: { color: "#94a3b8", font: { size: 10 } },
+                                title: {
+                                    display: true,
+                                    text: "Recovery Ratio (Y)",
+                                    color: "#94a3b8",
+                                    font: { weight: "bold", size: 11 },
+                                },
+                            },
+                            y: {
+                                grid: { color: "rgba(255, 255, 255, 0.05)" },
+                                ticks: { color: "#94a3b8", font: { size: 10 } },
+                                title: {
+                                    display: true,
+                                    text: "Energy Required (kWh/m³)",
+                                    color: "#94a3b8",
+                                    font: { weight: "bold", size: 11 },
+                                },
+                                min: 0,
+                                max: 6,
+                            },
+                        },
+                        plugins: {
+                            legend: {
+                                position: "top",
+                                labels: {
+                                    color: "#f1f5f9",
+                                    font: { size: 10 },
+                                    boxWidth: 12,
+                                },
+                            },
+                        },
+                    },
+                });
+            }
+
+            // Redraws the curves of the chart based on calculated parameters
+            function updateChartData(currentIdealVal, currentRealVal) {
+                if (!secChartInstance) return;
+
+                const recoveryDomain = [];
+                const idealValues = [];
+                const sotaValues = [];
+                const operatingPointer = [];
+
+                // Loop from 5% recovery to 90%
+                for (let Y_pct = 5; Y_pct <= 90; Y_pct += 2.5) {
+                    recoveryDomain.push(`${Y_pct.toFixed(1)}%`);
+                    const calculatedIdeal = calculateSEC(
+                        appState.salinity,
+                        appState.temp,
+                        Y_pct / 100,
+                    );
+                    idealValues.push(calculatedIdeal);
+                    sotaValues.push(calculatedIdeal * appState.markup);
+
+                    // Find current configured point
+                    const activeY_pct = appState.recovery * 100;
+                    if (Math.abs(Y_pct - activeY_pct) < 1.25) {
+                        operatingPointer.push(currentRealVal);
+                    } else {
+                        operatingPointer.push(null);
+                    }
+                }
+
+                // Assign data Arrays
+                secChartInstance.data.labels = recoveryDomain;
+                secChartInstance.data.datasets[0].data = idealValues;
+                secChartInstance.data.datasets[1].data = sotaValues;
+                secChartInstance.data.datasets[2].data = operatingPointer;
+
+                // Adjust max scale dynamically to maintain focus
+                const absoluteMax = Math.max(...sotaValues);
+                secChartInstance.options.scales.y.max = Math.ceil(
+                    absoluteMax + 0.5,
+                );
+
+                // Speed optimization (updates curves smoothly without layout flickering)
+                secChartInstance.update("none");
+            }
+
+            // Primary core orchestrator that fetches CSV files, merges columns, and handles fallback logic
+            function fetchAndCompilePlantData() {
+                appState.loadedPlants = plantDatabase.map((p) => ({
+                    ProjectName: p.name,
+                    CapacityMLD: p.capacity,
+                    Morepreciselocation: p.location || "N/A",
+                    Develo: p.developer || "N/A",
+                    Likelyprocessarchitecturekind: p.process || "N/A",
+                    CapexplantEPC: p.capex || "N/A",
+                    AdditionalprojectOMcommitmen: p.om || "N/A",
+                    stage: p.stage,
+                    processLabel: p.processLabel,
+                    process: p.process,
+                    renew: p.renew,
+                    brine: p.brine,
+                    complaints: p.complaints,
+                    srcSec: p.srcSec,
+                    srcElecRate: p.srcElecRate,
+                    outInr: p.outInr,
+                    outSrc: p.outSrc,
+                }));
+                renderDatatable(applySort(appState.loadedPlants));
+            }
+
+            // Renders rows of the Indian Desalination Registry
+            function renderDatatable(plants) {
+                const tableBody = document.getElementById("plant-table-body");
+                tableBody.innerHTML = "";
+
+                const totalMld = plants.reduce((sum, p) => {
+                    const n = extractRawNumber(p.CapacityMLD);
+                    return sum + (n !== null ? n : 0);
+                }, 0);
+                const totalCapex = plants.reduce((sum, p) => {
+                    const n = extractRawNumber(p.CapexplantEPC);
+                    return sum + (n !== null ? n : 0);
+                }, 0);
+                const capexStr = `₹${totalCapex.toLocaleString("en-IN")} Cr`;
+                const mldEl = document.getElementById("table-mld-summary");
+                if (mldEl) mldEl.textContent = `${plants.length} plants · ${totalMld.toLocaleString("en-IN")} MLD · ${capexStr} capex`;
+
+                if (plants.length === 0) {
+                    tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="text-center py-12 text-slate-500">
+                            No matching water purification assets found in registry.
+                        </td>
+                    </tr>
+                `;
+                    document.getElementById("datatable-summary").innerText =
+                        "Showing 0 matching plant profiles";
+                    return;
+                }
+
+                plants.forEach((plant, idx) => {
+                    const row = document.createElement("tr");
+                    row.className =
+                        "hover:bg-slate-900/60 border-b border-slate-900 transition-colors group cursor-default";
+
+                    // Extract clean numerical parameters for immediate presentation
+                    const parsedCapacity = extractRawNumber(plant.CapacityMLD);
+                    const parsedCapex = extractRawNumber(plant.CapexplantEPC);
+
+                    // Format clean displayed output or default values
+                    const capDisplay =
+                        parsedCapacity !== null
+                            ? `${parsedCapacity.toLocaleString()}`
+                            : "—";
+                    const capexDisplay =
+                        parsedCapex !== null
+                            ? `${parsedCapex.toLocaleString()}`
+                            : "—";
+
+                    const devClass = classifyDeveloper(plant.Develo);
+                    const stageClass = classifyStage(plant);
+                    const waterCosts = getWaterCosts(plant);
+                    const energy = getPlantEnergyProfile(plant);
+                    const techLabel = getProcessLabel(plant);
+                    const chipColors = {
+                        emerald:
+                            "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+                        blue: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+                        amber: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+                        slate: "bg-slate-500/10 text-slate-400 border-slate-500/20",
+                    };
+
+                    const oms =
+                        plant.AdditionalprojectOMcommitmen &&
+                        plant.AdditionalprojectOMcommitmen !== "N/A"
+                            ? plant.AdditionalprojectOMcommitmen
+                            : "";
+
+                    row.innerHTML = `
+                    <td class="py-2 px-3 font-bold text-white max-w-[200px] whitespace-normal break-words leading-snug hover-trigger" data-title="${plant.ProjectName}" data-full="${plant.Develo && plant.Develo !== "N/A" ? "<b>Developer:</b><br>" + plant.Develo + "<br><br><b>Classification:</b> " + devClass.label : ""}">${plant.ProjectName}${stageClass.label === "Planning" ? ' <span class="text-[8px] px-1 py-0.5 rounded-full font-bold border bg-amber-500/10 text-amber-400 border-amber-500/20">P</span>' : ""}<span class="text-[8px] px-1 py-0.5 rounded-full font-semibold border tracking-wider uppercase ${chipColors[devClass.color]} ml-1">${devClass.label}</span></td>
+                    <td class="py-2 px-4 text-center">
+                        <span class="inline-block hover-trigger" data-title="Risk Assessment" data-full="${riskLabel("Renewables", energy.renew)}<br>${riskLabel("Brine", energy.brine)}<br>${riskLabel("Complaints", energy.comp)}">${renderRiskSvg(energy.renew, energy.brine, energy.comp)}</span>
+                    </td>
+                    <td class="py-2 px-4 text-center font-mono text-blue-400 font-bold">${capDisplay}</td>
+                    <td class="py-2 px-4 text-center font-mono text-emerald-400 font-semibold">
+                        <span class="hover-trigger" data-title="Capital Expenditure" data-full="${plant.CapexplantEPC || "N/A"}${oms ? "<br><br><span class='text-[9px] text-slate-400 uppercase tracking-wider'>O&amp;M Commitment</span><br>" + oms : ""}">${capexDisplay}</span>
+                    </td>
+                    <td class="py-2 px-3 text-center ${waterCosts.outputInr !== null ? "hover-trigger" : ""}" data-title="Water Cost Breakdown" data-full="${waterCosts.outputInr !== null ? "<b>Electricity:</b> ₹" + waterCosts.sourceInr.toFixed(2) + "/m³ (~$" + waterCosts.sourceUsd.toFixed(2) + ")<br><b>Other (O&amp;M, chemicals, etc.):</b> ₹" + (waterCosts.outputInr - waterCosts.sourceInr).toFixed(2) + "/m³ (~$" + (waterCosts.outputUsd - waterCosts.sourceUsd).toFixed(2) + ")<br><b>Total Out Price:</b> ₹" + waterCosts.outputInr.toFixed(2) + "/m³ (~$" + waterCosts.outputUsd.toFixed(2) + ")<br><span class='text-[10px] text-slate-400'>" + waterCosts.outputSrc + "</span>" : "N/A"}">
+                        ${
+                            waterCosts.outputInr !== null
+                                ? `
+                        <div class="w-full max-w-[100px] mx-auto">
+                            <div class="flex items-center gap-1 mb-0.5">
+                                <div class="h-2 rounded-full bg-slate-700 flex-1 overflow-hidden">
+                                    <div class="h-full rounded-full bg-amber-500" style="width:${Math.min(100, (waterCosts.sourceInr / waterCosts.outputInr) * 100).toFixed(0)}%"></div>
+                                </div>
+                            </div>
+                            <div class="text-[11px] font-mono font-bold text-blue-400">₹${waterCosts.outputInr.toFixed(2)}</div>
+                        </div>`
+                                : "—"
+                        }
+                    </td>
+                    <td class="py-2 px-3 text-center hover-trigger" data-title="Technology" data-full="${plant.process || plant.Likelyprocessarchitecturekind || "—"}">
+                        <span class="bg-slate-800 px-2 py-1 rounded text-[10px] font-semibold font-mono text-slate-200">${techLabel}</span>
+                    </td>
+                `;
+
+                    // Attach Tooltip events specifically on cell nodes marked with hover triggers
+                    const triggerCells = row.querySelectorAll(".hover-trigger");
+                    triggerCells.forEach((cell) => {
+                        cell.addEventListener("mouseenter", (e) => {
+                            const fullText = cell.getAttribute("data-full");
+                            const titleText = cell.getAttribute("data-title");
+                            if (
+                                fullText &&
+                                fullText !== "—" &&
+                                fullText !== "N/A"
+                            ) {
+                                showCustomTooltip(e, titleText, fullText);
+                            }
+                        });
+                        cell.addEventListener("mousemove", (e) => {
+                            positionCustomTooltip(e);
+                        });
+                        cell.addEventListener("mouseleave", () => {
+                            hideCustomTooltip();
+                        });
+                    });
+
+                    tableBody.appendChild(row);
+                });
+
+                document.getElementById("datatable-summary").innerText =
+                    `Showing ${plants.length} of ${appState.loadedPlants.length} plant profiles`;
+            }
+
+            // Tooltip presentation handlers
+            function showCustomTooltip(event, title, content) {
+                tooltipNode.innerHTML = `
+                <div class="font-bold text-slate-100 border-b border-slate-800 pb-1 mb-1.5 flex items-center gap-1.5 uppercase text-[9px] tracking-wider">
+                    <i data-lucide="info" class="w-3.5 h-3.5 text-blue-400"></i> ${title}
+                </div>
+                <div class="leading-relaxed font-medium text-slate-300 break-words">${content}</div>
+            `;
+                // Re-trigger icon parsing in tooltip
+                lucide.createIcons();
+                tooltipNode.classList.remove("hidden");
+                positionCustomTooltip(event);
+            }
+
+            function positionCustomTooltip(event) {
+                const tooltipWidth = tooltipNode.offsetWidth;
+                const tooltipHeight = tooltipNode.offsetHeight;
+
+                // Position slightly offset from cursor
+                let top = event.pageY + 15;
+                let left = event.pageX + 15;
+
+                // Ensure tooltip doesn't clip past right side of browser viewport
+                if (left + tooltipWidth > window.innerWidth) {
+                    left = event.pageX - tooltipWidth - 15;
+                }
+                // Prevent clipping off bottom edge
+                if (top + tooltipHeight > window.scrollY + window.innerHeight) {
+                    top = event.pageY - tooltipHeight - 15;
+                }
+
+                tooltipNode.style.top = `${top}px`;
+                tooltipNode.style.left = `${left}px`;
+            }
+
+            function hideCustomTooltip() {
+                tooltipNode.classList.add("hidden");
+            }
+
+            // Setup Event Listeners
+            function initializeEventListeners() {
+                // Sliders
+                ["salinity", "temp", "recovery", "markup"].forEach((id) => {
+                    document
+                        .getElementById(id)
+                        .addEventListener("input", evaluateCalculations);
+                });
+
+                // Reset button
+                document
+                    .getElementById("reset-btn")
+                    .addEventListener("click", resetToStandard);
+
+                // Active plant banner dismissal controls
+                document
+                    .getElementById("clear-plant-btn")
+                    .addEventListener("click", () => {
+                        resetToStandard();
+                    });
+
+                // Datatable Search Filters
+                document
+                    .getElementById("db-search")
+                    .addEventListener("input", applyDatabaseFilters);
+                document
+                    .getElementById("capacity-filter")
+                    .addEventListener("change", applyDatabaseFilters);
+                document
+                    .getElementById("energy-filter")
+                    .addEventListener("change", applyDatabaseFilters);
+
+                // Sort header clicks (delegate on thead)
+                document
+                    .querySelector("thead")
+                    .addEventListener("click", (e) => {
+                        const th = e.target.closest(".sort-header");
+                        if (!th) return;
+                        const col = th.getAttribute("data-sort");
+                        if (appState.sortCol === col) {
+                            appState.sortDir =
+                                appState.sortDir === "asc" ? "desc" : "asc";
+                        } else {
+                            appState.sortCol = col;
+                            appState.sortDir = "asc";
+                        }
+                        updateSortArrows();
+                        applyDatabaseFilters();
+                    });
+            }
+
+            // Sort plants by column
+            function applySort(plants) {
+                if (!appState.sortCol) return plants;
+                const dir = appState.sortDir === "desc" ? -1 : 1;
+                const sorted = [...plants].sort((a, b) => {
+                    let va, vb;
+                    switch (appState.sortCol) {
+                        case "name":
+                            va = a.ProjectName || "";
+                            vb = b.ProjectName || "";
+                            return dir * va.localeCompare(vb);
+                        case "capacity":
+                            va = extractRawNumber(a.CapacityMLD) || 0;
+                            vb = extractRawNumber(b.CapacityMLD) || 0;
+                            return dir * (va - vb);
+                        case "capex":
+                            va = extractRawNumber(a.CapexplantEPC) || 0;
+                            vb = extractRawNumber(b.CapexplantEPC) || 0;
+                            return dir * (va - vb);
+                        case "outPrice":
+                            va = getWaterCosts(a).outputInr || 0;
+                            vb = getWaterCosts(b).outputInr || 0;
+                            return dir * (va - vb);
+                        case "process":
+                            va = getProcessLabel(a);
+                            vb = getProcessLabel(b);
+                            return dir * va.localeCompare(vb);
+                        default:
+                            return 0;
+                    }
+                });
+                return sorted;
+            }
+
+            function updateSortArrows() {
+                document.querySelectorAll(".sort-header").forEach((th) => {
+                    const arrow = th.querySelector(".sort-arrow");
+                    if (!arrow) return;
+                    const col = th.getAttribute("data-sort");
+                    if (col === appState.sortCol) {
+                        arrow.textContent =
+                            appState.sortDir === "asc" ? "▲" : "▼";
+                    } else {
+                        arrow.textContent = "";
+                    }
+                });
+            }
+
+            // Handles searching and multi-column capacity threshold options
+            function applyDatabaseFilters() {
+                const searchQuery = document
+                    .getElementById("db-search")
+                    .value.toLowerCase()
+                    .trim();
+                const capacityOption =
+                    document.getElementById("capacity-filter").value;
+                const energyOption =
+                    document.getElementById("energy-filter").value;
+
+                const filtered = appState.loadedPlants.filter((plant) => {
+                    // Query matching across all text-rich parameters
+                    const matchesQuery =
+                        plant.ProjectName.toLowerCase().includes(searchQuery) ||
+                        plant.Morepreciselocation.toLowerCase().includes(
+                            searchQuery,
+                        ) ||
+                        plant.Develo.toLowerCase().includes(searchQuery) ||
+                        plant.Likelyprocessarchitecturekind.toLowerCase().includes(
+                            searchQuery,
+                        );
+
+                    const parsedCap = extractRawNumber(plant.CapacityMLD);
+                    let matchesCapacity = true;
+                    if (capacityOption === "large") {
+                        matchesCapacity = parsedCap !== null && parsedCap >= 100;
+                    } else if (capacityOption === "small") {
+                        matchesCapacity = parsedCap !== null && parsedCap < 100;
+                    }
+
+                    const profile = getPlantEnergyProfile(plant);
+                    let matchesEnergy = true;
+                    if (energyOption === "renewable") {
+                        matchesEnergy = profile.renew === true;
+                    } else if (energyOption === "nonrenewable") {
+                        matchesEnergy = profile.renew === false;
+                    }
+
+                    return matchesQuery && matchesCapacity && matchesEnergy;
+                });
+
+                renderDatatable(applySort(filtered));
+            }
+
+            // Window load sequence
+            window.onload = function () {
+                // Load styling icons
+                lucide.createIcons();
+
+                // Prepare graphic panels
+                initializeChart();
+
+                // Evaluate initial baseline calculations on layout sliders
+                evaluateCalculations();
+
+                // Set up standard listeners
+                initializeEventListeners();
+
+                // Load plant data
+                fetchAndCompilePlantData();
+
+                // Render KaTeX formulas
+                try {
+                    if (typeof renderMathInElement !== "undefined") {
+                        renderMathInElement(
+                            document.querySelector(".challenge-section"),
+                            {
+                                delimiters: [
+                                    { left: "$$", right: "$$", display: true },
+                                    { left: "$", right: "$", display: false },
+                                ],
+                                throwOnError: false,
+                            },
+                        );
+                    }
+                } catch (e) {
+                    console.warn("KaTeX render failed:", e);
+                }
+            };
+
+            // Collapsible simulator section
+            (function () {
+                const btn = document.getElementById("simulator-toggle");
+                const body = document.getElementById("simulator-body");
+                const chevron = document.getElementById("simulator-chevron");
+                if (!btn || !body || !chevron) return;
+                btn.addEventListener("click", () => {
+                    const expanded = btn.getAttribute("aria-expanded") === "true";
+                    btn.setAttribute("aria-expanded", String(!expanded));
+                    body.classList.toggle("hidden", expanded);
+                    chevron.style.transform = expanded ? "" : "rotate(180deg)";
+                });
+            })();
+        </script>
+    </body>
+</html>

@@ -1,8 +1,7 @@
 import { Flex, GridItem, Heading } from "@chakra-ui/react";
 import { ChartPie } from "lucide-react";
-import { useEffect } from "react";
 
-import { COLORS, RED_COLORS, numFormat } from "@/utils/shared";
+import { COLORS, numFormat, RED_COLORS } from "@/utils/shared";
 import { useSharedContext } from "./SharedContext";
 
 export default function StatCard({
@@ -56,7 +55,7 @@ export default function StatCard({
 					w="100%"
 					color="whiteAlpha.600"
 					fontWeight={400}
-					isTruncated
+					truncate
 				>
 					{route}
 				</Heading>

@@ -1,6 +1,6 @@
 import { completeMetadata } from "../dataset/index";
 
-async function getStatus(link: string) {
+async function _getStatus(link: string) {
 	const data = await fetch(`http://archive.org/wayback/available?url=${link}`);
 	const resp = await data.json();
 	console.log(resp);

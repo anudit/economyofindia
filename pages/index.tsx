@@ -1,4 +1,4 @@
-import { Divider, Heading, Select, SimpleGrid } from "@chakra-ui/react";
+import { Heading, NativeSelect, Separator, SimpleGrid } from "@chakra-ui/react";
 import { useState } from "react";
 
 import ChartGrid from "@/components/ChartGrid";
@@ -23,38 +23,45 @@ export default function Home() {
 		<PageShell
 			metadata={metadata}
 			topBarChildren={
-				<Select
-					defaultValue={3}
-					borderRadius="md"
+				<NativeSelect.Root
+					defaultValue="3"
 					onChange={(e) => {
-						setSection(Object.keys(dataset)[e.currentTarget.selectedIndex]);
+						setSection(
+							Object.keys(dataset)[
+								Number.parseInt((e.target as HTMLSelectElement).value, 10)
+							],
+						);
 					}}
-					w={{ base: "70px", sm: "120px", md: "250px" }}
 					size="sm"
+					width={{ base: "70px", sm: "120px", md: "250px" }}
 				>
-					{Object.keys(dataset).map((k, ind) => (
-						<option value={ind} key={ind} defaultChecked={ind === 3}>
-							{k}
-						</option>
-					))}
-				</Select>
+					<NativeSelect.Field borderRadius="md">
+						{Object.keys(dataset).map((k, ind) => (
+							<option value={ind} key={ind}>
+								{k}
+							</option>
+						))}
+					</NativeSelect.Field>
+					<NativeSelect.Indicator />
+				</NativeSelect.Root>
 			}
 		>
 			<Heading as="h3" size="sm" mb={4}>
 				STATEMENT I - CONSOLIDATED FUND OF INDIA - REVENUE ACCOUNT - RECEIPTS
 			</Heading>
-			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={2}>
+			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} gap={2}>
 				<ChartGrid
 					dataset={dataset[section]}
 					section={section}
 					palette="green"
 				/>
 			</SimpleGrid>
+			<Separator my={8} />
 			<Heading as="h3" size="sm" my={8}>
 				STATEMENT I - CONSOLIDATED FUND OF INDIA - REVENUE ACCOUNT -
 				DISBURSEMENTS
 			</Heading>
-			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={2}>
+			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} gap={2}>
 				<ChartGrid
 					dataset={dataset2[section]}
 					section={section}
@@ -64,7 +71,7 @@ export default function Home() {
 			<Heading as="h3" size="sm" my={8}>
 				STATEMENT I - CONSOLIDATED FUND OF INDIA - CAPITAL ACCOUNT - RECEIPTS
 			</Heading>
-			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={2}>
+			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} gap={2}>
 				<ChartGrid
 					dataset={dataset3[section]}
 					section={section}
@@ -75,7 +82,7 @@ export default function Home() {
 				STATEMENT I - CONSOLIDATED FUND OF INDIA - CAPITAL ACCOUNT -
 				DISBURSEMENTS
 			</Heading>
-			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={2}>
+			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} gap={2}>
 				<ChartGrid
 					dataset={dataset4[section]}
 					section={section}
@@ -85,7 +92,7 @@ export default function Home() {
 			<Heading as="h3" size="sm" my={8}>
 				STATEMENT IA - DISBURSEMENTS 'CHARGED' ON THE CONSOLIDATED FUND OF INDIA
 			</Heading>
-			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={2}>
+			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} gap={2}>
 				<ChartGrid
 					dataset={dataset5[section]}
 					section={section}
@@ -95,7 +102,7 @@ export default function Home() {
 			<Heading as="h3" size="sm" my={8}>
 				STATEMENT III - PUBLIC ACCOUNT OF INDIA - RECEIPTS
 			</Heading>
-			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={2}>
+			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} gap={2}>
 				<ChartGrid
 					dataset={dataset6[section]}
 					section={section}
@@ -105,7 +112,7 @@ export default function Home() {
 			<Heading as="h3" size="sm" my={8}>
 				STATEMENT III - PUBLIC ACCOUNT OF INDIA - DISBURSEMENTS
 			</Heading>
-			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={2}>
+			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} gap={2}>
 				<ChartGrid
 					dataset={dataset7[section]}
 					section={section}
@@ -115,7 +122,7 @@ export default function Home() {
 			<Heading as="h3" size="sm" my={8}>
 				RECEIPTS AND EXPENDITURE OF UNION TERRITORIES WITHOUT LEGISTATURE
 			</Heading>
-			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={2}>
+			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} gap={2}>
 				<ChartGrid
 					dataset={dataset8[section]}
 					section={section}
@@ -123,7 +130,7 @@ export default function Home() {
 				/>
 			</SimpleGrid>
 			<br />
-			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={2}>
+			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} gap={2}>
 				<ChartGrid
 					dataset={dataset9[section]}
 					section={section}

@@ -1,17 +1,17 @@
 *,
 *::before,
 ::after {
-    border-color: transparent !important;
+	border-color: transparent;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
-    border-color: none;
+	color: inherit;
+	text-decoration: none;
+	border-color: none;
 }
 
 @media (prefers-color-scheme: dark) {
-    html {
-        color-scheme: dark;
-    }
+	html {
+		color-scheme: dark;
+	}
 }

@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from "react";
 import type { FC, ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 interface ResponsiveProps {
 	children: (width: number, height: number) => ReactNode;
