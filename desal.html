@@ -30,331 +30,169 @@
             body {
                 font-family: "Inter", sans-serif;
             }
-            /* Custom scrollbar styling for premium look */
-            ::-webkit-scrollbar {
-                width: 8px;
-                height: 8px;
-            }
-            ::-webkit-scrollbar-track {
-                background: #1e293b;
-            }
-            ::-webkit-scrollbar-thumb {
-                background: #475569;
-                border-radius: 4px;
-            }
-            ::-webkit-scrollbar-thumb:hover {
-                background: #64748b;
-            }
-            /* Glassmorphism utility */
+            ::-webkit-scrollbar { width: 6px; height: 6px; }
+            ::-webkit-scrollbar-track { background: #f1f5f9; }
+            ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+            ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
             .glass {
-                background: rgba(30, 41, 59, 0.7);
-                backdrop-filter: blur(12px);
-                border: 1px solid rgba(255, 255, 255, 0.08);
+                background: #ffffff;
+                border: 1px solid #e2e8f0;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
             }
+            input[type=range] { accent-color: #3b82f6; }
+            .katex { color: inherit; }
         </style>
     </head>
-    <body class="bg-slate-950 text-slate-100 min-h-screen pb-12">
+    <body class="bg-slate-50 text-slate-800 min-h-screen pb-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
             <!-- ── FOUR CORE CHALLENGES ── -->
             <section class="challenge-section mb-10">
                 <!-- Header -->
-                <div class="p-5 rounded-2xl mb-5 text-center">
-                    <h2 class="text-lg font-bold text-white mb-1">
+                <div class="p-5 mb-6 text-center">
+                    <h2 class="text-xl font-bold text-slate-900 mb-1.5 tracking-tight">
                         De-Salination — Four Core Challenges
                     </h2>
-                    <p class="text-xs text-slate-400">
+                    <p class="text-sm text-slate-500">
                         Physics floor
-                        <span class="text-white font-mono">1.06 kWh/m³</span>
+                        <span class="text-slate-900 font-mono font-semibold">1.06 kWh/m³</span>
                         &nbsp;→&nbsp; Best plant today
-                        <span class="text-white font-mono">2.43 kWh/m³</span>
+                        <span class="text-slate-900 font-mono font-semibold">2.43 kWh/m³</span>
                         &nbsp;→&nbsp; Older plants
-                        <span class="text-white font-mono">4.5+ kWh/m³</span>
+                        <span class="text-slate-900 font-mono font-semibold">4.5+ kWh/m³</span>
                     </p>
-                    <p class="text-[11px] text-slate-500 mt-1">
-                        The gap between the physics floor and real plants comes
-                        from four compounding losses.
+                    <p class="text-xs text-slate-400 mt-1">
+                        The gap between the physics floor and real plants comes from four compounding losses.
                     </p>
                 </div>
 
                 <!-- Challenge cards grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <!-- Challenge 1: Osmotic Pressure -->
-                    <div
-                        class="glass p-5 rounded-2xl border-t-2 border-blue-500/50"
-                    >
+                    <div class="glass p-5 rounded-2xl border-t-2 border-blue-400">
                         <div class="flex items-center gap-2 mb-3">
-                            <span
-                                class="text-[10px] font-bold text-blue-400/60 uppercase tracking-widest"
-                                >Challenge 1</span
-                            >
-                            <span class="text-xs font-bold text-blue-300"
-                                >Osmotic Pressure</span
-                            >
+                            <span class="text-[10px] font-semibold text-blue-400 uppercase tracking-widest">Challenge 1</span>
+                            <span class="text-xs font-bold text-slate-900">Osmotic Pressure</span>
                         </div>
-                        <p class="text-xs text-slate-300 mb-3">
-                            Salt in water creates a natural pressure that
-                            resists flow through the membrane. You must pump
-                            harder than this pressure just to move any water
-                            across — and seawater requires
-                            <strong class="text-white">~30 bar</strong> before a
-                            single drop passes.
+                        <p class="text-xs text-slate-600 mb-3 leading-relaxed">
+                            Salt in water creates a natural pressure that resists flow through the membrane. You must pump harder than this pressure just to move any water across — and seawater requires <strong class="text-slate-900">~30 bar</strong> before a single drop passes.
                         </p>
-                        <div
-                            class="bg-blue-500/8 rounded-lg p-3 mb-3 border border-blue-500/15"
-                        >
-                            <p
-                                class="text-[10px] text-blue-300/50 uppercase tracking-wider mb-1"
-                            >
-                                Van 't Hoff Law
-                            </p>
-                            <div class="text-blue-200 text-sm">
-                                $$\Pi = i \cdot C \cdot R \cdot T$$
-                            </div>
+                        <div class="bg-blue-50 rounded-xl p-3 mb-3 border border-blue-100">
+                            <p class="text-[10px] text-blue-400 uppercase tracking-wider mb-2 font-semibold">Van 't Hoff Law</p>
+                            <div class="text-blue-700 text-sm">$$\Pi = i \cdot C \cdot R \cdot T$$</div>
                             <div class="mt-2 space-y-0.5">
-                                <p class="text-[11px] text-blue-300/60"><span class="text-blue-200/80">Π</span> — osmotic pressure (bar)</p>
-                                <p class="text-[11px] text-blue-300/60"><span class="text-blue-200/80">i</span> — ion count per molecule (NaCl = 2)</p>
-                                <p class="text-[11px] text-blue-300/60"><span class="text-blue-200/80">C</span> — salt concentration (mol/m³)</p>
-                                <p class="text-[11px] text-blue-300/60"><span class="text-blue-200/80">R, T</span> — gas constant &amp; temperature (K)</p>
+                                <p class="text-[11px] text-slate-500"><span class="text-slate-700 font-medium">Π</span> — osmotic pressure (bar)</p>
+                                <p class="text-[11px] text-slate-500"><span class="text-slate-700 font-medium">i</span> — ion count per molecule (NaCl = 2)</p>
+                                <p class="text-[11px] text-slate-500"><span class="text-slate-700 font-medium">C</span> — salt concentration (mol/m³)</p>
+                                <p class="text-[11px] text-slate-500"><span class="text-slate-700 font-medium">R, T</span> — gas constant &amp; temperature (K)</p>
                             </div>
-                            <p class="text-[11px] text-blue-300/60 mt-2 font-medium">
-                                Seawater: $$\Pi \approx 29.7\ \text{bar}$$
-                            </p>
+                            <p class="text-[11px] text-slate-500 mt-2">Seawater: $$\Pi \approx 29.7\ \text{bar}$$</p>
                         </div>
                         <div class="flex gap-3">
-                            <div
-                                class="flex-1 bg-slate-800/40 rounded-lg p-2.5"
-                            >
-                                <p class="text-[10px] text-slate-400 mb-0.5">
-                                    Can it be beaten?
-                                </p>
-                                <p class="text-xs text-amber-300 font-medium">
-                                    Partially — better membranes reduce
-                                    overpressure needed above the osmotic floor.
-                                </p>
+                            <div class="flex-1 bg-slate-50 rounded-lg p-2.5 border border-slate-100">
+                                <p class="text-[10px] text-slate-400 mb-0.5 font-medium uppercase tracking-wide">Can it be beaten?</p>
+                                <p class="text-xs text-amber-600 font-medium">Partially — better membranes reduce overpressure needed above the osmotic floor.</p>
                             </div>
-                            <div
-                                class="flex-1 bg-slate-800/40 rounded-lg p-2.5"
-                            >
-                                <p class="text-[10px] text-slate-400 mb-0.5">
-                                    Gap cost
-                                </p>
-                                <p class="text-xs text-white font-mono">
-                                    +0.3–1.0 kWh/m³
-                                </p>
+                            <div class="flex-1 bg-slate-50 rounded-lg p-2.5 border border-slate-100">
+                                <p class="text-[10px] text-slate-400 mb-0.5 font-medium uppercase tracking-wide">Gap cost</p>
+                                <p class="text-xs text-slate-900 font-mono font-semibold">+0.3–1.0 kWh/m³</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Challenge 2: Gibbs Floor -->
-                    <div
-                        class="glass p-5 rounded-2xl border-t-2 border-purple-500/50"
-                    >
+                    <div class="glass p-5 rounded-2xl border-t-2 border-violet-400">
                         <div class="flex items-center gap-2 mb-3">
-                            <span
-                                class="text-[10px] font-bold text-purple-400/60 uppercase tracking-widest"
-                                >Challenge 2</span
-                            >
-                            <span class="text-xs font-bold text-purple-300"
-                                >The Thermodynamic Floor</span
-                            >
+                            <span class="text-[10px] font-semibold text-violet-400 uppercase tracking-widest">Challenge 2</span>
+                            <span class="text-xs font-bold text-slate-900">The Thermodynamic Floor</span>
                         </div>
-                        <p class="text-xs text-slate-300 mb-3">
-                            Separating salt from water requires energy by the
-                            laws of thermodynamics — even a perfect machine with
-                            zero friction cannot go below this limit. It sets a
-                            hard minimum that no desalination process can ever
-                            undercut.
+                        <p class="text-xs text-slate-600 mb-3 leading-relaxed">
+                            Separating salt from water requires energy by the laws of thermodynamics — even a perfect machine with zero friction cannot go below this limit. It sets a hard minimum that no desalination process can ever undercut.
                         </p>
-                        <div
-                            class="bg-purple-500/8 rounded-lg p-3 mb-3 border border-purple-500/15"
-                        >
-                            <p
-                                class="text-[10px] text-purple-300/50 uppercase tracking-wider mb-1"
-                            >
-                                Gibbs Free Energy
-                            </p>
-                            <div class="text-purple-200 text-sm">
-                                $$W_{\min} = -\Pi_0 \cdot \ln(1 - Y)$$
-                            </div>
+                        <div class="bg-violet-50 rounded-xl p-3 mb-3 border border-violet-100">
+                            <p class="text-[10px] text-violet-400 uppercase tracking-wider mb-2 font-semibold">Gibbs Free Energy</p>
+                            <div class="text-violet-700 text-sm">$$W_{\min} = -\Pi_0 \cdot \ln(1 - Y)$$</div>
                             <div class="mt-2 space-y-0.5">
-                                <p class="text-[11px] text-purple-300/60"><span class="text-purple-200/80">W<sub>min</sub></span> — minimum energy to separate (kWh/m³)</p>
-                                <p class="text-[11px] text-purple-300/60"><span class="text-purple-200/80">Π₀</span> — feed osmotic pressure (~0.82 kWh/m³ equiv.)</p>
-                                <p class="text-[11px] text-purple-300/60"><span class="text-purple-200/80">Y</span> — water recovery fraction (e.g. 0.5 = 50%)</p>
+                                <p class="text-[11px] text-slate-500"><span class="text-slate-700 font-medium">W<sub>min</sub></span> — minimum energy to separate (kWh/m³)</p>
+                                <p class="text-[11px] text-slate-500"><span class="text-slate-700 font-medium">Π₀</span> — feed osmotic pressure (~0.82 kWh/m³ equiv.)</p>
+                                <p class="text-[11px] text-slate-500"><span class="text-slate-700 font-medium">Y</span> — water recovery fraction (e.g. 0.5 = 50%)</p>
                             </div>
-                            <p class="text-[11px] text-purple-300/60 mt-2 font-medium">
-                                At 50% recovery: $$SEC_{\min} \approx 1.06\ \text{kWh/m}^3$$
-                            </p>
+                            <p class="text-[11px] text-slate-500 mt-2">At 50% recovery: $$SEC_{\min} \approx 1.06\ \text{kWh/m}^3$$</p>
                         </div>
                         <div class="flex gap-3">
-                            <div
-                                class="flex-1 bg-slate-800/40 rounded-lg p-2.5"
-                            >
-                                <p class="text-[10px] text-slate-400 mb-0.5">
-                                    Can it be beaten?
-                                </p>
-                                <p class="text-xs text-red-400 font-medium">
-                                    No — it is a law of physics. The goal is to
-                                    approach it, not cross it.
-                                </p>
+                            <div class="flex-1 bg-slate-50 rounded-lg p-2.5 border border-slate-100">
+                                <p class="text-[10px] text-slate-400 mb-0.5 font-medium uppercase tracking-wide">Can it be beaten?</p>
+                                <p class="text-xs text-red-500 font-medium">No — it is a law of physics. The goal is to approach it, not cross it.</p>
                             </div>
-                            <div
-                                class="flex-1 bg-slate-800/40 rounded-lg p-2.5"
-                            >
-                                <p class="text-[10px] text-slate-400 mb-0.5">
-                                    Best plant today
-                                </p>
-                                <p class="text-xs text-white font-mono">
-                                    2.43 kWh/m³
-                                </p>
-                                <p class="text-[10px] text-purple-400/70">
-                                    2.3× the floor
-                                </p>
+                            <div class="flex-1 bg-slate-50 rounded-lg p-2.5 border border-slate-100">
+                                <p class="text-[10px] text-slate-400 mb-0.5 font-medium uppercase tracking-wide">Best plant today</p>
+                                <p class="text-xs text-slate-900 font-mono font-semibold">2.43 kWh/m³</p>
+                                <p class="text-[10px] text-violet-500">2.3× the floor</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Challenge 3: Recovery Penalty -->
-                    <div
-                        class="glass p-5 rounded-2xl border-t-2 border-amber-500/50"
-                    >
+                    <div class="glass p-5 rounded-2xl border-t-2 border-amber-400">
                         <div class="flex items-center gap-2 mb-3">
-                            <span
-                                class="text-[10px] font-bold text-amber-400/60 uppercase tracking-widest"
-                                >Challenge 3</span
-                            >
-                            <span class="text-xs font-bold text-amber-300"
-                                >The Recovery Penalty</span
-                            >
+                            <span class="text-[10px] font-semibold text-amber-500 uppercase tracking-widest">Challenge 3</span>
+                            <span class="text-xs font-bold text-slate-900">The Recovery Penalty</span>
                         </div>
-                        <p class="text-xs text-slate-300 mb-3">
-                            As you extract more fresh water, the remaining brine
-                            becomes saltier — raising its osmotic pressure. The
-                            pump must work harder for each additional litre.
-                            Push recovery above ~50% and energy costs rise
-                            sharply.
+                        <p class="text-xs text-slate-600 mb-3 leading-relaxed">
+                            As you extract more fresh water, the remaining brine becomes saltier — raising its osmotic pressure. The pump must work harder for each additional litre. Push recovery above ~50% and energy costs rise sharply.
                         </p>
-                        <div
-                            class="bg-amber-500/8 rounded-lg p-3 mb-3 border border-amber-500/15"
-                        >
-                            <p
-                                class="text-[10px] text-amber-300/50 uppercase tracking-wider mb-1"
-                            >
-                                Logarithmic Penalty
-                            </p>
-                            <div class="text-amber-200 text-sm">
-                                $$SEC_{\min}(Y) = \frac{-\Pi_0}{Y} \cdot \ln(1 - Y)$$
-                            </div>
+                        <div class="bg-amber-50 rounded-xl p-3 mb-3 border border-amber-100">
+                            <p class="text-[10px] text-amber-500 uppercase tracking-wider mb-2 font-semibold">Logarithmic Penalty</p>
+                            <div class="text-amber-700 text-sm">$$SEC_{\min}(Y) = \frac{-\Pi_0}{Y} \cdot \ln(1 - Y)$$</div>
                             <div class="mt-2 space-y-0.5">
-                                <p class="text-[11px] text-amber-300/60"><span class="text-amber-200/80">SEC<sub>min</sub></span> — minimum specific energy at recovery Y</p>
-                                <p class="text-[11px] text-amber-300/60"><span class="text-amber-200/80">Π₀</span> — initial feed osmotic pressure</p>
-                                <p class="text-[11px] text-amber-300/60"><span class="text-amber-200/80">Y</span> — fraction of feed converted to fresh water</p>
+                                <p class="text-[11px] text-slate-500"><span class="text-slate-700 font-medium">SEC<sub>min</sub></span> — minimum specific energy at recovery Y</p>
+                                <p class="text-[11px] text-slate-500"><span class="text-slate-700 font-medium">Π₀</span> — initial feed osmotic pressure</p>
+                                <p class="text-[11px] text-slate-500"><span class="text-slate-700 font-medium">Y</span> — fraction of feed converted to fresh water</p>
                             </div>
-                            <p class="text-[11px] text-amber-300/60 mt-2 font-medium">
-                                50% recovery: 1.14 &nbsp;|&nbsp; 80% recovery: 1.66 kWh/m³
-                            </p>
+                            <p class="text-[11px] text-slate-500 mt-2">50% recovery: 1.14 &nbsp;|&nbsp; 80% recovery: 1.66 kWh/m³</p>
                         </div>
                         <div class="flex gap-3">
-                            <div
-                                class="flex-1 bg-slate-800/40 rounded-lg p-2.5"
-                            >
-                                <p class="text-[10px] text-slate-400 mb-0.5">
-                                    Can it be beaten?
-                                </p>
-                                <p class="text-xs text-amber-300 font-medium">
-                                    Partially — Batch RO tracks pressure
-                                    dynamically; 40–50% recovery is the current
-                                    sweet spot.
-                                </p>
+                            <div class="flex-1 bg-slate-50 rounded-lg p-2.5 border border-slate-100">
+                                <p class="text-[10px] text-slate-400 mb-0.5 font-medium uppercase tracking-wide">Can it be beaten?</p>
+                                <p class="text-xs text-amber-600 font-medium">Partially — Batch RO tracks pressure dynamically; 40–50% recovery is the current sweet spot.</p>
                             </div>
-                            <div
-                                class="flex-1 bg-slate-800/40 rounded-lg p-2.5"
-                            >
-                                <p class="text-[10px] text-slate-400 mb-0.5">
-                                    Gap cost
-                                </p>
-                                <p class="text-xs text-white font-mono">
-                                    +0.3–0.6 kWh/m³
-                                </p>
+                            <div class="flex-1 bg-slate-50 rounded-lg p-2.5 border border-slate-100">
+                                <p class="text-[10px] text-slate-400 mb-0.5 font-medium uppercase tracking-wide">Gap cost</p>
+                                <p class="text-xs text-slate-900 font-mono font-semibold">+0.3–0.6 kWh/m³</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Challenge 4: ERD & Pump Losses -->
-                    <div
-                        class="glass p-5 rounded-2xl border-t-2 border-red-500/50"
-                    >
+                    <div class="glass p-5 rounded-2xl border-t-2 border-red-400">
                         <div class="flex items-center gap-2 mb-3">
-                            <span
-                                class="text-[10px] font-bold text-red-400/60 uppercase tracking-widest"
-                                >Challenge 4</span
-                            >
-                            <span class="text-xs font-bold text-red-300"
-                                >Energy Recovery &amp; Pump Losses</span
-                            >
+                            <span class="text-[10px] font-semibold text-red-400 uppercase tracking-widest">Challenge 4</span>
+                            <span class="text-xs font-bold text-slate-900">Energy Recovery &amp; Pump Losses</span>
                         </div>
-                        <p class="text-xs text-slate-300 mb-3">
-                            High-pressure brine exits the membrane still
-                            carrying most of its pressure energy. Without an
-                            energy recovery device (ERD), that energy is wasted
-                            as heat. Pump inefficiency adds more loss on top —
-                            together this is the single biggest gap driver.
+                        <p class="text-xs text-slate-600 mb-3 leading-relaxed">
+                            High-pressure brine exits the membrane still carrying most of its pressure energy. Without an energy recovery device (ERD), that energy is wasted as heat. Pump inefficiency adds more loss on top — together this is the single biggest gap driver.
                         </p>
-                        <div
-                            class="bg-red-500/8 rounded-lg p-3 mb-3 border border-red-500/15"
-                        >
-                            <p
-                                class="text-[10px] text-red-300/50 uppercase tracking-wider mb-1"
-                            >
-                                Actual Plant SEC
-                            </p>
-                            <div class="text-red-200 text-[12px]">
-                                $$SEC = \frac{\Pi_0}{Y \cdot \eta_{\text{pump}} \cdot \eta_{\text{ERD}}} \cdot \ln\!\left(\frac{1}{1-Y}\right) + SEC_{\text{pre}}$$
-                            </div>
+                        <div class="bg-red-50 rounded-xl p-3 mb-3 border border-red-100">
+                            <p class="text-[10px] text-red-400 uppercase tracking-wider mb-2 font-semibold">Actual Plant SEC</p>
+                            <div class="text-red-700 text-[12px]">$$SEC = \frac{\Pi_0}{Y \cdot \eta_{\text{pump}} \cdot \eta_{\text{ERD}}} \cdot \ln\!\left(\frac{1}{1-Y}\right) + SEC_{\text{pre}}$$</div>
                             <div class="mt-2 space-y-0.5">
-                                <p class="text-[11px] text-red-300/60"><span class="text-red-200/80">η<sub>pump</sub></span> — pump efficiency (best ~0.92; older ~0.80)</p>
-                                <p class="text-[11px] text-red-300/60"><span class="text-red-200/80">η<sub>ERD</sub></span> — energy recovery efficiency (isobaric ~0.96; none = 1.0 i.e. no recovery)</p>
-                                <p class="text-[11px] text-red-300/60"><span class="text-red-200/80">SEC<sub>pre</sub></span> — pretreatment energy (filtration, chemicals: ~0.2–0.5 kWh/m³)</p>
+                                <p class="text-[11px] text-slate-500"><span class="text-slate-700 font-medium">η<sub>pump</sub></span> — pump efficiency (best ~0.92; older ~0.80)</p>
+                                <p class="text-[11px] text-slate-500"><span class="text-slate-700 font-medium">η<sub>ERD</sub></span> — energy recovery efficiency (isobaric ~0.96; none = 1.0 i.e. no recovery)</p>
+                                <p class="text-[11px] text-slate-500"><span class="text-slate-700 font-medium">SEC<sub>pre</sub></span> — pretreatment energy (filtration, chemicals: ~0.2–0.5 kWh/m³)</p>
                             </div>
                             <div class="flex gap-4 mt-2">
-                                <span class="text-[11px] text-red-300/60"
-                                    >No ERD:
-                                    <span class="text-red-200 font-mono"
-                                        >5–7 kWh/m³</span
-                                    ></span
-                                >
-                                <span class="text-[11px] text-red-300/60"
-                                    >Isobaric ERD:
-                                    <span class="text-red-200 font-mono"
-                                        >2.43 kWh/m³</span
-                                    ></span
-                                >
+                                <span class="text-[11px] text-slate-500">No ERD: <span class="text-slate-800 font-mono font-medium">5–7 kWh/m³</span></span>
+                                <span class="text-[11px] text-slate-500">Isobaric ERD: <span class="text-slate-800 font-mono font-medium">2.43 kWh/m³</span></span>
                             </div>
                         </div>
                         <div class="flex gap-3">
-                            <div
-                                class="flex-1 bg-slate-800/40 rounded-lg p-2.5"
-                            >
-                                <p class="text-[10px] text-slate-400 mb-0.5">
-                                    Can it be beaten?
-                                </p>
-                                <p class="text-xs text-emerald-400 font-medium">
-                                    Yes — isobaric ERDs (96% efficiency) already
-                                    recover most brine pressure. Further gains
-                                    are marginal.
-                                </p>
+                            <div class="flex-1 bg-slate-50 rounded-lg p-2.5 border border-slate-100">
+                                <p class="text-[10px] text-slate-400 mb-0.5 font-medium uppercase tracking-wide">Can it be beaten?</p>
+                                <p class="text-xs text-emerald-600 font-medium">Yes — isobaric ERDs (96% efficiency) already recover most brine pressure. Further gains are marginal.</p>
                             </div>
-                            <div
-                                class="flex-1 bg-slate-800/40 rounded-lg p-2.5"
-                            >
-                                <p class="text-[10px] text-slate-400 mb-0.5">
-                                    Gap cost
-                                </p>
-                                <p class="text-xs text-white font-mono">
-                                    +1.4–3.5 kWh/m³
-                                </p>
-                                <p class="text-[10px] text-red-400/70">
-                                    largest single factor
-                                </p>
+                            <div class="flex-1 bg-slate-50 rounded-lg p-2.5 border border-slate-100">
+                                <p class="text-[10px] text-slate-400 mb-0.5 font-medium uppercase tracking-wide">Gap cost</p>
+                                <p class="text-xs text-slate-900 font-mono font-semibold">+1.4–3.5 kWh/m³</p>
+                                <p class="text-[10px] text-red-400">largest single factor</p>
                             </div>
                         </div>
                     </div>
@@ -362,86 +200,43 @@
 
                 <!-- Gap Summary Bar -->
                 <div class="glass p-4 rounded-2xl">
-                    <p
-                        class="text-[10px] text-slate-500 uppercase tracking-wider mb-3 text-center"
-                    >
+                    <p class="text-[10px] text-slate-400 uppercase tracking-wider mb-3 text-center font-semibold">
                         Cumulative energy gap — physics floor to real plant
                     </p>
-                    <div class="flex h-6 rounded-lg overflow-hidden mb-2">
-                        <div
-                            class="bg-blue-700 flex items-center justify-center text-[10px] font-bold text-blue-100"
-                            style="width: 22%"
-                        >
-                            ⌊ 1.06
-                        </div>
-                        <div
-                            class="bg-purple-700 flex items-center justify-center text-[10px] font-bold text-purple-100"
-                            style="width: 9%"
-                        >
-                            +Π
-                        </div>
-                        <div
-                            class="bg-amber-600 flex items-center justify-center text-[10px] font-bold text-amber-100"
-                            style="width: 10%"
-                        >
-                            +Y
-                        </div>
-                        <div
-                            class="bg-red-700 flex items-center justify-center text-[10px] font-bold text-red-100"
-                            style="width: 12%"
-                        >
-                            +η
-                        </div>
-                        <div
-                            class="bg-red-500 flex items-center justify-center text-[10px] font-bold text-red-100"
-                            style="width: 47%"
-                        >
-                            ← without ERD
-                        </div>
+                    <div class="flex h-6 rounded-lg overflow-hidden mb-2.5">
+                        <div class="bg-blue-500 flex items-center justify-center text-[10px] font-bold text-white" style="width: 22%">⌊ 1.06</div>
+                        <div class="bg-violet-500 flex items-center justify-center text-[10px] font-bold text-white" style="width: 9%">+Π</div>
+                        <div class="bg-amber-400 flex items-center justify-center text-[10px] font-bold text-white" style="width: 10%">+Y</div>
+                        <div class="bg-red-400 flex items-center justify-center text-[10px] font-bold text-white" style="width: 12%">+η</div>
+                        <div class="bg-red-300 flex items-center justify-center text-[10px] font-semibold text-red-800" style="width: 47%">← without ERD</div>
                     </div>
-                    <div
-                        class="flex justify-between text-[11px] text-slate-400"
-                    >
-                        <span
-                            >Physics floor &nbsp;<span
-                                class="text-white font-mono"
-                                >1.06</span
-                            ></span
-                        >
-                        <span
-                            >Dahej best &nbsp;<span class="text-white font-mono"
-                                >2.43</span
-                            ></span
-                        >
-                        <span
-                            >Older plants &nbsp;<span
-                                class="text-white font-mono"
-                                >4.5+ kWh/m³</span
-                            ></span
-                        >
+                    <div class="flex justify-between text-[11px] text-slate-500">
+                        <span>Physics floor &nbsp;<span class="text-slate-900 font-mono font-semibold">1.06</span></span>
+                        <span>Dahej best &nbsp;<span class="text-slate-900 font-mono font-semibold">2.43</span></span>
+                        <span>Older plants &nbsp;<span class="text-slate-900 font-mono font-semibold">4.5+ kWh/m³</span></span>
                     </div>
                 </div>
             </section>
 
             <!-- Main Live Simulator -->
-            <div class="glass p-6 rounded-2xl mb-8 shadow-xl">
+            <div class="glass p-6 rounded-2xl mb-8">
                 <!-- Single collapsible header -->
                 <div class="flex items-center justify-between">
-                    <h2 class="text-lg font-bold text-white flex items-center gap-2">
-                        <i data-lucide="sliders" class="text-blue-400 w-5 h-5"></i>
+                    <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="sliders" class="text-blue-500 w-5 h-5"></i>
                         Live Simulator
                     </h2>
                     <div class="flex items-center gap-2">
                         <button
                             id="reset-btn"
-                            class="text-xs text-slate-400 hover:text-white flex items-center gap-1 transition-colors"
+                            class="text-xs text-slate-400 hover:text-slate-700 flex items-center gap-1 transition-colors"
                         >
                             <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
                             Reset
                         </button>
                         <button
                             id="simulator-toggle"
-                            class="text-slate-400 hover:text-white transition-colors p-1 rounded"
+                            class="text-slate-400 hover:text-slate-700 transition-colors p-1 rounded"
                             aria-expanded="false"
                             aria-label="Expand Live Simulator"
                         >
@@ -458,18 +253,18 @@
                             <!-- Active Plant Notification Badge -->
                             <div
                                 id="active-plant-badge"
-                                class="hidden bg-blue-500/10 border border-blue-500/30 p-3 rounded-lg flex items-center justify-between"
+                                class="hidden bg-blue-50 border border-blue-200 p-3 rounded-lg flex items-center justify-between"
                             >
                                 <div class="flex items-center gap-2">
                                     <span class="relative flex h-2 w-2">
                                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                                         <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
                                     </span>
-                                    <span class="text-xs text-slate-300">Simulating:
-                                        <strong id="active-plant-name" class="text-white">Minjur Plant</strong>
+                                    <span class="text-xs text-slate-600">Simulating:
+                                        <strong id="active-plant-name" class="text-slate-900">Minjur Plant</strong>
                                     </span>
                                 </div>
-                                <button id="clear-plant-btn" class="text-[10px] text-slate-400 hover:text-red-400 uppercase font-semibold">Clear</button>
+                                <button id="clear-plant-btn" class="text-[10px] text-slate-400 hover:text-red-500 uppercase font-semibold">Clear</button>
                             </div>
 
                             <!-- Sliders -->
@@ -477,11 +272,11 @@
                                 <!-- Salinity (S) -->
                                 <div class="space-y-2">
                                     <div class="flex justify-between items-center text-sm">
-                                        <label for="salinity" class="font-medium text-slate-300">Feed Water Salinity</label>
-                                        <span class="bg-blue-500/10 text-blue-400 text-xs px-2 py-0.5 rounded font-mono font-bold" id="salinity-label">35.0 g/kg</span>
+                                        <label for="salinity" class="font-medium text-slate-700">Feed Water Salinity</label>
+                                        <span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded font-mono font-bold border border-blue-100" id="salinity-label">35.0 g/kg</span>
                                     </div>
-                                    <input type="range" id="salinity" min="1" max="80" step="0.5" value="35" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-500" />
-                                    <div class="flex justify-between text-[10px] text-slate-500">
+                                    <input type="range" id="salinity" min="1" max="80" step="0.5" value="35" class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-500" />
+                                    <div class="flex justify-between text-[10px] text-slate-400">
                                         <span>Freshwater (&lt;2)</span>
                                         <span>Brackish (2-15)</span>
                                         <span>Typical Seawater (35)</span>
@@ -492,11 +287,11 @@
                                 <!-- Temperature (T) -->
                                 <div class="space-y-2">
                                     <div class="flex justify-between items-center text-sm">
-                                        <label for="temp" class="font-medium text-slate-300">Feed Water Temperature</label>
-                                        <span class="bg-amber-500/10 text-amber-400 text-xs px-2 py-0.5 rounded font-mono font-bold" id="temp-label">25.0 °C</span>
+                                        <label for="temp" class="font-medium text-slate-700">Feed Water Temperature</label>
+                                        <span class="bg-amber-50 text-amber-600 text-xs px-2 py-0.5 rounded font-mono font-bold border border-amber-100" id="temp-label">25.0 °C</span>
                                     </div>
-                                    <input type="range" id="temp" min="5" max="50" step="0.5" value="25" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500" />
-                                    <div class="flex justify-between text-[10px] text-slate-500">
+                                    <input type="range" id="temp" min="5" max="50" step="0.5" value="25" class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-amber-500" />
+                                    <div class="flex justify-between text-[10px] text-slate-400">
                                         <span>Cold Stream (5°C)</span>
                                         <span>Standard (25°C)</span>
                                         <span>Warm Discharge (50°C)</span>
@@ -506,11 +301,11 @@
                                 <!-- Water Recovery (Y) -->
                                 <div class="space-y-2">
                                     <div class="flex justify-between items-center text-sm">
-                                        <label for="recovery" class="font-medium text-slate-300">Recovery Ratio (Y)</label>
-                                        <span class="bg-emerald-500/10 text-emerald-400 text-xs px-2 py-0.5 rounded font-mono font-bold" id="recovery-label">50%</span>
+                                        <label for="recovery" class="font-medium text-slate-700">Recovery Ratio (Y)</label>
+                                        <span class="bg-emerald-50 text-emerald-600 text-xs px-2 py-0.5 rounded font-mono font-bold border border-emerald-100" id="recovery-label">50%</span>
                                     </div>
-                                    <input type="range" id="recovery" min="5" max="90" step="1" value="50" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500" />
-                                    <div class="flex justify-between text-[10px] text-slate-500">
+                                    <input type="range" id="recovery" min="5" max="90" step="1" value="50" class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-500" />
+                                    <div class="flex justify-between text-[10px] text-slate-400">
                                         <span>Low Recovery (5%)</span>
                                         <span>Standard SWRO (50%)</span>
                                         <span>Extreme Recovery (90%)</span>
@@ -520,11 +315,11 @@
                                 <!-- Process Markup Factor -->
                                 <div class="space-y-2">
                                     <div class="flex justify-between items-center text-sm">
-                                        <label for="markup" class="font-medium text-slate-300">SOTA Energy Loss Multiplier</label>
-                                        <span class="bg-rose-500/10 text-rose-400 text-xs px-2 py-0.5 rounded font-mono font-bold" id="markup-label">2.3x</span>
+                                        <label for="markup" class="font-medium text-slate-700">SOTA Energy Loss Multiplier</label>
+                                        <span class="bg-rose-50 text-rose-600 text-xs px-2 py-0.5 rounded font-mono font-bold border border-rose-100" id="markup-label">2.3x</span>
                                     </div>
-                                    <input type="range" id="markup" min="1.1" max="4.0" step="0.1" value="2.3" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-rose-500" />
-                                    <div class="flex justify-between text-[10px] text-slate-500">
+                                    <input type="range" id="markup" min="1.1" max="4.0" step="0.1" value="2.3" class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-rose-500" />
+                                    <div class="flex justify-between text-[10px] text-slate-400">
                                         <span>Near-Reversible (1.2x)</span>
                                         <span>Singapore / Israel (2.0x-2.5x)</span>
                                         <span>High Friction (4.0x)</span>
@@ -533,18 +328,18 @@
                             </div>
 
                             <!-- Live Thermodynamic Summary Box -->
-                            <div class="bg-slate-900/60 rounded-xl p-4 border border-slate-800/80">
-                                <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Live Equation Output</h3>
+                            <div class="bg-slate-50 rounded-xl p-4 border border-slate-200">
+                                <h3 class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 mb-3">Live Equation Output</h3>
                                 <div class="grid grid-cols-2 gap-4">
                                     <div>
-                                        <span class="text-[10px] text-slate-400 block">Osmotic Pressure (Π₀)</span>
-                                        <span id="osmotic-val" class="text-base font-bold text-blue-300">2.97 MPa</span>
-                                        <span class="text-[10px] text-slate-500 block">~29.7 bar</span>
+                                        <span class="text-[10px] text-slate-400 block mb-0.5">Osmotic Pressure (Π₀)</span>
+                                        <span id="osmotic-val" class="text-base font-bold text-blue-600">2.97 MPa</span>
+                                        <span class="text-[10px] text-slate-400 block">~29.7 bar</span>
                                     </div>
                                     <div>
-                                        <span class="text-[10px] text-slate-400 block">Gibbs Separation Work</span>
-                                        <span id="gibbs-work" class="text-base font-bold text-purple-400">0.82 kWh/m³</span>
-                                        <span class="text-[10px] text-slate-500 block">At infinitesimal limit</span>
+                                        <span class="text-[10px] text-slate-400 block mb-0.5">Gibbs Separation Work</span>
+                                        <span id="gibbs-work" class="text-base font-bold text-violet-600">0.82 kWh/m³</span>
+                                        <span class="text-[10px] text-slate-400 block">At infinitesimal limit</span>
                                     </div>
                                 </div>
                             </div>
@@ -553,31 +348,31 @@
                         <!-- Visualization Column -->
                         <div class="lg:col-span-7 flex flex-col gap-6">
                             <div>
-                                <h3 class="text-sm font-semibold text-slate-300 mb-1 flex items-center gap-2">
-                                    <i data-lucide="line-chart" class="text-blue-400 w-4 h-4"></i>
+                                <h3 class="text-sm font-semibold text-slate-800 mb-1 flex items-center gap-2">
+                                    <i data-lucide="line-chart" class="text-blue-500 w-4 h-4"></i>
                                     The Thermodynamic Limit Curve
                                 </h3>
-                                <p class="text-xs text-slate-500 mb-4">SEC (kWh/m³) across the full recovery range. The curve surges as brine approaches saturation.</p>
+                                <p class="text-xs text-slate-400 mb-4">SEC (kWh/m³) across the full recovery range. The curve surges as brine approaches saturation.</p>
                             </div>
 
                             <!-- Key Metrics -->
                             <div class="grid grid-cols-2 gap-4">
-                                <div class="bg-slate-900/80 rounded-xl p-4 border border-slate-800 flex items-center justify-between">
+                                <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 flex items-center justify-between">
                                     <div>
-                                        <span class="text-xs text-slate-400 block">Thermodynamic Minimum (SEC<sub>min</sub>)</span>
-                                        <span id="sec-min-output" class="text-3xl font-black text-blue-400">1.06 <span class="text-sm font-normal text-slate-400">kWh/m³</span></span>
+                                        <span class="text-xs text-slate-500 block mb-1">Thermodynamic Minimum (SEC<sub>min</sub>)</span>
+                                        <span id="sec-min-output" class="text-3xl font-black text-blue-600">1.06 <span class="text-sm font-normal text-slate-400">kWh/m³</span></span>
                                     </div>
-                                    <div class="bg-blue-500/10 p-2.5 rounded-lg border border-blue-500/20">
-                                        <i data-lucide="activity" class="text-blue-400 w-6 h-6"></i>
+                                    <div class="bg-blue-50 p-2.5 rounded-lg border border-blue-100">
+                                        <i data-lucide="activity" class="text-blue-500 w-6 h-6"></i>
                                     </div>
                                 </div>
-                                <div class="bg-slate-900/80 rounded-xl p-4 border border-slate-800 flex items-center justify-between">
+                                <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 flex items-center justify-between">
                                     <div>
-                                        <span class="text-xs text-slate-400 block">SOTA Plant Estimate</span>
-                                        <span id="sec-sota-output" class="text-3xl font-black text-rose-400">2.44 <span class="text-sm font-normal text-slate-400">kWh/m³</span></span>
+                                        <span class="text-xs text-slate-500 block mb-1">SOTA Plant Estimate</span>
+                                        <span id="sec-sota-output" class="text-3xl font-black text-rose-500">2.44 <span class="text-sm font-normal text-slate-400">kWh/m³</span></span>
                                     </div>
-                                    <div class="bg-rose-500/10 p-2.5 rounded-lg border border-rose-500/20">
-                                        <i data-lucide="zap" class="text-rose-400 w-6 h-6"></i>
+                                    <div class="bg-rose-50 p-2.5 rounded-lg border border-rose-100">
+                                        <i data-lucide="zap" class="text-rose-500 w-6 h-6"></i>
                                     </div>
                                 </div>
                             </div>
@@ -599,16 +394,13 @@
                             type="text"
                             id="db-search"
                             placeholder="Search by plant, builder..."
-                            class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 pl-10 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                            class="w-full bg-white border border-slate-200 rounded-xl px-4 py-2 pl-10 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-100"
                         />
-                        <i
-                            data-lucide="search"
-                            class="absolute left-3.5 top-2.5 text-slate-500 w-4 h-4"
-                        ></i>
+                        <i data-lucide="search" class="absolute left-3.5 top-2.5 text-slate-400 w-4 h-4"></i>
                     </div>
                     <select
                         id="capacity-filter"
-                        class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 cursor-pointer"
+                        class="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-700 focus:outline-none focus:border-blue-400 cursor-pointer"
                     >
                         <option value="all">All Capacities</option>
                         <option value="large">Large (&gt;= 100 MLD)</option>
@@ -616,84 +408,51 @@
                     </select>
                     <select
                         id="energy-filter"
-                        class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500 cursor-pointer"
+                        class="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-700 focus:outline-none focus:border-blue-400 cursor-pointer"
                     >
                         <option value="all">All Energy Sources</option>
                         <option value="renewable">Renewable</option>
                         <option value="nonrenewable">Non-Renewable</option>
                     </select>
-                    <span id="table-mld-summary" class="text-xs text-slate-500 sm:ml-1"></span>
+                    <span id="table-mld-summary" class="text-xs text-slate-400 sm:ml-1"></span>
                 </div>
 
-                <div class="overflow-x-auto rounded-xl border border-slate-800">
+                <div class="overflow-x-auto overflow-y-auto max-h-[480px] rounded-xl border border-slate-200">
                     <table class="w-full text-left text-sm border-collapse">
-                        <thead>
-                            <tr
-                                class="bg-slate-900/95 text-slate-300 uppercase text-[10px] tracking-wider border-b border-slate-800 font-bold"
-                            >
-                                <th
-                                    class="py-2.5 px-4 cursor-pointer hover:text-white sort-header"
-                                    data-sort="name"
-                                >
+                        <thead class="sticky top-0 z-10 bg-slate-50">
+                            <tr class="bg-slate-50 text-slate-500 uppercase text-[10px] tracking-wider border-b border-slate-200 font-semibold">
+                                <th class="py-3 px-4 cursor-pointer hover:text-slate-800 sort-header" data-sort="name">
                                     Name <span class="sort-arrow ml-0.5"></span>
                                 </th>
-                                <th class="py-2.5 px-4 text-center">Risks</th>
-                                <th
-                                    class="py-2.5 px-4 text-center cursor-pointer hover:text-white sort-header"
-                                    data-sort="capacity"
-                                >
+                                <th class="py-3 px-4 text-center">Risks</th>
+                                <th class="py-3 px-4 text-center cursor-pointer hover:text-slate-800 sort-header" data-sort="capacity">
                                     MLD <span class="sort-arrow ml-0.5"></span>
                                 </th>
-                                <th
-                                    class="py-2.5 px-4 text-center cursor-pointer hover:text-white sort-header min-w-[90px]"
-                                    data-sort="capex"
-                                >
-                                    Capex (Cr INR)
-                                    <span class="sort-arrow ml-0.5"></span>
+                                <th class="py-3 px-4 text-center cursor-pointer hover:text-slate-800 sort-header min-w-[90px]" data-sort="capex">
+                                    Capex (Cr INR) <span class="sort-arrow ml-0.5"></span>
                                 </th>
-                                <th
-                                    class="py-2.5 px-4 text-center cursor-pointer hover:text-white sort-header"
-                                    data-sort="outPrice"
-                                >
-                                    Cost / m³
-                                    <span class="sort-arrow ml-0.5"></span>
+                                <th class="py-3 px-4 text-center cursor-pointer hover:text-slate-800 sort-header" data-sort="outPrice">
+                                    Cost / m³ <span class="sort-arrow ml-0.5"></span>
                                 </th>
-                                <th
-                                    class="py-2.5 px-4 text-center cursor-pointer hover:text-white sort-header"
-                                    data-sort="process"
-                                >
+                                <th class="py-3 px-4 text-center cursor-pointer hover:text-slate-800 sort-header" data-sort="process">
                                     Tech <span class="sort-arrow ml-0.5"></span>
                                 </th>
                             </tr>
                         </thead>
-                        <tbody
-                            id="plant-table-body"
-                            class="divide-y divide-slate-800/60 bg-slate-950/40"
-                        >
+                        <tbody id="plant-table-body" class="divide-y divide-slate-100 bg-white">
                             <tr id="table-loading-row">
-                                <td
-                                    colspan="6"
-                                    class="text-center py-12 text-slate-500"
-                                >
-                                    <div
-                                        class="flex justify-center items-center gap-2"
-                                    >
-                                        <span
-                                            class="animate-spin rounded-full h-4 w-4 border-b-2 border-emerald-400"
-                                        ></span>
-                                        Parsing & compiling databases...
+                                <td colspan="6" class="text-center py-12 text-slate-400">
+                                    <div class="flex justify-center items-center gap-2">
+                                        <span class="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500"></span>
+                                        Parsing &amp; compiling databases...
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div
-                    class="flex justify-between items-center mt-3 text-xs text-slate-400"
-                >
-                    <span id="datatable-summary"
-                        >Showing 0 matching plant profiles</span
-                    >
+                <div class="flex justify-between items-center mt-3 text-xs text-slate-400">
+                    <span id="datatable-summary">Showing 0 matching plant profiles</span>
                 </div>
             </div>
         </div>
@@ -701,7 +460,7 @@
         <!-- Custom Tooltip Node for Datatable Cell Hovering -->
         <div
             id="table-tooltip"
-            class="absolute hidden bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-xl p-4 shadow-2xl max-w-sm z-50 pointer-events-none transition-all duration-150 ease-out"
+            class="absolute hidden bg-white border border-slate-200 text-slate-700 text-xs rounded-xl p-4 shadow-xl max-w-sm z-50 pointer-events-none transition-all duration-150 ease-out"
         ></div>
 
         <!-- STYLED COMPLETED RUNNABLE INTERACTIVE CODE -->
@@ -2153,23 +1912,25 @@
                         maintainAspectRatio: false,
                         scales: {
                             x: {
-                                grid: { color: "rgba(255, 255, 255, 0.05)" },
-                                ticks: { color: "#94a3b8", font: { size: 10 } },
+                                grid: { color: "rgba(0,0,0,0.05)" },
+                                ticks: { color: "#64748b", font: { size: 10 } },
+                                border: { color: "#e2e8f0" },
                                 title: {
                                     display: true,
                                     text: "Recovery Ratio (Y)",
-                                    color: "#94a3b8",
-                                    font: { weight: "bold", size: 11 },
+                                    color: "#64748b",
+                                    font: { weight: "600", size: 11 },
                                 },
                             },
                             y: {
-                                grid: { color: "rgba(255, 255, 255, 0.05)" },
-                                ticks: { color: "#94a3b8", font: { size: 10 } },
+                                grid: { color: "rgba(0,0,0,0.05)" },
+                                ticks: { color: "#64748b", font: { size: 10 } },
+                                border: { color: "#e2e8f0" },
                                 title: {
                                     display: true,
                                     text: "Energy Required (kWh/m³)",
-                                    color: "#94a3b8",
-                                    font: { weight: "bold", size: 11 },
+                                    color: "#64748b",
+                                    font: { weight: "600", size: 11 },
                                 },
                                 min: 0,
                                 max: 6,
@@ -2179,7 +1940,7 @@
                             legend: {
                                 position: "top",
                                 labels: {
-                                    color: "#f1f5f9",
+                                    color: "#374151",
                                     font: { size: 10 },
                                     boxWidth: 12,
                                 },
@@ -2278,7 +2039,7 @@
                 if (plants.length === 0) {
                     tableBody.innerHTML = `
                     <tr>
-                        <td colspan="6" class="text-center py-12 text-slate-500">
+                        <td colspan="6" class="text-center py-12 text-slate-400">
                             No matching water purification assets found in registry.
                         </td>
                     </tr>
@@ -2291,7 +2052,7 @@
                 plants.forEach((plant, idx) => {
                     const row = document.createElement("tr");
                     row.className =
-                        "hover:bg-slate-900/60 border-b border-slate-900 transition-colors group cursor-default";
+                        "hover:bg-slate-50 transition-colors group cursor-default";
 
                     // Extract clean numerical parameters for immediate presentation
                     const parsedCapacity = extractRawNumber(plant.CapacityMLD);
@@ -2313,11 +2074,10 @@
                     const energy = getPlantEnergyProfile(plant);
                     const techLabel = getProcessLabel(plant);
                     const chipColors = {
-                        emerald:
-                            "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
-                        blue: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-                        amber: "bg-amber-500/10 text-amber-400 border-amber-500/20",
-                        slate: "bg-slate-500/10 text-slate-400 border-slate-500/20",
+                        emerald: "bg-emerald-50 text-emerald-600 border-emerald-200",
+                        blue: "bg-blue-50 text-blue-600 border-blue-200",
+                        amber: "bg-amber-50 text-amber-600 border-amber-200",
+                        slate: "bg-slate-100 text-slate-500 border-slate-200",
                     };
 
                     const oms =
@@ -2327,31 +2087,31 @@
                             : "";
 
                     row.innerHTML = `
-                    <td class="py-2 px-3 font-bold text-white max-w-[200px] whitespace-normal break-words leading-snug hover-trigger" data-title="${plant.ProjectName}" data-full="${plant.Develo && plant.Develo !== "N/A" ? "<b>Developer:</b><br>" + plant.Develo + "<br><br><b>Classification:</b> " + devClass.label : ""}">${plant.ProjectName}${stageClass.label === "Planning" ? ' <span class="text-[8px] px-1 py-0.5 rounded-full font-bold border bg-amber-500/10 text-amber-400 border-amber-500/20">P</span>' : ""}<span class="text-[8px] px-1 py-0.5 rounded-full font-semibold border tracking-wider uppercase ${chipColors[devClass.color]} ml-1">${devClass.label}</span></td>
-                    <td class="py-2 px-4 text-center">
+                    <td class="py-2.5 px-3 font-semibold text-slate-800 max-w-[200px] whitespace-normal break-words leading-snug hover-trigger" data-title="${plant.ProjectName}" data-full="${plant.Develo && plant.Develo !== "N/A" ? "<b>Developer:</b><br>" + plant.Develo + "<br><br><b>Classification:</b> " + devClass.label : ""}">${plant.ProjectName}${stageClass.label === "Planning" ? ' <span class="text-[8px] px-1 py-0.5 rounded-full font-bold border bg-amber-50 text-amber-500 border-amber-200">P</span>' : ""}<span class="text-[8px] px-1 py-0.5 rounded-full font-semibold border tracking-wider uppercase ${chipColors[devClass.color]} ml-1">${devClass.label}</span></td>
+                    <td class="py-2.5 px-4 text-center">
                         <span class="inline-block hover-trigger" data-title="Risk Assessment" data-full="${riskLabel("Renewables", energy.renew)}<br>${riskLabel("Brine", energy.brine)}<br>${riskLabel("Complaints", energy.comp)}">${renderRiskSvg(energy.renew, energy.brine, energy.comp)}</span>
                     </td>
-                    <td class="py-2 px-4 text-center font-mono text-blue-400 font-bold">${capDisplay}</td>
-                    <td class="py-2 px-4 text-center font-mono text-emerald-400 font-semibold">
+                    <td class="py-2.5 px-4 text-center font-mono text-blue-600 font-bold">${capDisplay}</td>
+                    <td class="py-2.5 px-4 text-center font-mono text-emerald-600 font-semibold">
                         <span class="hover-trigger" data-title="Capital Expenditure" data-full="${plant.CapexplantEPC || "N/A"}${oms ? "<br><br><span class='text-[9px] text-slate-400 uppercase tracking-wider'>O&amp;M Commitment</span><br>" + oms : ""}">${capexDisplay}</span>
                     </td>
-                    <td class="py-2 px-3 text-center ${waterCosts.outputInr !== null ? "hover-trigger" : ""}" data-title="Water Cost Breakdown" data-full="${waterCosts.outputInr !== null ? "<b>Electricity:</b> ₹" + waterCosts.sourceInr.toFixed(2) + "/m³ (~$" + waterCosts.sourceUsd.toFixed(2) + ")<br><b>Other (O&amp;M, chemicals, etc.):</b> ₹" + (waterCosts.outputInr - waterCosts.sourceInr).toFixed(2) + "/m³ (~$" + (waterCosts.outputUsd - waterCosts.sourceUsd).toFixed(2) + ")<br><b>Total Out Price:</b> ₹" + waterCosts.outputInr.toFixed(2) + "/m³ (~$" + waterCosts.outputUsd.toFixed(2) + ")<br><span class='text-[10px] text-slate-400'>" + waterCosts.outputSrc + "</span>" : "N/A"}">
+                    <td class="py-2.5 px-3 text-center ${waterCosts.outputInr !== null ? "hover-trigger" : ""}" data-title="Water Cost Breakdown" data-full="${waterCosts.outputInr !== null ? "<b>Electricity:</b> ₹" + waterCosts.sourceInr.toFixed(2) + "/m³ (~$" + waterCosts.sourceUsd.toFixed(2) + ")<br><b>Other (O&amp;M, chemicals, etc.):</b> ₹" + (waterCosts.outputInr - waterCosts.sourceInr).toFixed(2) + "/m³ (~$" + (waterCosts.outputUsd - waterCosts.sourceUsd).toFixed(2) + ")<br><b>Total Out Price:</b> ₹" + waterCosts.outputInr.toFixed(2) + "/m³ (~$" + waterCosts.outputUsd.toFixed(2) + ")<br><span class='text-[10px] text-slate-400'>" + waterCosts.outputSrc + "</span>" : "N/A"}">
                         ${
                             waterCosts.outputInr !== null
                                 ? `
                         <div class="w-full max-w-[100px] mx-auto">
                             <div class="flex items-center gap-1 mb-0.5">
-                                <div class="h-2 rounded-full bg-slate-700 flex-1 overflow-hidden">
-                                    <div class="h-full rounded-full bg-amber-500" style="width:${Math.min(100, (waterCosts.sourceInr / waterCosts.outputInr) * 100).toFixed(0)}%"></div>
+                                <div class="h-1.5 rounded-full bg-slate-200 flex-1 overflow-hidden">
+                                    <div class="h-full rounded-full bg-amber-400" style="width:${Math.min(100, (waterCosts.sourceInr / waterCosts.outputInr) * 100).toFixed(0)}%"></div>
                                 </div>
                             </div>
-                            <div class="text-[11px] font-mono font-bold text-blue-400">₹${waterCosts.outputInr.toFixed(2)}</div>
+                            <div class="text-[11px] font-mono font-bold text-blue-600">₹${waterCosts.outputInr.toFixed(2)}</div>
                         </div>`
-                                : "—"
+                                : "<span class='text-slate-300'>—</span>"
                         }
                     </td>
-                    <td class="py-2 px-3 text-center hover-trigger" data-title="Technology" data-full="${plant.process || plant.Likelyprocessarchitecturekind || "—"}">
-                        <span class="bg-slate-800 px-2 py-1 rounded text-[10px] font-semibold font-mono text-slate-200">${techLabel}</span>
+                    <td class="py-2.5 px-3 text-center hover-trigger" data-title="Technology" data-full="${plant.process || plant.Likelyprocessarchitecturekind || "—"}">
+                        <span class="bg-slate-100 border border-slate-200 px-2 py-1 rounded text-[10px] font-semibold font-mono text-slate-600">${techLabel}</span>
                     </td>
                 `;
 
@@ -2387,10 +2147,10 @@
             // Tooltip presentation handlers
             function showCustomTooltip(event, title, content) {
                 tooltipNode.innerHTML = `
-                <div class="font-bold text-slate-100 border-b border-slate-800 pb-1 mb-1.5 flex items-center gap-1.5 uppercase text-[9px] tracking-wider">
-                    <i data-lucide="info" class="w-3.5 h-3.5 text-blue-400"></i> ${title}
+                <div class="font-semibold text-slate-700 border-b border-slate-100 pb-1 mb-1.5 flex items-center gap-1.5 uppercase text-[9px] tracking-wider">
+                    <i data-lucide="info" class="w-3.5 h-3.5 text-blue-500"></i> ${title}
                 </div>
-                <div class="leading-relaxed font-medium text-slate-300 break-words">${content}</div>
+                <div class="leading-relaxed text-slate-600 break-words">${content}</div>
             `;
                 // Re-trigger icon parsing in tooltip
                 lucide.createIcons();
