@@ -106,19 +106,21 @@ export default function Home() {
 							mountFunc.fitContentToView({ scale: 0.3 });
 						}}
 					>
-						<Button size="lg" onClick={handleFullScreen}>
-							<Fullscreen />
-							Full Screen
-						</Button>
-						<Sankey
-							data={
-								[["From", "To", "Weight"] as unknown as SankeyDataRow].concat(
-									dataset3,
-								) as unknown as SankeyDataWithHeader
-							}
-							height="10000px"
-							iters={5}
-						/>
+						<div>
+							<Button size="lg" onClick={handleFullScreen}>
+								<Fullscreen />
+								Full Screen
+							</Button>
+							<Sankey
+								data={
+									[["From", "To", "Weight"] as unknown as SankeyDataRow].concat(
+										dataset3,
+									) as unknown as SankeyDataWithHeader
+								}
+								height="10000px"
+								iters={5}
+							/>
+						</div>
 					</ReactInfiniteCanvas>
 				</Flex>
 			</Flex>
